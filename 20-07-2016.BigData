@@ -1,0 +1,271 @@
+Clean code
+08:30 - 12:00
+- Qualities of code
+--> It is hard to create a precise definition of clean code and probably there are as many definitions as developers.
+--> Some principles that lead to a basic level of clean code apply.
+- Bad code does too much
+--> Clean code is focused
+- Each class, method or any other entity should remain undisturbed.
+- It should conform to  SRP
+--> Single Responsibility Principle
+- is about making sure that if you can think of the reason for changing a class you should not be able to come up with more than one.
+- A functional unit on a given level of abstraction should only be responsible for a single aspect of a system’s requirements. An aspect of requirements is a trait or property of requirements, which can change independently of other aspects.
+- The language you wrote your code with should look like it was made for the problem
+--> It is not the language that makes a program look simple, but the programmer who makes the language appear simple.
+- This means, for instance, that you shouldn’t use workarounds which make code and language usually look awkward.
+-  If you claim that something can only be done by means of a workaround, it usually means that you haven’t spent enough time on trying to find a good, clean solution.
+- It should not be redundant
+--> It should comply with the DRY rule (Don’t Repeat Yourself).
+- When the DRY principle has successfully been applied, the modification of any single element of a system doesn’t require a change in any other logically unrelated elements.
+- Reading your code should be pleasant
+--> When  browsing through the code you should feel like reading Harry Potter
+--> You should feel that it was made to be read by any developer easily without hours spent on digging into it.
+- To achieve this you should try to comply
+- KISS principle
+--> Keep It Simple, Stupid
+- YAGNI
+--> You Ain't Gonna Need It
+- The KISS principle states that most systems work best if they are kept simple rather than made complex.
+- Therefore, simplicity should be a key goal in design, and unnecessary complexity should be avoided.
+- YAGNI is a practice encouraging to purely focus on the simplest things that make your software work.
+- It should have minimal dependencies
+- The more dependencies it has, the harder it is to maintain and change it in the future.
+- You can always help yourself in achieving the goal of having minimal dependencies by using  NDEPEND for checking potential incorrectness in the dependencies of your code.
+- Smaller is better
+- Code should be minimal. Both classes and methods should be short, preferably just a few lines of code.
+- It should be well divided (also within one class). The better you divide your code the easier it becomes to read it.
+- This principle might positively influence point 4
+--> it will make it easier for other developers to understand your code.
+- It should have unit and acceptance tests
+--> How can we know that our code complies with the requirements if we don’t write tests?
+--> How can we maintain and extend it without the fear that it will stop working?
+- Code without tests is simply not clean.
+-  If you would like to get to know more about the pillars of unit testing I advise you to read a very nice article Three Pillars of Unit Tests written by one of my colleagues.
+- It should be expressive
+--> Expressiveness of the code means that it has meaningful names. These names should express their intention.
+- They should not mislead you.
+- They should be distinctive.
+- Expressiveness makes code document itself making the need for documentation less important.
+- Clean code
+--> Clean code is a reader-focused development style that produces software that's easy to write, read and maintain.
+--> Developers are often tempted to consider their work complete when the application operates as expected. But we're not merely writing code for computer consumption.
+--> Programming is the art of telling another human what one wants the computer to do.
+--> is about recognizing that your audience isn't just a computer
+--> is real-live humans! With this principle in mind,
+--> Let's review seven simple reasons clean code matters.
+- You are an author
+--> An author is someone who practices writing as a profession.
+--> Developers write all day.
+--> Yet as developers, it's easy to forget that each line of code we write is likely to be read 10 or more times by humans during its lifetime.
+--> These humans are our fellow co-workers.
+--> They're busy fixing bugs and adding features.
+--> Great authors are known for writing books that tell a clear, compelling story.
+--> They use tools like chapters, headings, and paragraphs to clearly organize their thoughts and painlessly guide their reader.
+--> Developers work in a very similar system, but simply use different jargon of namespaces, classes, and methods.
+--> Clean coders use these tools wisely to manage complexity and tell a clear story.
+- It is foundational
+--> Software practices like professional refactoring, unit testing and TDD have received a great deal of attention.
+--> These practices elevate code quality and maintainability.
+--> Implementing clean code principles is a foundational skill that pays off especially well when it's time to refactor code or bring code under test.
+--> Clean code principles lead to source code that's highly modular and thus easier to read and test.
+--> If you think of these practices as part of a house, clean code is the foundation.
+- Justify your technique
+--> Imagine you're sitting in a technical interview.
+--> If you're asked about your code quality, could you provide a professional and rational justification? Or would this be you?
+--> If that's all you can say about writing clean code, that's a bad sign.
+--> If you've never methodically considered the quality of your coding style, there's likely plenty of opportunity for improvement.
+--> Those who write clean code are able to convey many concrete activities, patterns and techniques they use to keep their code clean.
+--> After all, clean code doesn't happen by accident.
+--> It requires a deliberate and regular focus on clearly conveying intent.
+- What gets measured, gets managed.
+--> Building a vocabulary around clean code isn't just useful for interviews and elevating your own code quality.
+--> It also fosters level-headed conversations in code reviews by establishing a common vocabulary and framework for discussing code readability.
+- Reading is hard
+--> Developers often pride themselves with their ability to solve difficult problems.
+--> Writing code is relatively easy. Reading is hard.
+--> This is why so many developers are tempted to rewrite rather than do the hard work of reading and comprehending existing code.
+--> Since reading code is naturally challenging, if you write code that you're barely able to follow as you write it, you'll find you're unable to comprehend it all later.
+--> Professional developers write so much code that after a few weeks of separation, most the structure and design decisions fall out of memory.
+--> It's like looking at the project with a fresh perspective.
+--> Not being able to understand your own code a few weeks later can be a really depressing situation.
+- Technical debt is depressing
+--> Writing sloppy or confusing code injects technical debt into our projects.
+--> While technical debt can be useful when carefully considered in context, excessive technical debt is depressing and drives talent away from the organization.
+--> When the easy things become hard, developers start voting with their feet and go elsewhere.
+--> Developers derive more job satisfaction out of the quality of their work than the quantity.
+--> Technical debt decreases the chance of reuse and sets a low bar for quality throughout the rest of the code base.
+- You are lazy
+--> The PERL programming language said the three great virtues of a programmer are laziness impatience and hubris
+--> Laziness can be a positive attribute in the right context.
+--> I stumbled through writing code in my early years, I learned the hard way that writing clean code really pays off.
+--> Professional developers strive to be the good kind of lazy.
+--> This laziness is based on putting extra care into the code so that it's not so hard to write up front, and it's easier to work with later.
+--> Writing clean code doesn't take any longer.
+- once you grasp the principles you can actually code more quickly because terse, expressive code that does one thing is easier to manage.
+--> When under pressure, it's tempting to cut corners and ignore best practices.
+--> We don't have time to be sloppy. Being sloppy ultimately slows us down in the long-term due to the increased frequency of bugs and the long-term costs of maintenance later.
+--> History has shown it's unlikely you'll find time to clean it up later, so why not do it right the first time?
+- Don't be a verb
+--> Okay, the other reasons are solid, but this one is the clincher
+--> Everyone knows the previous co-worker whose name became a verb to describe dirty code.
+--> Comments like this are the kiss of death for long-term employment prospects.
+--> We want our co-workers to recommend and hire us in future positions, right?
+--> Being known for writing clean code is a great way to assure your co-workers recommend you and look forward to working with both you and your code in the future.
+--> There are three core principles to writing clean code
+Choose the right tool for the job
+Optimize the signal-to-noise ratio
+Strive to write self-documenting code
+- For web developer
+- Revise Your Logic Before Coding
+--> Before blindly typing into the debugger of choice, some flow diagrams or written pseudo-code might come in handy to previously verify the logic behind those lines of code.
+--> Writing it down first can clarify many doubts or insecurities about complex functionality, and therefore save a lot of time. But most importantly, helping you get it right faster will also help you avoid all the messy code replacements and additions that tamper with the following principles.
+- Clearly Expose the Structure of the Page
+--> Working with main containers is useful, but working with main containers with a representative ID is even more useful.
+--> The structure appears evident, thanks to the DIV containers that are concretely named after their destined content.
+--> Not only will it be simpler to start adding code, but it'll also be perfectly transparent for someone who tries to add or remove something afterward.
+--> This structuring method, however, should be aided by the next statement.
+- Use the Correct Indentation
+--> Supporting the previous pronouncement on structure, indentation distinctly displays the opening and closing points of each element used.
+--> If every line of code is glued to the left side of the screen, it'll be very hard to distinguish the exact place where an element is closed.
+--> Therefore, it'll mess up the effort made at designing a complete structure, since it won't be noticeable afterward.
+- Write Explanatory Comments
+--> Underestimating the value of good comments is disregarding a very effective way of code documentation.
+--> It's easy, fast, and very straight-to-the-point, since it's done right then and there when it's needed.
+--> Comments are also efficient considering the fact that they can be read at the exact moment of doubt.
+--> They can, however, be overused.
+- Brings us to the next recommendation.
+- Avoid Abusing Comments
+--> Comments aren't to be treated lightly.
+--> When commenting on code, the current functionality is explained in terms of variables and results.
+- Writing explanatory notes to self (e.g. /* Will finish this later... */).
+- Blaming stuff on other people (e.g. /* John coded this. Ask him. */).
+- Writing vague statements (e.g. /* This is another math function. */).
+- Erasing chunks of code. Sometimes people are not sure of erasing things and it's not absolutely evil to comment that code instead.
+--> What's not right is to just leave it afterwards.
+--> It'll be terribly confusing.
+--> If the code will be documented via embedded comments, the team members need to make sure those comments are there for a reason.
+- Avoid Extremely Large Functions
+--> In the process of adding functionality to an application, its coded methods tend to grow accordingly.
+--> One can come across functions that consist of up to a hundred lines of code, and this tends to become confusing.
+--> A better practice would be to break up large functions into smaller ones.
+--> Some procedures may even be repeating themselves amongst the rest of the functions conforming the whole application process.
+--> The team could make better use of those repeated procedures through separate functions.
+-->  Should have been avoided from the beginning if the first recommendation was carried out correctly.
+- Use Naming Standards for Functions and Variables
+--> Whenever a variable or a function is created, its name should be descriptive enough as to give a general idea of what it does or what it's for.
+--> There are companies that have their own pre-established naming standards but there are also many companies in which the employees do not keep these standards.
+-->  Laziness makes people work double the time during future redesigns, so everyone needs to start learning how to get rid of it.
+- Treat Changes with Caution
+--> The correct appliance of changes summarizes a lot of what has been previously said, like commenting meaningfully and not disrupting indentations.
+--> It needs to be emphasized.
+--> Whenever there's a need for adding, removing, or changing something, there should also be an awareness of not meddling with previous efforts for maintaining the code clean and ordered.
+--> This mainly involves
+- Keeping the correct indentations
+- Commenting on the modification made or broadening the existing comments.
+- Respecting standards in use.
+- Avoid Indiscriminate Mixing of Coding Languages
+--> In-line CSS styling and scattered JavaScript tags with short procedures within them are very good examples of incorrect mixing of coding languages throughout your development process.
+--> Ignoring this principle will result in huge element tags with an embedded STYLE property, lots of interruptions in the flow of the structure because of embedded functions, and of course lots and lots of confusion.
+--> Even with the addition of comments, it'll still look like everything and nothing at the same time.
+--> Having the appropriate divisions between different coding languages will give order to the logic applied.
+- Summarize Your Imports
+--> Even though it is much better to have additional coding languages imported from different files, this shouldn't be abused.
+-->  If there are too many style sheets, they can probably be summarized into one or two.
+--> This won't only save space and make things look cleaner, but it will also save loading time. Each imported file is an HTTP request that tampers with the performance of your application.
+--> So apart from being a consideration for tidiness, it is also a consideration for efficiency.
+
+Decorate code
+13:00 - 17:30
+--> What's convenient isn't always what's best for the development process, since finding the convenient way to do something tends to drive us towards disregarding coding efficiency.
+--> Implied in this case for efficiency, there is a high need to keep up with standards in order to maintain a code that's readable in the future.
+--> Considering that it won't always be the same person who works on upgrading the same application, code should be sufficiently open and understandable for it to really support team work.
+- Beautiful HTML is the foundation of a beautiful website. When I teach people about CSS, I always begin by telling them that good CSS can only exist with equally good HTML markup.
+- A house is only as strong as its foundation, right?
+--> The advantages of clean, semantic HTML are many, yet so many websites suffer from poorly written markup.
+- Rule
+- Strict DOCTYPE
+- If we are going to do this, let’s just do it right. No need for a discussion about whether to use HTML 4.01 or XHTML 1.0
+- Character set &amp; encoding characters
+- In our <head> section, the very first thing should be the declaration of our character set.
+- We’re using UTF-8 here, which is swell, but it’s listed after our <title>.
+- Let’s go ahead and move it up so that the browser knows what character set it’s dealing with before it starts reading any content at all.
+- While we’re talking about characters, let’s go ahead and make sure any funny characters we are using are properly encoded.
+- Proper indentation
+- All right, we are about three lines in and I’m already annoyed by the lack of indentation.
+- Indentation has no bearing on how the page is rendered, but it has a huge effect on the readability of the code.
+- Standard procedure is to indent one tab (or a few spaces) when you are starting a new element that is a child element of the tag above it.
+- Then move back in a tab when you are closing that element.
+- Indentation rules are far from set in stone; feel free to invent your own system.
+- But I recommend being consistent with whatever you choose.
+- Nicely indented markup goes a long way in beautifying your code and making it easy to read and jump around in.
+- Keep your CSS and JavaScript external
+- We have some CSS that has snuck into our <head> section
+- This is a grievous foul because not only does it muddy our markup but it can only apply to this single HTML page.
+- Keeping your CSS files separate means that future pages can link to them and use the same code, so changing the design on multiple pages becomes easy.
+- This may have happened as a “quick fix” at some point, which is understandable and happens to all of us, but let’s get that moved to a more appropriate place in an external file.
+- There is no JavaScript in our head section, but the same goes for that.
+- Nest your tags properly
+- The title of our site, “My Cat Site,” is properly inside <h1> tags, which makes perfect sense.
+- The title is a link to the home page. However, the anchor link, <a>, wraps the header tags.
+- Easy mistake. Most browsers will handle it fine, but technically it’s a no-no. An anchor link is an “inline” element, and header tags are “block” elements.
+- Blocks shouldn’t go inside inline elements. It’s like crossing the streams in Ghostbusters.
+- Eliminate unnecessary divs
+- I don’t know who first coined it, but I love the term “divitis,” which refers to the overuse of divs in HTML markup.
+- Sometime during the learning stages of Web design, people learn how to wrap elements in a div so that they can target them with CSS and apply styling.
+- This leads to a proliferation of the div element and to their being used far too liberally in unnecessary places.
+- Both divs and unordered lists are block-level elements. There really is no need whatsoever for the <ul> to be wrapped in a div; anything you can do with that div you can do with the <ul>.
+- Use better naming conventions
+- This is a good time to bring up naming conventions, as we have just talked about that unordered list with an id of “bigBarNavigation.” The “Navigation” part makes sense, because it’s describing the content that the list contains, but “big” and “Bar” describe the design not the content.
+-  It might make sense right now because the menu is a big bar, but if you change the design of the website (and, say, change the website navigation to a vertical style), that id name will be confusing and irrelevant.
+- Good class and id names are things like “mainNav,” “subNav,” “sidebar,” “footer,” “metaData,” things that describe the content they contain.
+- Bad class and id names are things that describe the design, like “bigBoldHeader,” “leftSidebar,” and “roundedBox.”
+- Leave typography to the CSS
+- The design of our menu calls for all-caps text. We just dig how that looks, and more power to us.
+- We have achieved this by putting the text in all-caps, which of course works; but for better, future extensibility, we should abstract typographic choices like this one to the CSS.
+- We can easily target this text and turn it to all-caps with {text-transform: uppercase}.
+- This means that down the road, if that all-caps look loses its charm, we can make one little change in the CSS to change it to regular lowercase text.
+- Class/id the <body>
+- By “class the body,” I literally mean apply a class to the body, like <body class=”blogLayout”>.
+ - I can see two things going on in this code that lead me to believe that this page has a layout that is different than other pages on the website.
+- The main content div is id’d “mainContent-500.” Seems like someone had a “mainContent” div at one point and then needed to alter its size later on and, to do so, created a brand new id.
+- I’m guessing it was to make it larger, because further in the code we see <class=”narrowSidebar”> applied to the sidebar, and we can infer that that was added to slim down the sidebar from its normal size.
+- This isn’t a very good long-term solution for alternate layouts. Instead, we should apply a class name to the body as suggested above.
+- That will allow us to target both the “mainContent” and “sidebar” divs uniquely without the need for fancy new names or class additions.
+- Having unique class and id names for the body is very powerful and has many more uses than just for alternate layouts.
+- Because every bit of page content lies in the “body” tag, you can uniquely target anything on any page with that hook; particularly useful for things like navigation and indicating current navigation, since you’ll know exactly what page you are on with that unique body class.
+- Validate
+- Kind of goes without saying, but you should run your code through the ol’ validator machine to pick up small mistakes.
+- Sometimes the mistakes will have no bearing on how the page renders, but some mistakes certainly will.
+- Validated code is certain to outlive non-validated code.
+- If for no other reason, seeing that green text on the W3C validator tool just makes you feel good inside.
+- Logical ordering
+- If it is at all possible, keeping the sections of your website in a logical order is best.
+- Notice how the footer section lies above the sidebar in our code.
+- This may be because it works best for the design of the website to keep that information just after the main content and out of the sidebar.
+- Understandable, but if there is any way to get that footer markup down to be the last thing on the page and then use some kind of layout or positioning technique to visually put it where you need it, that is better.
+- Just do what you can
+- We’ve covered a lot here, and this is a great start to writing cleaner HTML, but there is so much more.
+- When starting from scratch, all of this seems much easier. When trying to fix existing code, it feels a lot more difficult.
+- You can get bogged down in a CMS that is forcing bad markup on you.
+- There could be just so many pages on your website that it’s hard to think of even where to begin.
+- Principle
+- Follow a naming convention
+- Each element of a website requires a name, so we make sure to create precise and meaningful naming conventions.
+- When sharing code with other developers or coming back to a project after some time, an effective naming strategy is key.
+- The importance of naming impacts every aspect of our development.
+- It’s present in our CSS and HTML, in the variables in our back-end code, and even in how we present the ability to edit data in the CMS.
+- Be concise
+- Run-on sentences can be hard to follow; likewise, it’s cumbersome to pick through never-ending lines of code.
+- That’s why we stay concise by following the single responsibility principle, a term introduced by Robert C.
+- The rule states that a class or function should have one, and only one, reason to change.
+- By following this principle, we can reuse code in multiple places, keeping our code as organized as possible and helping maintain stability as the site evolves over time.
+- Stay DRY
+- DRY stands for “Don’t Repeat Yourself”, one of the most important acronyms in coding methodology.
+- If we repeat ourselves, we introduce complexity to our code making it more difficult to maintain.
+- For instance, if one section of code requires a change and the same code is repeated in another file, we may fail to realize the need for an additional update.
+-  When we follow the single responsibility principle, there is no need to repeat code, because our programming is focused and created in a way that encourages reuse, not repetition.
+- Refactor the Code
+- Code refactoring is the process of improving the internal structure of code without impacting its external behavior – simply put, it means streamlining the code to improve its readability.
+- Just as we might edit our blog posts several times before they’re published, we make sure our first pass at code is never our last so that any added complexity is eliminated.
+- While this is hardly a comprehensive list of clean code do’s and don’ts, these four strategies are our most important guidelines for any large-scale development project.
+- By following this clean code etiquette, our team can be sure the back-end code of each of our websites is as clean and beautiful as the front-end display visible to the world.

@@ -1,0 +1,211 @@
+Installing Ubuntu in VirtualBox
+08:30 - 12:00
+- Install VirtualBox
+- Download VirtualBox [ For --> MAC OS X ] <-- From website
+- Drag downloaded file ( VirtualBox.dmg ) to Application
+- New Ubuntu Desktop in Virtual Box
+- Open VirtualBox
+- Click new operating system
+- To identify this machine
+--> ( Name, Type, Version ) = ( Ubuntu Desktop, Linux, Ubuntu(64-bit) )
+- Memory size
+--> Select the amount of memory to be allocated on this virtual machine
+- Create a virtual hard disk now
+- Hard disk file type --> VDI [ VirtualBox Disk Image ]
+- Storage on physical hard disk --> [ Select A dynamically allocated ]
+~ A dynamically allocated hard disk file will only use space on your physical hard disk as it fills up ( up to a maximum fixed size ), although it will not shrink again automatically when space in it is freed
+~ A fixed size hard disk file may take longer to create on some systems but is often faster to use
+- Set directory for file location and size
+--> Select the size of the virtual hard disk in megabytes. This size is the limit on the amount of file data that a virtual machine will be able to store on the hard disk
+- Click setting operating system
+- System --> Boot Order --> ( Optical, Hard Disk, Network )
+- Network --> Attached to --> Bridged Adapter
+- Storage
+- Controller: IDE --> Empty
+= Optical Drive : IDE Secondary Master > ubuntu-desktop-amd64.iso
+- Controller: SATA --> Ubuntu 14.04.vdi
+- Open operating system --> Install following the step which pop-up
+- New Ubuntu Server in Virtual Box
+- Doing the same step as New Ubuntu Desktop in Virtual Box
+- Different with Step ( Click setting operating system )
+- Storage
+- Controller: IDE --> Empty
+= Optical Drive : IDE Secondary Master > ubuntu-server-amd64.iso
+- Controller: SATA --> Ubuntu 14.04.vdi
+- Find ip address of virtual box [ Ubuntu Desktop, Ubuntu Server ]
+- Ubuntu Desktop
+--> Click terminal --> ip addr --> show your ip address
+-  Ubuntu Server
+--> ip addr --> show your ip address
+- SSH to virtual box from MAC
+- Open terminal
+-  ssh User@IP_Address
+- Example Commands
+- sudo --> Executing commands with elevated privileges
+- File & Directory commands
+- pwd --> print current directory
+- ls --> list the file in your directory
+- cd --> change directory to your destinated directory
+- cp --> copy a file for you
+- mv --> move file to different directory
+- rm --> remove or delete a file in your directory
+- rmdir --> remove a directory
+- mkdir --> make a directory
+- man --> show the manual of other commands
+- System Information commands
+- df --> displays filesystem disk space usage for all mounted partitions
+- du --> displays the disk usage for a directory
+- -s --> Summary
+- -h --> Human Readable
+- free --> displays the amount of free and used memory in the system
+- top --> displays information on your Linux system
+- unname -a --> prints all system information
+- lsb_release -a --> prints version information
+- ip addr --> reports on your system's network interfaces
+- Adding a new user
+- adduser newuser --> create a new general user called "newuser"
+- passwd newuser --> assign a password for the new user account
+- Link
+Youtube(Install Ubuntu in VB): https://www.youtube.com/watch?v=dhswfMpsb6c
+Download VirtualBox: https://www.virtualbox.org/wiki/Downloads
+Download Ubuntu Desktop(Image): http://www.ubuntu.com/download/desktop
+Download Ubuntu Server(Image): http://www.ubuntu.com/download/server
+
+Docker
+13:00 - 17:30
+- Get Started
+- Install Docker on OS X
+- Step1: Check your version [ ≥ OS X : Yosemite version 10.10.3 ]
+--> My version [ OS X : El Capitan version 10.11.3 ]
+- Step2: Install Docker Toolbox
+--> Select MAC OSX version
+--> Directory > /usr/local/bin/docker
+- Step3: Verify your installation
+- Docker CLI --> Docker Quickstart Terminal
+- Docker GUI --> Kitemetic
+- Step4: Start docker
+- CLI --> Click Docker Quickstart Terminal
+- GUI --> Kitemetic
+- Test docker
+- docker run hello-world #docker will run hello-world, if it unable to find image then it will pulling from library/helloworld --> try to run it again
+* docker run -it ubuntu bash #More ambitious --> run an ubuntu
+- For more examples and ideas, visit:
+--> https://docs.docker.com/userguide/
+- Share images, automate workflows and more with a free Docker Hub
+--> https://hub.docker.com
+- Understanding images & containers
+"docker run hello-world"
+- docker #tells your operating system that you are using the docker program
+- run #a subcommand that creates & runs a Docker container
+- hello-world #tells Docker which image to load into the container
+- Image --> It is a filesystem and parameters to use at runtime. It doesn't have state and never changes.
+- Container --> It is a running instance of an image.
+- When you ran the command --> [ Docker Engine ]
+- Checked to see if you had the hello-world software image
+- Downloaded the image from Docker Hub
+- Loaded the image into the container and ran it
+- A docker image is capable of much more
+- Can start software as complex as a database
+- Docker Engine
+- Lets people or companies create and share software through Docker images
+* You don't have to worry about whether your computer can run the software in Docker image --> A Docker containercan always run it
+- Find & run the whalesay image
+- Step1: Locate the whalesay image
+- Open your browser [ Safari ] --> "Docker Hub"
+- Click Browse & Search --> "docker/whalesay"
+- Step2: Run the whalesay image
+- Open & Launch Docker Quickstart Terminal
+- docker run docker/whalesay cowsay boo #you can see boo &whale
+- docker images #show all images in docker container
+- Build your own image
+- Step1: Write a DockFile
+- Open & Launch Docker Quickstart Terminal
+- mkdir mydockerbuild #make your own directory ( mydockerbuild )
+- cd mydockerbuild #change directory to ( mydockerbuild )
+- touch Dockerfile #create a Dockerfile
+- open -e Dockerfile #open & edit Dockerfile
+- in Dockerfile
+FROM docker/whalesay:lastest
+RUN apt-get -y update && apt-get install -y fortunes
+CMD /usr/games/fortunes -a | cowsay
+- Step2: Build an image from your Dockerfile
+- Open & Launch Docker Quickstart Terminal
+- cat Dockerfile #show content in Dockerfile
+- docker build -t docker-whale . #build docker-whale
+- Step3: Learn about the build process
+- docker build -t docker whale
+- FROM docker/whalesay:lastest
+- RUN apt-get -y update && apt-get install -y fortunes
+- CMD /usr/games/fortunes -a | cowsay
+- Step4: Run your new docker-whale
+- docker images #show all images in docker container
+- docker run docker-whale #run docker-whale by docker
+- Create a Docker Hub account & repository
+- Step1: Sign up for an account
+- Docker Hub --> Sign Up
+- Step2: Verify your email and add a repository
+- Open your email inbox
+- Confirm email for your Docker Hub account
+- Create repository
+--> ( Repository name, Description, Private/Public )
+- Tag, push & pull your image
+- Step1: Tag and push the image
+- Open & Launch Docker Quickstart Terminal
+- docker images #show all images in docker container
+--> ( Repository, Tag, Image ID, Created )
+"docker tag 7d9495d03763 kundjanasith/docker-whale:latest"
+- docker #tells your operating system that you are using the docker program
+- tag #a subcommand that tags an image
+- 7d9495d03763 #the image id
+- kundjanasith #your account name from Docker Hub
+- docker-whale #the image name
+- latest #version label or tag
+- docker login --username=kundjanasith
+--email=kundjanasith@gmail.com #login into docker hub with username=kundjanasith and email=kundjanasith@gmail.com
+- docker push kundjanasith/docker-whale #push your image
+- See your new image at Docker Hub
+- Step2 : Pull your new image
+- Open & Launch Docker Quickstart Terminal
+- docker images #show list the image in your local machine
+- docker rmi -f 7d9495d03763 #remove image with image id
+- docker run kundjanasith/docker-whale #run docker-whale
+- Docker Incorporation
+- Docker engine --> open source container management
+- Docker Hub --> online home and hub for managing your Docker containers
+- Docker Enterprise Support --> commercial support for Docker
+- Docker Services & Training --> professional services and training to help you the best out of Docker
+- Why Docker?
+--> The software industry has changed
+--> Applications used to be monolithic, with long lifecycles, scaled up
+--> Today, applications are decoupled, built iteratively, scaled out
+--> As a result, deployment is though
+- Docker high-level roadmap
+- Step1: containers as lightweight Virtual Machines
+--> containers are isolated but share operating system kernel where appropriate ( bins, libraries )
+- Step2: commoditization of containers
+--> container technology has been around for a while
+--> standatdize the container format because containers were not portable
+--> analogy with shipping containers are not just steel boxes and they are steel boxes that are a standard size by the same hooks and holes
+--> Make containers easy to use for developers
+--> Emphasis on re-usable components, APIs, ecosystem of standard tools
+--> Improvement over ad-hoc, in-house, specific tools
+*Running containers everywhere*
+> Maturity of underlying technology (cgroups, namespaces, copy-on-write systems)
+> Ability to run on any Linux server today: physical, virtual, VM, cloud, OpenStack
+> Ability to move between any of the above in a matter of seconds-no modification or delay
+> Ability to share containerized components
+> Self contained environment - no dependency hell
+> Tools for how containers work together: linking, discovery, orchestration
+- Step3: shipping containers efficiently
+--> Ship container images, made of reusable shared layers
+--> Optimizes disk usage, memory usage, network usage
+- Step4: containers in a modern software factory
+--> The container becomes the new build artefact
+--> The same container can go from dev, to test, to QA, to prod
+- Docker Architecture --> [ Docker is a client-server application ]
+- The Docker daemon --> Receives and processes incoming Docker API requests
+- The Docker client --> The docker binary, Talks to the Docker daemon via the Docker API
+- Docker Hub Registry --> Public image registry, The Docker daemon talks to it via the registry API
+- Link
+Docker document: http://kundjanasith.com/BigDataSchool/06-06-2016
+/DockerSlides.pdf

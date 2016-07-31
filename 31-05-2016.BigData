@@ -1,0 +1,79 @@
+Amazon Web Service ( AWS ) Training
+08:30 - 12:00
+Introduction to Amazon Web Service and Google Cloud Platform
+( Ms. Araya Florence )
+- Amazon Web Service
+Ex: EC2, Elastic Beanstalk, RDS, S3, EMR, VPC
+- Google CLoud Platform
+Ex: App engine, Compute engine, Container engine, BigTable, SQL
+- Advantage of Cloud
+1. Web-scale problems --> Reduce using physical web server
+2. Large data centers --> Data can expand and duplicate ( reliability )
+3. Different models of computing --> Data variety
+4. Highly-interactive Web applications --> more interactive web application
+- Types of Cloud Services
+1. Utility Computing --> renting machine [ pay as you go ]
+Ex: EC2, Compute engine
+2. Paas ( Platfrom ) --> Provide ( API & Implementation ) [ sandbox ]
+Ex: Elastic Beanstalk, Google App engine
+3. Saas ( Software ) --> Change ( Licensing model --> Subscription ) [ /year ]
+Ex: Office 365, Salesforce, Google Apps
+4. Iaas ( Infra ) --> Storage, Unit Test
+Ex: AWS, Cisco Metapod, Google Compute engine, Microsoft Azure
+- Laboratory
+Create ubuntu instance by Amazon Web Service ( EC2 )
+ssh to instance [ Mac OSX : ssh USER@HOST_NAME -i key.pem -p PORT ]
+- Google App Engine Development Life Cycle
+--> Test --> Deploy --> Manage --> Coding --> Build --> Test
+- Link
+http://kundjanasith.com/BigDataSchool/31-05-2016/AWS_GoogleCloud_Intro.pdf
+http://kundjanasith.com/BigDataSchool/31-05-2016/AWS_Exercises.pdf
+Thailand Big Data User Group #3/2016 @Q-House Lumphini
+13:00 - 18:00
+- Data Intensive App Framework
+Layer: Infrastructure-->Persistence-->Integration-->Analytics-->Engagement
+- Data Processing Technology ( Hadoop )
+- MapR --> Runs on a Batch mode, Method ( Map(), Reduce() )
+- Hive --> Developed by Facebook, Hive QL ( SQL )
+- Pig --> Developed by Yahoo, Pig Latin ( East Script )
+- Impala --> Instead of Hive but it faster ( C++ )
+- Spark --> Faster than Hadoop ( 100X in memory, 10X on disk )
+- Spark
+- Framework for distributed ( parallel ) processing [ Runs anywhere ]
+- Flexible APIs [ Simple & Intutive ]
+- Spark SQL --> SQL
+- Spark Streaming --> Java
+- PySpark --> Python
+- SparkR --> R
+- MLlib --> Machine Learning
+- GraphX --> Graph Analysis
+- Large-Scale Usgae
+Ex: Largest cluster, Largest single job, Top streaming intake, . . .
+- RDD
+-->Resilient: if the data in memory ( or on a node ) is lost, it can be recreated
+-->Distributed: data is chunked into partitions and stored in memory across the cluster
+-->Dataset: initial data can come from a table or be created programmatically
+- Fault tollerant & Immutable
+- 3 methods for creating RDD:
+1. Parallelizing an existing correction
+2. Referencing a dataset
+3. Transformation from an existing RDD
+- Types of files supported
+Such as: Text files, Sequence files, Hadoop inputformat
+- Operations --> ( Transformations & Actions )
+- Time Series Data
+- Source --> Capture --> Store --> Process --> Serve
+- Different between MapRFS and HDFS
+- Same : Pull/Push data
+- Different : Analysis data
+- Mahout --> First machine learning
+- Example : Countword ( Split-->Map-->Shuffle-->Reduce ) --> Data Virtualization
+- Trend Programming : Object-oriented programing --> Functional programming
+- Spark Streaming is between Analytics ( Hadoop ) and Real time ( NoSQL )
+- Binding Distributed Data
+- Kafka
+- Spark
+- Cassandra
+- Link
+http://kundjanasith.com/BigDataSchool/31-05-2016/Spark-May2016.pdf
+https://amplab.cs.berkeley.edu

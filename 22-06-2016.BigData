@@ -1,0 +1,259 @@
+Exercise ( Automobile, Protein, Restaurant, Flight )
+08:30 - 12:00
+- Get Started
+- Machine Learning Studio [ Microsoft Azure ]
+- Create a new Machine Learning Workspace
+- Select your own storage
+- Open Machine Learning Workspace
+- Open in studio
+- Start the experiment
+- Select blank experiment
+- Let's do experiment
+- Create the model
+- Step 1 : Get Data
+- Step 2 : Preprocess Data
+- Step 3 : Define features
+- Train the model
+- Step 4 : Choose and apply learning algorithm
+- Test the model
+- Step 5 : Predict over new data
+- Exercise 1 : Classification Algorithm
+- Problem Statement :
+- Estimate the price of a car using an automobile data as a training data set.
+- Use the following features as predictor variables: make, body-style, wheel-base, engine-size,horsepower, peak-rpm, highway-mpg
+- Use the Linear Regression algorithm
+- Saved Datasets : Sample [ Automobile price data ( Raw ) ]
+- Substitute the missing values with a designated value.
+- Remove the normalized-losses column
+- Data Transformation : Manipulation [ Select Column in Dataset ]
+- Launch selector
+- All column ( Exclude ) : normalized-losses
+- Data Transformation : Manipulation [ Clean Missing Data ]
+- Data Transformation : Manipulation [ Select Column in Dataset ]
+- Launch selector
+- No column ( Include ) : make, body-style, wheel-base, engine-size, horsepower, peak-rpm, highway-mpg, price
+- Data Transformation : Sample and Split [ Split Data ]
+ - Fraction of rows in the first output dataset = 0.8
+--> Train data set --> 80%
+--> Test data set --> 20%
+- Machine Learning : Initialize Model : Regression [ Linear Regression ]
+- Machine Learning : Train [ Train Model ]
+<-- Train data set
+<-- Algorithm : Linear Regression
+- Machine Learning : Score [ Score Model ]
+<-- Train model
+<-- Test data set
+- Machine Learning : Evaluate [ Evaluate Model ]
+<-- Score model
+* Save as training model --> Automobile model
+- Delete
+- Linear regression
+- Split data
+- Train model
+- Evaluate model
+* Deploying a model as a Web Service
+- Click on Prepare Web Services
+- Click Run
+- Click Publish Web Services
+* Test Web Service
+- On a dashboard page, click Test
+- Enter a set of data and then click OK.
+- Exercise 2 : Clustering Algorithm
+- Problem Statement :
+- Grouping countries based on amount of food consume using the Protein dataset on the web.
+- Classify into 3 groups based on several parameters.
+- Use the K-mean algorithm
+- Data Input and Output [ Import Data ]
+- web URL via HTTP --> .csv format
+- Machine Learning : Initialize Model : Clustering [ K-Means Clustering ]
+- Number of Centroids
+- Random number seed
+- Iterations
+- Machine Learning : Train [ Train Clustering Model ]
+<-- K-Means Clustering
+<-- Import Data
+- Machine Learning : Score [ Assign Data to Cluster ]
+<-- Train Clustering Model
+<-- Import Data
+- Data Transformation : Manipulation [ Select Columns in Dataset ]
+- All columns
+- Exercise 3 : Recommendation Algorithm
+- Problem Statement :
+- Recommend restaurant using the Restaurant data on the sample dataset.
+- Data has three files rating, customer data, restaurant feature data.
+- Use the recommendation algorithm
+- The output will recomment 20 restaurants per customer.
+- The train matchbox recommender
+- Training dataset containing ratings of items by users expressed as a triple ( User, Item, Rating )
+-  Training dataset containing features that describe users
+- Training dataset containing features that describe items
+- Trained Matchbox recommender
+- The score Matchbox recommender
+- Trained Matchbox recommender
+- Dataset to score
+- Dataset containing features that describe user
+- Dataset containing features taht describe items
+- Score dataset
+- The evaluate recommender
+- Test dataset
+- Scored dataset
+- Evaluation metrics
+- Split data --> Recommender split
+- Project Column : Restaurant Customer data
+- No columns : Include
+- userID
+- latitude
+- longtitude
+- Interest
+- Personality
+- Project columns : Restaurant Feature data
+- No columns : include
+- placeID
+- latitude
+- longtitude
+- price
+- the_geom_meter
+- address
+- zip
+- Properties : Train Matchbox Recommendation
+- Number of trails --> 4
+- Number of recommendation --> 20
+- Number of training batches --> 4
+- Properties : Score Matchbox Recommendation
+- Recommender prediction kind --> item recommendation
+- Recommended item selection --> from rated items
+- Maximum number of item --> 5
+- Minimum size of the recommendation --> 2
+- Run & Visualize Output
+- Exercise 4 : Flight Delay Prediction
+- Problem Statement :
+- This experiment will use a flight delays data to predict whether a particular flight will get delayed or not. (Arrival time)
+- The dataset is collected from U.S. Department of Transportation (DOT), but Azure ML has already got a sample dataset.
+- Select Sample Dataset --> Flight Delays Data
+- Clean Missing Data --> Replace using MICE
+- Metadata editor
+- No columns : include
+- DayOfWeek
+- OriginAirportID
+- DestAirportID
+- Feature Selection
+- Select column in dataset
+- All columns : exclude
+- Year
+- DepDel15
+- DepDelay
+- ArrDelay
+- Cancelled
+- Select two-class boosted decision tree
+- Target variable is ArrDelay15
+- The Maximum number of leaves per tree option is set at 128
+- The Minimum number of samples per leaf node option is set at 50
+- The Learning rate option is set at 0.2
+- The Number of trees constructed option is set at 500
+- Split Data
+- 0.8 --> 80% train dataset
+- 0.2 --> 20% test dataset
+- Two-Class Boosted Decision
+- Maximum number of leaves --> 128
+- Minimum number of samples --> 50
+- Learning rate --> 0.2
+- Number of trees construct --> 500
+- Train Model
+- Selected columns
+--> ArrDel15
+- Machine Learning : Score [ Score Model ]
+<-- Train model
+<-- Test data set
+- Machine Learning : Evaluate [ Evaluate Model ]
+<-- Score model
+* Save as training model --> Flightdelay model
+* Deploying a model as a Web Service
+- Click on Prepare Web Services
+- Click Run
+- Click Publish Web Services
+* Test Web Service
+- On a dashboard page, click Test
+- Enter a set of data and then click OK.
+- Link
+ML Azure : http://kundjanasith.com/BigDataSchool/21-06-2016/Introduction-to-Azure-ML-V2.pdf
+Practice ML Azure & Cloudbreak & twitteR
+13:00 - 17:30
+- Exercise 3 : Recommendation Algorithm
+- Problem Statement :
+- Recommend movie using the Movie data on the sample dataset.
+- Data has three files u.data, u.user, u.item.
+- Use the recommendation algorithm
+- The output will recomment 20 movies per user.
+- The train matchbox recommender
+- Training dataset containing ratings of movies by users expressed as a triple ( User, Movie, Rating )
+- Training dataset containing features that describe users
+- Training dataset containing features that describe movies
+- Trained Matchbox recommender
+- The score Matchbox recommender
+- Trained Matchbox recommender
+- Dataset to score
+- Dataset containing features that describe user
+- Dataset containing features that describe movies
+- Score dataset
+- The evaluate recommender
+- Test dataset
+- Scored dataset
+- Evaluation metrics
+- Split data --> Recommender split
+- Project Column : u.user data
+- All columns
+- Project columns : u.item data
+- All columns
+- Properties : Train Matchbox Recommendation
+- Number of trails --> 4
+- Number of recommendation --> 20
+- Number of training batches --> 4
+- Properties : Score Matchbox Recommendation
+- Recommender prediction kind --> item recommendation
+- Recommended item selection --> from rated items
+- Maximum number of item --> 5
+- Minimum size of the recommendation --> 2
+- Run & Visualize Output
+- Cloudbreak
+--> is a tool for provisioning Hadoop clusters on cloud infrastructure such as Amazon Web Services, Microsoft Azure. As part of the Hortonworks Data Platform and powered byApache Ambari, Cloudbreak allows enterprises to simplify the provisioning of clusters in the cloud and optimize the use of cloud resources with elastic scaling. With Cloudbreak. Hadoop operators get the following core benefits:
+- Simplified Cluster Provisioning.
+- Dynamically provision and configure clusters on the cloud. With Ambari Blueprint, build the clusters you need in a consistent, repeatable fashion.
+- Automated Cluster Scaling.
+- Optimize cloud resource usage by seamlessly adjusting the cluster as workload and activity changes. Allows you to respond faster to new business requirements.
+- Choice of Clouds.
+- Supports Amazon Web Services, Microsoft Azure, Google Cloud Platform and OpenStack. You can extend even further with the cloud provider “plug-in” model.
+- Highly Extensible.
+- Recipes for scripting extensions that run before/after cluster provisioning. The Cloudbreak Command Line Interface (CLI) and REST API are ideal for automation.
+--> How cloudbreak works
+- Pick a Blueprint:
+- Cloudbreak uses Ambari Blueprint to have declarative Hadoop cluster definition. Blueprints can be designed for specialized applications and workloads (such as Data Science or IoT Apps). Cloudbreak includes a few default Blueprints for common cluster configurations but you can always upload your own Blueprint to build the cluster just the way you like it.
+- Choose a Cloud:
+- Cloudbreak is configured to work with cloud infrastructure resources (such as servers, network setup and security options). Choose the cloud infrastructure you want to use for the cluster.
+- Launch HDP:
+- In this step, Cloudbreak obtains the chosen cloud infrastructure platform, installs Apache Ambari and applies the desired Blueprint. The result: your cluster is launched and ready to go
+--> Collarboration
+- Open.
+- Deliver a complete set of features for Hadoop cloud deployment, in the public and with the community, by defining the operational framework and lifecycle.
+- Flexible.
+- Support a wider array of cloud providers with a common set of API’s to deploy Hadoop.
+- Integrated.
+- Ensure that Hadoop cloud deployment can be integrated with existing IT tools, behind a single pane of glass, by providing Recipes, a CLI and a REST API.
+- twitteR
+#impot library
+- library(twitteR)
+- library(ROAuth)
+- library(plyr)
+- library(stringr)
+- library(ggplot2)
+#create twitter application
+- api_key = 'DiEWrBB8uRYEcz6uhu3PjUYDT'
+- api_secret = 'IoPA9hDXSSD6xu2YKo0I4zYrz2frByMtcu7cFGG3iPkGeajTE2'
+- access_token = '742900921508630528-jo9OgR1uql9KXuA0bQHR1PUEkNgTc7v'
+- access_token_secret = '36A6n7bG5Y18k6OPyQcfVOfgoTF4FIuJcre2zBrCrgdaJ'
+- setup_twitter_oauth(api_key,api_secret,access_token,access_token_secret)
+#sentiment analysis ( ex : '#startbucks' )
+- some_tweets <- searchTwitter("#starbucks", n=100, lang="en")
+ -tweetdf <- twListToDF(some_tweets)
+- Link
+R community : http://www.r-bloggers.com
+Apache Cloudbreak : http://hortonworks.com/apache/cloudbreak/

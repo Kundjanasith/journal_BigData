@@ -1,0 +1,227 @@
+HBase
+08:30 - 12:00
+- Importing/Exporting Data to HDFS
+- HDFS --> Hadoop File System
+- Default storage for the Hadoop cluster
+- Data is distributed and replicated over multiple machines
+- Designed to handle very large files with straming data access patterns.
+- node --> NameNode/DataNode
+- Master/slave architecture (1 master 'n' slaves)
+- Designed for large files (64 MB default, but configurable) across all the nodes
+- HDFS Architecture
+- Namenode --( Store )--> Data Address
+- Datanode --( Store )--> Data
+- Data Replication in HDFS
+- Deafault --> 3 Replication
+- How does Hadoop File System work ?
+- Divide the file which we want to store on HDFS into many blocks
+- Copy each block to 3 or more copy for reliability
+- Seperate store each block  to easy for restore the data
+* If a node goes down, we have copies elsewhere
+- HUW --> Hadoop User Experience
+- Login Hue
+- Review file in Hadoop HDFS using File Browse
+- Create a new directory name
+- Upload a local file to HDFS
+- Connect to a master node via SSH
+- SSH Login to a master node
+- ssh -i key.pem ubuntu@PUBLIC_DNS
+- Hadoop syntax for Hadoop File System
+- hadoop fs -ls #listing of files in a directory
+- hadoop fs  -mkdir /newdirectory #create a new directory
+- hadoop fs -put <local_path> <hadoop_path> #copy a file from a local machine to hadoop
+- hadoop fs -get <hadoop_path> <local_path> #copy a file from hadoop to local mahine
+- hadoop fs -tail <hadoop_path> #tail last few lines of a large file in hadoop
+- hadoop fs -cat <hadoop_path> #view the complete contents of a file in hadoop
+- hadoop fs -rm -r <hadoop_path> #remove a complete directory from hadoop
+- hadoop fs -du #check the hadoop file system space utilization
+- HBase
+--> is an open source, non-relational, distributed database modeled after Google's BigTable and is written in Java
+--> is developed as part of Apache Software Foundation's Apache Hadoop project and runs on top of HDFS
+- Features
+- Hadoop database modelled after Google's Bigtable
+- Column oriented data store, known as Hadoop Database
+- Support random realtime CRUD operations (unlike HDFS)
+- No SQL Database
+- Opensource, written in Java
+- Run on a cluster of commodity hardware
+- When to use HBase
+- When you need high volume data to be stored
+- Un-structured data
+- Sparse data
+- Column-oriented data
+- Versioned data
+--> (same data template, captured at various time, time-elapse data)
+- When you need high scalability
+- Which one to use
+- HDFS
+ - Only append dataset (no random write)
+ - Read the whole dataset (no random read)
+- HBase
+ - Need random write and/or read
+ - Has thousands of operation per second on TB+ of data
+- RDBMS
+- Data fits on one big node
+- Need full transaction support
+- Need real-time query capabilities
+- HBase vs. RDBMS
+- Hardware Architecture
+- HBase : Similar to Hadoop Cluster commodify hardware very affordable
+- RDBMS : Typically large scalable multiprocessor systems very expensive
+- Fault Tolerance
+- HBase : Built into the architecture, lots of nodes means each is relatively insignificant. No need to worry about individual node downtime
+- RDBMS : Require configuration of the HW and the RDBMS with the appropriate high avaliability options
+- Typical Database Size
+- HBase : Terabytes to Pentabytes
+- Hundred of millions to billions of rows
+- RDBMS : Gigabytes to Terabytes
+- Hundred of thousands to millions of rows
+- Data Layout
+- HBase : A sparse, distributed, persistant, multidimensional stored map
+- RDBMS : Rows or columns oriented
+- Data Types
+- HBase : Bytes only
+- RDBMS : Rich data type support
+- Transaction
+- HBase : ACID support on a single row only
+- RDBMS : Full ACID complicance acros rows and tables
+- Query Language
+- HBase : API primitive commands only unless combined with Hive or other technology
+- RDBMS : Standard Query Language
+- Indexes
+- HBase : Row key only unless combined with other technologies such as Hive or IBM's BigSQL
+- RDBMS : Yes
+- Throughput
+- HBase : Millions of queues per second
+- RDBMS : Thousands of queues per second
+- Components
+- Region
+--> Row of table are stores
+- Region Server
+--> Hosts the tables
+- Master
+--> Coordinating the region servers
+- ZooKeeper, Hadoop File System, Application Program Interface
+- HBase Shell Commands
+- list #see the list of the tables
+- create 'table_name', 'cf' #create a table
+- put 'table_name', 'rowA', 'cf:columnName', 'val1' #insert data into a table
+- get 'table_name', 'rowA' #retrieve data from a table
+- scan 'table_name' #iterate through a table
+- disable 'table_name #delete a table
+- drop 'table_name #delete a table
+- Running HBase
+--> Configure Hue to show Hbase browser
+--> From Cloudera Manager : Add Thrift server
+- This thrift server role is not added by default when you install HBase
+- To add the thrift server rol
+1. Go to the HBase service
+2. Click the instance tab
+3. Click the add role instance button
+4. Select the hosts where you want to add the thrift server role ( you only need one for Hue ) and click continue. The thrift server role should appear in the instances list for the HBase server
+5. Select the thrift server role instance
+6. Select actions for selected --> Start
+- Select Instance
+- Add role instance to HBase
+- Configure Hue Services for HBase browser
+1. Select the Hue service, then under the configuration tab select view and edit
+2. Go to the service wide category
+3. For the HBase Service property. make sure it is set to the Hbase service for which you enableed the thrift server role ( If you have more than one HBase service instance )
+4. In the HBase Thrift Server property, click in the edit field and select the thrift server role that Hue should use
+5. Save changes to have these configurations take effect
+- From Hue Services : select configuration tab
+- Select the HBase thrift server
+- Configuration Hue Services
+--> Edit as seen : then click save change and restart
+- Restart Hue service
+- Running Hbase Browser
+- Create a table in HBase
+- Insert a new row in a table
+- add field into a new row
+- Link
+HBase : http://kundjanasith.com/BigDataSchool/13-06-2016/Hadoop-Handon-June2016.pdf
+Amazon Machine Images
+13:00 - 17:30
+- AMIs [ Amazon Machine Images ]
+--> provides the information required to launch an instance, which is a virtual server in the cloud
+--> You specify an AMI when you launch an instance, and you can launch as many instances from the AMI as you need
+--> You can also launch instances from as many different AMIs as you need
+- An AMI includes the following
+- A template for the root volume for the instance (for example, an operating system, an application server, and applications)
+- Launch permissions that control which AWS accounts can use the AMI to launch instances
+- A block device mapping that specifies the volumes to attach to the instance when it's launched
+- Using a AMI
+- The Amazon Machine Image lifecycle
+- After you create and register an AMI, you can use it to launch new instances. (You can also launch instances from an AMI if the AMI owner grants you launch permissions.) You can copy an AMI to the same region or to different regions. When you are finished launching instance from an AMI, you can deregister the AMI.
+- You can search for an AMI that meets the criteria for your instance. You can search for AMIs provided by AWS or AMIs provided by the community. For more information, see AMI Types and Finding a Linux AMI
+- When you are connected to an instance, you can use it just like you use any other server. For information about launching, connecting, and using your instance, see Amazon EC2 instances
+- Creating your own AMI
+- You can customize the instance that you launch from a public AMI and then save that configuration as a custom AMI for your own use. Instances that you launch from your AMI use all the customizations that you've made
+- The root storage device of the instance determines the process you follow to create an AMI. The root volume of an instance is either an Amazon EBS volume or an instance store volume. For information, see Amazon EC2 Root Device Volume
+- To create an Amazon EBS-backed AMI, see creating an Amazon EBS-Backed Linux AMI. TO create an instance store-backed AMI, see creating an instance store-Backed Linux AMI
+- To help categorize and manage your AMIs, you can assing custom tags to them for more information, see tagging your amazon EC2 resources
+- Sharing AMIs
+- After you create an AMI, you can keep it private so that only you can use it, or you can share it with a specified list of AWS accounts. You can also make your custom AMI public so that the community can use it. Building a safe, secure, usable AMI for public consumption is a fairly straightforward process, if you follow a few simple guidelines. For information about how to create and use shared AMIs
+- You can purchase an AMIs from a third party, including AMIs that come with service contracts from organizations such as Red Hat. You can also create an AMI and sell it to other Amazon EC2 users. For more information about buying or selling AMIs
+- Deregistering Your AMI
+- You can deregister an AMI when you have finished with it. After you deregister an AMI, you can't use it to launch new instances. For more information
+- Amaon Linux
+- The Amazon Linux AMI is a supported and maintained Linux image provided by AWS. The following are some of the features of Amazon Linux
+- A stable, secure, and high-performance execution environment for applications running on Amazon EC2.
+- Provided at no additional charge to Amazon EC2 users.
+- Repository access to multiple versions of MySQL, PostgreSQL, Python, Ruby, Tomcat, and many more common packages.
+- Updated on a regular basis to include the latest components, and these updates are also made available in the yum repositories for installation on running instances.
+- Includes packages that enable easy integration with AWS services, such as the AWS CLI, Amazon EC2 API and AMI tools, the Boto library for Python, and the Elastic Load Balancing tools.
+--> AMI is a special type of virtual appliance that is used to create a virtual machine within the Amazon Elastic Compute Cloud ("EC2"). It serves as the basic unit of deployment for services delivered using EC2
+- About
+- Like all virtual appliances, the main component of an AMI is a read-only filesystem image that includes an operating system (e.g., Linux, Unix, or Windows) and any additional software required to deliver a service or a portion of it
+- The AMI filesystem is compressed, encrypted, signed, split into a series of 10 MB chunks and uploaded into Amazon S3 for storage. An XML manifest file stores information about the AMI, including name, version, architecture, default kernel id, decryption key and digests for all of the filesystem chunks
+- An AMI does not include a kernel image, only a pointer to the default kernel id, which can be chosen from an approved list of safe kernels maintained by Amazon and its partners (e.g., Red Hat, Canonical, Microsoft). Users may choose kernels other than the default when booting an AMI
+- Types of images
+- Public: an AMI image that can be used by anyone.
+- Paid: a for-pay AMI image that is registered with Amazon DevPay and can be used by anyone who subscribes for it. DevPay allows developers to mark-up Amazon's usage fees and optionally add monthly subscription fees.
+- Shared: a private AMI that can only be used by Amazon EC2 users who are allowed access to it by the developer.
+- Key Features
+- AWS Integration
+- The Amazon Linux AMI includes packages and configurations that provide tight integration with Amazon Web Services. The Amazon Linux AMI comes pre-installed with many AWS API tools and CloudInit. AWS API tools enable scripting of important provisioning tasks from within an Amazon EC2 instance. CloudInit allows passing instance configuration actions to instances at launch time via the EC2 user-data fields, enabling remote configuration of Amazon EC2 instances.
+- Secure Configuration
+- The configuration of the Amazon Linux AMI enhances security by focusing on two main security goals: limiting access and reducing software vulnerabilities. The Amazon Linux AMI limits remote access capabilities by using SSH key pairs and by disabling remote root login. Additionally, the Amazon Linux AMI reduces the number of non-critical packages which are installed on your instance, limiting your exposure to potential security vulnerabilities. Security updates rated "critical" or "important" are automatically applied on the initial boot of the AMI. Upon login, the Message of the Day (/etc/motd) indicates whether or not any additional updates are available
+- Package Repository Access
+- The Amazon Linux AMI includes packages and configurations that provide seamless integration with Amazon Web Services. This allows the Amazon Linux AMI to launch and work with various AWS services out of the box
+- The repositories are available in all regions and are accessed via yum. Hosting repositories in each region allows updates to be deployed quickly and without any data transfer charges
+- Security Updates
+- Security updates are provided via the Amazon Linux AMI yum repositories as well as via updated Amazon Linux AMIs. Security alerts are published in the Amazon Linux AMI Security Center
+- Lightweight
+- By default, the Amazon Linux AMI includes a small set of services, utilities, and tools for integration with AWS. The Amazon Linux AMI is designed to provide a functional base, allowing you to add on (via the package repositories) additional utilities and services. Starting with a smaller base of packages means there are fewer components to maintain, as well as less surface area for security exploits
+- AWS Support
+- Support for installation and use of the base Amazon Linux AMI is included through subscriptions to AWS Support. For more information on AWS Support please visit the AWS Support web page.
+- Older versions of the AMI and updated packages will continue to be available for launch in Amazon EC2 and for installation from the Amazon Linux AMI yum repository even as new Amazon Linux AMI versions are released.
+- However, we encourage customers to move to, and to use, the latest version of the Amazon Linux AMI in order to ensure the best customer experience that we can provide.
+- Destroy the EC2 machine
+Return to the My Instances table.
+Destroy the virtual machine. Click the Instance Actions link then Terminate from the drop-down menu. An "Are you sure" warning box appears.
+Confirm. The status of the instance changes to "shutting-down", then "terminated".
+Close the AWS console.
+- Amazon Machine Image build script
+- Anders Ingemann has created a build script for bootstrapping instances like the above. The script runs fully automatic and needs no user interaction, custom scripts can be attached to the process as well. You can download or clone the script on gihub. Any bugs or suggestions should be reported via the github issue tracker.
+- Machine Image
+- The machine images are like templates that are configured with an operating system and other software, which determine the user’s operating environment. AMI types are categorized according to region, operating system, system architecture (32- or 64-bit), launch permissions and whether they are backed by Amazon EBS or backed by the instance store
+- Each AMI includes a template for the root volume required for a particular type of instance; a typical example might contain an operating system, an application server and applications. Permissions are controlled to constrain AMIs for instance launches to the appropriate AWS accounts. A block device mapping ensures that the correct volumes are attached to the launched instance.
+- Users can select an AMI provided by AWS, the user community, or through the AWS Marketplace. Users can also create their own AMIs and share them
+- Golden image
+- A golden image is a template for a virtual machine (VM), virtual desktop,server or hard disk drive. A golden image may also be referred to as a clone image, master image or base image
+- To create a golden image, an administrator first sets up the computing environment exactly the way it is needed and then saves the disk image as a pattern for making more copies. The use of golden images can save time and ensure consistency by eliminating the need for repetitive configuration changes and performance tweaks. This approach can be compared to automated replication, which requires a configuration management tool such as Puppet to build new images on demand
+- In a self-service provisioning environment, a collection of golden images may be referred to as a golden repository, gold catalog or golden image library
+- Virtual Server
+- On the Internet, a virtual server is a server (computer and various server program s) at someone else's location that is shared by multiple Web site owners so that each owner can use and administer it as though they had complete control of the server. Some Internet service providers (ISPs) offer a virtual server service instead of, or in addition to, virtual hosting. Using a virtual server, a company or individual with a Web site can not only have their own domain name and IP address, but can administer their own file directories, add e-mail accounts and address assignments, assign multiple domain names that resolve to a basic domain name without involvement from the ISP, manage their own logs and statistics analysis, and maintain passwords. Users of a virtual server, however, do not have to manage the hardware aspects of running a server and effectively share the cost of expensive line connections to the Internet
+- EC2 instance
+- EC2 instances are virtual machines, running on Amazon's hardware. In order for the instance to start, there is some minimum amount of information that is required. Additionally, different instance types support different configurations (e.g. some do not support 32-bit AMIs).
+- Each AMI has an identifier (e.g. ami-a1b2c3d4), and the configuration of that AMI cannot be changed after creation. (You can however, override many of the settings at launch time, or in some cases, even after an instance is launched).
+- In terms of the root volume, AMIs contain a reference to an existing volume (e.g. they reference a snapshot for EBS backed instances, or to the image parts in the case of an S3 backed instance).
+- AMIs also contain some degree of error-checking - typically a user-id to indicate ownership, encryption keys (that encrypt the image), and a signature (to verify the image integrity). You can get a good idea of what an AMI is by looking at the manifest file created when making an S3 backed instance - it is just a file containing data and references to other items (storage, kernel, etc).
+- An image references its as a block device mapping - it specifies the device (e.g. /dev/sda1) and the source of data (ephemeral (and the S3 parts if relevant) or ebs-snapshot). Since S3 parts are signed, and ebs-snapshots cannot be changed (only deleted), launching an instance from an AMI (without overriding its settings) should always result in an instance with the same software setup. (Note it is still possible for instances launched from the same AMI to differ in their running states due to user-data, or different block device mappings (e.g. micro instances have no ephemeral storage, while other instance types do). Just to be clear here, the attached volumes are stored separate from the AMI, but reference by the AMI in such a way that the volumes cannot be changed. The volumes contain an exact copy of the data that was on them at the time the AMI was created.
+- Before launching an instance from an AMI, you can override the block device mapping (e.g. to add an additional EBS volume, or another ephemeral volume if the instance type supports it). In the case of EBS volumes, after the instance is launched, you can detach the root volume and attach a different EBS volume altogether.
+- So, to briefly answer your questions: Is a link to the instance, or is it stored and never changed. It is stored and never changed.
+- Also, does an image include the local storage and all packages etc installed on that instance, or is it simply just a copy of the configuration of a particular instance. The image includes the local storage and all packages etc. installed on that instance. (Typically, this is just the root volume, but an AMI can be set-up to launch an instance with multiple, populated volumes).
+- Link
+Amazon Web Service : http://my-account.signin.aws.amazon.com/console

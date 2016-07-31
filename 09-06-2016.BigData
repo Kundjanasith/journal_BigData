@@ -1,0 +1,35 @@
+Hortonworks Workshop
+08:30 - 17:30
+- Install Docker
+- Install Docker using Docker Toolbox
+- Docker Toolbar [ Docker Tool ]
+- Docker Machine for running the docker-machine binary
+- Docker Engine for running the docker binary
+- Docker Compose for running the docker-compose binary
+- Kitematic, the Docker GUI
+- a shell preconfigured for a Docker command-line environment
+- Oracle VM VirtualBox
+- Docker daemon uses Linux-specific kernel features
+--> We can't run Docker natively in OS X
+--> We must use docker-machine to create and attach to a virtual macihine or VM ware
+- Requirements
+--> MAC OS X : version 10.8 or newer
+- The key concepts
+- Your physical machine is local host and Docker host
+- Local host : your computer
+- Docker host : the computer on which the containers run
+- Run directly on your localhost --> localhost:8000 or 0.0.0.0:8376
+- ( The Docker client, The Docker daemon, The Containers )
+- The docker daemon is running inside a Linux VM [ Default ]
+--> The default is a lightweight Linux VM made specifically to run the Docker daemon on MAC OS X
+- The Docker host address is the address of the Linux VM
+
+- Docker Hub
+- docker pull sequenceiq/ambari
+- Ambari on Docker
+- Supported by Hortonworks
+- can be used to experiment with Hadoop on Docker but for a complete and supported solution please check out Cloudbreak
+- docker pull hkropp/hdp-basic
+- Link
+Docker Hub: https://hub.docker.com/r/sequenceiq/cloudbreak/
+Docker Hub: https://hub.docker.com/r/hkropp/hdp-basic/

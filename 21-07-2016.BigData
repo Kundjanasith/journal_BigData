@@ -1,0 +1,282 @@
+Machine Learning Essentials1
+08:30 - 12:00
+- Data Growth
+- Data
+- 88% --> Unstructured Data
+- Application
+- Backup & Archive
+- 12% --> Structured Data
+- Database
+- Backup
+- Google
+- Machine learning is a core, transformative way by which we’re rethinking everything we’re doing. We’re thoughtfully applying it across all our products, be it search, ads, YouTube or Play
+- About ML
+- The field of study that gives computers the ability to learn without being explicitly programmed
+- Improving Performance in some Task with Experience
+- Machine Learning deals with systems that can learn from data.
+--> Workflow
+- Training set
+- Unsupervised
+- Supervised
+- Feature extraction
+- Training set
+- New data
+- Machine learning algorithm
+- Grouping of objects
+- Predictive model
+- Annotated data
+- Machine Learning in Data Science
+- Data
+- Datafication
+- Cloud computing
+- Internet of things
+- Big data
+- Mass Analytic Tools
+- Machine Learning
+- Recommender Systems
+- Complex Event Processing
+- Data Science
+- New Analytic Insights
+- Information
+- knowledge
+- data story
+- Data Product + Visualization
+- The Application of Machine Learning
+- Fraud Detection
+- Supervised Learning --> Predict Fraud
+- Collect historical transactions
+- Lean from past examples of fraud
+- Predict fraud in real time
+- Unsupervised Learning --> Discover Fraud
+- Segment transactions
+- Investigate potentially new fraud
+- Detect outliers
+- Mixed Approach --> Discover and Predict Fraud
+- Detect "Points of Compromise" to prevent fraud
+- Example
+- Personal assistants --> Siri
+- Adorable robots --> Jibo
+- Dinosoir toy --> Watson
+- DeepFace
+- Healthcare
+- Health Sciences Industry Transformation
+1. Detecting Fraud in real time
+2. Reducing Readmissions
+3. Improving Patient Care
+- Finance
+- American Express
+- Customer Marketing
+- Customer Management
+- Fraud Detection
+- Customer Service
+- Loyalty Marketing
+- Information Management
+- Yahoo
+- Search & Advertisement
+- Application needs
+- Content ranking
+- Ad click prediction
+- Query Ads matching
+- Machine learning algorithm
+- Gradient boosted decision tree
+- Logistic regression
+- Neural network
+- Retail
+- Personalize Commerce
+- Implement 1 to 1 experiences across devices
+- Maximize Traffic
+- Drive lifetime value and incremental traffic
+- Analyze Shoppers / Products
+- Measure performance identify opportunities and generate insights
+- Machine Learning
+- Creative Optimization
+- Advertising
+- Product Records
+- Search
+- Mobile
+- Channel Management
+- Campaign Management
+- Assortment Planning
+- News Updates
+- January 2015
+- Facebook Open Sources cutting edge Deep Learning tool named 'Torch'
+- Data joins new wave of Machine Learning Startup
+- Investors show real interest in artificial intelligence startups
+- February 2015
+- Google machine learns to master video games
+- Microsoft Officially Launches Azure Machine Learning Platform
+- Ford Drivers Scheduling with Artificial Intelligence
+- March 2015
+- Google applies Large Scale Machine Learning for Drug Discovery
+- PayPal uses Deep Learning to Detect and Fight Fraud
+- Machine Learning is making Cortana smarter
+- Google teams up with health firm to develop AI surgical robots
+- Facebook develops an Artificial Intelligence Test
+- April 2015
+- Amazon launches machine learning platform
+- PayPal uses Machine Learning to Beat Bad Guys
+- ML Algorithm mines 16 Billion E-mails
+- May 2016
+- Google now gets smarter with 'Now on Tap' Feature
+- Intel's 18-core Xeon chips tunes for machine learning
+- June 2015
+- Airbnb launches Aerosolve machine learning package
+- Automated super mario world GamePlay pthrough machine learning
+- amazon will now show more amazon helpful reviews
+- July 2015
+- Microsoft wants people to teach computers about machine learning
+- Hitachi develops a new data mining software Artficial Intelligence
+- Google AI now translates text in 27 languages
+- August 2015
+- PayPal Fights Fraud with machine learning & human detectives
+- Amazon Web Service opens up machine learning service to European developers
+- Machine Learning Enters Gartner 2015 Hype Cycle
+- September 2015
+- Apple Making Big Hiring Push in Artificial Intelligence & Machine Learning
+- Linkedin created FeatireFu Project
+- How Twitter improves its machine learning
+- October 2015
+- Apple bought machine learning firm perceptio
+- Hitachi develops a system to predict crimes
+- Introducing Tesla's auto-pilot technology
+- Fractal Analytics Acquires Artificial Intelligence Startup to Expand Customer Genomics
+- RankBrain : Google is using Artificial Intelligence to Rank web pages
+- November 2015
+- Toyota invests $1 Billion in Artificial Inteligence in United State
+- H20 Raises $20M for its ML Platform
+- Accenture invests in Artificial Intelligence Research & Development
+
+Machine Learning Essentials2
+13:00 - 17:30
+- Tools
+- Part1
+- R
+- Python
+- Weka
+- Excel
+- Armadillo C++
+- Scikit learn for python
+- Part2
+- Google TensorFlow
+- Twitter Dimsum
+- Airbnb AeroSolve
+- Facebook Torch --> Deep Learning
+- LinkedIn FeatureFu
+- Part3
+- Microsoft Azure Machine Learning
+- Google Prediction API
+- Amazon Machine Learning
+- IBM Watson Analytics
+- Part4
+- Spunk Machine Learning
+- SAP Predictive Analytics
+- SAS SPSS
+- Machine Intelligence Landscape
+- Core Technologies
+- Artificial Intelligence
+- Deep Learning
+- Machine Learning
+- Natural Language Processing Platforms
+- Predictive APIs
+- Image Recognition
+- Speech Recognition
+- Rethinking Enterprise
+- Sales
+- Security / Authentication
+- Fraud Detection
+- Human Resource / Recruiting
+- Marketing
+- Personal Assistant
+- Intellignence Tools
+- Rethinking Industries
+- Adtech
+- Agriculture
+- Education
+- Finance
+- Legal
+- Manufacturing
+- Medical
+- Oil and Gas
+- Media / Content
+- Consumer Finance
+- Philanthropies
+- Automotive
+- Diagnostics
+- Retail
+- Rethinking Humans / HCI
+- Augmented Reality
+- Gestural Computing
+- Robotics
+- Emotional Recognition
+- Supporting Technologies
+- Hardware
+- Data Prep
+- Data Collection
+- Programming VS. Machine Learing
+- Programing
+--> Given a specification of a function f, implement f that meets the specification
+- Machine Learning
+--> Given example ( x, y ) pairs induce f such that y = f ( x ) for given pairs and generalizes well for unseen x
+- Machine Learning Workflow
+- input --> Feature Representation --> Learning Algorithm
+- Applications of Machine Learning
+- Search Engines
+- Medical Diagnosis
+- Object Recognition
+- Stock Market Analysis
+- Credit Card Fraud Detection
+- Speech Recognition
+- Machine Learning Tasks
+- Casual Modeling
+- Similarity Matching
+- Profiling
+- Classification
+- Link Predication
+- Clustering
+- Co - Occurrence Grouping
+- Regression
+- Data Reduction
+- Main Typs of Learning
+- Supervised Learning
+- Unsupervised Learning
+- Reinforcement Learning
+- Data Flow
+- Business Understanding
+- Data Understanding
+- Data Preparation
+- Modeling
+- Evaluation
+- Deployment
+- Cautions
+- Curse of dimensionality
+- Correlation does not imply causation
+- Learn many models not just one
+- More data beat a cleaver algorithm
+- Data alone are not enough
+- Flow
+- Mainframe and Client / Server
+- Internet technology
+- Cloud computing mobile big data social
+- Industry Transformation
+- Robotics
+- Natural Interfaces
+- 3D Printing
+- Internet of Things
+- Cognitive systems
+- Next Gen Security
+- Prediction / Response
+- Toward agile for rapid changes
+- Invest more on systematic study of people and cultures
+- Smart machines and novel technoliges are utilized
+- Employee healthcare costs as an important business factor
+- Organizational Issues
+--> GOAL: Fast response & Serve all needs resultant from technologies
+- Data
+- Prepare your data
+- There is no short cut to data problems cleanliness & completeness
+- Organization
+- Flat organization
+- More trust less command and control
+- Culture
+- Risk is our friend
+- Self motivated and managed

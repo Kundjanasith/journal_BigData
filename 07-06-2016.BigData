@@ -1,0 +1,233 @@
+Docker
+08:30 - 12:00
+- Training on Virtual Machine
+- Connecting to Virtual Machine [ MAC OS X]
+--> ssh <login>@<ip-address>
+- Checking Virtual Machine
+--> docker version #show the detailed of docker in your virtual machine
+- Client version
+- Client API version
+- Go version ( client )
+- Git commit ( client )
+- OS/Arch ( client )
+- Server version
+- Server API version
+- Go version ( server )
+- Git commit ( server )
+- Installing Docker
+- Docker is easy to install
+- Docker runs on
+--> A variety of Linux distributions
+--> OS X via a virtual machine
+--> Microsoft Windows via a virtual machine
+- Installing Docker on Linux --> Can be installed via
+- Distribution-supllied packages on virtually all distros
+- Packages supplied by Docker
+- Installation script from Docker
+- Binary download from Docker --> Single file
+- Installing Docker on Linux distribution
+- sudo yum install docker-io #on Fedora
+- sudo yum install docker #on CentOS7
+- sudo apt-get install docker.io #on Debian & Derivatives
+- Installation script from Docker
+- curl -s https://get.docker.com/ | sudo sh
+- Installing on OS X and Microsoft Windows
+- Docker doesn't run natively on OS X or Microsoft Windows
+- To install Docker on these platforms we run a small virtual machine using a tool called Boot2Docker
+- Check that Docker is working --> docker version
+- The Docker group
+--> The docker user is root equivalent
+--> It provides root-level access to the host
+--> You should restrict access to it like you would protect root
+- sudo groupadd docker #add the Docker group
+- sudo gpasswd -a $USER docker #add ourselves to the group
+- sudo service docker restart #restart the Docker daemon
+- exit #logout
+- First Containers
+- Hello World [ In Docker environment ]
+--> docker run busybox echo hello world
+- busybox #We used one of the smallest, simplest images available
+- echo hello world #We can ran a single process
+- A more useful container
+- docker run -it ubuntu bash #It runs a bare-bones, no-frills ubuntu system
+- Do something in our container
+- curl ifconfig.me/ip #told you it was bare-bones
+- dpkg -l | wc -l #compare the results
+- dpkg -l #list the packages installed in our container
+- wc -l #count them
+- Install a package in our container
+--> apt-get update #install curl
+--> curl ifconfig.me/ip
+- Backgroun Containers [ interactive ]
+- Run a non-interactive container
+- Run a small custom container
+- docker run jpetazzo/clock
+--> This container will run forever
+--> To stop it, press ctrl+C
+--> Docker has automatically downloaded the image jpetazzo/clock
+--> This image is a user image, created by jpetazzo
+--> We will tell more about user image later
+- Run a container in the background
+- Can be started in the background with -d flag( daemon mode )
+- docker run -d jpetazzo/clock
+--> We don't see the output of the container
+--> But don't worry: Docker collects that output and logs it
+--> Docker gives us the ID of the container
+- List running containers
+- Can we check that our container is still running or not
+- docker ps
+--> The truncated ID of our container
+--> The image used to start the container
+--> That our container has been running up for a couple of minutes
+--> Other information ( command, ports, names )
+- Two useful flags for docker ps
+- -l #the last container
+- -q #the ID of containers
+- Check the logs of a container
+- View the logs of a container
+--> We told you that Docker was loggong the container output
+- docker logs <container's ID>
+- We specified a prefix of the full container ID
+- The logs command will output the entire logs of the container
+- View only the tail of the logs
+- docker logs --tail <number of lines> <container's ID>
+- To avoid being spammed with pages of output
+- Follow the logs in the real time
+- docker logs --tail <number of lines> -- follow <container's ID>
+- The standard UNIX command
+- Stop a container
+- There are two ways we can terminate our detached container
+- docker kill #killing it
+- docker stop #stopping it
+- List stopped containers
+- docker ps -a ( --all )
+- We can also see stopped containers
+- Understanding Docker Images
+- What is an image ?
+--> An image is a collection of files + some meta data
+[ Technically: those files form the root filesystem of a container ]
+--> Images are made of layers, conceptually stacked on top of each other
+--> Each layer can add, change, and remove files
+--> Images can share layers to optimize disk usage, transfer times, and memory use
+- Differences between containers and images
+--> An image is a read-only filesystem
+--> A container is an encapsulated set of processes running in a read-write copy of that filesystem
+--> To optimize container boot time, copy-on-write is used instead of regular copy
+--> docker run #starts a container from a given image
+- Image as stencils
+- Images are like templates or stencils that you can create containers from
+- Object-oriented programming
+--> Images = classes
+--> Layers = Inheritance
+--> Containers = Instances
+- If an image is read-only, how do we change it ?
+- We create a new container from that image
+- Then we make changes to that container
+- When we are satisfied with changes, transform them into a new layer
+- A new image is created by stacking the new layer on top of the old image
+- There are multiple ways to create new images
+- docker commit #creates a new layer (and a new image) from a container
+- docker build #performs a repeatable build sequence
+- docker import #loads a tarball into Docker as a standalone base layer
+- Images namespaces
+- ubuntu #root
+- jpetazo #user or organizations
+- registry.example.com:5000/my-private-image #self-hoested
+- Root namespace
+--> It is for official images
+- Those image include
+- Small, "swiss-army-knife" images --> Ex: busybox
+- Distro images to be used as bases for builds --> Ex: ubuntu, fedora
+- Ready-to-use components and service --> Ex: redis, postgresql
+- User namespace
+--> It holds images for Docker Hub users and organizations
+- Such as jpetazzo/clock
+- The Docker Hub user --> jpetazzo
+- The image name --> clock
+- Self-Hosted namespace
+--> It holds images which are not hosted on Docker Hub but on third party registries
+--> It contains the hostname or IP address, and optionally the port, of the registry server
+- Such as localhost:5000/wordpress
+- The remote host and port --> localhost:5000
+- The image name --> wordpress
+- Historical detail
+--> Self-hosted registries used to be called private registries but was misleading
+- A self-hosted registry can be public or private
+- A registry in the User namespace on Docker Hub can be public or private
+- How do you store and manage images
+- Images can be stored ( On your Docker host, In a Docker registry )
+- You can use the Docker client to download(pull) or upload(push) images
+- To be more accurate: you can use the Docker client to tell a Docker serber to push and pull images to and from a registry
+- Showing current images --> docker images
+- Searching for images --> docker search <name>
+- Start indicate the popularity of the image
+- Official images are those in the root namespace
+- Automate images are buit automatically by the Docker Hub
+- Downloading images
+- There are two ways to download images
+- docker pull #explicitly
+- docker run #implicitly
+- Pulling an image
+- As seen previously, images are made up of layers
+- Docker has downloaded all the necessary layer
+- Image and Tags
+--> Images can have tags
+--> Tag define image variants
+--> docker pull ubuntu will refer to ubuntu:lastest
+--> The :lastest tag can be updated frequently
+--> When using images it is always best to be specific
+- Building Images Interactively
+- Installing software manually in a container, and turn it into a new image
+- Introduing command docker commit, docker tag and docker diff
+- Buliding from a base
+--> Our base will be the ubuntu image
+- Create a new container and make some changes
+- docker run -it ubuntu bash #start an ubuntu container
+- apt-get update #refresh the list of packages avaliable to install
+- apt-get install -y wget #install the program we are interested in
+- Inspect the changes
+- docker diff  #to see the difference between base image & our container
+- Docker tracks filesystem changes
+- An image is read-only
+- When we make changes, they happen in a copy of the image
+- Docker can show the difference between the image and its copy
+- For performance: Docker uses copy-on-write systems
+- Commit and run your image
+--> Command will create a new layer with those changes, and a new image using this new layer
+- docker commit <container ID> #commit new container ID
+- docker run -it <newImageId> bash #run this image
+- Tagging images
+- docker tag <newImageId> mydistro #referring to an image by its ID is not convenient
+- docker commit <containeId> mydistro #specify the tag as an extra argument to commit
+- docker run -it mydistro bash #run mydistro
+Presentation ( Hadoop, Cloudera, MapR, Hortonwork )
+13:00 - 17:30
+- Apache Hadoop
+--> is an open-source software framework for distributed storage and distributed processing of very large data ( Big Data ) sets on computer clusters built from commodity hardware
+--> Split files into large blocks and distributed them across nodes in a cluster
+--> Transfer pacakged code for nodes to process in parallel based on th data that needs to be processed
+--> Modules
+- Hadoop Common contains libraries and utilities needed by other Hadoop modules
+- Hadoop Distributed File System ( HDFS ) is a distributed file-system that stores data on commodity machines, providing very high aggregate bandwidth across the cluster
+- Hadoop YARN is a resource-management platform responsible for managing computing resources in clusters and using them for scheduling of users' applications
+- Hadoop MapReduce is an implementation of the MapReduce programming model for large scale data processing
+- Cloudera
+--> is an American-based software company that provides  Apache Hadoop-based software, support and services, and training to business customers
+--> Service
+- Cloudera University is World class training provided by Cloudera university
+- Cloudera Professional Services is World class professionals to help with customer success
+- Clouder Support is World class support team available 24x7 to help customers proactively and predictively ensure success
+--> CDH ( Cloudera Distribution Including Apache Hadoop )
+- MapR
+--> a enterprise software company that develops and sells Apache Hadoop-derived software
+--> Apache Hadoop distribution claims to provide full data protection, no single points of failure, improved performance, and dramatic ease of use advantages
+--> MapR was selected by Amazon to provide an upgraded version of Amazon's Elastic Map Reduce (EMR) service
+--> MapR provides three versions of their product known as M3, M5 and M7.
+--> Platform service > ( MapR-FS, MapR-DB, MapR Streams )
+- Hortonwork ***
+--> The company focuses on the development and support of Apache Hadoop, a framework that allows for the distributing processing of large data sets across clusters of computers
+--> HDP ( Hortonworks Data Platform ) includes Apache Hadoop and is used for storing, processing, and analyzing large volumes of data
+- The platform is designed to deal with data from many sources and formats.
+- The platform includes various Apache Hadoop projects including the Hadoop Distributed File System, MapReduce, Pig, Hive, HBase and Zookeeper and additional components
+- is the industry's only true secure, enterprise-ready open source Apache Hadoop distribution based on a centralized architecture (YARN).
+- HDP addresses the complete needs of data-at-rest, powers real-time customer applications and delivers robust analytics that accelerate decision making and innovation

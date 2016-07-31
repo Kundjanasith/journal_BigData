@@ -1,0 +1,2906 @@
+Tree 0:
+   If (feature 3 <= 227.0)
+    If (feature 6 <= 1994.0)
+     If (feature 1 <= -111.05)
+      If (feature 0 <= 38.107)
+       If (feature 6 <= 1975.0)
+        If (feature 1 <= -116.793)
+         If (feature 0 <= 35.72)
+          If (feature 0 <= 32.5833333)
+           Predict: 2.0
+          Else (feature 0 > 32.5833333)
+           Predict: 1.0
+         Else (feature 0 > 35.72)
+          If (feature 5 <= 10.0)
+           Predict: 1.0
+          Else (feature 5 > 10.0)
+           Predict: 2.0
+        Else (feature 1 > -116.793)
+         If (feature 0 <= 34.6236667)
+          If (feature 4 <= 29.0)
+           Predict: 1.0
+          Else (feature 4 > 29.0)
+           Predict: 1.0
+         Else (feature 0 > 34.6236667)
+          If (feature 5 <= 1.0)
+           Predict: 1.0
+          Else (feature 5 > 1.0)
+           Predict: 1.0
+       Else (feature 6 > 1975.0)
+        If (feature 1 <= -118.4406667)
+         If (feature 0 <= 24.053)
+          If (feature 6 <= 1979.0)
+           Predict: 2.0
+          Else (feature 6 > 1979.0)
+           Predict: 2.0
+         Else (feature 0 > 24.053)
+          If (feature 6 <= 1989.0)
+           Predict: 1.0
+          Else (feature 6 > 1989.0)
+           Predict: 1.0
+        Else (feature 1 > -118.4406667)
+         If (feature 0 <= 36.5208333)
+          If (feature 3 <= 139.0)
+           Predict: 1.0
+          Else (feature 3 > 139.0)
+           Predict: 1.0
+         Else (feature 0 > 36.5208333)
+          If (feature 4 <= 5.0)
+           Predict: 1.0
+          Else (feature 4 > 5.0)
+           Predict: 1.0
+      Else (feature 0 > 38.107)
+       If (feature 6 <= 1989.0)
+        If (feature 5 <= 11.0)
+         If (feature 6 <= 1968.0)
+          If (feature 5 <= 8.0)
+           Predict: 2.0
+          Else (feature 5 > 8.0)
+           Predict: 1.0
+         Else (feature 6 > 1968.0)
+          If (feature 0 <= 38.942)
+           Predict: 1.0
+          Else (feature 0 > 38.942)
+           Predict: 2.0
+        Else (feature 5 > 11.0)
+         If (feature 4 <= 20.0)
+          If (feature 0 <= 40.18)
+           Predict: 2.0
+          Else (feature 0 > 40.18)
+           Predict: 2.0
+         Else (feature 4 > 20.0)
+          If (feature 6 <= 1979.0)
+           Predict: 2.0
+          Else (feature 6 > 1979.0)
+           Predict: 2.0
+       Else (feature 6 > 1989.0)
+        If (feature 1 <= -142.62)
+         If (feature 6 <= 1992.0)
+          If (feature 4 <= 8.0)
+           Predict: 1.0
+          Else (feature 4 > 8.0)
+           Predict: 1.0
+         Else (feature 6 > 1992.0)
+          If (feature 4 <= 29.0)
+           Predict: 1.0
+          Else (feature 4 > 29.0)
+           Predict: 1.0
+        Else (feature 1 > -142.62)
+         If (feature 6 <= 1993.0)
+          If (feature 5 <= 7.0)
+           Predict: 2.0
+          Else (feature 5 > 7.0)
+           Predict: 1.0
+         Else (feature 6 > 1993.0)
+          If (feature 4 <= 13.0)
+           Predict: 1.0
+          Else (feature 4 > 13.0)
+           Predict: 1.0
+     Else (feature 1 > -111.05)
+      If (feature 0 <= 38.942)
+       If (feature 6 <= 1968.0)
+        If (feature 4 <= 26.0)
+         If (feature 2 <= 4.0)
+          If (feature 1 <= -35.1257)
+           Predict: 3.0
+          Else (feature 1 > -35.1257)
+           Predict: 2.0
+         Else (feature 2 > 4.0)
+          If (feature 0 <= 24.053)
+           Predict: 3.0
+          Else (feature 0 > 24.053)
+           Predict: 2.0
+        Else (feature 4 > 26.0)
+         If (feature 0 <= 19.084)
+          If (feature 4 <= 30.0)
+           Predict: 3.0
+          Else (feature 4 > 30.0)
+           Predict: 4.0
+         Else (feature 0 > 19.084)
+          If (feature 1 <= -0.31)
+           Predict: 4.0
+          Else (feature 1 > -0.31)
+           Predict: 2.0
+       Else (feature 6 > 1968.0)
+        If (feature 3 <= 217.0)
+         If (feature 0 <= 37.427)
+          If (feature 3 <= 167.0)
+           Predict: 1.0
+          Else (feature 3 > 167.0)
+           Predict: 1.0
+         Else (feature 0 > 37.427)
+          If (feature 5 <= 5.0)
+           Predict: 2.0
+          Else (feature 5 > 5.0)
+           Predict: 2.0
+        Else (feature 3 > 217.0)
+         If (feature 4 <= 14.0)
+          If (feature 6 <= 1981.0)
+           Predict: 2.0
+          Else (feature 6 > 1981.0)
+           Predict: 1.0
+         Else (feature 4 > 14.0)
+          If (feature 6 <= 1984.0)
+           Predict: 1.0
+          Else (feature 6 > 1984.0)
+           Predict: 1.0
+      Else (feature 0 > 38.942)
+       If (feature 0 <= 40.18)
+        If (feature 3 <= 139.0)
+         If (feature 2 <= 4.0)
+          If (feature 4 <= 4.0)
+           Predict: 2.0
+          Else (feature 4 > 4.0)
+           Predict: 2.0
+         Else (feature 2 > 4.0)
+          If (feature 4 <= 18.0)
+           Predict: 2.0
+          Else (feature 4 > 18.0)
+           Predict: 1.0
+        Else (feature 3 > 139.0)
+         If (feature 6 <= 1992.0)
+          If (feature 1 <= 29.493)
+           Predict: 1.0
+          Else (feature 1 > 29.493)
+           Predict: 1.0
+         Else (feature 6 > 1992.0)
+          If (feature 3 <= 224.0)
+           Predict: 1.0
+          Else (feature 3 > 224.0)
+           Predict: 2.0
+       Else (feature 0 > 40.18)
+        If (feature 6 <= 1984.0)
+         If (feature 3 <= 225.0)
+          If (feature 6 <= 1968.0)
+           Predict: 2.0
+          Else (feature 6 > 1968.0)
+           Predict: 1.0
+         Else (feature 3 > 225.0)
+          If (feature 6 <= 1968.0)
+           Predict: 3.0
+          Else (feature 6 > 1968.0)
+           Predict: 1.0
+        Else (feature 6 > 1984.0)
+         If (feature 1 <= 67.224)
+          If (feature 1 <= -0.31)
+           Predict: 1.0
+          Else (feature 1 > -0.31)
+           Predict: 1.0
+         Else (feature 1 > 67.224)
+          If (feature 3 <= 225.0)
+           Predict: 2.0
+          Else (feature 3 > 225.0)
+           Predict: 1.0
+    Else (feature 6 > 1994.0)
+     If (feature 2 <= 2.0)
+      If (feature 0 <= 38.107)
+       If (feature 1 <= -120.9423333)
+        If (feature 0 <= 24.053)
+         If (feature 5 <= 9.0)
+          If (feature 4 <= 15.0)
+           Predict: 1.0
+          Else (feature 4 > 15.0)
+           Predict: 1.0
+         Else (feature 5 > 9.0)
+          If (feature 5 <= 11.0)
+           Predict: 1.0
+          Else (feature 5 > 11.0)
+           Predict: 1.0
+        Else (feature 0 > 24.053)
+         If (feature 6 <= 2007.0)
+          If (feature 6 <= 1998.0)
+           Predict: 2.0
+          Else (feature 6 > 1998.0)
+           Predict: 1.0
+         Else (feature 6 > 2007.0)
+          If (feature 5 <= 10.0)
+           Predict: 1.0
+          Else (feature 5 > 10.0)
+           Predict: 1.0
+       Else (feature 1 > -120.9423333)
+        If (feature 1 <= -116.793)
+         If (feature 6 <= 2007.0)
+          If (feature 6 <= 1999.0)
+           Predict: 1.0
+          Else (feature 6 > 1999.0)
+           Predict: 1.0
+         Else (feature 6 > 2007.0)
+          If (feature 0 <= 37.427)
+           Predict: 1.0
+          Else (feature 0 > 37.427)
+           Predict: 1.0
+        Else (feature 1 > -116.793)
+         If (feature 1 <= -95.299)
+          If (feature 1 <= -115.8353333)
+           Predict: 1.0
+          Else (feature 1 > -115.8353333)
+           Predict: 1.0
+         Else (feature 1 > -95.299)
+          If (feature 0 <= 34.6236667)
+           Predict: 1.0
+          Else (feature 0 > 34.6236667)
+           Predict: 1.0
+      Else (feature 0 > 38.107)
+       If (feature 6 <= 2004.0)
+        If (feature 0 <= 44.509)
+         If (feature 4 <= 21.0)
+          If (feature 4 <= 19.0)
+           Predict: 2.0
+          Else (feature 4 > 19.0)
+           Predict: 2.0
+         Else (feature 4 > 21.0)
+          If (feature 6 <= 1998.0)
+           Predict: 2.0
+          Else (feature 6 > 1998.0)
+           Predict: 1.0
+        Else (feature 0 > 44.509)
+         If (feature 6 <= 1997.0)
+          If (feature 4 <= 30.0)
+           Predict: 1.0
+          Else (feature 4 > 30.0)
+           Predict: 2.0
+         Else (feature 6 > 1997.0)
+          If (feature 4 <= 16.0)
+           Predict: 1.0
+          Else (feature 4 > 16.0)
+           Predict: 1.0
+       Else (feature 6 > 2004.0)
+        If (feature 6 <= 2007.0)
+         If (feature 6 <= 2005.0)
+          If (feature 3 <= 41.0)
+           Predict: 1.0
+          Else (feature 3 > 41.0)
+           Predict: 1.0
+         Else (feature 6 > 2005.0)
+          If (feature 0 <= 47.853)
+           Predict: 1.0
+          Else (feature 0 > 47.853)
+           Predict: 1.0
+        Else (feature 6 > 2007.0)
+         If (feature 3 <= 41.0)
+          If (feature 6 <= 2011.0)
+           Predict: 2.0
+          Else (feature 6 > 2011.0)
+           Predict: 1.0
+         Else (feature 3 > 41.0)
+          If (feature 4 <= 11.0)
+           Predict: 1.0
+          Else (feature 4 > 11.0)
+           Predict: 1.0
+     Else (feature 2 > 2.0)
+      If (feature 6 <= 2010.0)
+       If (feature 0 <= 42.317)
+        If (feature 3 <= 105.0)
+         If (feature 0 <= -28.94)
+          If (feature 6 <= 2008.0)
+           Predict: 1.0
+          Else (feature 6 > 2008.0)
+           Predict: 2.0
+         Else (feature 0 > -28.94)
+          If (feature 3 <= 99.0)
+           Predict: 2.0
+          Else (feature 3 > 99.0)
+           Predict: 1.0
+        Else (feature 3 > 105.0)
+         If (feature 0 <= 30.3)
+          If (feature 0 <= -22.098)
+           Predict: 1.0
+          Else (feature 0 > -22.098)
+           Predict: 2.0
+         Else (feature 0 > 30.3)
+          If (feature 1 <= 29.493)
+           Predict: 1.0
+          Else (feature 1 > 29.493)
+           Predict: 2.0
+       Else (feature 0 > 42.317)
+        If (feature 0 <= 51.606)
+         If (feature 3 <= 105.0)
+          If (feature 6 <= 2000.0)
+           Predict: 1.0
+          Else (feature 6 > 2000.0)
+           Predict: 1.0
+         Else (feature 3 > 105.0)
+          If (feature 6 <= 2000.0)
+           Predict: 1.0
+          Else (feature 6 > 2000.0)
+           Predict: 1.0
+        Else (feature 0 > 51.606)
+         If (feature 3 <= 167.0)
+          If (feature 6 <= 2001.0)
+           Predict: 2.0
+          Else (feature 6 > 2001.0)
+           Predict: 1.0
+         Else (feature 3 > 167.0)
+          If (feature 6 <= 2000.0)
+           Predict: 1.0
+          Else (feature 6 > 2000.0)
+           Predict: 2.0
+      Else (feature 6 > 2010.0)
+       If (feature 3 <= 105.0)
+        If (feature 1 <= -0.31)
+         If (feature 2 <= 3.0)
+          If (feature 0 <= -28.94)
+           Predict: 2.0
+          Else (feature 0 > -28.94)
+           Predict: 2.0
+         Else (feature 2 > 3.0)
+          If (feature 4 <= 1.0)
+           Predict: 2.0
+          Else (feature 4 > 1.0)
+           Predict: 1.0
+        Else (feature 1 > -0.31)
+         If (feature 6 <= 2011.0)
+          If (feature 5 <= 11.0)
+           Predict: 2.0
+          Else (feature 5 > 11.0)
+           Predict: 1.0
+         Else (feature 6 > 2011.0)
+          If (feature 4 <= 24.0)
+           Predict: 2.0
+          Else (feature 4 > 24.0)
+           Predict: 2.0
+       Else (feature 3 > 105.0)
+        If (feature 3 <= 196.0)
+         If (feature 1 <= -111.05)
+          If (feature 0 <= 30.3)
+           Predict: 2.0
+          Else (feature 0 > 30.3)
+           Predict: 1.0
+         Else (feature 1 > -111.05)
+          If (feature 0 <= 17.161)
+           Predict: 2.0
+          Else (feature 0 > 17.161)
+           Predict: 2.0
+        Else (feature 3 > 196.0)
+         If (feature 6 <= 2011.0)
+          If (feature 0 <= 42.317)
+           Predict: 2.0
+          Else (feature 0 > 42.317)
+           Predict: 1.0
+         Else (feature 6 > 2011.0)
+          If (feature 5 <= 11.0)
+           Predict: 2.0
+          Else (feature 5 > 11.0)
+           Predict: 2.0
+   Else (feature 3 > 227.0)
+    If (feature 0 <= 40.18)
+     If (feature 6 <= 1968.0)
+      If (feature 0 <= 30.3)
+       If (feature 4 <= 3.0)
+        If (feature 5 <= 10.0)
+         If (feature 1 <= 122.772)
+          If (feature 5 <= 1.0)
+           Predict: 3.0
+          Else (feature 5 > 1.0)
+           Predict: 2.0
+         Else (feature 1 > 122.772)
+          If (feature 5 <= 6.0)
+           Predict: 2.0
+          Else (feature 5 > 6.0)
+           Predict: 3.0
+        Else (feature 5 > 10.0)
+         If (feature 0 <= 8.387)
+          If (feature 1 <= 141.905)
+           Predict: 2.0
+          Else (feature 1 > 141.905)
+           Predict: 3.0
+         Else (feature 0 > 8.387)
+          Predict: 3.0
+       Else (feature 4 > 3.0)
+        If (feature 0 <= -32.676)
+         If (feature 4 <= 25.0)
+          If (feature 1 <= 151.625)
+           Predict: 3.0
+          Else (feature 1 > 151.625)
+           Predict: 3.0
+         Else (feature 4 > 25.0)
+          If (feature 1 <= 159.525)
+           Predict: 3.0
+          Else (feature 1 > 159.525)
+           Predict: 2.0
+        Else (feature 0 > -32.676)
+         If (feature 1 <= 105.817)
+          If (feature 1 <= -177.4796)
+           Predict: 3.0
+          Else (feature 1 > -177.4796)
+           Predict: 3.0
+         Else (feature 1 > 105.817)
+          If (feature 3 <= 228.0)
+           Predict: 4.0
+          Else (feature 3 > 228.0)
+           Predict: 3.0
+      Else (feature 0 > 30.3)
+       If (feature 1 <= -111.05)
+        If (feature 0 <= 32.5833333)
+         If (feature 5 <= 3.0)
+          If (feature 4 <= 14.0)
+           Predict: 1.0
+          Else (feature 4 > 14.0)
+           Predict: 1.0
+         Else (feature 5 > 3.0)
+          Predict: 2.0
+        Else (feature 0 > 32.5833333)
+         If (feature 4 <= 1.0)
+          If (feature 5 <= 4.0)
+           Predict: 2.0
+          Else (feature 5 > 4.0)
+           Predict: 2.0
+         Else (feature 4 > 1.0)
+          If (feature 0 <= 33.9495)
+           Predict: 1.0
+          Else (feature 0 > 33.9495)
+           Predict: 1.0
+       Else (feature 1 > -111.05)
+        If (feature 1 <= 141.905)
+         If (feature 1 <= 24.45)
+          If (feature 5 <= 2.0)
+           Predict: 2.0
+          Else (feature 5 > 2.0)
+           Predict: 2.0
+         Else (feature 1 > 24.45)
+          If (feature 5 <= 7.0)
+           Predict: 2.0
+          Else (feature 5 > 7.0)
+           Predict: 3.0
+        Else (feature 1 > 141.905)
+         If (feature 4 <= 10.0)
+          If (feature 5 <= 7.0)
+           Predict: 3.0
+          Else (feature 5 > 7.0)
+           Predict: 4.0
+         Else (feature 4 > 10.0)
+          Predict: 3.0
+     Else (feature 6 > 1968.0)
+      If (feature 0 <= 17.161)
+       If (feature 6 <= 1979.0)
+        If (feature 0 <= -37.635)
+         If (feature 4 <= 12.0)
+          If (feature 1 <= -35.1257)
+           Predict: 2.0
+          Else (feature 1 > -35.1257)
+           Predict: 2.0
+         Else (feature 4 > 12.0)
+          If (feature 6 <= 1975.0)
+           Predict: 2.0
+          Else (feature 6 > 1975.0)
+           Predict: 2.0
+        Else (feature 0 > -37.635)
+         If (feature 5 <= 2.0)
+          If (feature 3 <= 230.0)
+           Predict: 2.0
+          Else (feature 3 > 230.0)
+           Predict: 2.0
+         Else (feature 5 > 2.0)
+          If (feature 0 <= 2.421)
+           Predict: 2.0
+          Else (feature 0 > 2.421)
+           Predict: 2.0
+       Else (feature 6 > 1979.0)
+        If (feature 1 <= -77.011)
+         If (feature 1 <= -95.299)
+          If (feature 6 <= 2000.0)
+           Predict: 2.0
+          Else (feature 6 > 2000.0)
+           Predict: 2.0
+         Else (feature 1 > -95.299)
+          If (feature 0 <= 13.473)
+           Predict: 2.0
+          Else (feature 0 > 13.473)
+           Predict: 2.0
+        Else (feature 1 > -77.011)
+         If (feature 6 <= 2013.0)
+          If (feature 5 <= 4.0)
+           Predict: 2.0
+          Else (feature 5 > 4.0)
+           Predict: 2.0
+         Else (feature 6 > 2013.0)
+          If (feature 4 <= 30.0)
+           Predict: 2.0
+          Else (feature 4 > 30.0)
+           Predict: 2.0
+      Else (feature 0 > 17.161)
+       If (feature 0 <= 34.6236667)
+        If (feature 0 <= 32.5833333)
+         If (feature 6 <= 2013.0)
+          If (feature 1 <= -115.8353333)
+           Predict: 1.0
+          Else (feature 1 > -115.8353333)
+           Predict: 2.0
+         Else (feature 6 > 2013.0)
+          If (feature 0 <= 19.084)
+           Predict: 1.0
+          Else (feature 0 > 19.084)
+           Predict: 2.0
+        Else (feature 0 > 32.5833333)
+         If (feature 0 <= 33.9495)
+          If (feature 1 <= -0.31)
+           Predict: 1.0
+          Else (feature 1 > -0.31)
+           Predict: 2.0
+         Else (feature 0 > 33.9495)
+          If (feature 1 <= -118.4406667)
+           Predict: 1.0
+          Else (feature 1 > -118.4406667)
+           Predict: 2.0
+       Else (feature 0 > 34.6236667)
+        If (feature 1 <= 14.494)
+         If (feature 6 <= 1997.0)
+          If (feature 1 <= -35.1257)
+           Predict: 1.0
+          Else (feature 1 > -35.1257)
+           Predict: 1.0
+         Else (feature 6 > 1997.0)
+          If (feature 0 <= 38.107)
+           Predict: 1.0
+          Else (feature 0 > 38.107)
+           Predict: 1.0
+        Else (feature 1 > 14.494)
+         If (feature 1 <= 67.224)
+          If (feature 6 <= 2002.0)
+           Predict: 2.0
+          Else (feature 6 > 2002.0)
+           Predict: 2.0
+         Else (feature 1 > 67.224)
+          If (feature 0 <= 37.427)
+           Predict: 2.0
+          Else (feature 0 > 37.427)
+           Predict: 1.0
+    Else (feature 0 > 40.18)
+     If (feature 6 <= 1968.0)
+      If (feature 4 <= 26.0)
+       If (feature 0 <= 42.317)
+        If (feature 4 <= 12.0)
+         If (feature 5 <= 2.0)
+          Predict: 3.0
+         Else (feature 5 > 2.0)
+          If (feature 1 <= 141.905)
+           Predict: 3.0
+          Else (feature 1 > 141.905)
+           Predict: 3.0
+        Else (feature 4 > 12.0)
+         If (feature 5 <= 4.0)
+          If (feature 4 <= 18.0)
+           Predict: 2.0
+          Else (feature 4 > 18.0)
+           Predict: 2.0
+         Else (feature 5 > 4.0)
+          If (feature 4 <= 18.0)
+           Predict: 3.0
+          Else (feature 4 > 18.0)
+           Predict: 3.0
+       Else (feature 0 > 42.317)
+        If (feature 4 <= 14.0)
+         If (feature 1 <= -153.274)
+          If (feature 4 <= 6.0)
+           Predict: 3.0
+          Else (feature 4 > 6.0)
+           Predict: 3.0
+         Else (feature 1 > -153.274)
+          If (feature 4 <= 5.0)
+           Predict: 3.0
+          Else (feature 4 > 5.0)
+           Predict: 2.0
+        Else (feature 4 > 14.0)
+         If (feature 1 <= -177.4796)
+          If (feature 5 <= 3.0)
+           Predict: 3.0
+          Else (feature 5 > 3.0)
+           Predict: 2.0
+         Else (feature 1 > -177.4796)
+          If (feature 1 <= -120.9423333)
+           Predict: 3.0
+          Else (feature 1 > -120.9423333)
+           Predict: 3.0
+      Else (feature 4 > 26.0)
+       If (feature 5 <= 3.0)
+        If (feature 5 <= 2.0)
+         If (feature 4 <= 30.0)
+          If (feature 1 <= 67.224)
+           Predict: 2.0
+          Else (feature 1 > 67.224)
+           Predict: 4.0
+         Else (feature 4 > 30.0)
+          If (feature 0 <= 42.317)
+           Predict: 4.0
+          Else (feature 0 > 42.317)
+           Predict: 3.0
+        Else (feature 5 > 2.0)
+         If (feature 4 <= 29.0)
+          If (feature 0 <= 60.845)
+           Predict: 3.0
+          Else (feature 0 > 60.845)
+           Predict: 5.0
+         Else (feature 4 > 29.0)
+          If (feature 4 <= 30.0)
+           Predict: 3.0
+          Else (feature 4 > 30.0)
+           Predict: 3.0
+       Else (feature 5 > 3.0)
+        If (feature 1 <= 92.591)
+         If (feature 1 <= -153.274)
+          If (feature 4 <= 28.0)
+           Predict: 3.0
+          Else (feature 4 > 28.0)
+           Predict: 2.0
+         Else (feature 1 > -153.274)
+          Predict: 2.0
+        Else (feature 1 > 92.591)
+         If (feature 0 <= 42.317)
+          Predict: 3.0
+         Else (feature 0 > 42.317)
+          If (feature 1 <= 168.556)
+           Predict: 3.0
+          Else (feature 1 > 168.556)
+           Predict: 2.0
+     Else (feature 6 > 1968.0)
+      If (feature 4 <= 10.0)
+       If (feature 1 <= -142.62)
+        If (feature 4 <= 4.0)
+         If (feature 4 <= 3.0)
+          If (feature 6 <= 2008.0)
+           Predict: 1.0
+          Else (feature 6 > 2008.0)
+           Predict: 1.0
+         Else (feature 4 > 3.0)
+          If (feature 6 <= 2002.0)
+           Predict: 1.0
+          Else (feature 6 > 2002.0)
+           Predict: 1.0
+        Else (feature 4 > 4.0)
+         If (feature 5 <= 2.0)
+          If (feature 6 <= 1986.0)
+           Predict: 2.0
+          Else (feature 6 > 1986.0)
+           Predict: 1.0
+         Else (feature 5 > 2.0)
+          If (feature 6 <= 2008.0)
+           Predict: 1.0
+          Else (feature 6 > 2008.0)
+           Predict: 1.0
+       Else (feature 1 > -142.62)
+        If (feature 6 <= 2008.0)
+         If (feature 1 <= -0.31)
+          If (feature 6 <= 1993.0)
+           Predict: 2.0
+          Else (feature 6 > 1993.0)
+           Predict: 2.0
+         Else (feature 1 > -0.31)
+          If (feature 6 <= 2001.0)
+           Predict: 1.0
+          Else (feature 6 > 2001.0)
+           Predict: 2.0
+        Else (feature 6 > 2008.0)
+         If (feature 6 <= 2015.0)
+          If (feature 5 <= 10.0)
+           Predict: 1.0
+          Else (feature 5 > 10.0)
+           Predict: 1.0
+         Else (feature 6 > 2015.0)
+          If (feature 0 <= 54.358)
+           Predict: 2.0
+          Else (feature 0 > 54.358)
+           Predict: 1.0
+      Else (feature 4 > 10.0)
+       If (feature 6 <= 2008.0)
+        If (feature 1 <= -142.62)
+         If (feature 1 <= -172.693)
+          If (feature 4 <= 11.0)
+           Predict: 1.0
+          Else (feature 4 > 11.0)
+           Predict: 1.0
+         Else (feature 1 > -172.693)
+          If (feature 0 <= 51.606)
+           Predict: 2.0
+          Else (feature 0 > 51.606)
+           Predict: 1.0
+        Else (feature 1 > -142.62)
+         If (feature 6 <= 1975.0)
+          If (feature 1 <= 141.905)
+           Predict: 2.0
+          Else (feature 1 > 141.905)
+           Predict: 2.0
+         Else (feature 6 > 1975.0)
+          If (feature 0 <= 47.853)
+           Predict: 1.0
+          Else (feature 0 > 47.853)
+           Predict: 2.0
+       Else (feature 6 > 2008.0)
+        If (feature 4 <= 27.0)
+         If (feature 5 <= 4.0)
+          If (feature 3 <= 239.0)
+           Predict: 1.0
+          Else (feature 3 > 239.0)
+           Predict: 1.0
+         Else (feature 5 > 4.0)
+          If (feature 6 <= 2013.0)
+           Predict: 1.0
+          Else (feature 6 > 2013.0)
+           Predict: 1.0
+        Else (feature 4 > 27.0)
+         If (feature 6 <= 2010.0)
+          If (feature 5 <= 1.0)
+           Predict: 2.0
+          Else (feature 5 > 1.0)
+           Predict: 1.0
+         Else (feature 6 > 2010.0)
+          If (feature 4 <= 28.0)
+           Predict: 1.0
+          Else (feature 4 > 28.0)
+           Predict: 1.0
+ Tree 1:
+   If (feature 1 <= -111.05)
+    If (feature 1 <= -120.9423333)
+     If (feature 6 <= 2003.0)
+      If (feature 0 <= 54.358)
+       If (feature 6 <= 1968.0)
+        If (feature 1 <= -153.274)
+         If (feature 4 <= 1.0)
+          If (feature 1 <= -172.693)
+           Predict: 2.0
+          Else (feature 1 > -172.693)
+           Predict: 3.0
+         Else (feature 4 > 1.0)
+          If (feature 5 <= 3.0)
+           Predict: 3.0
+          Else (feature 5 > 3.0)
+           Predict: 3.0
+        Else (feature 1 > -153.274)
+         If (feature 3 <= 225.0)
+          If (feature 3 <= 41.0)
+           Predict: 4.0
+          Else (feature 3 > 41.0)
+           Predict: 1.0
+         Else (feature 3 > 225.0)
+          If (feature 5 <= 1.0)
+           Predict: 2.0
+          Else (feature 5 > 1.0)
+           Predict: 3.0
+       Else (feature 6 > 1968.0)
+        If (feature 0 <= 32.5833333)
+         If (feature 1 <= -153.274)
+          If (feature 0 <= 19.084)
+           Predict: 2.0
+          Else (feature 0 > 19.084)
+           Predict: 2.0
+         Else (feature 1 > -153.274)
+          If (feature 6 <= 2001.0)
+           Predict: 2.0
+          Else (feature 6 > 2001.0)
+           Predict: 2.0
+        Else (feature 0 > 32.5833333)
+         If (feature 5 <= 4.0)
+          If (feature 6 <= 1994.0)
+           Predict: 1.0
+          Else (feature 6 > 1994.0)
+           Predict: 2.0
+         Else (feature 5 > 4.0)
+          If (feature 6 <= 1979.0)
+           Predict: 2.0
+          Else (feature 6 > 1979.0)
+           Predict: 1.0
+      Else (feature 0 > 54.358)
+       If (feature 3 <= 196.0)
+        If (feature 4 <= 17.0)
+         If (feature 5 <= 4.0)
+          If (feature 4 <= 6.0)
+           Predict: 2.0
+          Else (feature 4 > 6.0)
+           Predict: 1.0
+         Else (feature 5 > 4.0)
+          If (feature 5 <= 5.0)
+           Predict: 1.0
+          Else (feature 5 > 5.0)
+           Predict: 1.0
+        Else (feature 4 > 17.0)
+         If (feature 5 <= 9.0)
+          If (feature 3 <= 41.0)
+           Predict: 2.0
+          Else (feature 3 > 41.0)
+           Predict: 2.0
+         Else (feature 5 > 9.0)
+          If (feature 0 <= 60.845)
+           Predict: 1.0
+          Else (feature 0 > 60.845)
+           Predict: 2.0
+       Else (feature 3 > 196.0)
+        If (feature 6 <= 1989.0)
+         If (feature 3 <= 225.0)
+          If (feature 6 <= 1968.0)
+           Predict: 3.0
+          Else (feature 6 > 1968.0)
+           Predict: 2.0
+         Else (feature 3 > 225.0)
+          If (feature 4 <= 15.0)
+           Predict: 2.0
+          Else (feature 4 > 15.0)
+           Predict: 1.0
+        Else (feature 6 > 1989.0)
+         If (feature 1 <= -153.274)
+          If (feature 5 <= 1.0)
+           Predict: 2.0
+          Else (feature 5 > 1.0)
+           Predict: 1.0
+         Else (feature 1 > -153.274)
+          If (feature 6 <= 1998.0)
+           Predict: 1.0
+          Else (feature 6 > 1998.0)
+           Predict: 1.0
+     Else (feature 6 > 2003.0)
+      If (feature 0 <= 8.387)
+       If (feature 0 <= -22.098)
+        If (feature 1 <= -153.274)
+         If (feature 6 <= 2005.0)
+          If (feature 5 <= 4.0)
+           Predict: 1.0
+          Else (feature 5 > 4.0)
+           Predict: 1.0
+         Else (feature 6 > 2005.0)
+          If (feature 4 <= 1.0)
+           Predict: 2.0
+          Else (feature 4 > 1.0)
+           Predict: 1.0
+        Else (feature 1 > -153.274)
+         If (feature 4 <= 4.0)
+          If (feature 5 <= 7.0)
+           Predict: 2.0
+          Else (feature 5 > 7.0)
+           Predict: 2.0
+         Else (feature 4 > 4.0)
+          If (feature 4 <= 25.0)
+           Predict: 2.0
+          Else (feature 4 > 25.0)
+           Predict: 2.0
+       Else (feature 0 > -22.098)
+        If (feature 5 <= 10.0)
+         If (feature 1 <= -177.4796)
+          If (feature 6 <= 2014.0)
+           Predict: 2.0
+          Else (feature 6 > 2014.0)
+           Predict: 2.0
+         Else (feature 1 > -177.4796)
+          If (feature 5 <= 4.0)
+           Predict: 2.0
+          Else (feature 5 > 4.0)
+           Predict: 1.0
+        Else (feature 5 > 10.0)
+         If (feature 6 <= 2013.0)
+          If (feature 4 <= 17.0)
+           Predict: 2.0
+          Else (feature 4 > 17.0)
+           Predict: 2.0
+         Else (feature 6 > 2013.0)
+          If (feature 1 <= -177.4796)
+           Predict: 2.0
+          Else (feature 1 > -177.4796)
+           Predict: 2.0
+      Else (feature 0 > 8.387)
+       If (feature 6 <= 2008.0)
+        If (feature 2 <= 1.0)
+         If (feature 6 <= 2005.0)
+          If (feature 6 <= 2004.0)
+           Predict: 1.0
+          Else (feature 6 > 2004.0)
+           Predict: 1.0
+         Else (feature 6 > 2005.0)
+          If (feature 5 <= 11.0)
+           Predict: 1.0
+          Else (feature 5 > 11.0)
+           Predict: 1.0
+        Else (feature 2 > 1.0)
+         If (feature 6 <= 2007.0)
+          If (feature 5 <= 10.0)
+           Predict: 1.0
+          Else (feature 5 > 10.0)
+           Predict: 1.0
+         Else (feature 6 > 2007.0)
+          If (feature 5 <= 11.0)
+           Predict: 1.0
+          Else (feature 5 > 11.0)
+           Predict: 1.0
+       Else (feature 6 > 2008.0)
+        If (feature 6 <= 2013.0)
+         If (feature 3 <= 225.0)
+          If (feature 5 <= 2.0)
+           Predict: 1.0
+          Else (feature 5 > 2.0)
+           Predict: 1.0
+         Else (feature 3 > 225.0)
+          If (feature 4 <= 27.0)
+           Predict: 1.0
+          Else (feature 4 > 27.0)
+           Predict: 1.0
+        Else (feature 6 > 2013.0)
+         If (feature 2 <= 1.0)
+          If (feature 0 <= 51.606)
+           Predict: 1.0
+          Else (feature 0 > 51.606)
+           Predict: 1.0
+         Else (feature 2 > 1.0)
+          If (feature 3 <= 41.0)
+           Predict: 1.0
+          Else (feature 3 > 41.0)
+           Predict: 1.0
+    Else (feature 1 > -120.9423333)
+     If (feature 6 <= 1975.0)
+      If (feature 3 <= 139.0)
+       If (feature 5 <= 11.0)
+        If (feature 6 <= 1968.0)
+         If (feature 1 <= -115.8353333)
+          If (feature 1 <= -116.793)
+           Predict: 1.0
+          Else (feature 1 > -116.793)
+           Predict: 1.0
+         Else (feature 1 > -115.8353333)
+          If (feature 4 <= 25.0)
+           Predict: 2.0
+          Else (feature 4 > 25.0)
+           Predict: 1.0
+        Else (feature 6 > 1968.0)
+         If (feature 4 <= 23.0)
+          If (feature 4 <= 4.0)
+           Predict: 1.0
+          Else (feature 4 > 4.0)
+           Predict: 2.0
+         Else (feature 4 > 23.0)
+          If (feature 5 <= 4.0)
+           Predict: 1.0
+          Else (feature 5 > 4.0)
+           Predict: 1.0
+       Else (feature 5 > 11.0)
+        If (feature 4 <= 1.0)
+         Predict: 1.0
+        Else (feature 4 > 1.0)
+         If (feature 1 <= -115.8353333)
+          If (feature 4 <= 7.0)
+           Predict: 1.0
+          Else (feature 4 > 7.0)
+           Predict: 2.0
+         Else (feature 1 > -115.8353333)
+          If (feature 6 <= 1968.0)
+           Predict: 2.0
+          Else (feature 6 > 1968.0)
+           Predict: 2.0
+      Else (feature 3 > 139.0)
+       If (feature 5 <= 11.0)
+        If (feature 6 <= 1968.0)
+         If (feature 5 <= 2.0)
+          If (feature 4 <= 8.0)
+           Predict: 1.0
+          Else (feature 4 > 8.0)
+           Predict: 1.0
+         Else (feature 5 > 2.0)
+          If (feature 0 <= 30.3)
+           Predict: 3.0
+          Else (feature 0 > 30.3)
+           Predict: 1.0
+        Else (feature 6 > 1968.0)
+         If (feature 5 <= 2.0)
+          If (feature 5 <= 1.0)
+           Predict: 1.0
+          Else (feature 5 > 1.0)
+           Predict: 1.0
+         Else (feature 5 > 2.0)
+          If (feature 4 <= 28.0)
+           Predict: 1.0
+          Else (feature 4 > 28.0)
+           Predict: 1.0
+       Else (feature 5 > 11.0)
+        If (feature 0 <= 36.5208333)
+         If (feature 4 <= 30.0)
+          If (feature 4 <= 28.0)
+           Predict: 1.0
+          Else (feature 4 > 28.0)
+           Predict: 1.0
+         Else (feature 4 > 30.0)
+          If (feature 1 <= -118.4406667)
+           Predict: 1.0
+          Else (feature 1 > -118.4406667)
+           Predict: 1.0
+        Else (feature 0 > 36.5208333)
+         If (feature 0 <= 38.107)
+          If (feature 4 <= 6.0)
+           Predict: 1.0
+          Else (feature 4 > 6.0)
+           Predict: 2.0
+         Else (feature 0 > 38.107)
+          If (feature 0 <= 40.18)
+           Predict: 4.0
+          Else (feature 0 > 40.18)
+           Predict: 1.0
+     Else (feature 6 > 1975.0)
+      If (feature 2 <= 1.0)
+       If (feature 1 <= -116.793)
+        If (feature 6 <= 1981.0)
+         If (feature 5 <= 2.0)
+          If (feature 4 <= 29.0)
+           Predict: 1.0
+          Else (feature 4 > 29.0)
+           Predict: 2.0
+         Else (feature 5 > 2.0)
+          If (feature 4 <= 4.0)
+           Predict: 1.0
+          Else (feature 4 > 4.0)
+           Predict: 1.0
+        Else (feature 6 > 1981.0)
+         If (feature 5 <= 10.0)
+          If (feature 5 <= 6.0)
+           Predict: 1.0
+          Else (feature 5 > 6.0)
+           Predict: 1.0
+         Else (feature 5 > 10.0)
+          If (feature 4 <= 2.0)
+           Predict: 1.0
+          Else (feature 4 > 2.0)
+           Predict: 1.0
+       Else (feature 1 > -116.793)
+        If (feature 6 <= 1981.0)
+         If (feature 4 <= 30.0)
+          If (feature 4 <= 20.0)
+           Predict: 2.0
+          Else (feature 4 > 20.0)
+           Predict: 2.0
+         Else (feature 4 > 30.0)
+          Predict: 1.0
+        Else (feature 6 > 1981.0)
+         If (feature 4 <= 30.0)
+          If (feature 6 <= 2011.0)
+           Predict: 2.0
+          Else (feature 6 > 2011.0)
+           Predict: 1.0
+         Else (feature 4 > 30.0)
+          If (feature 0 <= -22.098)
+           Predict: 2.0
+          Else (feature 0 > -22.098)
+           Predict: 1.0
+      Else (feature 2 > 1.0)
+       If (feature 6 <= 1984.0)
+        If (feature 3 <= 139.0)
+         If (feature 4 <= 21.0)
+          If (feature 1 <= -115.8353333)
+           Predict: 1.0
+          Else (feature 1 > -115.8353333)
+           Predict: 1.0
+         Else (feature 4 > 21.0)
+          If (feature 5 <= 2.0)
+           Predict: 1.0
+          Else (feature 5 > 2.0)
+           Predict: 1.0
+        Else (feature 3 > 139.0)
+         If (feature 1 <= -118.4406667)
+          If (feature 5 <= 10.0)
+           Predict: 1.0
+          Else (feature 5 > 10.0)
+           Predict: 1.0
+         Else (feature 1 > -118.4406667)
+          If (feature 0 <= 38.107)
+           Predict: 1.0
+          Else (feature 0 > 38.107)
+           Predict: 2.0
+       Else (feature 6 > 1984.0)
+        If (feature 0 <= 38.107)
+         If (feature 3 <= 139.0)
+          If (feature 4 <= 24.0)
+           Predict: 1.0
+          Else (feature 4 > 24.0)
+           Predict: 1.0
+         Else (feature 3 > 139.0)
+          If (feature 1 <= -115.8353333)
+           Predict: 1.0
+          Else (feature 1 > -115.8353333)
+           Predict: 1.0
+        Else (feature 0 > 38.107)
+         If (feature 0 <= 42.317)
+          If (feature 6 <= 2005.0)
+           Predict: 1.0
+          Else (feature 6 > 2005.0)
+           Predict: 1.0
+         Else (feature 0 > 42.317)
+          If (feature 5 <= 7.0)
+           Predict: 1.0
+          Else (feature 5 > 7.0)
+           Predict: 1.0
+   Else (feature 1 > -111.05)
+    If (feature 6 <= 1968.0)
+     If (feature 1 <= 105.817)
+      If (feature 1 <= -35.1257)
+       If (feature 0 <= 2.421)
+        If (feature 2 <= 1.0)
+         If (feature 4 <= 14.0)
+          If (feature 0 <= -17.985)
+           Predict: 3.0
+          Else (feature 0 > -17.985)
+           Predict: 3.0
+         Else (feature 4 > 14.0)
+          If (feature 4 <= 17.0)
+           Predict: 2.0
+          Else (feature 4 > 17.0)
+           Predict: 3.0
+        Else (feature 2 > 1.0)
+         If (feature 1 <= -66.246)
+          If (feature 5 <= 11.0)
+           Predict: 3.0
+          Else (feature 5 > 11.0)
+           Predict: 4.0
+         Else (feature 1 > -66.246)
+          If (feature 5 <= 1.0)
+           Predict: 3.0
+          Else (feature 5 > 1.0)
+           Predict: 3.0
+       Else (feature 0 > 2.421)
+        If (feature 5 <= 11.0)
+         If (feature 4 <= 7.0)
+          If (feature 3 <= 41.0)
+           Predict: 3.0
+          Else (feature 3 > 41.0)
+           Predict: 2.0
+         Else (feature 4 > 7.0)
+          If (feature 5 <= 1.0)
+           Predict: 3.0
+          Else (feature 5 > 1.0)
+           Predict: 3.0
+        Else (feature 5 > 11.0)
+         If (feature 3 <= 99.0)
+          If (feature 4 <= 5.0)
+           Predict: 3.0
+          Else (feature 4 > 5.0)
+           Predict: 2.0
+         Else (feature 3 > 99.0)
+          If (feature 1 <= -77.011)
+           Predict: 3.0
+          Else (feature 1 > -77.011)
+           Predict: 3.0
+      Else (feature 1 > -35.1257)
+       If (feature 0 <= 24.053)
+        If (feature 3 <= 239.0)
+         If (feature 4 <= 2.0)
+          If (feature 5 <= 11.0)
+           Predict: 3.0
+          Else (feature 5 > 11.0)
+           Predict: 2.0
+         Else (feature 4 > 2.0)
+          If (feature 0 <= -28.94)
+           Predict: 3.0
+          Else (feature 0 > -28.94)
+           Predict: 3.0
+        Else (feature 3 > 239.0)
+         Predict: 3.0
+       Else (feature 0 > 24.053)
+        If (feature 3 <= 227.0)
+         If (feature 4 <= 21.0)
+          If (feature 2 <= 5.0)
+           Predict: 2.0
+          Else (feature 2 > 5.0)
+           Predict: 2.0
+         Else (feature 4 > 21.0)
+          If (feature 2 <= 5.0)
+           Predict: 2.0
+          Else (feature 2 > 5.0)
+           Predict: 3.0
+        Else (feature 3 > 227.0)
+         If (feature 0 <= 38.942)
+          If (feature 1 <= 24.45)
+           Predict: 2.0
+          Else (feature 1 > 24.45)
+           Predict: 2.0
+         Else (feature 0 > 38.942)
+          If (feature 5 <= 8.0)
+           Predict: 2.0
+          Else (feature 5 > 8.0)
+           Predict: 2.0
+     Else (feature 1 > 105.817)
+      If (feature 0 <= 42.317)
+       If (feature 3 <= 217.0)
+        If (feature 0 <= 33.9495)
+         If (feature 4 <= 26.0)
+          If (feature 5 <= 1.0)
+           Predict: 3.0
+          Else (feature 5 > 1.0)
+           Predict: 3.0
+         Else (feature 4 > 26.0)
+          If (feature 4 <= 28.0)
+           Predict: 3.0
+          Else (feature 4 > 28.0)
+           Predict: 3.0
+        Else (feature 0 > 33.9495)
+         If (feature 4 <= 22.0)
+          If (feature 3 <= 73.0)
+           Predict: 3.0
+          Else (feature 3 > 73.0)
+           Predict: 3.0
+         Else (feature 4 > 22.0)
+          If (feature 5 <= 10.0)
+           Predict: 2.0
+          Else (feature 5 > 10.0)
+           Predict: 3.0
+       Else (feature 3 > 217.0)
+        If (feature 2 <= 1.0)
+         If (feature 1 <= 145.037)
+          If (feature 0 <= 38.107)
+           Predict: 3.0
+          Else (feature 0 > 38.107)
+           Predict: 3.0
+         Else (feature 1 > 145.037)
+          If (feature 4 <= 29.0)
+           Predict: 3.0
+          Else (feature 4 > 29.0)
+           Predict: 2.0
+        Else (feature 2 > 1.0)
+         If (feature 1 <= 168.556)
+          If (feature 4 <= 11.0)
+           Predict: 2.0
+          Else (feature 4 > 11.0)
+           Predict: 2.0
+         Else (feature 1 > 168.556)
+          Predict: 4.0
+      Else (feature 0 > 42.317)
+       If (feature 1 <= 168.556)
+        If (feature 1 <= 151.625)
+         If (feature 5 <= 11.0)
+          If (feature 4 <= 12.0)
+           Predict: 2.0
+          Else (feature 4 > 12.0)
+           Predict: 3.0
+         Else (feature 5 > 11.0)
+          If (feature 4 <= 30.0)
+           Predict: 2.0
+          Else (feature 4 > 30.0)
+           Predict: 3.0
+        Else (feature 1 > 151.625)
+         If (feature 4 <= 24.0)
+          If (feature 5 <= 10.0)
+           Predict: 3.0
+          Else (feature 5 > 10.0)
+           Predict: 3.0
+         Else (feature 4 > 24.0)
+          If (feature 5 <= 5.0)
+           Predict: 2.0
+          Else (feature 5 > 5.0)
+           Predict: 3.0
+       Else (feature 1 > 168.556)
+        If (feature 4 <= 6.0)
+         If (feature 5 <= 1.0)
+          If (feature 4 <= 1.0)
+           Predict: 2.0
+          Else (feature 4 > 1.0)
+           Predict: 4.0
+         Else (feature 5 > 1.0)
+          If (feature 5 <= 7.0)
+           Predict: 2.0
+          Else (feature 5 > 7.0)
+           Predict: 2.0
+        Else (feature 4 > 6.0)
+         Predict: 2.0
+    Else (feature 6 > 1968.0)
+     If (feature 1 <= 29.493)
+      If (feature 3 <= 225.0)
+       If (feature 1 <= 24.45)
+        If (feature 0 <= 30.3)
+         If (feature 1 <= -77.011)
+          If (feature 6 <= 2008.0)
+           Predict: 2.0
+          Else (feature 6 > 2008.0)
+           Predict: 2.0
+         Else (feature 1 > -77.011)
+          If (feature 3 <= 26.0)
+           Predict: 2.0
+          Else (feature 3 > 26.0)
+           Predict: 1.0
+        Else (feature 0 > 30.3)
+         If (feature 3 <= 196.0)
+          If (feature 3 <= 73.0)
+           Predict: 1.0
+          Else (feature 3 > 73.0)
+           Predict: 1.0
+         Else (feature 3 > 196.0)
+          If (feature 0 <= 38.942)
+           Predict: 1.0
+          Else (feature 0 > 38.942)
+           Predict: 1.0
+       Else (feature 1 > 24.45)
+        If (feature 0 <= 38.942)
+         If (feature 0 <= -22.098)
+          If (feature 6 <= 2014.0)
+           Predict: 1.0
+          Else (feature 6 > 2014.0)
+           Predict: 2.0
+         Else (feature 0 > -22.098)
+          If (feature 4 <= 30.0)
+           Predict: 2.0
+          Else (feature 4 > 30.0)
+           Predict: 2.0
+        Else (feature 0 > 38.942)
+         If (feature 3 <= 196.0)
+          If (feature 5 <= 10.0)
+           Predict: 2.0
+          Else (feature 5 > 10.0)
+           Predict: 1.0
+         Else (feature 3 > 196.0)
+          If (feature 4 <= 6.0)
+           Predict: 1.0
+          Else (feature 4 > 6.0)
+           Predict: 1.0
+      Else (feature 3 > 225.0)
+       If (feature 6 <= 2004.0)
+        If (feature 4 <= 26.0)
+         If (feature 6 <= 1975.0)
+          If (feature 1 <= -35.1257)
+           Predict: 2.0
+          Else (feature 1 > -35.1257)
+           Predict: 2.0
+         Else (feature 6 > 1975.0)
+          If (feature 1 <= -77.011)
+           Predict: 2.0
+          Else (feature 1 > -77.011)
+           Predict: 1.0
+        Else (feature 4 > 26.0)
+         If (feature 1 <= 14.494)
+          If (feature 6 <= 1991.0)
+           Predict: 1.0
+          Else (feature 6 > 1991.0)
+           Predict: 2.0
+         Else (feature 1 > 14.494)
+          If (feature 1 <= 24.45)
+           Predict: 2.0
+          Else (feature 1 > 24.45)
+           Predict: 2.0
+       Else (feature 6 > 2004.0)
+        If (feature 1 <= -77.011)
+         If (feature 0 <= 8.387)
+          If (feature 6 <= 2011.0)
+           Predict: 2.0
+          Else (feature 6 > 2011.0)
+           Predict: 1.0
+         Else (feature 0 > 8.387)
+          If (feature 6 <= 2009.0)
+           Predict: 2.0
+          Else (feature 6 > 2009.0)
+           Predict: 2.0
+        Else (feature 1 > -77.011)
+         If (feature 6 <= 2009.0)
+          If (feature 6 <= 2007.0)
+           Predict: 2.0
+          Else (feature 6 > 2007.0)
+           Predict: 2.0
+         Else (feature 6 > 2009.0)
+          If (feature 5 <= 1.0)
+           Predict: 1.0
+          Else (feature 5 > 1.0)
+           Predict: 2.0
+     Else (feature 1 > 29.493)
+      If (feature 0 <= 8.387)
+       If (feature 3 <= 73.0)
+        If (feature 0 <= -28.94)
+         If (feature 0 <= -32.676)
+          If (feature 1 <= 141.905)
+           Predict: 1.0
+          Else (feature 1 > 141.905)
+           Predict: 2.0
+         Else (feature 0 > -32.676)
+          If (feature 6 <= 2007.0)
+           Predict: 1.0
+          Else (feature 6 > 2007.0)
+           Predict: 2.0
+        Else (feature 0 > -28.94)
+         If (feature 6 <= 1979.0)
+          If (feature 5 <= 8.0)
+           Predict: 2.0
+          Else (feature 5 > 8.0)
+           Predict: 2.0
+         Else (feature 6 > 1979.0)
+          If (feature 6 <= 2015.0)
+           Predict: 1.0
+          Else (feature 6 > 2015.0)
+           Predict: 2.0
+       Else (feature 3 > 73.0)
+        If (feature 6 <= 1979.0)
+         If (feature 6 <= 1975.0)
+          If (feature 2 <= 5.0)
+           Predict: 2.0
+          Else (feature 2 > 5.0)
+           Predict: 2.0
+         Else (feature 6 > 1975.0)
+          If (feature 3 <= 239.0)
+           Predict: 2.0
+          Else (feature 3 > 239.0)
+           Predict: 2.0
+        Else (feature 6 > 1979.0)
+         If (feature 5 <= 10.0)
+          If (feature 5 <= 5.0)
+           Predict: 2.0
+          Else (feature 5 > 5.0)
+           Predict: 2.0
+         Else (feature 5 > 10.0)
+          If (feature 1 <= 168.556)
+           Predict: 2.0
+          Else (feature 1 > 168.556)
+           Predict: 2.0
+      Else (feature 0 > 8.387)
+       If (feature 6 <= 1994.0)
+        If (feature 1 <= 105.817)
+         If (feature 0 <= 47.853)
+          If (feature 0 <= 38.942)
+           Predict: 1.0
+          Else (feature 0 > 38.942)
+           Predict: 1.0
+         Else (feature 0 > 47.853)
+          If (feature 1 <= 92.591)
+           Predict: 2.0
+          Else (feature 1 > 92.591)
+           Predict: 2.0
+        Else (feature 1 > 105.817)
+         If (feature 0 <= 38.942)
+          If (feature 0 <= 32.5833333)
+           Predict: 2.0
+          Else (feature 0 > 32.5833333)
+           Predict: 2.0
+         Else (feature 0 > 38.942)
+          If (feature 5 <= 6.0)
+           Predict: 1.0
+          Else (feature 5 > 6.0)
+           Predict: 1.0
+       Else (feature 6 > 1994.0)
+        If (feature 2 <= 2.0)
+         If (feature 1 <= 168.556)
+          If (feature 0 <= 13.473)
+           Predict: 1.0
+          Else (feature 0 > 13.473)
+           Predict: 2.0
+         Else (feature 1 > 168.556)
+          If (feature 6 <= 2008.0)
+           Predict: 2.0
+          Else (feature 6 > 2008.0)
+           Predict: 1.0
+        Else (feature 2 > 2.0)
+         If (feature 5 <= 8.0)
+          If (feature 5 <= 4.0)
+           Predict: 2.0
+          Else (feature 5 > 4.0)
+           Predict: 2.0
+         Else (feature 5 > 8.0)
+          If (feature 3 <= 227.0)
+           Predict: 2.0
+          Else (feature 3 > 227.0)
+           Predict: 2.0
+ Tree 2:
+   If (feature 1 <= -111.05)
+    If (feature 0 <= 19.084)
+     If (feature 5 <= 2.0)
+      If (feature 0 <= -22.098)
+       If (feature 0 <= -37.635)
+        If (feature 6 <= 1968.0)
+         Predict: 3.0
+        Else (feature 6 > 1968.0)
+         If (feature 6 <= 2011.0)
+          If (feature 1 <= -142.62)
+           Predict: 2.0
+          Else (feature 1 > -142.62)
+           Predict: 2.0
+         Else (feature 6 > 2011.0)
+          If (feature 3 <= 26.0)
+           Predict: 1.0
+          Else (feature 3 > 26.0)
+           Predict: 2.0
+       Else (feature 0 > -37.635)
+        If (feature 6 <= 1968.0)
+         If (feature 5 <= 1.0)
+          If (feature 4 <= 10.0)
+           Predict: 3.0
+          Else (feature 4 > 10.0)
+           Predict: 3.0
+         Else (feature 5 > 1.0)
+          If (feature 4 <= 20.0)
+           Predict: 3.0
+          Else (feature 4 > 20.0)
+           Predict: 2.0
+        Else (feature 6 > 1968.0)
+         If (feature 4 <= 11.0)
+          If (feature 6 <= 1997.0)
+           Predict: 2.0
+          Else (feature 6 > 1997.0)
+           Predict: 1.0
+         Else (feature 4 > 11.0)
+          If (feature 4 <= 26.0)
+           Predict: 2.0
+          Else (feature 4 > 26.0)
+           Predict: 1.0
+      Else (feature 0 > -22.098)
+       If (feature 5 <= 1.0)
+        If (feature 1 <= -172.693)
+         If (feature 6 <= 1968.0)
+          If (feature 4 <= 1.0)
+           Predict: 2.0
+          Else (feature 4 > 1.0)
+           Predict: 3.0
+         Else (feature 6 > 1968.0)
+          If (feature 6 <= 1979.0)
+           Predict: 2.0
+          Else (feature 6 > 1979.0)
+           Predict: 2.0
+        Else (feature 1 > -172.693)
+         If (feature 6 <= 2013.0)
+          If (feature 4 <= 1.0)
+           Predict: 1.0
+          Else (feature 4 > 1.0)
+           Predict: 1.0
+         Else (feature 6 > 2013.0)
+          If (feature 0 <= -17.985)
+           Predict: 2.0
+          Else (feature 0 > -17.985)
+           Predict: 1.0
+       Else (feature 5 > 1.0)
+        If (feature 4 <= 8.0)
+         If (feature 0 <= -17.985)
+          If (feature 1 <= -172.693)
+           Predict: 2.0
+          Else (feature 1 > -172.693)
+           Predict: 1.0
+         Else (feature 0 > -17.985)
+          If (feature 4 <= 1.0)
+           Predict: 1.0
+          Else (feature 4 > 1.0)
+           Predict: 2.0
+        Else (feature 4 > 8.0)
+         If (feature 1 <= -172.693)
+          If (feature 4 <= 17.0)
+           Predict: 2.0
+          Else (feature 4 > 17.0)
+           Predict: 2.0
+         Else (feature 1 > -172.693)
+          If (feature 4 <= 21.0)
+           Predict: 1.0
+          Else (feature 4 > 21.0)
+           Predict: 2.0
+     Else (feature 5 > 2.0)
+      If (feature 0 <= -37.635)
+       If (feature 5 <= 5.0)
+        If (feature 4 <= 12.0)
+         If (feature 1 <= -118.4406667)
+          If (feature 6 <= 2001.0)
+           Predict: 2.0
+          Else (feature 6 > 2001.0)
+           Predict: 1.0
+         Else (feature 1 > -118.4406667)
+          If (feature 6 <= 2007.0)
+           Predict: 2.0
+          Else (feature 6 > 2007.0)
+           Predict: 1.0
+        Else (feature 4 > 12.0)
+         If (feature 4 <= 15.0)
+          If (feature 1 <= -177.4796)
+           Predict: 1.0
+          Else (feature 1 > -177.4796)
+           Predict: 2.0
+         Else (feature 4 > 15.0)
+          If (feature 5 <= 4.0)
+           Predict: 2.0
+          Else (feature 5 > 4.0)
+           Predict: 1.0
+       Else (feature 5 > 5.0)
+        If (feature 6 <= 1968.0)
+         If (feature 5 <= 10.0)
+          If (feature 5 <= 7.0)
+           Predict: 2.0
+          Else (feature 5 > 7.0)
+           Predict: 3.0
+         Else (feature 5 > 10.0)
+          Predict: 2.0
+        Else (feature 6 > 1968.0)
+         If (feature 6 <= 2001.0)
+          If (feature 4 <= 30.0)
+           Predict: 2.0
+          Else (feature 4 > 30.0)
+           Predict: 1.0
+         Else (feature 6 > 2001.0)
+          If (feature 5 <= 7.0)
+           Predict: 2.0
+          Else (feature 5 > 7.0)
+           Predict: 2.0
+      Else (feature 0 > -37.635)
+       If (feature 1 <= -177.4796)
+        If (feature 6 <= 1968.0)
+         If (feature 4 <= 5.0)
+          If (feature 0 <= -17.985)
+           Predict: 3.0
+          Else (feature 0 > -17.985)
+           Predict: 2.0
+         Else (feature 4 > 5.0)
+          If (feature 0 <= -28.94)
+           Predict: 3.0
+          Else (feature 0 > -28.94)
+           Predict: 3.0
+        Else (feature 6 > 1968.0)
+         If (feature 0 <= -28.94)
+          If (feature 6 <= 1991.0)
+           Predict: 2.0
+          Else (feature 6 > 1991.0)
+           Predict: 1.0
+         Else (feature 0 > -28.94)
+          If (feature 4 <= 26.0)
+           Predict: 2.0
+          Else (feature 4 > 26.0)
+           Predict: 2.0
+       Else (feature 1 > -177.4796)
+        If (feature 6 <= 1968.0)
+         If (feature 4 <= 1.0)
+          Predict: 2.0
+         Else (feature 4 > 1.0)
+          If (feature 5 <= 8.0)
+           Predict: 3.0
+          Else (feature 5 > 8.0)
+           Predict: 3.0
+        Else (feature 6 > 1968.0)
+         If (feature 4 <= 24.0)
+          If (feature 6 <= 1998.0)
+           Predict: 2.0
+          Else (feature 6 > 1998.0)
+           Predict: 1.0
+         Else (feature 4 > 24.0)
+          If (feature 6 <= 1994.0)
+           Predict: 2.0
+          Else (feature 6 > 1994.0)
+           Predict: 1.0
+    Else (feature 0 > 19.084)
+     If (feature 3 <= 225.0)
+      If (feature 0 <= 38.107)
+       If (feature 6 <= 1975.0)
+        If (feature 0 <= 33.9495)
+         If (feature 6 <= 1968.0)
+          If (feature 1 <= -116.793)
+           Predict: 1.0
+          Else (feature 1 > -116.793)
+           Predict: 1.0
+         Else (feature 6 > 1968.0)
+          If (feature 5 <= 5.0)
+           Predict: 1.0
+          Else (feature 5 > 5.0)
+           Predict: 1.0
+        Else (feature 0 > 33.9495)
+         If (feature 6 <= 1968.0)
+          If (feature 4 <= 22.0)
+           Predict: 1.0
+          Else (feature 4 > 22.0)
+           Predict: 1.0
+         Else (feature 6 > 1968.0)
+          If (feature 5 <= 2.0)
+           Predict: 1.0
+          Else (feature 5 > 2.0)
+           Predict: 1.0
+       Else (feature 6 > 1975.0)
+        If (feature 4 <= 24.0)
+         If (feature 1 <= -120.9423333)
+          If (feature 6 <= 2007.0)
+           Predict: 1.0
+          Else (feature 6 > 2007.0)
+           Predict: 1.0
+         Else (feature 1 > -120.9423333)
+          If (feature 3 <= 139.0)
+           Predict: 1.0
+          Else (feature 3 > 139.0)
+           Predict: 1.0
+        Else (feature 4 > 24.0)
+         If (feature 5 <= 6.0)
+          If (feature 6 <= 1981.0)
+           Predict: 1.0
+          Else (feature 6 > 1981.0)
+           Predict: 1.0
+         Else (feature 5 > 6.0)
+          If (feature 1 <= -118.4406667)
+           Predict: 1.0
+          Else (feature 1 > -118.4406667)
+           Predict: 1.0
+      Else (feature 0 > 38.107)
+       If (feature 1 <= -142.62)
+        If (feature 5 <= 3.0)
+         If (feature 6 <= 2004.0)
+          If (feature 6 <= 1991.0)
+           Predict: 2.0
+          Else (feature 6 > 1991.0)
+           Predict: 1.0
+         Else (feature 6 > 2004.0)
+          If (feature 6 <= 2006.0)
+           Predict: 1.0
+          Else (feature 6 > 2006.0)
+           Predict: 1.0
+        Else (feature 5 > 3.0)
+         If (feature 6 <= 1989.0)
+          If (feature 6 <= 1968.0)
+           Predict: 2.0
+          Else (feature 6 > 1968.0)
+           Predict: 2.0
+         Else (feature 6 > 1989.0)
+          If (feature 6 <= 2007.0)
+           Predict: 1.0
+          Else (feature 6 > 2007.0)
+           Predict: 1.0
+       Else (feature 1 > -142.62)
+        If (feature 6 <= 2004.0)
+         If (feature 1 <= -115.8353333)
+          If (feature 6 <= 1979.0)
+           Predict: 2.0
+          Else (feature 6 > 1979.0)
+           Predict: 1.0
+         Else (feature 1 > -115.8353333)
+          If (feature 6 <= 1993.0)
+           Predict: 2.0
+          Else (feature 6 > 1993.0)
+           Predict: 1.0
+        Else (feature 6 > 2004.0)
+         If (feature 3 <= 41.0)
+          If (feature 6 <= 2011.0)
+           Predict: 2.0
+          Else (feature 6 > 2011.0)
+           Predict: 1.0
+         Else (feature 3 > 41.0)
+          If (feature 6 <= 2011.0)
+           Predict: 1.0
+          Else (feature 6 > 2011.0)
+           Predict: 1.0
+     Else (feature 3 > 225.0)
+      If (feature 1 <= -120.9423333)
+       If (feature 6 <= 2003.0)
+        If (feature 0 <= 54.358)
+         If (feature 0 <= 38.107)
+          If (feature 4 <= 4.0)
+           Predict: 2.0
+          Else (feature 4 > 4.0)
+           Predict: 1.0
+         Else (feature 0 > 38.107)
+          If (feature 6 <= 1968.0)
+           Predict: 3.0
+          Else (feature 6 > 1968.0)
+           Predict: 2.0
+        Else (feature 0 > 54.358)
+         If (feature 6 <= 1968.0)
+          If (feature 1 <= -142.62)
+           Predict: 3.0
+          Else (feature 1 > -142.62)
+           Predict: 4.0
+         Else (feature 6 > 1968.0)
+          If (feature 5 <= 7.0)
+           Predict: 1.0
+          Else (feature 5 > 7.0)
+           Predict: 1.0
+       Else (feature 6 > 2003.0)
+        If (feature 6 <= 2009.0)
+         If (feature 6 <= 2004.0)
+          If (feature 5 <= 1.0)
+           Predict: 1.0
+          Else (feature 5 > 1.0)
+           Predict: 1.0
+         Else (feature 6 > 2004.0)
+          If (feature 1 <= -142.62)
+           Predict: 1.0
+          Else (feature 1 > -142.62)
+           Predict: 1.0
+        Else (feature 6 > 2009.0)
+         If (feature 5 <= 5.0)
+          If (feature 0 <= 47.853)
+           Predict: 1.0
+          Else (feature 0 > 47.853)
+           Predict: 1.0
+         Else (feature 5 > 5.0)
+          If (feature 6 <= 2013.0)
+           Predict: 1.0
+          Else (feature 6 > 2013.0)
+           Predict: 1.0
+      Else (feature 1 > -120.9423333)
+       If (feature 4 <= 29.0)
+        If (feature 1 <= -116.793)
+         If (feature 6 <= 1975.0)
+          If (feature 0 <= 32.5833333)
+           Predict: 1.0
+          Else (feature 0 > 32.5833333)
+           Predict: 1.0
+         Else (feature 6 > 1975.0)
+          If (feature 6 <= 2007.0)
+           Predict: 1.0
+          Else (feature 6 > 2007.0)
+           Predict: 1.0
+        Else (feature 1 > -116.793)
+         If (feature 5 <= 3.0)
+          If (feature 1 <= -115.8353333)
+           Predict: 1.0
+          Else (feature 1 > -115.8353333)
+           Predict: 2.0
+         Else (feature 5 > 3.0)
+          If (feature 6 <= 2010.0)
+           Predict: 1.0
+          Else (feature 6 > 2010.0)
+           Predict: 2.0
+       Else (feature 4 > 29.0)
+        If (feature 5 <= 9.0)
+         If (feature 0 <= 30.3)
+          If (feature 4 <= 30.0)
+           Predict: 2.0
+          Else (feature 4 > 30.0)
+           Predict: 1.0
+         Else (feature 0 > 30.3)
+          If (feature 5 <= 8.0)
+           Predict: 1.0
+          Else (feature 5 > 8.0)
+           Predict: 1.0
+        Else (feature 5 > 9.0)
+         If (feature 0 <= 32.5833333)
+          If (feature 5 <= 10.0)
+           Predict: 1.0
+          Else (feature 5 > 10.0)
+           Predict: 1.0
+         Else (feature 0 > 32.5833333)
+          Predict: 1.0
+   Else (feature 1 > -111.05)
+    If (feature 3 <= 227.0)
+     If (feature 3 <= 196.0)
+      If (feature 1 <= 21.089)
+       If (feature 0 <= 40.18)
+        If (feature 4 <= 24.0)
+         If (feature 6 <= 1968.0)
+          If (feature 0 <= 13.473)
+           Predict: 3.0
+          Else (feature 0 > 13.473)
+           Predict: 2.0
+         Else (feature 6 > 1968.0)
+          If (feature 1 <= -71.669)
+           Predict: 2.0
+          Else (feature 1 > -71.669)
+           Predict: 1.0
+        Else (feature 4 > 24.0)
+         If (feature 3 <= 41.0)
+          If (feature 6 <= 2008.0)
+           Predict: 1.0
+          Else (feature 6 > 2008.0)
+           Predict: 2.0
+         Else (feature 3 > 41.0)
+          If (feature 0 <= 38.942)
+           Predict: 2.0
+          Else (feature 0 > 38.942)
+           Predict: 2.0
+       Else (feature 0 > 40.18)
+        If (feature 3 <= 167.0)
+         If (feature 6 <= 1984.0)
+          If (feature 4 <= 22.0)
+           Predict: 1.0
+          Else (feature 4 > 22.0)
+           Predict: 2.0
+         Else (feature 6 > 1984.0)
+          If (feature 6 <= 2008.0)
+           Predict: 1.0
+          Else (feature 6 > 2008.0)
+           Predict: 1.0
+        Else (feature 3 > 167.0)
+         If (feature 0 <= 47.853)
+          If (feature 6 <= 1981.0)
+           Predict: 2.0
+          Else (feature 6 > 1981.0)
+           Predict: 1.0
+         Else (feature 0 > 47.853)
+          If (feature 6 <= 2000.0)
+           Predict: 2.0
+          Else (feature 6 > 2000.0)
+           Predict: 1.0
+      Else (feature 1 > 21.089)
+       If (feature 0 <= -22.098)
+        If (feature 6 <= 2008.0)
+         If (feature 6 <= 1968.0)
+          If (feature 5 <= 3.0)
+           Predict: 3.0
+          Else (feature 5 > 3.0)
+           Predict: 3.0
+         Else (feature 6 > 1968.0)
+          If (feature 3 <= 167.0)
+           Predict: 1.0
+          Else (feature 3 > 167.0)
+           Predict: 1.0
+        Else (feature 6 > 2008.0)
+         If (feature 6 <= 2015.0)
+          If (feature 4 <= 4.0)
+           Predict: 2.0
+          Else (feature 4 > 4.0)
+           Predict: 2.0
+         Else (feature 6 > 2015.0)
+          If (feature 5 <= 1.0)
+           Predict: 1.0
+          Else (feature 5 > 1.0)
+           Predict: 2.0
+       Else (feature 0 > -22.098)
+        If (feature 3 <= 73.0)
+         If (feature 4 <= 20.0)
+          If (feature 6 <= 1968.0)
+           Predict: 3.0
+          Else (feature 6 > 1968.0)
+           Predict: 2.0
+         Else (feature 4 > 20.0)
+          If (feature 6 <= 2010.0)
+           Predict: 1.0
+          Else (feature 6 > 2010.0)
+           Predict: 2.0
+        Else (feature 3 > 73.0)
+         If (feature 1 <= 24.45)
+          If (feature 3 <= 99.0)
+           Predict: 2.0
+          Else (feature 3 > 99.0)
+           Predict: 1.0
+         Else (feature 1 > 24.45)
+          If (feature 4 <= 5.0)
+           Predict: 2.0
+          Else (feature 4 > 5.0)
+           Predict: 2.0
+     Else (feature 3 > 196.0)
+      If (feature 6 <= 1968.0)
+       If (feature 0 <= 30.3)
+        If (feature 5 <= 8.0)
+         Predict: 3.0
+        Else (feature 5 > 8.0)
+         If (feature 0 <= 24.053)
+          If (feature 5 <= 10.0)
+           Predict: 4.0
+          Else (feature 5 > 10.0)
+           Predict: 4.0
+         Else (feature 0 > 24.053)
+          Predict: 3.0
+       Else (feature 0 > 30.3)
+        If (feature 3 <= 225.0)
+         If (feature 4 <= 30.0)
+          If (feature 2 <= 5.0)
+           Predict: 2.0
+          Else (feature 2 > 5.0)
+           Predict: 2.0
+         Else (feature 4 > 30.0)
+          If (feature 5 <= 3.0)
+           Predict: 3.0
+          Else (feature 5 > 3.0)
+           Predict: 2.0
+        Else (feature 3 > 225.0)
+         If (feature 4 <= 18.0)
+          Predict: 3.0
+         Else (feature 4 > 18.0)
+          Predict: 2.0
+      Else (feature 6 > 1968.0)
+       If (feature 2 <= 4.0)
+        If (feature 1 <= 29.493)
+         If (feature 0 <= 42.317)
+          If (feature 6 <= 1989.0)
+           Predict: 1.0
+          Else (feature 6 > 1989.0)
+           Predict: 1.0
+         Else (feature 0 > 42.317)
+          If (feature 6 <= 2013.0)
+           Predict: 1.0
+          Else (feature 6 > 2013.0)
+           Predict: 2.0
+        Else (feature 1 > 29.493)
+         If (feature 6 <= 2001.0)
+          If (feature 6 <= 1994.0)
+           Predict: 1.0
+          Else (feature 6 > 1994.0)
+           Predict: 1.0
+         Else (feature 6 > 2001.0)
+          If (feature 1 <= 67.224)
+           Predict: 2.0
+          Else (feature 1 > 67.224)
+           Predict: 1.0
+       Else (feature 2 > 4.0)
+        If (feature 0 <= 38.942)
+         If (feature 4 <= 11.0)
+          If (feature 6 <= 2008.0)
+           Predict: 2.0
+          Else (feature 6 > 2008.0)
+           Predict: 2.0
+         Else (feature 4 > 11.0)
+          If (feature 5 <= 2.0)
+           Predict: 1.0
+          Else (feature 5 > 2.0)
+           Predict: 2.0
+        Else (feature 0 > 38.942)
+         If (feature 5 <= 4.0)
+          If (feature 4 <= 25.0)
+           Predict: 1.0
+          Else (feature 4 > 25.0)
+           Predict: 2.0
+         Else (feature 5 > 4.0)
+          If (feature 6 <= 1989.0)
+           Predict: 1.0
+          Else (feature 6 > 1989.0)
+           Predict: 2.0
+    Else (feature 3 > 227.0)
+     If (feature 4 <= 23.0)
+      If (feature 6 <= 1968.0)
+       If (feature 1 <= 67.224)
+        If (feature 0 <= 24.053)
+         If (feature 5 <= 8.0)
+          If (feature 0 <= -7.558)
+           Predict: 3.0
+          Else (feature 0 > -7.558)
+           Predict: 2.0
+         Else (feature 5 > 8.0)
+          If (feature 4 <= 16.0)
+           Predict: 3.0
+          Else (feature 4 > 16.0)
+           Predict: 3.0
+        Else (feature 0 > 24.053)
+         If (feature 0 <= 44.509)
+          Predict: 2.0
+         Else (feature 0 > 44.509)
+          If (feature 4 <= 10.0)
+           Predict: 2.0
+          Else (feature 4 > 10.0)
+           Predict: 2.0
+       Else (feature 1 > 67.224)
+        If (feature 4 <= 21.0)
+         If (feature 3 <= 228.0)
+          If (feature 4 <= 11.0)
+           Predict: 4.0
+          Else (feature 4 > 11.0)
+           Predict: 2.0
+         Else (feature 3 > 228.0)
+          If (feature 0 <= 42.317)
+           Predict: 3.0
+          Else (feature 0 > 42.317)
+           Predict: 2.0
+        Else (feature 4 > 21.0)
+         If (feature 0 <= -13.225)
+          If (feature 4 <= 22.0)
+           Predict: 2.0
+          Else (feature 4 > 22.0)
+           Predict: 3.0
+         Else (feature 0 > -13.225)
+          If (feature 5 <= 1.0)
+           Predict: 3.0
+          Else (feature 5 > 1.0)
+           Predict: 3.0
+      Else (feature 6 > 1968.0)
+       If (feature 6 <= 2005.0)
+        If (feature 1 <= 105.817)
+         If (feature 1 <= -77.011)
+          If (feature 5 <= 9.0)
+           Predict: 2.0
+          Else (feature 5 > 9.0)
+           Predict: 2.0
+         Else (feature 1 > -77.011)
+          If (feature 6 <= 1981.0)
+           Predict: 2.0
+          Else (feature 6 > 1981.0)
+           Predict: 1.0
+        Else (feature 1 > 105.817)
+         If (feature 0 <= 8.387)
+          If (feature 4 <= 14.0)
+           Predict: 2.0
+          Else (feature 4 > 14.0)
+           Predict: 2.0
+         Else (feature 0 > 8.387)
+          If (feature 6 <= 1975.0)
+           Predict: 2.0
+          Else (feature 6 > 1975.0)
+           Predict: 2.0
+       Else (feature 6 > 2005.0)
+        If (feature 0 <= 40.18)
+         If (feature 1 <= -77.011)
+          If (feature 0 <= 13.473)
+           Predict: 2.0
+          Else (feature 0 > 13.473)
+           Predict: 2.0
+         Else (feature 1 > -77.011)
+          If (feature 5 <= 10.0)
+           Predict: 2.0
+          Else (feature 5 > 10.0)
+           Predict: 2.0
+        Else (feature 0 > 40.18)
+         If (feature 0 <= 54.358)
+          If (feature 6 <= 2011.0)
+           Predict: 2.0
+          Else (feature 6 > 2011.0)
+           Predict: 1.0
+         Else (feature 0 > 54.358)
+          If (feature 3 <= 239.0)
+           Predict: 2.0
+          Else (feature 3 > 239.0)
+           Predict: 2.0
+     Else (feature 4 > 23.0)
+      If (feature 5 <= 4.0)
+       If (feature 1 <= 151.625)
+        If (feature 1 <= -77.011)
+         If (feature 0 <= 19.084)
+          If (feature 4 <= 26.0)
+           Predict: 2.0
+          Else (feature 4 > 26.0)
+           Predict: 2.0
+         Else (feature 0 > 19.084)
+          If (feature 6 <= 1998.0)
+           Predict: 2.0
+          Else (feature 6 > 1998.0)
+           Predict: 2.0
+        Else (feature 1 > -77.011)
+         If (feature 6 <= 1968.0)
+          If (feature 4 <= 25.0)
+           Predict: 2.0
+          Else (feature 4 > 25.0)
+           Predict: 3.0
+         Else (feature 6 > 1968.0)
+          If (feature 6 <= 2013.0)
+           Predict: 2.0
+          Else (feature 6 > 2013.0)
+           Predict: 2.0
+       Else (feature 1 > 151.625)
+        If (feature 6 <= 1968.0)
+         If (feature 0 <= 51.606)
+          If (feature 0 <= -13.225)
+           Predict: 3.0
+          Else (feature 0 > -13.225)
+           Predict: 3.0
+         Else (feature 0 > 51.606)
+          If (feature 5 <= 1.0)
+           Predict: 3.0
+          Else (feature 5 > 1.0)
+           Predict: 2.0
+        Else (feature 6 > 1968.0)
+         If (feature 6 <= 2009.0)
+          If (feature 6 <= 2002.0)
+           Predict: 2.0
+          Else (feature 6 > 2002.0)
+           Predict: 1.0
+         Else (feature 6 > 2009.0)
+          If (feature 1 <= 168.556)
+           Predict: 2.0
+          Else (feature 1 > 168.556)
+           Predict: 2.0
+      Else (feature 5 > 4.0)
+       If (feature 4 <= 29.0)
+        If (feature 6 <= 1968.0)
+         If (feature 1 <= 168.556)
+          If (feature 5 <= 5.0)
+           Predict: 2.0
+          Else (feature 5 > 5.0)
+           Predict: 3.0
+         Else (feature 1 > 168.556)
+          If (feature 4 <= 28.0)
+           Predict: 2.0
+          Else (feature 4 > 28.0)
+           Predict: 3.0
+        Else (feature 6 > 1968.0)
+         If (feature 6 <= 2003.0)
+          If (feature 1 <= 141.905)
+           Predict: 2.0
+          Else (feature 1 > 141.905)
+           Predict: 1.0
+         Else (feature 6 > 2003.0)
+          If (feature 5 <= 9.0)
+           Predict: 2.0
+          Else (feature 5 > 9.0)
+           Predict: 2.0
+       Else (feature 4 > 29.0)
+        If (feature 6 <= 1968.0)
+         If (feature 5 <= 10.0)
+          If (feature 5 <= 5.0)
+           Predict: 3.0
+          Else (feature 5 > 5.0)
+           Predict: 2.0
+         Else (feature 5 > 10.0)
+          If (feature 0 <= 13.473)
+           Predict: 3.0
+          Else (feature 0 > 13.473)
+           Predict: 2.0
+        Else (feature 6 > 1968.0)
+         If (feature 6 <= 1975.0)
+          If (feature 1 <= 126.939)
+           Predict: 2.0
+          Else (feature 1 > 126.939)
+           Predict: 2.0
+         Else (feature 6 > 1975.0)
+          If (feature 1 <= -71.669)
+           Predict: 2.0
+          Else (feature 1 > -71.669)
+           Predict: 1.0
+ Tree 3:
+   If (feature 0 <= 30.3)
+    If (feature 3 <= 41.0)
+     If (feature 0 <= -28.94)
+      If (feature 6 <= 1968.0)
+       If (feature 5 <= 6.0)
+        If (feature 5 <= 3.0)
+         If (feature 3 <= 26.0)
+          Predict: 4.0
+         Else (feature 3 > 26.0)
+          If (feature 1 <= -71.669)
+           Predict: 3.0
+          Else (feature 1 > -71.669)
+           Predict: 4.0
+        Else (feature 5 > 3.0)
+         If (feature 1 <= -71.669)
+          Predict: 3.0
+         Else (feature 1 > -71.669)
+          If (feature 3 <= 26.0)
+           Predict: 3.0
+          Else (feature 3 > 26.0)
+           Predict: 3.0
+       Else (feature 5 > 6.0)
+        If (feature 5 <= 8.0)
+         Predict: 5.0
+        Else (feature 5 > 8.0)
+         If (feature 4 <= 27.0)
+          If (feature 4 <= 17.0)
+           Predict: 3.0
+          Else (feature 4 > 17.0)
+           Predict: 2.0
+         Else (feature 4 > 27.0)
+          Predict: 3.0
+      Else (feature 6 > 1968.0)
+       If (feature 4 <= 29.0)
+        If (feature 0 <= -37.635)
+         If (feature 6 <= 2011.0)
+          If (feature 4 <= 23.0)
+           Predict: 2.0
+          Else (feature 4 > 23.0)
+           Predict: 2.0
+         Else (feature 6 > 2011.0)
+          If (feature 3 <= 26.0)
+           Predict: 2.0
+          Else (feature 3 > 26.0)
+           Predict: 2.0
+        Else (feature 0 > -37.635)
+         If (feature 3 <= 26.0)
+          If (feature 1 <= -35.1257)
+           Predict: 1.0
+          Else (feature 1 > -35.1257)
+           Predict: 1.0
+         Else (feature 3 > 26.0)
+          If (feature 0 <= -32.676)
+           Predict: 1.0
+          Else (feature 0 > -32.676)
+           Predict: 1.0
+       Else (feature 4 > 29.0)
+        If (feature 1 <= -69.502)
+         If (feature 6 <= 1995.0)
+          If (feature 6 <= 1991.0)
+           Predict: 2.0
+          Else (feature 6 > 1991.0)
+           Predict: 1.0
+         Else (feature 6 > 1995.0)
+          If (feature 3 <= 26.0)
+           Predict: 1.0
+          Else (feature 3 > 26.0)
+           Predict: 1.0
+        Else (feature 1 > -69.502)
+         If (feature 6 <= 1992.0)
+          If (feature 6 <= 1979.0)
+           Predict: 1.0
+          Else (feature 6 > 1979.0)
+           Predict: 2.0
+         Else (feature 6 > 1992.0)
+          If (feature 6 <= 2007.0)
+           Predict: 1.0
+          Else (feature 6 > 2007.0)
+           Predict: 1.0
+     Else (feature 0 > -28.94)
+      If (feature 4 <= 3.0)
+       If (feature 5 <= 4.0)
+        If (feature 2 <= 3.0)
+         If (feature 1 <= -66.246)
+          If (feature 1 <= -69.502)
+           Predict: 2.0
+          Else (feature 1 > -69.502)
+           Predict: 2.0
+         Else (feature 1 > -66.246)
+          If (feature 0 <= -22.098)
+           Predict: 1.0
+          Else (feature 0 > -22.098)
+           Predict: 1.0
+        Else (feature 2 > 3.0)
+         If (feature 4 <= 2.0)
+          Predict: 1.0
+         Else (feature 4 > 2.0)
+          If (feature 6 <= 1998.0)
+           Predict: 1.0
+          Else (feature 6 > 1998.0)
+           Predict: 1.0
+       Else (feature 5 > 4.0)
+        If (feature 6 <= 1968.0)
+         If (feature 0 <= -22.098)
+          If (feature 3 <= 26.0)
+           Predict: 2.0
+          Else (feature 3 > 26.0)
+           Predict: 3.0
+         Else (feature 0 > -22.098)
+          Predict: 2.0
+        Else (feature 6 > 1968.0)
+         If (feature 4 <= 1.0)
+          If (feature 5 <= 10.0)
+           Predict: 2.0
+          Else (feature 5 > 10.0)
+           Predict: 1.0
+         Else (feature 4 > 1.0)
+          If (feature 0 <= -13.225)
+           Predict: 2.0
+          Else (feature 0 > -13.225)
+           Predict: 2.0
+      Else (feature 4 > 3.0)
+       If (feature 6 <= 2008.0)
+        If (feature 6 <= 1968.0)
+         If (feature 4 <= 14.0)
+          If (feature 5 <= 6.0)
+           Predict: 2.0
+          Else (feature 5 > 6.0)
+           Predict: 4.0
+         Else (feature 4 > 14.0)
+          If (feature 0 <= 19.084)
+           Predict: 3.0
+          Else (feature 0 > 19.084)
+           Predict: 2.0
+        Else (feature 6 > 1968.0)
+         If (feature 5 <= 3.0)
+          If (feature 3 <= 26.0)
+           Predict: 1.0
+          Else (feature 3 > 26.0)
+           Predict: 2.0
+         Else (feature 5 > 3.0)
+          If (feature 4 <= 10.0)
+           Predict: 1.0
+          Else (feature 4 > 10.0)
+           Predict: 2.0
+       Else (feature 6 > 2008.0)
+        If (feature 4 <= 27.0)
+         If (feature 5 <= 9.0)
+          If (feature 5 <= 3.0)
+           Predict: 2.0
+          Else (feature 5 > 3.0)
+           Predict: 2.0
+         Else (feature 5 > 9.0)
+          If (feature 6 <= 2011.0)
+           Predict: 2.0
+          Else (feature 6 > 2011.0)
+           Predict: 2.0
+        Else (feature 4 > 27.0)
+         If (feature 4 <= 30.0)
+          If (feature 5 <= 11.0)
+           Predict: 2.0
+          Else (feature 5 > 11.0)
+           Predict: 2.0
+         Else (feature 4 > 30.0)
+          If (feature 6 <= 2013.0)
+           Predict: 1.0
+          Else (feature 6 > 2013.0)
+           Predict: 2.0
+    Else (feature 3 > 41.0)
+     If (feature 1 <= 92.591)
+      If (feature 0 <= 17.161)
+       If (feature 6 <= 1968.0)
+        If (feature 0 <= 8.387)
+         If (feature 5 <= 11.0)
+          If (feature 1 <= -177.4796)
+           Predict: 3.0
+          Else (feature 1 > -177.4796)
+           Predict: 3.0
+         Else (feature 5 > 11.0)
+          If (feature 1 <= -153.274)
+           Predict: 3.0
+          Else (feature 1 > -153.274)
+           Predict: 3.0
+        Else (feature 0 > 8.387)
+         If (feature 4 <= 6.0)
+          If (feature 2 <= 3.0)
+           Predict: 2.0
+          Else (feature 2 > 3.0)
+           Predict: 2.0
+         Else (feature 4 > 6.0)
+          If (feature 3 <= 139.0)
+           Predict: 3.0
+          Else (feature 3 > 139.0)
+           Predict: 3.0
+       Else (feature 6 > 1968.0)
+        If (feature 0 <= -22.098)
+         If (feature 2 <= 4.0)
+          If (feature 6 <= 1998.0)
+           Predict: 2.0
+          Else (feature 6 > 1998.0)
+           Predict: 1.0
+         Else (feature 2 > 4.0)
+          If (feature 5 <= 7.0)
+           Predict: 1.0
+          Else (feature 5 > 7.0)
+           Predict: 1.0
+        Else (feature 0 > -22.098)
+         If (feature 0 <= -13.225)
+          If (feature 1 <= -177.4796)
+           Predict: 2.0
+          Else (feature 1 > -177.4796)
+           Predict: 2.0
+         Else (feature 0 > -13.225)
+          If (feature 6 <= 2006.0)
+           Predict: 1.0
+          Else (feature 6 > 2006.0)
+           Predict: 2.0
+      Else (feature 0 > 17.161)
+       If (feature 6 <= 1968.0)
+        If (feature 0 <= 19.084)
+         If (feature 5 <= 4.0)
+          If (feature 2 <= 1.0)
+           Predict: 3.0
+          Else (feature 2 > 1.0)
+           Predict: 2.0
+         Else (feature 5 > 4.0)
+          If (feature 3 <= 73.0)
+           Predict: 2.0
+          Else (feature 3 > 73.0)
+           Predict: 3.0
+        Else (feature 0 > 19.084)
+         If (feature 1 <= -153.274)
+          Predict: 3.0
+         Else (feature 1 > -153.274)
+          If (feature 4 <= 3.0)
+           Predict: 3.0
+          Else (feature 4 > 3.0)
+           Predict: 2.0
+       Else (feature 6 > 1968.0)
+        If (feature 0 <= 19.084)
+         If (feature 3 <= 139.0)
+          If (feature 6 <= 2010.0)
+           Predict: 2.0
+          Else (feature 6 > 2010.0)
+           Predict: 2.0
+         Else (feature 3 > 139.0)
+          If (feature 6 <= 2011.0)
+           Predict: 1.0
+          Else (feature 6 > 2011.0)
+           Predict: 1.0
+        Else (feature 0 > 19.084)
+         If (feature 1 <= -153.274)
+          If (feature 4 <= 4.0)
+           Predict: 1.0
+          Else (feature 4 > 4.0)
+           Predict: 1.0
+         Else (feature 1 > -153.274)
+          If (feature 0 <= 24.053)
+           Predict: 2.0
+          Else (feature 0 > 24.053)
+           Predict: 2.0
+     Else (feature 1 > 92.591)
+      If (feature 6 <= 1968.0)
+       If (feature 1 <= 168.556)
+        If (feature 1 <= 105.817)
+         If (feature 5 <= 6.0)
+          If (feature 4 <= 28.0)
+           Predict: 3.0
+          Else (feature 4 > 28.0)
+           Predict: 2.0
+         Else (feature 5 > 6.0)
+          If (feature 4 <= 22.0)
+           Predict: 2.0
+          Else (feature 4 > 22.0)
+           Predict: 3.0
+        Else (feature 1 > 105.817)
+         If (feature 2 <= 6.0)
+          If (feature 5 <= 6.0)
+           Predict: 3.0
+          Else (feature 5 > 6.0)
+           Predict: 3.0
+         Else (feature 2 > 6.0)
+          If (feature 5 <= 1.0)
+           Predict: 2.0
+          Else (feature 5 > 1.0)
+           Predict: 3.0
+       Else (feature 1 > 168.556)
+        If (feature 3 <= 167.0)
+         If (feature 5 <= 2.0)
+          If (feature 4 <= 2.0)
+           Predict: 4.0
+          Else (feature 4 > 2.0)
+           Predict: 2.0
+         Else (feature 5 > 2.0)
+          If (feature 4 <= 24.0)
+           Predict: 2.0
+          Else (feature 4 > 24.0)
+           Predict: 3.0
+        Else (feature 3 > 167.0)
+         Predict: 3.0
+      Else (feature 6 > 1968.0)
+       If (feature 0 <= 8.387)
+        If (feature 6 <= 1979.0)
+         If (feature 6 <= 1975.0)
+          If (feature 4 <= 12.0)
+           Predict: 2.0
+          Else (feature 4 > 12.0)
+           Predict: 2.0
+         Else (feature 6 > 1975.0)
+          If (feature 3 <= 105.0)
+           Predict: 2.0
+          Else (feature 3 > 105.0)
+           Predict: 2.0
+        Else (feature 6 > 1979.0)
+         If (feature 4 <= 30.0)
+          If (feature 1 <= 168.556)
+           Predict: 2.0
+          Else (feature 1 > 168.556)
+           Predict: 2.0
+         Else (feature 4 > 30.0)
+          If (feature 3 <= 105.0)
+           Predict: 1.0
+          Else (feature 3 > 105.0)
+           Predict: 2.0
+       Else (feature 0 > 8.387)
+        If (feature 6 <= 1991.0)
+         If (feature 6 <= 1975.0)
+          If (feature 5 <= 11.0)
+           Predict: 2.0
+          Else (feature 5 > 11.0)
+           Predict: 1.0
+         Else (feature 6 > 1975.0)
+          If (feature 5 <= 10.0)
+           Predict: 1.0
+          Else (feature 5 > 10.0)
+           Predict: 2.0
+        Else (feature 6 > 1991.0)
+         If (feature 1 <= 122.772)
+          If (feature 5 <= 11.0)
+           Predict: 2.0
+          Else (feature 5 > 11.0)
+           Predict: 2.0
+         Else (feature 1 > 122.772)
+          If (feature 6 <= 2010.0)
+           Predict: 2.0
+          Else (feature 6 > 2010.0)
+           Predict: 2.0
+   Else (feature 0 > 30.3)
+    If (feature 0 <= 34.6236667)
+     If (feature 1 <= -77.011)
+      If (feature 6 <= 1975.0)
+       If (feature 6 <= 1968.0)
+        If (feature 5 <= 2.0)
+         If (feature 1 <= -116.793)
+          If (feature 4 <= 1.0)
+           Predict: 2.0
+          Else (feature 4 > 1.0)
+           Predict: 1.0
+         Else (feature 1 > -116.793)
+          If (feature 3 <= 225.0)
+           Predict: 1.0
+          Else (feature 3 > 225.0)
+           Predict: 1.0
+        Else (feature 5 > 2.0)
+         If (feature 5 <= 6.0)
+          If (feature 2 <= 1.0)
+           Predict: 1.0
+          Else (feature 2 > 1.0)
+           Predict: 1.0
+         Else (feature 5 > 6.0)
+          If (feature 1 <= -116.793)
+           Predict: 1.0
+          Else (feature 1 > -116.793)
+           Predict: 1.0
+       Else (feature 6 > 1968.0)
+        If (feature 3 <= 225.0)
+         If (feature 5 <= 2.0)
+          If (feature 0 <= 33.9495)
+           Predict: 1.0
+          Else (feature 0 > 33.9495)
+           Predict: 1.0
+         Else (feature 5 > 2.0)
+          If (feature 4 <= 5.0)
+           Predict: 1.0
+          Else (feature 4 > 5.0)
+           Predict: 1.0
+        Else (feature 3 > 225.0)
+         If (feature 1 <= -118.4406667)
+          If (feature 5 <= 7.0)
+           Predict: 1.0
+          Else (feature 5 > 7.0)
+           Predict: 1.0
+         Else (feature 1 > -118.4406667)
+          If (feature 5 <= 5.0)
+           Predict: 1.0
+          Else (feature 5 > 5.0)
+           Predict: 2.0
+      Else (feature 6 > 1975.0)
+       If (feature 0 <= 32.5833333)
+        If (feature 3 <= 139.0)
+         If (feature 5 <= 4.0)
+          If (feature 1 <= -116.793)
+           Predict: 2.0
+          Else (feature 1 > -116.793)
+           Predict: 1.0
+         Else (feature 5 > 4.0)
+          If (feature 4 <= 30.0)
+           Predict: 1.0
+          Else (feature 4 > 30.0)
+           Predict: 1.0
+        Else (feature 3 > 139.0)
+         If (feature 6 <= 2015.0)
+          If (feature 6 <= 1989.0)
+           Predict: 1.0
+          Else (feature 6 > 1989.0)
+           Predict: 1.0
+         Else (feature 6 > 2015.0)
+          If (feature 4 <= 9.0)
+           Predict: 1.0
+          Else (feature 4 > 9.0)
+           Predict: 2.0
+       Else (feature 0 > 32.5833333)
+        If (feature 2 <= 1.0)
+         If (feature 4 <= 25.0)
+          If (feature 6 <= 1992.0)
+           Predict: 1.0
+          Else (feature 6 > 1992.0)
+           Predict: 1.0
+         Else (feature 4 > 25.0)
+          If (feature 5 <= 9.0)
+           Predict: 1.0
+          Else (feature 5 > 9.0)
+           Predict: 1.0
+        Else (feature 2 > 1.0)
+         If (feature 6 <= 2000.0)
+          If (feature 6 <= 1979.0)
+           Predict: 1.0
+          Else (feature 6 > 1979.0)
+           Predict: 1.0
+         Else (feature 6 > 2000.0)
+          If (feature 4 <= 3.0)
+           Predict: 1.0
+          Else (feature 4 > 3.0)
+           Predict: 1.0
+     Else (feature 1 > -77.011)
+      If (feature 3 <= 99.0)
+       If (feature 6 <= 1968.0)
+        If (feature 3 <= 26.0)
+         Predict: 2.0
+        Else (feature 3 > 26.0)
+         If (feature 5 <= 9.0)
+          If (feature 4 <= 3.0)
+           Predict: 2.0
+          Else (feature 4 > 3.0)
+           Predict: 2.0
+         Else (feature 5 > 9.0)
+          If (feature 5 <= 10.0)
+           Predict: 3.0
+          Else (feature 5 > 10.0)
+           Predict: 3.0
+       Else (feature 6 > 1968.0)
+        If (feature 6 <= 2008.0)
+         If (feature 0 <= 32.5833333)
+          If (feature 6 <= 1975.0)
+           Predict: 1.0
+          Else (feature 6 > 1975.0)
+           Predict: 2.0
+         Else (feature 0 > 32.5833333)
+          If (feature 6 <= 1975.0)
+           Predict: 2.0
+          Else (feature 6 > 1975.0)
+           Predict: 1.0
+        Else (feature 6 > 2008.0)
+         If (feature 3 <= 26.0)
+          If (feature 5 <= 8.0)
+           Predict: 2.0
+          Else (feature 5 > 8.0)
+           Predict: 1.0
+         Else (feature 3 > 26.0)
+          If (feature 3 <= 73.0)
+           Predict: 2.0
+          Else (feature 3 > 73.0)
+           Predict: 1.0
+      Else (feature 3 > 99.0)
+       If (feature 1 <= -0.31)
+        If (feature 6 <= 1968.0)
+         If (feature 0 <= 32.5833333)
+          If (feature 5 <= 2.0)
+           Predict: 2.0
+          Else (feature 5 > 2.0)
+           Predict: 3.0
+         Else (feature 0 > 32.5833333)
+          Predict: 3.0
+        Else (feature 6 > 1968.0)
+         If (feature 4 <= 4.0)
+          If (feature 4 <= 1.0)
+           Predict: 2.0
+          Else (feature 4 > 1.0)
+           Predict: 2.0
+         Else (feature 4 > 4.0)
+          If (feature 6 <= 2000.0)
+           Predict: 1.0
+          Else (feature 6 > 2000.0)
+           Predict: 1.0
+       Else (feature 1 > -0.31)
+        If (feature 1 <= 14.494)
+         If (feature 6 <= 2007.0)
+          If (feature 6 <= 1984.0)
+           Predict: 1.0
+          Else (feature 6 > 1984.0)
+           Predict: 2.0
+         Else (feature 6 > 2007.0)
+          Predict: 1.0
+        Else (feature 1 > 14.494)
+         If (feature 6 <= 1968.0)
+          If (feature 5 <= 2.0)
+           Predict: 3.0
+          Else (feature 5 > 2.0)
+           Predict: 2.0
+         Else (feature 6 > 1968.0)
+          If (feature 6 <= 2000.0)
+           Predict: 2.0
+          Else (feature 6 > 2000.0)
+           Predict: 2.0
+    Else (feature 0 > 34.6236667)
+     If (feature 3 <= 225.0)
+      If (feature 0 <= 36.5208333)
+       If (feature 3 <= 224.0)
+        If (feature 6 <= 2011.0)
+         If (feature 1 <= 105.817)
+          If (feature 4 <= 14.0)
+           Predict: 2.0
+          Else (feature 4 > 14.0)
+           Predict: 1.0
+         Else (feature 1 > 105.817)
+          If (feature 6 <= 1968.0)
+           Predict: 3.0
+          Else (feature 6 > 1968.0)
+           Predict: 2.0
+        Else (feature 6 > 2011.0)
+         If (feature 3 <= 105.0)
+          If (feature 1 <= 24.45)
+           Predict: 2.0
+          Else (feature 1 > 24.45)
+           Predict: 2.0
+         Else (feature 3 > 105.0)
+          If (feature 6 <= 2014.0)
+           Predict: 1.0
+          Else (feature 6 > 2014.0)
+           Predict: 2.0
+       Else (feature 3 > 224.0)
+        If (feature 6 <= 1975.0)
+         If (feature 6 <= 1968.0)
+          If (feature 0 <= 35.72)
+           Predict: 1.0
+          Else (feature 0 > 35.72)
+           Predict: 2.0
+         Else (feature 6 > 1968.0)
+          If (feature 1 <= -111.05)
+           Predict: 1.0
+          Else (feature 1 > -111.05)
+           Predict: 2.0
+        Else (feature 6 > 1975.0)
+         If (feature 1 <= -118.4406667)
+          If (feature 0 <= 35.72)
+           Predict: 1.0
+          Else (feature 0 > 35.72)
+           Predict: 1.0
+         Else (feature 1 > -118.4406667)
+          If (feature 5 <= 10.0)
+           Predict: 1.0
+          Else (feature 5 > 10.0)
+           Predict: 1.0
+      Else (feature 0 > 36.5208333)
+       If (feature 1 <= 14.494)
+        If (feature 1 <= -0.31)
+         If (feature 6 <= 2004.0)
+          If (feature 6 <= 1989.0)
+           Predict: 1.0
+          Else (feature 6 > 1989.0)
+           Predict: 1.0
+         Else (feature 6 > 2004.0)
+          If (feature 0 <= 38.107)
+           Predict: 1.0
+          Else (feature 0 > 38.107)
+           Predict: 1.0
+        Else (feature 1 > -0.31)
+         If (feature 3 <= 73.0)
+          If (feature 0 <= 42.317)
+           Predict: 2.0
+          Else (feature 0 > 42.317)
+           Predict: 1.0
+         Else (feature 3 > 73.0)
+          If (feature 0 <= 44.509)
+           Predict: 1.0
+          Else (feature 0 > 44.509)
+           Predict: 1.0
+       Else (feature 1 > 14.494)
+        If (feature 6 <= 2004.0)
+         If (feature 1 <= 67.224)
+          If (feature 3 <= 196.0)
+           Predict: 1.0
+          Else (feature 3 > 196.0)
+           Predict: 1.0
+         Else (feature 1 > 67.224)
+          If (feature 6 <= 1968.0)
+           Predict: 2.0
+          Else (feature 6 > 1968.0)
+           Predict: 2.0
+        Else (feature 6 > 2004.0)
+         If (feature 6 <= 2011.0)
+          If (feature 1 <= 21.089)
+           Predict: 1.0
+          Else (feature 1 > 21.089)
+           Predict: 2.0
+         Else (feature 6 > 2011.0)
+          If (feature 1 <= 168.556)
+           Predict: 2.0
+          Else (feature 1 > 168.556)
+           Predict: 1.0
+     Else (feature 3 > 225.0)
+      If (feature 6 <= 1968.0)
+       If (feature 0 <= 60.845)
+        If (feature 5 <= 7.0)
+         If (feature 4 <= 24.0)
+          If (feature 4 <= 22.0)
+           Predict: 2.0
+          Else (feature 4 > 22.0)
+           Predict: 3.0
+         Else (feature 4 > 24.0)
+          If (feature 1 <= 168.556)
+           Predict: 2.0
+          Else (feature 1 > 168.556)
+           Predict: 2.0
+        Else (feature 5 > 7.0)
+         If (feature 5 <= 11.0)
+          If (feature 4 <= 6.0)
+           Predict: 3.0
+          Else (feature 4 > 6.0)
+           Predict: 3.0
+         Else (feature 5 > 11.0)
+          If (feature 1 <= -142.62)
+           Predict: 2.0
+          Else (feature 1 > -142.62)
+           Predict: 3.0
+       Else (feature 0 > 60.845)
+        Predict: 2.0
+      Else (feature 6 > 1968.0)
+       If (feature 6 <= 2008.0)
+        If (feature 1 <= 14.494)
+         If (feature 1 <= -0.31)
+          If (feature 0 <= 38.107)
+           Predict: 1.0
+          Else (feature 0 > 38.107)
+           Predict: 1.0
+         Else (feature 1 > -0.31)
+          If (feature 0 <= 37.427)
+           Predict: 1.0
+          Else (feature 0 > 37.427)
+           Predict: 1.0
+        Else (feature 1 > 14.494)
+         If (feature 4 <= 16.0)
+          If (feature 5 <= 11.0)
+           Predict: 2.0
+          Else (feature 5 > 11.0)
+           Predict: 2.0
+         Else (feature 4 > 16.0)
+          If (feature 1 <= 134.07)
+           Predict: 2.0
+          Else (feature 1 > 134.07)
+           Predict: 2.0
+       Else (feature 6 > 2008.0)
+        If (feature 1 <= -69.502)
+         If (feature 6 <= 2013.0)
+          If (feature 5 <= 9.0)
+           Predict: 1.0
+          Else (feature 5 > 9.0)
+           Predict: 1.0
+         Else (feature 6 > 2013.0)
+          If (feature 4 <= 29.0)
+           Predict: 1.0
+          Else (feature 4 > 29.0)
+           Predict: 1.0
+        Else (feature 1 > -69.502)
+         If (feature 6 <= 2014.0)
+          If (feature 4 <= 25.0)
+           Predict: 2.0
+          Else (feature 4 > 25.0)
+           Predict: 1.0
+         Else (feature 6 > 2014.0)
+          If (feature 0 <= 42.317)
+           Predict: 2.0
+          Else (feature 0 > 42.317)
+           Predict: 2.0

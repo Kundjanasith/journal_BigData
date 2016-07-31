@@ -1,0 +1,314 @@
+Tableau Desktop & Server
+08:30 - 12:00
+- Tableau is a Business Intelligence tool for visually analysing the data. Users can create and distribute interactive and shareable dashboards which depict the trends, variations and density of the data in form of graphs and charts.
+- Tableau can connect to files, relational and Big data sources to acquire and process data.
+- The software allows data blending and real time collaboration, which makes it very unique.
+-  It is used by businesses, academic researchers and many governments to do visual data analysis.
+- It is also positioned as a leader Business Intelligence and Analytics Platform in Gartner Magic Quadrant.
+- Features
+--> Tableau provides solutions for all kinds of industries, departments and data environments. Below are the unique features which enable tableau handle so many diverse scenarios.
+- Speed of Analysis
+- As it does not need high level of programming expertise, any computer user with access to data can start using it to derive value from the data-
+- Self-Reliant
+- Tableau does not need a complex software setup. The desktop version which is used by most users is easily installed and contains all the features needed to start and complete data analysis.
+- Visual Discovery
+- The user explores and analyses the data by using visual tools like colours, trend lines, charts and graphs. There is very little script to be written as nearly everything is done by drag and drop.
+- Blend Diverse Data Sets
+- Tableau allows you to blend different relational, semi-structured and raw data sources in real time, without expensive up-front integration costs. The users don’t need to know the details of how data is stored.
+- Architecture Agnostic
+- Tableau works in all kinds of devices where data flows. So the user need not worry about specific hardware or software requirements to use Tableau.
+- Real Time Collaboration
+- Tableau can filter, sort, and discuss data on the fly and embed a live dashboard in portals like SharePoint site or Salesforce. You can save your view of data and allow colleagues to subscribe to your interactive dashboards so they see the very latest data just by refreshing their web browser.
+- Centralized Data
+- The tableau server provides a centralized location to manage all of the organization’s published data sources. You can delete, change permissions, add tags, and manage schedules in one convenient location. It’s easy to schedule extract refreshes and manage them in the data server. Administrators can centrally define a schedule for extracts on the server for both incremental and full refreshes.
+- Advantages
+- Connect to a data source:
+- It involves locating the data and use an appropriate type of connection to read the data.
+- Choose Dimensions and Measures:
+- This involves selecting the required columns from the source data for analysis.
+- Apply Visualization technique:
+- This involves applying required visualization methods like a specific chart or graph type to the data being analyzed.
+- Connect to Data Source
+- One opening Tableau we get the start page Showing various data sources. Under the header Connect, we have options to choose a file or server or saved data source.
+- Under Files we choose excel.
+- Then navigate to the file “Sample – Superstore.xls” as mentioned above. The excel file has three sheets named orders, people and Returns. We choose Orders.
+- Choose the Dimensions & Measures
+- We choose the data to be analyzed by deciding on the dimensions and measures.
+- Dimensions are the descriptive data while measures are numeric data.
+- When put together, they help us visualize the performance of the dimensional data with respect to the data which are measures.
+- We choose category and region as the dimensions and sales as the measure.
+- Drag and drop them as shown below.
+- The result shows the total sales in each category for each region.
+- Visualization Technique
+- We see that the data is available only as numbers.
+- We have to read and calculate each of the values to judge the performance. But we can see them as graphs or charts with different colours to get a quicker judgment.
+- We drag and drop the sum(sales) column from the Marks tab to the Columns shelf.
+- The table showing the numeric values of sales now turns into a bar chart automatically.
+- Menu Command
+--> On closing the getting started window we get the main interface with all the available Menu commands.
+--> They represent the entire set of features available in Tableau.
+--> Various sections of the menu are shown in the below diagram.
+- File Menu
+--> This Menu is used to create new Tableau workbook and open existing workbooks from both local system and Tableau server. The important features in this menu are:
+- Workbook Locale to set the language to be used in the report.
+- Paste Sheets to paste a sheet into the current workbook which is copied from another workbook.
+- Export Packaged Workbook option is used to create a packaged workbook which will be shared with other users.
+- Data Menu
+--> This Menu is used to create new data source to fetch the data for analysis and visualization. It also allows you to replace or upgrade existing data source.
+- New Data Source to see all the types of connections available and choose from it.
+- Refresh All Extracts to refresh the data form source.
+- Edit Relationships option is used to define the fields in more than one data source for linking.
+- Worksheet Menu
+--> This Menu is used to create new worksheet along with various display features like showing the title and captions
+- Show summary to see the summary of the data used in the worksheet like count etc..
+- Tooltip to show the tooltip when hovering above various data fields.
+- Run Update option is used to update the worksheet data or filters used.
+- Dashboard Menu
+--> This Menu is used to create a new dashboard along with various display features like showing the title and exporting the image etc..
+The important features in this menu are as follows:
+- Format is used to set the layout in terms of colours and sections of the dashboard.
+- Actions to link the dashboard sheets to external URLS or other sheets.
+- Export Image option is used to export an image of the Dashboard.
+- Story Menu
+--> This Menu is used to create a new story which has many sheets or dashboards with related data.
+- Format is used to set the layout in terms of colours and sections of the story.
+- Run Update to update the story with latest data form source.
+- Export Image option is used to export an image of the story.
+- Analysis Menu
+--> This Menu is used for analyzing the data present in the sheet. Tableau provides many out of box features like calculating the percentage and doing a forecast
+- Forecast to show a forecast based on available data.
+- Trend Lines to show the trend line for s series of data.
+- Create calculated Field option is used to create additional fields based on certain calculation on existing fields.
+- Map Menu
+--> This Menu is used for building map views in Tableau. You can assign geographic roles to fields in your data.
+- Map Layers to hide and show map layers, such as street names and country borders, and add data layers.
+- Geocoding to create new geographic roles and assign them to the geographic fields in your data.
+- Format Menu
+--> This Menu is used for applying the various formatting options to enhance the look and feel of the dashboards created. It provides features like borders, colours, alignment of text
+- Borders to apply borders to fields displayed in the report.
+- Title and caption to assign a Title and caption to the reports.
+- Cell Size to customize the size of the cells displaying the data.
+- Workbook Theme to apply theme to the entire workbook.
+- Server Menu
+--> Server Menu is used to login to the Tableau server if you have access and publish your results to be used by others. It is also used to access the workbooks published by others.
+- Publish Workbook to publish the workbook in the server to be used by others.
+- Publish Data source to publish the source data used in the workbook.
+- Create User filters to create filters on the worksheet to be applied by various users when the access the report.
+- Connect to Data Source
+- Tableau connects to all popular data sources.
+- It has inbuilt connectors which take care of establishing the connection once the connection parameters are supplied. be it Simple text files, Relational sources, No Sql sources or Cloud data bases, tableau connects to nearly every data source.
+- Build Data Views
+- After connecting to a data source, you get all the column and data available in the Tableau environment.
+- You classify them as dimensions, measures and create any hierarchy required. Using these you build views which are traditionally known as Reports.
+- Tableau provides easy drag and drop feature to build views.
+- Enhance the Views
+- The views created above needs to be enhanced further by use of filters, aggregations, Labeling of Axes, Formatting of colors and borders etc.
+- Create Worksheets
+- We create different worksheets to create different views on the same data or different data.
+- Create and Organize Dashboards
+- Dashboards contain multiple worksheets which are linked it. So the action in any of the worksheet can change the result in the dashboard accordingly.
+- Create a Story
+- A story is a sheet that contains a sequence of worksheets or dashboards that work together to convey information.
+- You can create stories to show how facts are connected, provide context, demonstrate how decisions relate to outcomes, or simply make a compelling case
+- File Type
+--> The result of data analysis in Tableau can be saved in various formats to be saved and distributed.
+--> These various formats are referred as different file types and they are identified by different extensions.
+--> Their formats depend on how they are produced and for what purpose they are used.
+--> They are all stored as XML files which can be opened and edited.
+- Tableau Workbook [ .twb ]
+- It contains information on each sheet and dashboard that is present in a workbook.
+- It has the details of the fields which are used in each view and the formula applied to the aggregation of the measures.
+- It also has the formatting and styles applied.
+- It also contains the data source connection information and any metadata information created for that connection.
+- Tableau Packaged Workbook [ .twbx ]
+- This file format contains the details of workbook as well as the local data that is used in the analysis.
+- Its purpose is to be share with other Tableau desktop or Tableau reader users assuming it does not need data from the server.
+- Tableau Data Source [ .tds ]
+- The details of the connection used to create the tableau report are stored in this file. In the connection details it stores the source
+- Tableau Packaged Data Source [ .tdsx ]
+- This file is similar to the .tds file with the addition of data along with the connection details.
+- Tableau Data Extract [ .tde ]
+- This file contains the data used in a .twb file in a highly compressed columnar data format.
+- This helps in storage optimization.
+- It also saves the aggregated calculations that are applied in the analysis.
+- This file should be refreshed to get the updated data form the source.
+- Tableau Bookmark [ .tbm ]
+- These files contain a single worksheet that is shared easily to be pasted into other workbooks.
+- Tableau Preferences [ .tps ]
+- This file stores the colour preference used across all the workbooks. It is mainly used for consistent look and feel across the users.
+- Data Type
+- String
+- Any sequence of zero or more characters.
+- They are enclosed within single quotes.
+- The quote itself can be included in a string by writing it twice.
+- Number
+- These are either integers or floating points.
+- It is advised to round the floating point numbers while using them in calculations.
+- Boolean
+- They are logical values.
+- Date & Datetime
+- Tableau recognizes dates in almost all formats.
+- But in case we need to force tableau to recognize a string as date then we put a # sign before the data.
+- Show Me
+- Show Me With Two Fields
+--> The relation between two fields can be visually analyzed easily by using various graphs and charts available in show me. In this case we choose two fields and apply a line chart. The steps are:
+- Step-1:
+-  Select the two fields (order date and profit) to be analyzed by holding the control key.
+- Step-2:
+- Click on the show me bar and choose line chart.
+- Step-3:
+- Click on the Mark Label button on the scrollbar.
+- Show Me With Multiple Fields
+-We can apply similar technique as above to analyze more than 2 fields.
+- The only difference in this case will be the availability of fewer views in active form.
+- Tableau automatically greys out the views that are not appropriate for the analysis of the fields chosen.
+- For our case let’s choose the fields product name, customer name, sales and profit by holding down the control key.
+- As you can observer most of the views in Show Me are greyed out. From the active views let’s choose scatter view.
+
+Docker Hub with Images
+13:00 - 17:30
+- Tableau Terminology
+- alias
+- An alternative name that you can assign to a field or to a dimension member.
+- bin
+- A user-defined grouping of measures in the data source.
+- bookmark
+- A .tbm file in the Bookmarks folder in the Tableau repository that contains a single worksheet.
+- Much like web browser bookmarks, .tbm files are a convenient way to quickly display different analyses.
+- calculated field
+- A new field that you create by using a formula to modify the existing fields in your data source.
+- crosstab
+- A text table view. Use text tables to display the numbers associated with dimension members.
+- dashboard
+- A combination of several views arranged on a single page. Use dashboards to compare and monitor a variety of data simultaneously.
+- data source page
+- A pane on the left side of the workbook that displays the fields of the data sources to which Tableau is connected.
+- The fields are divided into dimensions and measures.
+- The Data pane also displays custom fields such as calculations, binned fields, and groups.
+- You build views of your data by dragging fields from the Data pane onto the various shelves that are a part of every worksheet.
+- data Source page
+- A page where you can set up your data source.
+- The Data Source page generally consists of four main areas: left pane, join area, preview area, and metadata area.
+- dimension
+- A field of categorical data.
+- Dimensions typically hold discrete data such as hierarchies and members that cannot be aggregated.
+- Examples of dimensions include dates, customer names, and customer segments.
+- extract
+- A saved subset of a data source that you can use to improve performance and analyze offline.
+- You can create an extract by defining filters and limits that include the data you want in the extract.
+- filters shelf
+- A shelf on the left of the workbook that you can use to exclude data from a view by filtering it using measures and dimensions.
+- format pane
+- A pane that contains formatting settings that control the entire worksheet, as well as individual fields in the view.
+- When open, the Format pane appears on the left side of the workbook.
+- level of detail (LOD) expression
+- A syntax that supports aggregation at dimensionalities other than the view level.
+- With level of detail expressions, you can attach one or more dimensions to any aggregate expression.
+- marks
+- A part of the view that visually represents one or more rows in a data source.
+- A mark can be, for example, a bar, line, or square. You can control the type, color, and size of marks.
+- marks card
+- A card to the left of the view where you can drag fields to control mark properties such as type, color, size, shape, label, tooltip, and detail.
+- pages shelf
+- A shelf to the left of the view that you can use to split a view into a sequence of pages based on the members and values in a discrete or continuous field.
+- Adding a field to the Pages shelf is like adding a field to the Rows shelf, except that a new page is created for each new row.
+- rows shelf
+- A shelf at the top of the workbook that you can use to create the rows of a data table.
+- The shelf accepts any number of dimensions and measures.
+- When you place a dimension on the Rows shelf, Tableaus creates headers for the members of that dimension.
+- When you place a measure on the Rows shelf, Tableau creates quantitative axes for that measure.
+- shelves
+- Named areas to the left and top of the view.
+- You build views by placing fields onto the shelves.
+- Some shelves are available only when you select certain mark types. For example, the Shape shelf is available only when you select the Shape mark type.
+- workbook
+- A file with a .twb extension that contains one or more worksheets (and possibly also dashboards and stories).
+- worksheet
+- A sheet where you build views of your data by dragging fields onto shelves.
+- Docker
+- Transporting Good Analog
+- The philosophy behind Docker could be illustrated with a following simple analogy.
+- In the international transportation industry, goods have to be transported by different means like forklifts, trucks, trains, cranes, and ships.
+- These goods come in different shapes and sizes and have different storing requirements: sacks of sugar, milk cans, plants etc.
+- Historically, it was a painful process depending on manual intervention at every transit point for loading and unloading.
+-It has all changed with the uptake of intermodal containers.
+- As they come in standard sizes and are manufactured with transportation in mind, all the relevant machineries can be designed to handle these with minimal human intervention.
+--> The additional benefit of sealed containers is that they can preserve the internal environment like temperature and humidity for sensitive goods.
+--> As a result, the transportation industry can stop worrying about the goods themselves and focus on getting them from A to B. And here is where Docker comes in and brings similar benefits to the software industry.
+- How Is It Different from Virtual Machines
+- At a quick glance, virtual machines and Docker containers may seem alike. However, their main differences will become apparent when you take a look at the following diagram:
+- Applications running in virtual machines, apart from the hypervisor, require a full instance of the operating system and any supporting libraries.
+- Containers, on the other hand, share the operating system with the host.
+- Hypervisor is comparable to the container engine (represented as Docker on the image) in a sense that it manages the lifecycle of the containers.
+- The important difference is that the processes running inside the containers are just like the native processes on the host, and do not introduce any overheads associated with hypervisor execution.
+--> Additionally, applications can reuse the libraries and share the data between containers.
+--> As both technologies have different strengths, it is common to find systems combining virtual machines and containers.
+--> A perfect example is a tool named Boot2Docker described in the Docker installation section.
+- Docker Architecture
+- At the top of the architecture diagram there are registries.
+- By default, the main registry is the Docker Hub which hosts public and official images.
+- Organizations can also host their private registries if they desire.
+--> On the right-hand side we have images and containers.
+--> Images can be downloaded from registries explicitly (docker pull imageName) or implicitly when starting a container.
+--> Once the image is downloaded it is cached locally.
+- Containers are the instances of images - they are the living thing.
+- There could be multiple containers running based on the same image.
+- At the centre, there is the Docker daemon responsible for creating, running, and monitoring containers. It also takes care of building and storing images. Finally, on the left-hand side there is a Docker client. It talks to the daemon via HTTP. Unix sockets are used when on the same machine, but remote management is possible via HTTP based API.
+- Installing Docker
+- For the latest instructions you should always refer to the official document
+- Docker runs natively on Linux, so depending on the target distribution it could be as easy as sudo apt-get install docker.io.
+- Refer to the documentation for details. Normally in Linux, you prepend the Docker commands with sudo, but we will skip it in this article for clarity.
+--> As the Docker daemon uses Linux-specific kernel features, it isn’t possible to run Docker natively in Mac OS or Windows.
+--> Instead, you should install an application called Boot2Docker.
+--> The application consists of a VirtualBox Virtual Machine, Docker itself, and the Boot2Docker management utilities.
+--> You can follow the official installation instructions for MacOS and Windows to install Docker on these platforms.
+- Using Docker
+--> However, a lot more has happened behind the scenes than you may think:
+The image ‘phusion/baseimage’ was download from Docker Hub (if it wasn’t already in local cache)
+- A container based on this image was started
+- The command echo was executed within the container
+- The container was stopped when the command exitted
+--> On first run, you may notice a delay before the text is printed on screen.
+-->  If the image had been cached locally, everything would have taken a fraction of a second.
+--> Details about the last container can be retrieved by by running docker ps
+- Taking the Next Dive
+- As you can tell, running a simple command within Docker is as easy as running it directly on a standard terminal.
+- To illustrate a more practical use case, throughout the remainder of this article, we will see how we can utilize Docker to deploy a simple web server application.
+- To keep things simple, we will write a Java program that handles HTTP GET requests to ‘/ping’ and responds with the string ‘pong\n’.
+- Dockerfile
+--> Before jumping in and building your own Docker image, it’s a good practice to first check if there is an existing one in the Docker Hub or any private registries you have access to.
+- For example, instead of installing Java ourselves, we will use an official
+- To build an image, first we need to decide on a base image we are going to use. It is denoted by FROM instruction.
+-  Here, it is an official image for Java 8 from the Docker Hub.
+- We are going to copy it into our Java file by issuing a COPYinstruction. Next,
+--> we are going to compile it with RUN. EXPOSE instruction denotes that the image will be providing a service on a particular port. ENTRYPOINT is an instruction that we want to execute when a container based on this image is started and CMD indicates the default parameters we are going to pass to it.
+- Running Containers
+- When the image has been built, we can bring it to life as a container.
+- where -p [port-on-the-host]:[port-in-the-container] denotes the ports mapping on the host and the container respectively.
+- Furthermore, we are telling Docker to run the container as a daemon process in the background by specifying -d.
+- You can test if the web server application is running by attempting to access ‘http://localhost:8080/ping’.
+- Note that on platforms where Boot2docker is being used, you will need to replace ‘localhost’ with the IP address of the virtual machine where Docker is running.
+--> Docker container is alive and swimming
+--> We could also start the container in an interactive mode -i -t. In our case,
+- we will override the entrypoint command so we are presented with a bash terminal. Now we can execute whatever commands we want
+- There are many more options available to use for starting up the containers.
+- Let us cover a few more. For example, if we want to persist data outside of the container, we could share the host filesystem with the container by using -v.
+- By default, the access mode is read-write, but could be changed to read-only mode by appending :ro to the intra-container volume path.
+- Volumes are particularly important when we need to use any security information like credentials and private keys inside of the containers, which shouldn’t be stored on the image.
+- Additionally, it could also prevent the duplication of data,
+- For example by mapping your local Maven repository to the container to save you from downloading the Internet twice.
+- Docker also has the capability of linking containers together.
+- Linked containers can talk to each other even if none of the ports are exposed.
+- It can be achieved with –link other-container-name. Below is an example combining mentioned above parameters:
+--> Unsurprisingly, the list of operations that one could apply to the containers and images is rather long. For brevity, let us look at just a few of them:
+stop - Stops a running container.
+start - Starts a stopped container.
+commit - Creates a new image from a container’s changes.
+rm - Removes one or more containers.
+rmi - Removes one or more images.
+ps - Lists containers.
+images - Lists images.
+exec - Runs a command in a running container.
+- Docker Compose for the Microservice World
+- If you have more than just a couple of interconnected containers, it makes sense to use a tool like docker-compose In a configuration file, you describe how to start the containers and how they should be linked with each other.
+- Irrespective of the amount of containers involved and their dependencies, you could have all of them up and running with one command: docker-compose up.

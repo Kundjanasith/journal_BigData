@@ -1,0 +1,452 @@
+Clean Data by Rscript / Hive QL
+08:30 - 12:00
+- Problem Statement
+--> Relation between ( High School's GPA, University's GPA )
+- Raw Data
+- Q53.csv --> data form student who admission in 2553
+- Q54.csv --> data form student who admission in 2554
+- Q55.csv --> data form student who admission in 2555
+- Q56.csv --> data form student who admission in 2556
+- Q57.csv --> data form student who admission in 2557
+- Q58.csv --> data form student who admission in 2558
+- Filter1 : Reduce Data Frame
+- Cut Q58.csv because Q58.csv doesn't have University's GPA data
+- Filter2 : Reduce Column
+- Remaining column
+- GPA --> GPA of student in that EnrolledYear and Semester
+- X255.._GPAX --> GPA of student until that EnrolledYear and Semester
+- entry2553_GPAX --> GPA of student when graduated High School
+- Rscript [ Q53.csv ]
+file <- read.csv('Q53.csv')
+file <- file[c('GPA','X2553_GPAX','entry2553_GPAX')]
+write.csv(file, file="QC53.csv")
+- Rscript [ Q54.csv ]
+file <- read.csv('Q54.csv')
+file <- file[c('GPA','X2554_GPAX','entry2553_GPAX')]
+write.csv(file, file="QC54.csv")
+- Rscript [ Q55.csv ]
+file <- read.csv('Q55.csv')
+file <- file[c('GPA','X2555_GPAX','entry2553_GPAX')]
+write.csv(file, file="QC55.csv")
+- Rscript [ Q56.csv ]
+file <- read.csv('Q56.csv')
+file <- file[c('GPA','X2556_GPAX','entry2553_GPAX')]
+write.csv(file, file="QC56.csv")
+- Rscript [ Q57.csv ]
+file <- read.csv('Q57.csv')
+file <- file[c('GPA','X2557_GPAX','entry2553_GPAX')]
+write.csv(file, file="QC57.csv")
+- There are 5 essential Data Frame
+- QC53.csv --> Q53.csv with column 'GPA','X2553_GPAX','entry2553_GPAX'
+- QC54.csv --> Q54.csv with column 'GPA','X2554_GPAX','entry2553_GPAX'
+- QC55.csv --> Q55.csv with column 'GPA','X2555_GPAX','entry2553_GPAX'
+- QC56.csv --> Q56.csv with column 'GPA','X2556_GPAX','entry2553_GPAX'
+- QC57.csv --> Q57.csv with column 'GPA','X2557_GPAX','entry2553_GPAX'
+- Separate Data Frame to specify the EnrolledYear --> R
+- Rscript [ QC53.csv ]
+file <- read.csv('QC53.csv')
+output1 <- subset(file, EnrolledYear==2553)
+write.csv(output1, file="QC53-2553.csv")
+output2 <- subset(file, EnrolledYear==2554)
+write.csv(output2, file="QC53-2554.csv")
+output3 <- subset(file, EnrolledYear==2555)
+write.csv(output3, file="QC53-2555.csv")
+output4 <- subset(file, EnrolledYear==2556)
+write.csv(output4, file="QC53-2556.csv")
+output5 <- subset(file, EnrolledYear==2557)
+write.csv(output5, file="QC53-2557.csv")
+- Rscript [ QC54.csv ]
+file <- read.csv('QC54.csv')
+output1 <- subset(file, EnrolledYear==2554)
+write.csv(output1, file="QC54-2554.csv")
+output2 <- subset(file, EnrolledYear==2555)
+write.csv(output2, file="QC54-2555.csv")
+output3 <- subset(file, EnrolledYear==2556)
+write.csv(output3, file="QC54-2556.csv")
+output4 <- subset(file, EnrolledYear==2557)
+write.csv(output4, file="QC54-2557.csv")
+- Rscript [ QC55.csv ]
+file <- read.csv('QC55.csv')
+output1 <- subset(file, EnrolledYear==2555)
+write.csv(output1, file="QC55-2555.csv")
+output2 <- subset(file, EnrolledYear==2556)
+write.csv(output2, file="QC55-2556.csv")
+output3 <- subset(file, EnrolledYear==2557)
+write.csv(output3, file="QC55-2557.csv")
+- Rscript [ QC56.csv ]
+file <- read.csv('QC56.csv')
+output1 <- subset(file, EnrolledYear==2556)
+write.csv(output1, file="QC56-2556.csv")
+output2 <- subset(file, EnrolledYear==2557)
+write.csv(output2, file="QC56-2557.csv")
+- Rscript [ QC57.csv ]
+file <- read.csv('QC57.csv')
+output1 <- subset(file, EnrolledYear==2557)
+write.csv(output1, file="QC57-2557.csv")
+- Separate Data Frame to specify the EnrolledYear --> Hive
+- Hive QL [ QC53 ]
+- create view QC53-2553 as select * from QC53
+where EnrolledYear==2553
+- create view QC53-2554 as select * from QC53
+where EnrolledYear==2554
+- create view QC53-2555 as select * from QC53
+where EnrolledYear==2555
+- create view QC53-2556 as select * from QC53
+where EnrolledYear==2556
+- create view QC53-2557 as select * from QC53
+where EnrolledYear==2557
+- Hive QL [ QC54 ]
+- create view QC54-2554 as select * from QC54
+where EnrolledYear==2554
+- create view QC54-2555 as select * from QC54
+where EnrolledYear==2555
+- create view QC54-2556 as select * from QC54
+where EnrolledYear==2556
+- create view QC54-2557 as select * from QC54
+where EnrolledYear==2557
+- Hive QL [ QC55 ]
+- create view QC55-2555 as select * from QC55
+where EnrolledYear==2555
+- create view QC55-2556 as select * from QC55
+where EnrolledYear==2556
+- create view QC55-2557 as select * from QC55
+where EnrolledYear==2557
+- Hive QL [ QC56 ]
+- create view QC56-2556 as select * from QC56
+where EnrolledYear==2556
+- create view QC56-2557 as select * from QC56
+where EnrolledYear==2557
+- Hive QL [ QC57 ]
+- create view QC57-2557 as select * from QC57
+where EnrolledYear==2557
+- There are 15 essential Data Frame / View
+- QC53-2553 --> QC53.csv with EnrolledYear==2553
+- QC53-2554 --> QC53.csv with EnrolledYear==2554
+- QC53-2555 --> QC53.csv with EnrolledYear==2555
+- QC53-2556 --> QC53.csv with EnrolledYear==2556
+- QC53-2557 --> QC53.csv with EnrolledYear==2557
+- QC54-2554 --> QC54.csv with EnrolledYear==2554
+- QC54-2555 --> QC54.csv with EnrolledYear==2555
+- QC54-2556 --> QC54.csv with EnrolledYear==2556
+- QC54-2557 --> QC54.csv with EnrolledYear==2557
+- QC55-2555 --> QC55.csv with EnrolledYear==2555
+- QC55-2556 --> QC55.csv with EnrolledYear==2556
+- QC55-2557 --> QC55.csv with EnrolledYear==2557
+- QC56-2556 --> QC56.csv with EnrolledYear==2556
+- QC56-2557 --> QC56.csv with EnrolledYear==2557
+- QC57-2557 --> QC57.csv with EnrolledYear==2557
+- Separate Data Frame to specify the Semester --> R
+- Rscript [ Q53-2553.csv ]
+file <- read.csv('QC53-2553.csv')
+output1 <- subset(file, Semester==1)
+write.csv(output1, file="QC53-2553-1.csv")
+output2 <- subset(file, Semester==2)
+write.csv(output2, file="QC53-2553-2.csv")
+output3 <- subset(file, Semester==3)
+write.csv(output3, file="QC53-2553-3.csv")
+- Rscript [ Q53-2554.csv ]
+file <- read.csv('QC53-2554.csv')
+output1 <- subset(file, Semester==1)
+write.csv(output1, file="QC53-2554-1.csv")
+output2 <- subset(file, Semester==2)
+write.csv(output2, file="QC53-2554-2.csv")
+output3 <- subset(file, Semester==3)
+write.csv(output3, file="QC53-2554-3.csv")
+- Rscript [ Q53-2555.csv ]
+file <- read.csv('QC53-2555.csv')
+output1 <- subset(file, Semester==1)
+write.csv(output1, file="QC53-2555-1.csv")
+output2 <- subset(file, Semester==2)
+write.csv(output2, file="QC53-2555-2.csv")
+output3 <- subset(file, Semester==3)
+write.csv(output3, file="QC53-2555-3.csv")
+- Rscript [ Q53-2556.csv ]
+file <- read.csv('QC53-2556.csv')
+output1 <- subset(file, Semester==1)
+write.csv(output1, file="QC53-2556-1.csv")
+output2 <- subset(file, Semester==2)
+write.csv(output2, file="QC53-2556-2.csv")
+output3 <- subset(file, Semester==3)
+write.csv(output3, file="QC53-2556-3.csv")
+- Rscript [ Q53-2557.csv ]
+file <- read.csv('QC53-2557.csv')
+output1 <- subset(file, Semester==1)
+write.csv(output1, file="QC53-2557-1.csv")
+output2 <- subset(file, Semester==2)
+write.csv(output2, file="QC53-2557-2.csv")
+output3 <- subset(file, Semester==3)
+write.csv(output3, file="QC53-2557-3.csv")
+- Rscript [ Q54-2554.csv ]
+file <- read.csv('QC54-2554.csv')
+output1 <- subset(file, Semester==1)
+write.csv(output1, file="QC54-2554-1.csv")
+output2 <- subset(file, Semester==2)
+write.csv(output2, file="QC54-2554-2.csv")
+output3 <- subset(file, Semester==3)
+write.csv(output3, file="QC54-2554-3.csv")
+- Rscript [ Q54-2555.csv ]
+file <- read.csv('QC54-2555.csv')
+output1 <- subset(file, Semester==1)
+write.csv(output1, file="QC54-2555-1.csv")
+output2 <- subset(file, Semester==2)
+write.csv(output2, file="QC54-2555-2.csv")
+output3 <- subset(file, Semester==3)
+write.csv(output3, file="QC54-2555-3.csv")
+- Rscript [ Q54-2556.csv ]
+file <- read.csv('QC54-2556.csv')
+output1 <- subset(file, Semester==1)
+write.csv(output1, file="QC54-2556-1.csv")
+output2 <- subset(file, Semester==2)
+write.csv(output2, file="QC54-2556-2.csv")
+output3 <- subset(file, Semester==3)
+write.csv(output3, file="QC54-2556-3.csv")
+- Rscript [ Q54-2557.csv ]
+file <- read.csv('QC54-2557.csv')
+output1 <- subset(file, Semester==1)
+write.csv(output1, file="QC54-2557-1.csv")
+output2 <- subset(file, Semester==2)
+write.csv(output2, file="QC54-2557-2.csv")
+output3 <- subset(file, Semester==3)
+write.csv(output3, file="QC54-2557-3.csv")
+- Rscript [ Q55-2555.csv ]
+file <- read.csv('QC55-2555.csv')
+output1 <- subset(file, Semester==1)
+write.csv(output1, file="QC55-2555-1.csv")
+output2 <- subset(file, Semester==2)
+write.csv(output2, file="QC55-2555-2.csv")
+output3 <- subset(file, Semester==3)
+write.csv(output3, file="QC55-2555-3.csv")
+- Rscript [ Q55-2556.csv ]
+file <- read.csv('QC55-2556.csv')
+output1 <- subset(file, Semester==1)
+write.csv(output1, file="QC55-2556-1.csv")
+output2 <- subset(file, Semester==2)
+write.csv(output2, file="QC55-2556-2.csv")
+output3 <- subset(file, Semester==3)
+write.csv(output3, file="QC55-2556-3.csv")
+- Rscript [ Q55-2557.csv ]
+file <- read.csv('QC55-2557.csv')
+output1 <- subset(file, Semester==1)
+write.csv(output1, file="QC55-2557-1.csv")
+output2 <- subset(file, Semester==2)
+write.csv(output2, file="QC55-2557-2.csv")
+output3 <- subset(file, Semester==3)
+write.csv(output3, file="QC55-2557-3.csv")
+- Rscript [ Q56-2556.csv ]
+file <- read.csv('QC56-2556.csv')
+output1 <- subset(file, Semester==1)
+write.csv(output1, file="QC56-2556-1.csv")
+output2 <- subset(file, Semester==2)
+write.csv(output2, file="QC56-2556-2.csv")
+output3 <- subset(file, Semester==3)
+write.csv(output3, file="QC56-2556-3.csv")
+- Rscript [ Q56-2557.csv ]
+file <- read.csv('QC56-2557.csv')
+output1 <- subset(file, Semester==1)
+write.csv(output1, file="QC56-2557-1.csv")
+output2 <- subset(file, Semester==2)
+write.csv(output2, file="QC56-2557-2.csv")
+output3 <- subset(file, Semester==3)
+write.csv(output3, file="QC56-2557-3.csv")
+- Rscript [ Q57-2557.csv ]
+file <- read.csv('QC57-2557.csv')
+output1 <- subset(file, Semester==1)
+write.csv(output1, file="QC57-2557-1.csv")
+output2 <- subset(file, Semester==2)
+write.csv(output2, file="QC57-2557-2.csv")
+output3 <- subset(file, Semester==3)
+write.csv(output3, file="QC57-2557-3.csv")
+- Separate Data Frame to specify the Semester --> Hive
+- Hive QL [ Q53-2553 ]
+- create view QC53-2553-1 as select * from QC53-2553
+where Semester==1
+- create view QC53-2553-2 as select * from QC53-2553
+where Semester==2
+- create view QC53-2553-3 as select * from QC53-2553
+where Semester==3
+- Hive QL [ Q53-2554 ]
+- create view QC53-2554-1 as select * from QC53-2554
+where Semester==1
+- create view QC53-2554-2 as select * from QC53-2554
+where Semester==2
+- create view QC53-2554-3 as select * from QC53-2554
+where Semester==3
+- Hive QL [ Q53-2555 ]
+- create view QC53-2555-1 as select * from QC53-2555
+where Semester==1
+- create view QC53-2555-2 as select * from QC53-2555
+where Semester==2
+- create view QC53-2555-3 as select * from QC53-2555
+where Semester==3
+- Hive QL [ Q53-2556 ]
+- create view QC53-2556-1 as select * from QC53-2556
+where Semester==1
+- create view QC53-2556-2 as select * from QC53-2556
+where Semester==2
+- create view QC53-2556-3 as select * from QC53-2556
+where Semester==3
+- Hive QL [ Q53-2557 ]
+- create view QC53-2557-1 as select * from QC53-2557
+where Semester==1
+- create view QC53-2557-2 as select * from QC53-2557
+where Semester==2
+- create view QC53-2557-3 as select * from QC53-2557
+where Semester==3
+- Hive QL [ Q54-2554 ]
+- create view QC54-2554-1 as select * from QC54-2554
+where Semester==1
+- create view QC54-2554-2 as select * from QC54-2553
+where Semester==2
+- create view QC54-2554-3 as select * from QC54-2554
+where Semester==3
+- Hive QL [ Q54-2555 ]
+- create view QC54-2555-1 as select * from QC54-2555
+where Semester==1
+- create view QC54-2555-2 as select * from QC54-2555
+where Semester==2
+- create view QC54-2555-3 as select * from QC54-2555
+where Semester==3
+- Hive QL [ Q54-2556 ]
+- create view QC54-2556-1 as select * from QC54-2556
+where Semester==1
+- create view QC54-2556-2 as select * from QC54-2556
+where Semester==2
+- create view QC54-2556-3 as select * from QC54-2556
+where Semester==3
+- Hive QL [ Q54-2557 ]
+- create view QC54-2557-1 as select * from QC54-2557
+where Semester==1
+- create view QC54-2557-2 as select * from QC54-2557
+where Semester==2
+- create view QC54-2557-3 as select * from QC54-2557
+where Semester==3
+- Hive QL [ Q55-2555 ]
+- create view QC55-2555-1 as select * from QC55-2555
+where Semester==1
+- create view QC55-2555-2 as select * from QC55-2555
+where Semester==2
+- create view QC55-2555-3 as select * from QC55-2555
+where Semester==3
+- Hive QL [ Q55-2556 ]
+- create view QC55-2556-1 as select * from QC55-2556
+where Semester==1
+- create view QC55-2556-2 as select * from QC55-2556
+where Semester==2
+- create view QC55-2556-3 as select * from QC55-2556
+where Semester==3
+- Hive QL [ Q55-2557 ]
+- create view QC55-2557-1 as select * from QC55-2557
+where Semester==1
+- create view QC55-2557-2 as select * from QC55-2557
+where Semester==2
+- create view QC55-2557-3 as select * from QC55-2557
+where Semester==3
+- Hive QL [ Q56-2556 ]
+- create view QC56-2556-1 as select * from QC56-2556
+where Semester==1
+- create view QC56-2556-2 as select * from QC56-2556
+where Semester==2
+- create view QC56-2556-3 as select * from QC56-2556
+where Semester==3
+- Hive QL [ Q56-2557 ]
+- create view QC56-2557-1 as select * from QC56-2557
+where Semester==1
+- create view QC56-2557-2 as select * from QC56-2557
+where Semester==2
+- create view QC56-2557-3 as select * from QC56-2557
+where Semester==3
+- Hive QL [ Q57-2557 ]
+- create view QC57-2557-1 as select * from QC57-2557
+where Semester==1
+- create view QC57-2557-2 as select * from QC57-2557
+where Semester==2
+- create view QC57-2557-3 as select * from QC57-2557
+where Semester==3
+- There are 45 essential Data Frame / View
+- QC53-2553-1 --> QC53.csv with EnrolledYear==2553 and Semester==1
+- QC53-2553-2 --> QC53.csv with EnrolledYear==2553 and Semester==2
+- QC53-2553-3 --> QC53.csv with EnrolledYear==2553 and Semester==3
+- QC53-2554-1 --> QC53.csv with EnrolledYear==2554 and Semester==1
+- QC53-2554-2 --> QC53.csv with EnrolledYear==2554 and Semester==2
+- QC53-2554-3 --> QC53.csv with EnrolledYear==2554 and Semester==3
+- QC53-2555-1 --> QC53.csv with EnrolledYear==2555 and Semester==1
+- QC53-2555-2 --> QC53.csv with EnrolledYear==2555 and Semester==2
+- QC53-2555-3 --> QC53.csv with EnrolledYear==2555 and Semester==3
+- QC53-2556-1 --> QC53.csv with EnrolledYear==2556 and Semester==1
+- QC53-2556-2 --> QC53.csv with EnrolledYear==2556 and Semester==2
+- QC53-2556-3 --> QC53.csv with EnrolledYear==2556 and Semester==3
+- QC53-2557-1 --> QC53.csv with EnrolledYear==2557 and Semester==1
+- QC53-2557-2 --> QC53.csv with EnrolledYear==2557 and Semester==2
+- QC53-2557-3 --> QC53.csv with EnrolledYear==2557 and Semester==3
+- QC54-2554-1 --> QC54.csv with EnrolledYear==2554 and Semester==1
+- QC54-2554-2 --> QC54.csv with EnrolledYear==2554 and Semester==2
+- QC54-2554-3 --> QC54.csv with EnrolledYear==2554 and Semester==3
+- QC54-2555-1 --> QC54.csv with EnrolledYear==2555 and Semester==1
+- QC54-2555-2 --> QC54.csv with EnrolledYear==2555 and Semester==2
+- QC54-2555-3 --> QC54.csv with EnrolledYear==2555 and Semester==3
+- QC54-2556-1 --> QC54.csv with EnrolledYear==2556 and Semester==1
+- QC54-2556-2 --> QC54.csv with EnrolledYear==2556 and Semester==2
+- QC54-2556-3 --> QC54.csv with EnrolledYear==2556 and Semester==3
+- QC54-2557-1 --> QC54.csv with EnrolledYear==2557 and Semester==1
+- QC54-2557-2 --> QC54.csv with EnrolledYear==2557 and Semester==2
+- QC54-2557-3 --> QC54.csv with EnrolledYear==2557 and Semester==3
+- QC55-2555-1 --> QC55.csv with EnrolledYear==2555 and Semester==1
+- QC55-2555-2 --> QC55.csv with EnrolledYear==2555 and Semester==2
+- QC55-2555-3 --> QC55.csv with EnrolledYear==2555 and Semester==3
+- QC55-2556-1 --> QC55.csv with EnrolledYear==2556 and Semester==1
+- QC55-2556-2 --> QC55.csv with EnrolledYear==2556 and Semester==2
+- QC55-2556-3 --> QC55.csv with EnrolledYear==2556 and Semester==3
+- QC55-2557-1 --> QC55.csv with EnrolledYear==2557 and Semester==1
+- QC55-2557-2 --> QC55.csv with EnrolledYear==2557 and Semester==2
+- QC55-2557-3 --> QC55.csv with EnrolledYear==2557 and Semester==3
+- QC56-2556-1 --> QC56.csv with EnrolledYear==2556 and Semester==1
+- QC56-2556-2 --> QC56.csv with EnrolledYear==2556 and Semester==2
+- QC56-2556-3 --> QC56.csv with EnrolledYear==2556 and Semester==3
+- QC56-2557-1 --> QC56.csv with EnrolledYear==2557 and Semester==1
+- QC56-2557-2 --> QC56.csv with EnrolledYear==2557 and Semester==2
+- QC56-2557-3 --> QC56.csv with EnrolledYear==2557 and Semester==3
+- QC57-2557-1 --> QC57.csv with EnrolledYear==2557 and Semester==1
+- QC57-2557-2 --> QC57.csv with EnrolledYear==2557 and Semester==2
+- QC57-2557-3 --> QC57.csv with EnrolledYear==2557 and Semester==3
+
+Get started analysis data frame
+13:00 - 17:30
+- Use Scatter Graph
+- ( x = High School's GPA , y = University's GPA )
+- ( x = High School's GPA , y = University's GPAX )
+- Plot Scatter Graph
+- Entire Level --> 5
+- ( x = High School's GPA , y = University's GPA )
+- QC53
+file <- read.csv('QC53.csv')
+plot( file$entry2553_GPAX, file$GPA )
+- QC54
+file <- read.csv('QC54.csv')
+plot( file$entry2553_GPAX, file$GPA )
+- QC55
+file <- read.csv('QC55.csv')
+plot( file$entry2553_GPAX, file$GPA )
+- QC56
+file <- read.csv('QC56.csv')
+plot( file$entry2553_GPAX, file$GPA )
+- QC57
+file <- read.csv('QC57.csv')
+plot( file$entry2553_GPAX, file$GPA )
+- ( x = High School's GPA , y = University's GPAX )
+- QC53
+file <- read.csv('QC53.csv')
+plot( file$entry2553_GPAX, file$X2553_GPAX )
+- QC54
+file <- read.csv('QC54.csv')
+plot( file$entry2553_GPAX, file$X2554_GPAX )
+- QC55
+file <- read.csv('QC55.csv')
+plot( file$entry2553_GPAX, file$X2555_GPAX )
+- QC56
+file <- read.csv('QC56.csv')
+plot( file$entry2553_GPAX, file$X2556_GPAX )
+- QC57
+file <- read.csv('QC57.csv')
+plot( file$entry2553_GPAX, file$X2557_GPAX )
+- Link
+Dashboard : http://kundjanasith.com/Big-Data-Student/pages/index.html

@@ -1,0 +1,219 @@
+Self-Learning by exercise and laboratory
+08:30 - 12:00
+- Getting Started with Amazon EC2 Linux Instances
+[ Instance = An amazon Elastic Block Store ( EBS ) - backed instance ]
+- Launch an Amazon EC2 Instance
+--> http://my-account.signin.aws.amazon.com/console
+--> EC2 ( compute engine ) --> Launch instance [ Linux ]
+- Connect to Instance
+- Option1 : Connect Using Browser
+- Option2 : Connect from "Windows" using PuTTY
+- Option3 : Connect from "Mac" or "Linux" using SSH client
+--> ssh -i key.pem ec2-user@PUBLIC_DNS
+- Add a Volume to Instance : [ ec2-user ~ ]$
+--> df -h # add volume
+--> lsblk # make a volume avaliable
+--> sudo mkfs -t ext4 /dev/xvdf # format the volume ( /dev/xvdf ) which support ext4 file systems
+--> sudo mkdir /mnt/my-data # make a directory ( /mnt/my-data )
+--> sudo mount /dev/xvdf  /mnt/my-data # mount directory between
+( /dev/xvdf ) and ( /mnt/my-data )
+--> ls /mnt/my-data # list the contents in the volume ( /mnt/my-data )
+- Clean up Instance & Volume
+- Introduction to Amazon Simple Storage Service ( Amazon S3 )
+[ S3 = Storage for the internet, Designed to make web-scale computing easier ]
+--> http://my-account.signin.aws.amazon.com/console
+--> S3 ( Storage & Content Delivery )
+- Create a Bucket in Amazon S3 --> ( Create Bucket )
+- Adding an Object to Amazon S3 --> ( Upload some object to bucket )
+- Viewing an Object in Amazon S3 --> ( Click your bucket, show your object )
+- Moving an Object in Amazon S3 --> ( Move object to place where you want )
+- Deleting an Object & Bucket in Amazon S3 --> ( Delete object and bucket )
+- Introduction to AWS Elatic Beanstalk
+[ Elastic Beanstalk = An easier way for you to quickly deploy and manage applications in the AWS cloud and It  automatically handles the deployment details of ( capacity provisioning, load balancing, auto scaling, application health monitoring ) ]
+--> http://my-account.signin.aws.amazon.com/console
+--> Elatic Beanstalk ( compute engine )
+- Download Sample Application
+- Deploy & Application
+- Monitoring the Cluster
+- Getting Started with AWS Hosting a Web App
+- Hosting a Web App on Amazon Web Services
+- Web App Hosting Architecture
+- Setting Up to Host a Web App on AWS
+- Sign Up for AWS # acount 178319184631 @IMC-institute
+- Create an Identity & Access Management ( IAM ) User
+- Create a Key Pair # -i key.pem
+- Configure a Virtual Private Cloud ( VPC ) # limit 5
+- Step1 : Create an Application Server
+- Create a Security Group for your Amazon EC2 Instance
+- Create an IAM role
+- Launch EC2 Instance
+- Step2 : Create a Database Server
+- Create a Security Group for Database Instance
+- Launch a Database Instance # mysql
+* remember ( Database name, username, password )
+- Step3 : Deploy App
+- Connect to Linux Instance
+--> ssh -i key.pem ec2-user@PUBLIC _DNS
+- Configure the EC2 Instance : [ ec2-user ~ ]$
+- Start Web Server
+--> sudo yum update -y # update
+--> sudo yum groupinstall -y "Web Server" "PHP Support"  # install Apache web server and PHP software
+--> sudo yum install php-mysql  php-xml php-mbstring php-gd
+# ( optional ) If you need PHP support for MySQL as Drupal does
+--> sudo service httpd start # Start Apache web server
+--> sudo chkconfig httpd on # Configure Apache web server to start at each system boot
+- Install the App [ Using Drupal 7.1 ]
+--> wget http://ftp.drupal.org/files/projects/drupal-7.1.tar.gz
+# download drupal 7.1
+--> tar -xzvf drupal-7.1.tar.gz # extract drupal 7.1
+--> ls # list the conetent in this directory
+--> rm drupal-7.1.tar.gz # ( optional ) remove drupal-7.1.tar.gz
+--> sudo groupadd www # create a group
+--> sudo usermod -a -G www ec2-user # add ec2-user to the group
+* Terminate and Connect the Linux instance again
+Grant the www group owner ship of ( /var/www )
+--> sudo chown -R root:www /var/www
+--> sudo chmod 2775 /var/www
+Change permissions for the directory and subdirectories
+--> find /var/www -type d -exec sudo chmod 2775 {} +
+--> find /var/www -type f -exec sudo chmod 0664 {} +
+--> sudo service httpd restart # restart Apache web server
+--> mv drupal-7.1/* /var/www/html/  # move directoty from
+( drupal-7.1/* ) to ( /var/www/html/ )
+Create the files directory and the settings.php file.
+-->  cd /var/www/html
+--> sudo mkdir sites/default/files
+--> sudo chmod 777 sites/default/files/
+--> sudo cp sites/default/files/default.settings.php sites/default/settings.php
+--> sudo chmod 666 sites/default/settings.php
+- Configure Drupal
+--> Open a web browser with PUBLIC_DNS of Instance
+--> Select Standard
+--> Set up Database ( With Database name, username, password )
+--> Configure site
+- Test Website
+- Update Permissions
+--> sudo chmod 644 sites/default/settings.php
+--> sudo chmod 755 sites/default
+--> create a custom AMI ( Amazon  Machine Inamge )
+- Step4 : Scale and Load-Balance Web App
+- Configure Auto Scaling and Load Balancing
+- Open Amazon EC2-console
+- Region = US West ( Oregon )
+- Load Balancer --> Create Load Balancer
+- Define Load Balancer
+--> Enter name
+--> Select VPC from Create Load Balancer inside list
+- Configure Health Check
+--> Ping port at ( Default Values )
+--> Ping Path to /.
+--> Set Healthy Threshold = 2
+- Select Subnets If you select a non default VPC
+- Assign Security Groups
+--> Select an existing security group
+- Add instance to Load Balancer
+- Launch Configuration
+--> Create Auto Scaling group
+- Create Launch Configuration
+- Choose AMI
+- Choose Instance Type : ( General Purpose )
+- Configuration details
+--> Create Launch Configuration <-- IAM role
+--> Advanced Details
+--> User data
+#!/bin/bash
+yum update -y
+service httpd start
+chkconfig httpd on
+--> Assign a public IP address to every instance
+- Review
+--> Edit security groups
+--> Select an existing security group
+--> Create Launch configuration
+->> Select an exiting key pair or create a new key pair
+->> Choose an existing key pair
+- Configuration Auto Scaling Group Details
+--> Enter name
+--> Group size
+--> Select VPC
+--> Expand Advanced Details
+->> Select receive traffic from Elastic Load Balancer
+- Configuration scaling policies
+--> Use scaling policies to adjust the capacity of this group
+--> under Increase Group Size <-- Add new Alarm
+--> Create alarm <-- Create topic
+--> Increase Group Size : ( Take the action )
+--> ( optional )  Decrease Group Size
+- Test Load Balancing
+- Select your load balancer
+- Description
+--> my-lb-PUBLIC_DNS.us-east-1.elb.amazonaws.com
+- Test on browser
+- Step5 : Associate a Domain Name with Website Using Amazon Route 53
+- Register a Domain Name
+- Allocate Name Servers to Route Traffic for Domain
+- Open Amazon Route 53
+--> Get Started Now
+--> DNS Management
+--> Created Hosted Zone
+- Create Domain name
+- Select hosted zone --> Delegation set
+- Create Record Sets for Domain and SubDomain
+- Open Hosted Zone
+--> Go to Record Sets
+--> Create Record Set
+->> Leave the default name ( root domain )
+->> Type = select A - IPv4 address
+->> Alias ( Yes )
+->> Alias target ---> Add prefix ( Dualstack )
+->> Select simple in Routing Policy list
+- Set Up a DNS provider
+dig example.com # Domain name
+- Step6 : Clean Up
+- Delete the Amazon Route 53 Hosted Zone
+- Delete the Auto Scaling Group
+- Delete the Load Balancer
+- Delete Your Custom AMI
+- Terminate the DB Instance
+- Link
+Exercise:http://kundjanasith.com/BigDataSchool/31-05-2016/AWS_Exercises.pdf
+Laboratory:https://qwiklabs.com
+
+Google Cloud Platform
+13:00 - 17:30
+- What is Google Cloud Platform ?
+- Google App Engine ( GAE )
+--> Auto scaling
+--> Free for some degree
+- Compute engine as EC2
+- GAE programming language support
+- Java / Python / PHP / Go
+- Why using GAE ?
+- GAE is Paas
+- Feature
+--> Persistant storage with ( Quering, Sorting, Transactions )
+--> Automatic scaling & Load balancing
+--> Asynchronous task queues for performing work outside the scope of a request
+--> Scheduled tasks for triggering events at specified times or regular intervals
+- GAE Development life cycle
+--> Test --> Deploy --> Manage --> Coding --> Build --> Test
+- Local : Coding --> Build --> Test
+- Global : Deploy --> Manage
+Mini Workshop ( Deploy App by Google App Engine )
+- Open google console
+- Google App Engine --> Create new Project
+- Open Ecliipse with Java version 1.7
+- Download & Install GAE SDK
+- New Web Application Project
+--> Create name and package
+--> Check out using GWT
+--> Use project ID
+--> Browse ->> Google Project from Google App Engine
+- Local
+--> Run as web application
+--> Open browser : http://localhost:8888
+- Deploy
+--> Deploy to App engine
+--> Open browser : ( URL will be generated )
+- Link
+http://kundjanasith.com/BigDataSchool/31-05-2016/AWS_GoogleCloud_Intro.pdf

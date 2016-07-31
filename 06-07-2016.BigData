@@ -1,0 +1,251 @@
+Hadoop distributed file system
+08:30 - 12:00
+- HDFS --> [ Hadoop Distributed File System ]
+-  is designed to store very large data sets reliably, and to stream those data sets at high bandwidth to user applications. In a large cluster, thousands of servers both host directly attached storage and execute user application tasks.
+- distributing storage and computation across many servers, the resource can grow with demand while remaining economical at every size.
+- Introduction
+- is patterned after the Unix filesystem, faithfulness to standards was sacrificed in favor of improved performance for the applications at hand.
+- is the partitioning of data and computation across many (thousands) of hosts, and the execution of application computations in parallel close to their data.
+- Hadoop Cluster
+- scales computation capacity, storage capacity and I/O bandwidth by simply adding commodity servers.
+- Architecture
+- NameNode
+- is a hierarchy of files and directories. Files and directories are represented on the NameNode by inodes.
+- Inodes record attributes like permissions, modification and access times, namespace and disk space quotas.
+- maintains the namespace tree and the mapping of blocks to DataNodes.
+- The current design
+- A single NameNode for each cluster.
+- The cluster can have thousands of DataNodes and tens of thousands of HDFS clients per cluster, as each DataNode may execute multiple application tasks concurrently.
+- Image & Journal
+- The persistent record of the image stored in the NameNode's local native filesystem is called a checkpoint.
+- The NameNode records changes to HDFS in a write-ahead log called the journal in its local native filesystem.
+- The location of block replicas are not part of the persistent checkpoint.
+- Each client-initiated transaction is recorded in the journal, and the journal file is flushed and synced before the acknowledgment is sent to the client.
+- The checkpoint file is never changed by the NameNode; a new file is written when a checkpoint is created during restart, when requested by the administrator, or by the CheckpointNode described in the next section.
+- A new checkpoint and an empty journal are written back to the storage directories before the NameNode starts serving clients.
+- The NameNode
+- is a multithreaded system and processes requests simultaneously from multiple clients.
+- batches multiple transactions. When one of the NameNode's threads initiates a flush-and-sync operation, all the transactions batched at that time are committed together.
+- DataNode
+- is represented by two files in the local native filesystem.
+- The first file contains the data itself
+- The second file records the block's metadata including checksums for the data and the generation stamp.
+- The size of the data file equals the actual length of the block and does not require extra space to round it up to the nominal block size as in traditional filesystems. Thus, if a block is half full it needs only half of the space of the full block on the local drive.
+- Handshake
+- The purpose of the handshake is to verify the namespace ID and the software version of the DataNode. If either does not match that of the NameNode, the DataNode automatically shuts down.
+- During startup each DataNode connects to the NameNode and performs a handshake.
+- The namespace ID
+- is assigned to the filesystem instance when it is formatted.
+- is persistently stored on all nodes of the cluster.
+- Nodes with a different namespace ID will not be able to join the cluster, thus protecting the integrity of the filesystem.
+- A DataNode that is newly initialized and without any namespace ID is permitted to join the cluster and receive the cluster's namespace ID.
+- These commands are important for maintaining the overall system integrity and therefore it is critical to keep heartbeats frequent even on big clusters.
+-  The NameNode can process thousands of heartbeats per second without affecting other NameNode operations.
+- Hadoop Distributed FIle System
+- User applications access the filesystem using the HDFS client, a library that exports the HDFS filesystem interface.
+- Like most conventional filesystems, HDFS supports operations to read, write and delete files, and operations to create and delete directories.
+- The user references files and directories by paths in the namespace. The user application does not need to know that filesystem metadata and storage are on different servers, or that blocks have multiple replicas.
+-  provides an API that exposes the locations of a file blocks. This allows applications like the MapReduce framework to schedule a task to where the data are located, thus improving the read performance. It also allows an application to set the replication factor of a file.
+- By default a file's replication factor is three.
+-  For critical files or files which are accessed very often, having a higher replication factor improves tolerance against faults and increases read bandwidth.
+- CheckpointNode
+`- The NameNode in HDFS, in addition to its primary role serving client requests, can alternatively execute either of two other roles, either a CheckpointNode or a BackupNode. The role is specified at the node startup.
+- periodically combines the existing checkpoint and journal to create a new checkpoint and an empty journal.
+- usually runs on a different host from the NameNode since it has the same memory requirements as the NameNode.
+- is one way to protect the filesystem metadata.
+- BackupNode
+- A recently introduced feature of HDFS is the BackupNode. Like a CheckpointNode, the BackupNode is capable of creating periodic checkpoints, but in addition it maintains an in-memory, up-to-date image of the filesystem namespace that is always synchronized with the state of the NameNode.
+- accepts the journal stream of namespace transactions from the active NameNode, saves them in journal on its own storage directories, and applies these transactions to its own namespace image in memory.
+- an create a checkpoint without downloading checkpoint and journal files from the active NameNode, since it already has an up-to-date namespace image in its memory.
+- can be viewed as a read-only NameNode. It contains all filesystem metadata information except for block locations.
+- can perform all operations of the regular NameNode that do not involve modification of the namespace or knowledge of block locations.
+- Upgrades and Filesystem Snapshots
+- The purpose of creating snapshots in HDFS is to minimize potential damage to the data stored in the system during upgrades.
+- ets administrators persistently save the current state of the filesystem, so that if the upgrade results in data loss or corruption it is possible to rollback the upgrade and return HDFS to the namespace and storage state as they were at the time of the snapshot.
+- is created at the cluster administrator's option whenever the system is started.
+- File I/O Operations and Replication Management
+- The whole point of a filesystem is to store data in files. To understand how HDFS does this, we must look at how reading and writing works, and how blocks are managed
+- File Read and Write
+- An application adds data to HDFS by creating a new file and writing the data to it.
+- The bytes written cannot be altered or removed except that new data can be added to the file by reopening the file for append. HDFS implements a single-writer, multiple-reader model.
+- The HDFS client that opens a file for writing is granted a lease for the file; no other client can write to the file.
+- HDFS permits a client to read a file that is open for writing. When reading a file open for writing, the length of the last block still being written is unknown to the NameNode. In this case, the client asks one of the replicas for the latest length before starting to read its content.
+- Block Placement
+-  A common practice is to spread the nodes across multiple racks. Nodes of a rack share a switch, and rack switches are connected by one or more core switches.
+- Communication between two nodes in different racks has to go through multiple switches. In most cases, network bandwidth between nodes in the same rack is greater than network bandwidth between nodes in different racks.
+- estimates the network bandwidth between two nodes by their distance.
+-  allows an administrator to configure a script that returns a node's rack identification given a node's address.
+- Replication Management
+- When a block becomes under-replicated, it is put in the replication priority queue. A block with only one replica has the highest priority, while a block with a number of replicas that is greater than two thirds of its replication factor has the lowest priority.
+- A background thread periodically scans the head of the replication queue to decide where to place new replicas.
+- The NameNode also makes sure that not all replicas of a block are located on one rack. If the NameNode detects that a block's replicas end up at one rack, the NameNode treats the block as mis-replicated and replicates the block to a different rack using the same block placement policy described above.
+- Balancer
+-  is a tool that balances disk space usage on an HDFS cluster. It takes a threshold value as an input parameter, which is a fraction between 0 and 1.
+-  is deployed as an application program that can be run by the cluster administrator. It iteratively moves replicas from DataNodes with higher utilization to DataNodes with lower utilization.
+- optimizes the balancing process by minimizing the inter-rack data copying. If the balancer decides that a replica A needs to be moved to a different rack and the destination rack happens to have a replica B of the same block, the data will be copied from replica B instead of replica A.
+- Block Scanner
+- runs a block scanner that periodically scans its block replicas and verifies that stored checksums match the block data.
+- adjusts the read bandwidth in order to complete the verification in a configurable period. I
+- The verification time of each block is stored in a human-readable log file. At any time there are up to two files in the top-level DataNode directory, the current and previous logs.
+- This policy aims to preserve data as long as possible. So even if all replicas of a block are corrupt, the policy allows the user to retrieve its data from the corrupt replicas.
+- Decommissioning
+- The cluster administrator specifies list of nodes to be decommissioned. Once a DataNode is marked for decommissioning, it will not be selected as the target of replica placement, but it will continue to serve read requests.
+- The NameNode starts to schedule replication of its blocks to other DataNodes.
+- Once the NameNode detects that all blocks on the decommissioning DataNode are replicated, the node enters the decommissioned state.
+- Then it can be safely removed from the cluster without jeopardizing any data availability.
+- Inter-Cluster Data Copy
+- When working with large datasets, copying data into and out of a HDFS cluster is daunting. HDFS provides a tool called DistCp for large inter/intra-cluster parallel copying.
+- It is a MapReduce job; each of the map tasks copies a portion of the source data into the destination filesystem.
+- The MapReduce framework automatically handles parallel task scheduling, error detection and recovery.
+- Yahoo
+- Seventy percent of the disk space is allocated to HDFS. The remainder is reserved for the operating system (Red Hat Linux), logs, and space to spill the output of map tasks (MapReduce intermediate data are not stored in HDFS).
+- The rack switches are connected to each of eight core switches. The core switches provide connectivity between racks and to out-of-cluster resources.
+- Durability of Data
+- Some failures of a core switch can effectively disconnect a slice of the cluster from multiple racks, in which case it is probable that some blocks will become unavailable.
+- Replication of data three times is a robust guard against loss of data due to uncorrelated node failures.
+- Features for Sharing HDFS
+- The filesystem itself has had to introduce means to share the resource among a large number of diverse users. The first such feature was a permissions framework closely modeled on the Unix permissions scheme for file and directories.
+- The principle differences between Unix (POSIX) and HDFS are that ordinary files in HDFS have neither execute permissions nor sticky bits.
+- The total space available for data storage is set by the number of data nodes and the storage provisioned for each node.
+- Early experience with HDFS demonstrated a need for some means to enforce the resource allocation policy across user communities.
+- While the architecture of HDFS presumes most applications will stream large data sets as input, the MapReduce programming framework can have a tendency to generate many small output files further stressing the namespace resource
+- Scaling and HDFS Federation
+- A new feature allows multiple independent namespaces (and NameNodes) to share the physical storage within a cluster.
+- Namespaces use blocks grouped under a Block Pool. Block pools are analogous to logical units (LUNs) in a SAN storage system and a namespace with its pool of blocks is analogous to a filesystem volume.
+- Applications prefer to continue using a single namespace. Namespaces can be mounted to create such a unified view.
+- Lessons Learned
+- Many have been surprised by the choice of Java in building a scalable filesystem.
+- While Java posed challenges for scaling the NameNode due to its object memory overhead and garbage collection, Java has been responsible to the robustness of the system; it has avoided corruption due to pointer or memory management bugs.
+- Acknowledgment
+- We thank Yahoo! for investing in Hadoop and continuing to make it available as open source
+Web service download/upload file from/to hadoop file system
+13:00 - 17:30S
+- MEAN principle [ Full Stack Web Application ] --> MEAN Stack
+- M  --> Database
+- MongoDB --> No SQL Database
+- MySQL --> SQL Database
+- E --> Middleware
+- Express
+- A --> Front-end
+- Angular
+- N --> Back-end
+- Node
+- HDFS ( Hadoop Distributed File System ) <-- ( MongoDB, MySQL )
+- Express.js
+- npm install express --save
+- Web Applications
+- Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile application
+- APIs
+- With a myriad of HTTP utility methods and middle ware at your disposal, creating a robust API is quick and easy
+- Performance
+- Express provides a thin layer of fundamental web application features, without obscuring Node.js features that you know and love
+- Install
+- mkdir myapp
+- cd myapp
+- npm init
+- entry point: (index.js)
+- npm install express --save
+- npm install express
+- is a Node.js web application server framework designed for building single-page, multi-page and hybrid web application
+- is the de factor standard server frameworks for node.js
+- described as a sinatra-inspired server
+- is relatively minimal with many features avaliable as plugins
+- Angular.js
+- Basic
+- HTML
+- CSS
+- JavaScript
+-Tag
+Place the script tag at the bottom of the page. Placing script tags at the end of the page improves app load time because the HTML loading is not blocked by loading of the angular.js script. You can get the latest bits from http://code.angularjs.org. Please don't link your production code to this URL, as it will expose a security hole on your site. For experimental development linking to our site is fine.
+- Choose: angular-[version].js for a human-readable file, suitable for development and debugging.
+- Choose: angular-[version].min.js for a compressed and obfuscated file, suitable for use in production.
+Place ng-app to the root of your application, typically on the <html> tag if you want angular to auto-bootstrap your application.
+If you choose to use the old style directive syntax ng: then include xml-namespace in html to make IE happy. (This is here for historical reasons, and we no longer recommend use of ng:
+- Initialization
+- Automatic
+- Angular initializes automatically uponDOMContentLoaded event or when theangular.js script is evaluated if at that timedocument.readyState is set to 'complete'. At this point Angular looks for the App directive which designates your application root. If the App directive is found then Angular will:
+- load the module associated with the directive.
+- create the application injector
+- compile the DOM treating the App directive as the root of the compilation. This allows you to tell it to treat only a portion of the DOM as an Angular application.
+- Manual
+- If you need to have more control over the initialization process, you can use a manual bootstrapping method instead. Examples of when you'd need to do this include using script loaders or the need to perform an operation before Angular compiles a page.
+- You should call angular.bootstrap() after you've loaded or defined your modules. You cannot add controllers, services, directives, etc after an application bootstraps.
+- This is the sequence that your code should follow:
+- After the page and all of the code is loaded, find the root element of your AngularJS application, which is typically the root of the document.
+- Call angular.bootstrap to compile the element into an executable, bi-directionally bound application.
+- Things to keep in mind
+- There a few things to keep in mind regardless of automatic or manual bootstrapping:
+- While it's possible to bootstrap more than one AngularJS application per page, we don't actively test against this scenario. It's possible that you'll run into problems, especially with complex apps, so caution is advised.
+- Do not bootstrap your app on an element with a directive that uses transclusion, such as ngif,nginclude and ngView. Doing this misplaces the app $rootElement and the app's injector, causing animations to stop working and making the injector inaccessible from outside the app.
+- Defereed Bootstrap
+- This feature enables tools like Batarang and test runners to hook into angular's bootstrap process and sneak in more modules into the DI registry which can replace or augment DI services for the purpose of instrumentation or mocking out heavy dependencies.
+- If window.name contains prefix NG_DEFER_BOOTSTRAP! when angular.bootstrap is called, the bootstrap process will be paused until angular.resumeBootstrap() is called.
+- angular.resumeBootstrap() takes an optional array of modules that should be added to the original list of modules that the app was about to be bootstrapped with.
+- Node.js
+- The goal of this documentation is to comprehensively explain the Node.js API, both from a reference as well as a conceptual point of view.
+- Each section describes a built-in module or high-level concept.
+- Where appropriate, property types, method arguments, and the arguments provided to event handlers are detailed in a list underneath the topic heading.
+- Stability Index
+- Throughout the documentation, you will see indications of a section's stability. The Node.js API is still somewhat changing, and as it matures, certain parts are more reliable than others.
+- Some are so proven and so relied upon that they are unlikely to ever change at all
+- Others are brand new and experimental or known to be hazardous and in the process of being redesigned
+- The stability indices
+- 0 --> Deprecated
+- This feature is known to be problematic, and changes are planned.  Do not rely on it.  Use of the feature may cause warnings.  Backwardscompatibility should not be expected.
+- 1 -->  Experimental
+- This feature is subject to change, and is gated by a command line flag. It may change or be removed in future versions.
+- 2 --> Stable
+- The API has proven satisfactory. Compatibility with the npm ecosystem is a high priority, and will not be broken unless absolutely necessary.
+- 3 --> Locked
+- Only fixes related to security, performance, or bug fixes will be accepted. Please do not suggest API changes in this area; they will be refused.
+- Options
+-v. --version
+- Print node's version.
+-h, --help
+- Print node command line options. The output of this option is less detailed than this document.
+-e, --eval "script"
+- Evaluate the following argument as JavaScript. The modules which are predefined in the REPL can also be used inscript.
+-p, --print "script"
+- Identical to -e but prints the result.
+-c, --check
+- Syntax check the script without executing.
+-i, --interactive
+- Opens the REPL even if stdin does not appear to be a terminal.
+-r, --require module
+- Preload the specified module at startup.Follows require()'s module resolution rules. module may be either a path to a file, or a node module name.
+--no-deprecation
+- Silence deprecation warnings.
+--trace-warnings
+- Print stack traces for deprecations.
+--trace-synce-io
+- Throw errors for deprecations.
+--zero-fill-buffers
+- Silence all process warnings (including deprecations).
+--preserve-symlinks
+- Print stack traces for process warnings (including deprecations).
+--track-heap-objects
+- Prints a stack trace whenever synchronous I/O is detected after the first turn of the event loop.
+--prof-process
+- Process v8 profiler output generated using the v8 option --prof.
+--v8-options
+- Print v8 command line options.Note: v8 options allow words to be separated by both dashes (-) or underscores For example, --stack-trace-limit is equivalent to --stack_trace_limit.
+--tls-cipher-list=list
+- Specify an alternative default TLS cipher list. (Requires Node.js to be built with crypto support. (Default))
+--enable-fips
+- Enable FIPS-compliant crypto at startup. (Requires Node.js to be built with./configure --openssl-fips)
+--force-fips
+- Force FIPS-compliant crypto on startup. (Cannot be disabled from script code.) (Same requirements as --enable-fips)
+--icu-data-dir=file
+- Specify ICU data load path. (overridesNODE_ICU_DATA)
+- Environment Variables
+- NODE_DEBUG=module[,...]
+- ','-separated list of core modules that should print debug information.
+- NODE_PATH=path[:...]
+- ':'-separated list of directories prefixed to the module search path.
+Note: on Windows, this is a ';'-separated list instead.
+- NODE_DISABLE_COLORS=1
+- When set to 1 colors will not be used in the REPL.
+- NODE_ICU_DATA=file
+- Data path for ICU (Intl object) data. Will extend linked-in data when compiled with small-icu support.
+- NODE_REPL_HISTORY=file
+- Path to the file used to store the persistent REPL history. The default path is~/.node_repl_history, which is overridden by this variable. Setting the value to an empty string ("" or " ") disables persistent REPL history.

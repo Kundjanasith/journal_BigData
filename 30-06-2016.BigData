@@ -1,0 +1,840 @@
+Machine Learning ( Classification )
+08:30 - 12:00
+- Prediction Graduate GPAX
+--> by Math GPA, Science GPA, English GPA and Entrance GPAX
+- Step
+1. Clean Data ( Q53, Q54, Q55, Q56, Q57 )
+- Rscript ( Q53 )
+file <- read.csv('Q53.csv')
+file <- file53[c('X2553_GPAX','Math','Science','English','entry2553_GPAX')]
+names(file)[1] <- paste("graduate_GPAX")
+names(file)[5] <- paste("entrance_GPAX")
+#Entrance_GPAX
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=0.0, 1, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=0.5, 2, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=1.0, 3, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=1.5, 4, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=2.0, 5, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=2.5, 6, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=3.0, 7, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=3.5, 8, file$entrance_GPAX_G)
+#Math
+file$Math_G <- ifelse(file$Math>=0.0, 1, file$Math_G)
+file$Math_G <- ifelse(file$Math>=0.5, 2, file$Math_G)
+file$Math_G <- ifelse(file$Math>=1.0, 3, file$Math_G)
+file$Math_G <- ifelse(file$Math>=1.5, 4, file$Math_G)
+file$Math_G <- ifelse(file$Math>=2.0, 5, file$Math_G)
+file$Math_G <- ifelse(file$Math>=2.5, 6, file$Math_G)
+file$Math_G <- ifelse(file$Math>=3.0, 7, file$Math_G)
+file$Math_G <- ifelse(file$Math>=3.5, 8, file$Math_G)
+#Science
+file$Science_G <- ifelse(file$Science>=0.0, 1, file$Science_G)
+file$Science_G <- ifelse(file$Science>=0.5, 2, file$Science_G)
+file$Science_G <- ifelse(file$Science>=1.0, 3, file$Science_G)
+file$Science_G <- ifelse(file$Science>=1.5, 4, file$Science_G)
+file$Science_G <- ifelse(file$Science>=2.0, 5, file$Science_G)
+file$Science_G <- ifelse(file$Science>=2.5, 6, file$Science_G)
+file$Science_G <- ifelse(file$Science>=3.0, 7, file$Science_G)
+file$Science_G <- ifelse(file$Science>=3.5, 8, file$Science_G)
+#English
+file$English_G <- ifelse(file$English>=0.0, 1, file$English_G)
+file$English_G <- ifelse(file$English>=0.5, 2, file$English_G)
+file$English_G <- ifelse(file$English>=1.0, 3, file$English_G)
+file$English_G <- ifelse(file$English>=1.5, 4, file$English_G)
+file$English_G <- ifelse(file$English>=2.0, 5, file$English_G)
+file$English_G <- ifelse(file$English>=2.5, 6, file$English_G)
+file$English_G <- ifelse(file$English>=3.0, 7, file$English_G)
+file$English_G <- ifelse(file$English>=3.5, 8, file$English_G)
+#Graduate_GPAX
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=0.0, 1, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=0.5, 2, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=1.0, 3, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=1.5, 4, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=2.0, 5, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=2.5, 6, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=3.0, 7, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=3.5, 8, file$graduate_GPAX_G)
+file <-file[c('entrance_GPAX_G','Math_G','Science_G','English_G',
+'graduate_GPAX_G')]
+names(file)[1] <- paste("Entrance_GPAX")
+names(file)[2] <- paste("Math_GPA")
+names(file)[3] <- paste("Science_GPAX")
+names(file)[4] <- paste("English_GPAX")
+names(file)[5] <- paste("Graduate_GPAX")
+write.csv(file, file='clean_53.csv',row.names=FALSE)
+- Rscript ( Q54 )
+file <- read.csv('Q54.csv')
+file <- file53[c('X2554_GPAX','Math','Science','English','entry2553_GPAX')]
+names(file)[1] <- paste("graduate_GPAX")
+names(file)[5] <- paste("entrance_GPAX")
+#Entrance_GPAX
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=0.0, 1, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=0.5, 2, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=1.0, 3, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=1.5, 4, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=2.0, 5, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=2.5, 6, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=3.0, 7, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=3.5, 8, file$entrance_GPAX_G)
+#Math
+file$Math_G <- ifelse(file$Math>=0.0, 1, file$Math_G)
+file$Math_G <- ifelse(file$Math>=0.5, 2, file$Math_G)
+file$Math_G <- ifelse(file$Math>=1.0, 3, file$Math_G)
+file$Math_G <- ifelse(file$Math>=1.5, 4, file$Math_G)
+file$Math_G <- ifelse(file$Math>=2.0, 5, file$Math_G)
+file$Math_G <- ifelse(file$Math>=2.5, 6, file$Math_G)
+file$Math_G <- ifelse(file$Math>=3.0, 7, file$Math_G)
+file$Math_G <- ifelse(file$Math>=3.5, 8, file$Math_G)
+#Science
+file$Science_G <- ifelse(file$Science>=0.0, 1, file$Science_G)
+file$Science_G <- ifelse(file$Science>=0.5, 2, file$Science_G)
+file$Science_G <- ifelse(file$Science>=1.0, 3, file$Science_G)
+file$Science_G <- ifelse(file$Science>=1.5, 4, file$Science_G)
+file$Science_G <- ifelse(file$Science>=2.0, 5, file$Science_G)
+file$Science_G <- ifelse(file$Science>=2.5, 6, file$Science_G)
+file$Science_G <- ifelse(file$Science>=3.0, 7, file$Science_G)
+file$Science_G <- ifelse(file$Science>=3.5, 8, file$Science_G)
+#English
+file$English_G <- ifelse(file$English>=0.0, 1, file$English_G)
+file$English_G <- ifelse(file$English>=0.5, 2, file$English_G)
+file$English_G <- ifelse(file$English>=1.0, 3, file$English_G)
+file$English_G <- ifelse(file$English>=1.5, 4, file$English_G)
+file$English_G <- ifelse(file$English>=2.0, 5, file$English_G)
+file$English_G <- ifelse(file$English>=2.5, 6, file$English_G)
+file$English_G <- ifelse(file$English>=3.0, 7, file$English_G)
+file$English_G <- ifelse(file$English>=3.5, 8, file$English_G)
+#Graduate_GPAX
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=0.0, 1, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=0.5, 2, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=1.0, 3, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=1.5, 4, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=2.0, 5, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=2.5, 6, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=3.0, 7, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=3.5, 8, file$graduate_GPAX_G)
+file <-file[c('entrance_GPAX_G','Math_G','Science_G','English_G',
+'graduate_GPAX_G')]
+names(file)[1] <- paste("Entrance_GPAX")
+names(file)[2] <- paste("Math_GPA")
+names(file)[3] <- paste("Science_GPAX")
+names(file)[4] <- paste("English_GPAX")
+names(file)[5] <- paste("Graduate_GPAX")
+write.csv(file, file='clean_54.csv',row.names=FALSE)
+- Rscript ( Q55 )
+file <- read.csv('Q55.csv')
+file <- file53[c('X2555_GPAX','Math','Science','English','entry2553_GPAX')]
+names(file)[1] <- paste("graduate_GPAX")
+names(file)[5] <- paste("entrance_GPAX")
+#Entrance_GPAX
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=0.0, 1, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=0.5, 2, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=1.0, 3, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=1.5, 4, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=2.0, 5, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=2.5, 6, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=3.0, 7, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=3.5, 8, file$entrance_GPAX_G)
+#Math
+file$Math_G <- ifelse(file$Math>=0.0, 1, file$Math_G)
+file$Math_G <- ifelse(file$Math>=0.5, 2, file$Math_G)
+file$Math_G <- ifelse(file$Math>=1.0, 3, file$Math_G)
+file$Math_G <- ifelse(file$Math>=1.5, 4, file$Math_G)
+file$Math_G <- ifelse(file$Math>=2.0, 5, file$Math_G)
+file$Math_G <- ifelse(file$Math>=2.5, 6, file$Math_G)
+file$Math_G <- ifelse(file$Math>=3.0, 7, file$Math_G)
+file$Math_G <- ifelse(file$Math>=3.5, 8, file$Math_G)
+#Science
+file$Science_G <- ifelse(file$Science>=0.0, 1, file$Science_G)
+file$Science_G <- ifelse(file$Science>=0.5, 2, file$Science_G)
+file$Science_G <- ifelse(file$Science>=1.0, 3, file$Science_G)
+file$Science_G <- ifelse(file$Science>=1.5, 4, file$Science_G)
+file$Science_G <- ifelse(file$Science>=2.0, 5, file$Science_G)
+file$Science_G <- ifelse(file$Science>=2.5, 6, file$Science_G)
+file$Science_G <- ifelse(file$Science>=3.0, 7, file$Science_G)
+file$Science_G <- ifelse(file$Science>=3.5, 8, file$Science_G)
+#English
+file$English_G <- ifelse(file$English>=0.0, 1, file$English_G)
+file$English_G <- ifelse(file$English>=0.5, 2, file$English_G)
+file$English_G <- ifelse(file$English>=1.0, 3, file$English_G)
+file$English_G <- ifelse(file$English>=1.5, 4, file$English_G)
+file$English_G <- ifelse(file$English>=2.0, 5, file$English_G)
+file$English_G <- ifelse(file$English>=2.5, 6, file$English_G)
+file$English_G <- ifelse(file$English>=3.0, 7, file$English_G)
+file$English_G <- ifelse(file$English>=3.5, 8, file$English_G)
+#Graduate_GPAX
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=0.0, 1, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=0.5, 2, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=1.0, 3, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=1.5, 4, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=2.0, 5, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=2.5, 6, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=3.0, 7, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=3.5, 8, file$graduate_GPAX_G)
+file <-file[c('entrance_GPAX_G','Math_G','Science_G','English_G',
+'graduate_GPAX_G')]
+names(file)[1] <- paste("Entrance_GPAX")
+names(file)[2] <- paste("Math_GPA")
+names(file)[3] <- paste("Science_GPAX")
+names(file)[4] <- paste("English_GPAX")
+names(file)[5] <- paste("Graduate_GPAX")
+write.csv(file, file='clean_55.csv',row.names=FALSE)
+- Rscript ( Q56 )
+file <- read.csv('Q56.csv')
+file <- file53[c('X2556_GPAX','Math','Science','English','entry2553_GPAX')]
+names(file)[1] <- paste("graduate_GPAX")
+names(file)[5] <- paste("entrance_GPAX")
+#Entrance_GPAX
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=0.0, 1, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=0.5, 2, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=1.0, 3, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=1.5, 4, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=2.0, 5, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=2.5, 6, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=3.0, 7, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=3.5, 8, file$entrance_GPAX_G)
+#Math
+file$Math_G <- ifelse(file$Math>=0.0, 1, file$Math_G)
+file$Math_G <- ifelse(file$Math>=0.5, 2, file$Math_G)
+file$Math_G <- ifelse(file$Math>=1.0, 3, file$Math_G)
+file$Math_G <- ifelse(file$Math>=1.5, 4, file$Math_G)
+file$Math_G <- ifelse(file$Math>=2.0, 5, file$Math_G)
+file$Math_G <- ifelse(file$Math>=2.5, 6, file$Math_G)
+file$Math_G <- ifelse(file$Math>=3.0, 7, file$Math_G)
+file$Math_G <- ifelse(file$Math>=3.5, 8, file$Math_G)
+#Science
+file$Science_G <- ifelse(file$Science>=0.0, 1, file$Science_G)
+file$Science_G <- ifelse(file$Science>=0.5, 2, file$Science_G)
+file$Science_G <- ifelse(file$Science>=1.0, 3, file$Science_G)
+file$Science_G <- ifelse(file$Science>=1.5, 4, file$Science_G)
+file$Science_G <- ifelse(file$Science>=2.0, 5, file$Science_G)
+file$Science_G <- ifelse(file$Science>=2.5, 6, file$Science_G)
+file$Science_G <- ifelse(file$Science>=3.0, 7, file$Science_G)
+file$Science_G <- ifelse(file$Science>=3.5, 8, file$Science_G)
+#English
+file$English_G <- ifelse(file$English>=0.0, 1, file$English_G)
+file$English_G <- ifelse(file$English>=0.5, 2, file$English_G)
+file$English_G <- ifelse(file$English>=1.0, 3, file$English_G)
+file$English_G <- ifelse(file$English>=1.5, 4, file$English_G)
+file$English_G <- ifelse(file$English>=2.0, 5, file$English_G)
+file$English_G <- ifelse(file$English>=2.5, 6, file$English_G)
+file$English_G <- ifelse(file$English>=3.0, 7, file$English_G)
+file$English_G <- ifelse(file$English>=3.5, 8, file$English_G)
+#Graduate_GPAX
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=0.0, 1, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=0.5, 2, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=1.0, 3, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=1.5, 4, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=2.0, 5, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=2.5, 6, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=3.0, 7, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=3.5, 8, file$graduate_GPAX_G)
+file <-file[c('entrance_GPAX_G','Math_G','Science_G','English_G',
+'graduate_GPAX_G')]
+names(file)[1] <- paste("Entrance_GPAX")
+names(file)[2] <- paste("Math_GPA")
+names(file)[3] <- paste("Science_GPAX")
+names(file)[4] <- paste("English_GPAX")
+names(file)[5] <- paste("Graduate_GPAX")
+write.csv(file, file='clean_56.csv',row.names=FALSE)
+- Rscript ( Q57 )
+file <- read.csv('Q57.csv')
+file <- file53[c('X2557_GPAX','Math','Science','English','entry2553_GPAX')]
+names(file)[1] <- paste("graduate_GPAX")
+names(file)[5] <- paste("entrance_GPAX")
+#Entrance_GPAX
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=0.0, 1, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=0.5, 2, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=1.0, 3, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=1.5, 4, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=2.0, 5, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=2.5, 6, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=3.0, 7, file$entrance_GPAX_G)
+file$entrance_GPAX_G <- ifelse(file$entrance_GPAX>=3.5, 8, file$entrance_GPAX_G)
+#Math
+file$Math_G <- ifelse(file$Math>=0.0, 1, file$Math_G)
+file$Math_G <- ifelse(file$Math>=0.5, 2, file$Math_G)
+file$Math_G <- ifelse(file$Math>=1.0, 3, file$Math_G)
+file$Math_G <- ifelse(file$Math>=1.5, 4, file$Math_G)
+file$Math_G <- ifelse(file$Math>=2.0, 5, file$Math_G)
+file$Math_G <- ifelse(file$Math>=2.5, 6, file$Math_G)
+file$Math_G <- ifelse(file$Math>=3.0, 7, file$Math_G)
+file$Math_G <- ifelse(file$Math>=3.5, 8, file$Math_G)
+#Science
+file$Science_G <- ifelse(file$Science>=0.0, 1, file$Science_G)
+file$Science_G <- ifelse(file$Science>=0.5, 2, file$Science_G)
+file$Science_G <- ifelse(file$Science>=1.0, 3, file$Science_G)
+file$Science_G <- ifelse(file$Science>=1.5, 4, file$Science_G)
+file$Science_G <- ifelse(file$Science>=2.0, 5, file$Science_G)
+file$Science_G <- ifelse(file$Science>=2.5, 6, file$Science_G)
+file$Science_G <- ifelse(file$Science>=3.0, 7, file$Science_G)
+file$Science_G <- ifelse(file$Science>=3.5, 8, file$Science_G)
+#English
+file$English_G <- ifelse(file$English>=0.0, 1, file$English_G)
+file$English_G <- ifelse(file$English>=0.5, 2, file$English_G)
+file$English_G <- ifelse(file$English>=1.0, 3, file$English_G)
+file$English_G <- ifelse(file$English>=1.5, 4, file$English_G)
+file$English_G <- ifelse(file$English>=2.0, 5, file$English_G)
+file$English_G <- ifelse(file$English>=2.5, 6, file$English_G)
+file$English_G <- ifelse(file$English>=3.0, 7, file$English_G)
+file$English_G <- ifelse(file$English>=3.5, 8, file$English_G)
+#Graduate_GPAX
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=0.0, 1, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=0.5, 2, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=1.0, 3, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=1.5, 4, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=2.0, 5, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=2.5, 6, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=3.0, 7, file$graduate_GPAX_G)
+file$graduate_GPAX_G <- ifelse(file$graduate_GPAX>=3.5, 8, file$graduate_GPAX_G)
+file <-file[c('entrance_GPAX_G','Math_G','Science_G','English_G',
+'graduate_GPAX_G')]
+names(file)[1] <- paste("Entrance_GPAX")
+names(file)[2] <- paste("Math_GPA")
+names(file)[3] <- paste("Science_GPAX")
+names(file)[4] <- paste("English_GPAX")
+names(file)[5] <- paste("Graduate_GPAX")
+write.csv(file, file='clean_57.csv',row.names=FALSE)
+- Rscript ( Merge --> [ Q53, Q54, Q55, Q56, Q57 ]
+file53 <- read.csv('clean_53.csv')
+file54 <- read.csv('clean_54.csv')
+file55 <- read.csv('clean_55.csv')
+file56 <- read.csv('clean_56.csv')
+file57 <- read.csv('clean_57.csv')
+res1 <- rbind(file53,file54)
+res2 <- rbind(file55,file56)
+res3 <- rbind(res1,res2)
+res4 <- rbind(res3,file57)
+res4 <- subset(res4, Entrance_GPAX>=4)
+res4 <- subset(res4, Math_GPA>=4)
+res4 <- subset(res4, Science_GPAX>=4)
+res4 <- subset(res4, English_GPAX>=4)
+res4 <- subset(res4, Graduate_GPAX>=4)
+write.csv(res4,file='source.csv',row.names=FALSE)
+2. Import data ( source.csv )
+- Open Microsoft Azure Machine Learning Studio
+- Import file --> Save as data set
+- Test by data virtualization
+* Browser should encode with UTF-8
+3. Edit Metastore
+* We categorize the grade into 8 subset
+4. Clean Missing Data
+- Remove all null value
+5. Select Algorithm
+- Multiclass Logistic Regression
+- Classification Algorithm
+- Generalizes logistic regression to multi class problem
+- Logistic Regression is a regression model where the dependent variable is categorical
+- Regression is a statistical process for estimating the relationships among variables. It includes many techniques for modeling and analyzing several variables, when the focus is on the relationship between a dependent variable and one or more independent variables
+- Variable
+- The dependent variables represent the output or outcome whose variation is being studied.
+- The independent variables represent inputs or causes such as potential reasons for variation.
+- Categorical can take on one of a limited, and usually fixed, number of possible values, thus assigning each individual to a particular group or "category."[1]In computer science and some branches of mathematics, categorical variables are referred to as enumerations or enumerated types
+- Multiclass problem
+- is the problem of classifying instances into one of the more than two classes
+5. Split Data
+- 80% --> Train data set
+- 20% --> Test data set
+6. Train Model
+- Algorithm --> Multiclass Logistic Regression
+- Data set --> Train data set
+7. Score Model
+- Data set from train model
+- Data set from test data set
+8. Evaluate Model
+- Evaluate score from score model
+- Overall Accuracy
+- Average Accuracy
+- Micro-averaged precision
+- Macro-averaged precision
+- Micro-averaged recall
+- Macro-averaged recall
+* Overall Accuracy --> 0.84
+- Prediction Program
+--> by Thai GPA, PhysicalAct GPA, Math GPA, Art GPA, Science GPA, Industrial GPA, Social GPA, English GPA
+1. Clean Data ( Q53, Q54, Q55, Q56, Q57 )
+- Rscript ( Q53 )
+file <- read.csv('Q53.csv')
+file <- file[c('entry2553_GPAX','Thai','PhysicalAct','Math','Art','Science','Industrial','Social','English','Program')]
+names(file)[1] <- paste("GPAX")
+file$Program <- ifelse(file$Program=='วิศวกรรมเครื่องกล','Mechanical Engineering',ifelse(file$Program=='วิศวกรรมโยธา','Civil Engineering',ifelse(file$Program=='วิศวกรรมสิ่งแวดล้อม','Environmental Engineering',ifelse(file$Program=='วิศวกรรมไฟฟ้า','Electrical Engineering',ifelse(file$Program=='วิศวกรรมอุตสาหการ','Industrial Engineering',ifelse(file$Program=='วิศวกรรมเคมีและชีวภาพ','Chemical & Biological Engineering','No'))))))
+#Thai
+file$Thai_G <- ifelse(file$Thai>=0.0, 1, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=0.5, 2, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=1.0, 3, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=1.5, 4, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=2.0, 5, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=2.5, 6, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=3.0, 7, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=3.5, 8, file$Thai_G)
+#PhysicalAct
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=0.0, 1, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=0.5, 2, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=1.0, 3, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=1.5, 4, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=2.0, 5, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=2.5, 6, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=3.0, 7, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=3.5, 8, file$PhysicalAct_G)
+#Math
+file$Math_G <- ifelse(file$Math>=0.0, 1, file$Math_G)
+file$Math_G <- ifelse(file$Math>=0.5, 2, file$Math_G)
+file$Math_G <- ifelse(file$Math>=1.0, 3, file$Math_G)
+file$Math_G <- ifelse(file$Math>=1.5, 4, file$Math_G)
+file$Math_G <- ifelse(file$Math>=2.0, 5, file$Math_G)
+file$Math_G <- ifelse(file$Math>=2.5, 6, file$Math_G)
+file$Math_G <- ifelse(file$Math>=3.0, 7, file$Math_G)
+file$Math_G <- ifelse(file$Math>=3.5, 8, file$Math_G)
+#Art
+file$Art_G <- ifelse(file$Art>=0.0, 1, file$Art_G)
+file$Art_G <- ifelse(file$Art>=0.5, 2, file$Art_G)
+file$Art_G <- ifelse(file$Art>=1.0, 3, file$Art_G)
+file$Art_G <- ifelse(file$Art>=1.5, 4, file$Art_G)
+file$Art_G <- ifelse(file$Art>=2.0, 5, file$Art_G)
+file$Art_G <- ifelse(file$Art>=2.5, 6, file$Art_G)
+file$Art_G <- ifelse(file$Art>=3.0, 7, file$Art_G)
+file$Art_G <- ifelse(file$Art>=3.5, 8, file$Art_G)
+#Science
+file$Science_G <- ifelse(file$Science>=0.0, 1, file$Science_G)
+file$Science_G <- ifelse(file$Science>=0.5, 2, file$Science_G)
+file$Science_G <- ifelse(file$Science>=1.0, 3, file$Science_G)
+file$Science_G <- ifelse(file$Science>=1.5, 4, file$Science_G)
+file$Science_G <- ifelse(file$Science>=2.0, 5, file$Science_G)
+file$Science_G <- ifelse(file$Science>=2.5, 6, file$Science_G)
+file$Science_G <- ifelse(file$Science>=3.0, 7, file$Science_G)
+file$Science_G <- ifelse(file$Science>=3.5, 8, file$Science_G)
+#Industrial
+file$Industrial_G <- ifelse(file$Industrial>=0.0, 1, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=0.5, 2, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=1.0, 3, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=1.5, 4, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=2.0, 5, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=2.5, 6, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=3.0, 7, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=3.5, 8, file$Industrial_G)
+#Social
+file$Social_G <- ifelse(file$Social>=0.0, 1, file$Social_G)
+file$Social_G <- ifelse(file$Social>=0.5, 2, file$Social_G)
+file$Social_G <- ifelse(file$Social>=1.0, 3, file$Social_G)
+file$Social_G <- ifelse(file$Social>=1.5, 4, file$Social_G)
+file$Social_G <- ifelse(file$Social>=2.0, 5, file$Social_G)
+file$Social_G <- ifelse(file$Social>=2.5, 6, file$Social_G)
+file$Social_G <- ifelse(file$Social>=3.0, 7, file$Social_G)
+file$Social_G <- ifelse(file$Social>=3.5, 8, file$Social_G)
+#English
+file$English_G <- ifelse(file$English>=0.0, 1, file$English_G)
+file$English_G <- ifelse(file$English>=0.5, 2, file$English_G)
+file$English_G <- ifelse(file$English>=1.0, 3, file$English_G)
+file$English_G <- ifelse(file$English>=1.5, 4, file$English_G)
+file$English_G <- ifelse(file$English>=2.0, 5, file$English_G)
+file$English_G <- ifelse(file$English>=2.5, 6, file$English_G)
+file$English_G <- ifelse(file$English>=3.0, 7, file$English_G)
+file$English_G <- ifelse(file$English>=3.5, 8, file$English_G)
+file <- file[c('GPAX','Thai_G','PhysicalAct_G','Math_G','Art_G','Science_G','Industrial_G','Social_G','English_G','Program')]
+write.csv(file,file='53.csv',row.names=FALSE)
+- Rscript ( Q54 )
+file <- read.csv('Q54.csv')
+file <- file[c('entry2553_GPAX','Thai','PhysicalAct','Math','Art','Science','Industrial','Social','English','Program')]
+names(file)[1] <- paste("GPAX")
+file$Program <- ifelse(file$Program=='วิศวกรรมเครื่องกล','Mechanical Engineering',ifelse(file$Program=='วิศวกรรมโยธา','Civil Engineering',ifelse(file$Program=='วิศวกรรมสิ่งแวดล้อม','Environmental Engineering',ifelse(file$Program=='วิศวกรรมไฟฟ้า','Electrical Engineering',ifelse(file$Program=='วิศวกรรมอุตสาหการ','Industrial Engineering',ifelse(file$Program=='วิศวกรรมเคมีและชีวภาพ','Chemical & Biological Engineering','No'))))))
+#Thai
+file$Thai_G <- ifelse(file$Thai>=0.0, 1, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=0.5, 2, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=1.0, 3, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=1.5, 4, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=2.0, 5, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=2.5, 6, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=3.0, 7, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=3.5, 8, file$Thai_G)
+#PhysicalAct
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=0.0, 1, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=0.5, 2, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=1.0, 3, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=1.5, 4, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=2.0, 5, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=2.5, 6, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=3.0, 7, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=3.5, 8, file$PhysicalAct_G)
+#Math
+file$Math_G <- ifelse(file$Math>=0.0, 1, file$Math_G)
+file$Math_G <- ifelse(file$Math>=0.5, 2, file$Math_G)
+file$Math_G <- ifelse(file$Math>=1.0, 3, file$Math_G)
+file$Math_G <- ifelse(file$Math>=1.5, 4, file$Math_G)
+file$Math_G <- ifelse(file$Math>=2.0, 5, file$Math_G)
+file$Math_G <- ifelse(file$Math>=2.5, 6, file$Math_G)
+file$Math_G <- ifelse(file$Math>=3.0, 7, file$Math_G)
+file$Math_G <- ifelse(file$Math>=3.5, 8, file$Math_G)
+#Art
+file$Art_G <- ifelse(file$Art>=0.0, 1, file$Art_G)
+file$Art_G <- ifelse(file$Art>=0.5, 2, file$Art_G)
+file$Art_G <- ifelse(file$Art>=1.0, 3, file$Art_G)
+file$Art_G <- ifelse(file$Art>=1.5, 4, file$Art_G)
+file$Art_G <- ifelse(file$Art>=2.0, 5, file$Art_G)
+file$Art_G <- ifelse(file$Art>=2.5, 6, file$Art_G)
+file$Art_G <- ifelse(file$Art>=3.0, 7, file$Art_G)
+file$Art_G <- ifelse(file$Art>=3.5, 8, file$Art_G)
+#Science
+file$Science_G <- ifelse(file$Science>=0.0, 1, file$Science_G)
+file$Science_G <- ifelse(file$Science>=0.5, 2, file$Science_G)
+file$Science_G <- ifelse(file$Science>=1.0, 3, file$Science_G)
+file$Science_G <- ifelse(file$Science>=1.5, 4, file$Science_G)
+file$Science_G <- ifelse(file$Science>=2.0, 5, file$Science_G)
+file$Science_G <- ifelse(file$Science>=2.5, 6, file$Science_G)
+file$Science_G <- ifelse(file$Science>=3.0, 7, file$Science_G)
+file$Science_G <- ifelse(file$Science>=3.5, 8, file$Science_G)
+#Industrial
+file$Industrial_G <- ifelse(file$Industrial>=0.0, 1, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=0.5, 2, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=1.0, 3, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=1.5, 4, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=2.0, 5, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=2.5, 6, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=3.0, 7, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=3.5, 8, file$Industrial_G)
+#Social
+file$Social_G <- ifelse(file$Social>=0.0, 1, file$Social_G)
+file$Social_G <- ifelse(file$Social>=0.5, 2, file$Social_G)
+file$Social_G <- ifelse(file$Social>=1.0, 3, file$Social_G)
+file$Social_G <- ifelse(file$Social>=1.5, 4, file$Social_G)
+file$Social_G <- ifelse(file$Social>=2.0, 5, file$Social_G)
+file$Social_G <- ifelse(file$Social>=2.5, 6, file$Social_G)
+file$Social_G <- ifelse(file$Social>=3.0, 7, file$Social_G)
+file$Social_G <- ifelse(file$Social>=3.5, 8, file$Social_G)
+#English
+file$English_G <- ifelse(file$English>=0.0, 1, file$English_G)
+file$English_G <- ifelse(file$English>=0.5, 2, file$English_G)
+file$English_G <- ifelse(file$English>=1.0, 3, file$English_G)
+file$English_G <- ifelse(file$English>=1.5, 4, file$English_G)
+file$English_G <- ifelse(file$English>=2.0, 5, file$English_G)
+file$English_G <- ifelse(file$English>=2.5, 6, file$English_G)
+file$English_G <- ifelse(file$English>=3.0, 7, file$English_G)
+file$English_G <- ifelse(file$English>=3.5, 8, file$English_G)
+file <- file[c('GPAX','Thai_G','PhysicalAct_G','Math_G','Art_G','Science_G','Industrial_G','Social_G','English_G','Program')]
+write.csv(file,file='54.csv',row.names=FALSE)
+- Rscript ( Q55 )
+file <- read.csv('Q55.csv')
+file <- file[c('entry2553_GPAX','Thai','PhysicalAct','Math','Art','Science','Industrial','Social','English','Program')]
+names(file)[1] <- paste("GPAX")
+file$Program <- ifelse(file$Program=='วิศวกรรมเครื่องกล','Mechanical Engineering',ifelse(file$Program=='วิศวกรรมโยธา','Civil Engineering',ifelse(file$Program=='วิศวกรรมสิ่งแวดล้อม','Environmental Engineering',ifelse(file$Program=='วิศวกรรมไฟฟ้า','Electrical Engineering',ifelse(file$Program=='วิศวกรรมอุตสาหการ','Industrial Engineering',ifelse(file$Program=='วิศวกรรมเคมีและชีวภาพ','Chemical & Biological Engineering','No'))))))
+#Thai
+file$Thai_G <- ifelse(file$Thai>=0.0, 1, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=0.5, 2, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=1.0, 3, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=1.5, 4, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=2.0, 5, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=2.5, 6, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=3.0, 7, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=3.5, 8, file$Thai_G)
+#PhysicalAct
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=0.0, 1, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=0.5, 2, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=1.0, 3, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=1.5, 4, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=2.0, 5, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=2.5, 6, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=3.0, 7, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=3.5, 8, file$PhysicalAct_G)
+#Math
+file$Math_G <- ifelse(file$Math>=0.0, 1, file$Math_G)
+file$Math_G <- ifelse(file$Math>=0.5, 2, file$Math_G)
+file$Math_G <- ifelse(file$Math>=1.0, 3, file$Math_G)
+file$Math_G <- ifelse(file$Math>=1.5, 4, file$Math_G)
+file$Math_G <- ifelse(file$Math>=2.0, 5, file$Math_G)
+file$Math_G <- ifelse(file$Math>=2.5, 6, file$Math_G)
+file$Math_G <- ifelse(file$Math>=3.0, 7, file$Math_G)
+file$Math_G <- ifelse(file$Math>=3.5, 8, file$Math_G)
+#Art
+file$Art_G <- ifelse(file$Art>=0.0, 1, file$Art_G)
+file$Art_G <- ifelse(file$Art>=0.5, 2, file$Art_G)
+file$Art_G <- ifelse(file$Art>=1.0, 3, file$Art_G)
+file$Art_G <- ifelse(file$Art>=1.5, 4, file$Art_G)
+file$Art_G <- ifelse(file$Art>=2.0, 5, file$Art_G)
+file$Art_G <- ifelse(file$Art>=2.5, 6, file$Art_G)
+file$Art_G <- ifelse(file$Art>=3.0, 7, file$Art_G)
+file$Art_G <- ifelse(file$Art>=3.5, 8, file$Art_G)
+#Science
+file$Science_G <- ifelse(file$Science>=0.0, 1, file$Science_G)
+file$Science_G <- ifelse(file$Science>=0.5, 2, file$Science_G)
+file$Science_G <- ifelse(file$Science>=1.0, 3, file$Science_G)
+file$Science_G <- ifelse(file$Science>=1.5, 4, file$Science_G)
+file$Science_G <- ifelse(file$Science>=2.0, 5, file$Science_G)
+file$Science_G <- ifelse(file$Science>=2.5, 6, file$Science_G)
+file$Science_G <- ifelse(file$Science>=3.0, 7, file$Science_G)
+file$Science_G <- ifelse(file$Science>=3.5, 8, file$Science_G)
+#Industrial
+file$Industrial_G <- ifelse(file$Industrial>=0.0, 1, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=0.5, 2, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=1.0, 3, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=1.5, 4, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=2.0, 5, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=2.5, 6, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=3.0, 7, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=3.5, 8, file$Industrial_G)
+#Social
+file$Social_G <- ifelse(file$Social>=0.0, 1, file$Social_G)
+file$Social_G <- ifelse(file$Social>=0.5, 2, file$Social_G)
+file$Social_G <- ifelse(file$Social>=1.0, 3, file$Social_G)
+file$Social_G <- ifelse(file$Social>=1.5, 4, file$Social_G)
+file$Social_G <- ifelse(file$Social>=2.0, 5, file$Social_G)
+file$Social_G <- ifelse(file$Social>=2.5, 6, file$Social_G)
+file$Social_G <- ifelse(file$Social>=3.0, 7, file$Social_G)
+file$Social_G <- ifelse(file$Social>=3.5, 8, file$Social_G)
+#English
+file$English_G <- ifelse(file$English>=0.0, 1, file$English_G)
+file$English_G <- ifelse(file$English>=0.5, 2, file$English_G)
+file$English_G <- ifelse(file$English>=1.0, 3, file$English_G)
+file$English_G <- ifelse(file$English>=1.5, 4, file$English_G)
+file$English_G <- ifelse(file$English>=2.0, 5, file$English_G)
+file$English_G <- ifelse(file$English>=2.5, 6, file$English_G)
+file$English_G <- ifelse(file$English>=3.0, 7, file$English_G)
+file$English_G <- ifelse(file$English>=3.5, 8, file$English_G)
+file <- file[c('GPAX','Thai_G','PhysicalAct_G','Math_G','Art_G','Science_G','Industrial_G','Social_G','English_G','Program')]
+write.csv(file,file='55.csv',row.names=FALSE)
+- Rscript ( Q56 )
+file <- read.csv('Q56.csv')
+file <- file[c('entry2553_GPAX','Thai','PhysicalAct','Math','Art','Science','Industrial','Social','English','Program')]
+names(file)[1] <- paste("GPAX")
+file$Program <- ifelse(file$Program=='วิศวกรรมเครื่องกล','Mechanical Engineering',ifelse(file$Program=='วิศวกรรมโยธา','Civil Engineering',ifelse(file$Program=='วิศวกรรมสิ่งแวดล้อม','Environmental Engineering',ifelse(file$Program=='วิศวกรรมไฟฟ้า','Electrical Engineering',ifelse(file$Program=='วิศวกรรมอุตสาหการ','Industrial Engineering',ifelse(file$Program=='วิศวกรรมเคมีและชีวภาพ','Chemical & Biological Engineering','No'))))))
+#Thai
+file$Thai_G <- ifelse(file$Thai>=0.0, 1, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=0.5, 2, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=1.0, 3, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=1.5, 4, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=2.0, 5, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=2.5, 6, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=3.0, 7, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=3.5, 8, file$Thai_G)
+#PhysicalAct
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=0.0, 1, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=0.5, 2, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=1.0, 3, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=1.5, 4, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=2.0, 5, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=2.5, 6, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=3.0, 7, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=3.5, 8, file$PhysicalAct_G)
+#Math
+file$Math_G <- ifelse(file$Math>=0.0, 1, file$Math_G)
+file$Math_G <- ifelse(file$Math>=0.5, 2, file$Math_G)
+file$Math_G <- ifelse(file$Math>=1.0, 3, file$Math_G)
+file$Math_G <- ifelse(file$Math>=1.5, 4, file$Math_G)
+file$Math_G <- ifelse(file$Math>=2.0, 5, file$Math_G)
+file$Math_G <- ifelse(file$Math>=2.5, 6, file$Math_G)
+file$Math_G <- ifelse(file$Math>=3.0, 7, file$Math_G)
+file$Math_G <- ifelse(file$Math>=3.5, 8, file$Math_G)
+#Art
+file$Art_G <- ifelse(file$Art>=0.0, 1, file$Art_G)
+file$Art_G <- ifelse(file$Art>=0.5, 2, file$Art_G)
+file$Art_G <- ifelse(file$Art>=1.0, 3, file$Art_G)
+file$Art_G <- ifelse(file$Art>=1.5, 4, file$Art_G)
+file$Art_G <- ifelse(file$Art>=2.0, 5, file$Art_G)
+file$Art_G <- ifelse(file$Art>=2.5, 6, file$Art_G)
+file$Art_G <- ifelse(file$Art>=3.0, 7, file$Art_G)
+file$Art_G <- ifelse(file$Art>=3.5, 8, file$Art_G)
+#Science
+file$Science_G <- ifelse(file$Science>=0.0, 1, file$Science_G)
+file$Science_G <- ifelse(file$Science>=0.5, 2, file$Science_G)
+file$Science_G <- ifelse(file$Science>=1.0, 3, file$Science_G)
+file$Science_G <- ifelse(file$Science>=1.5, 4, file$Science_G)
+file$Science_G <- ifelse(file$Science>=2.0, 5, file$Science_G)
+file$Science_G <- ifelse(file$Science>=2.5, 6, file$Science_G)
+file$Science_G <- ifelse(file$Science>=3.0, 7, file$Science_G)
+file$Science_G <- ifelse(file$Science>=3.5, 8, file$Science_G)
+#Industrial
+file$Industrial_G <- ifelse(file$Industrial>=0.0, 1, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=0.5, 2, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=1.0, 3, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=1.5, 4, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=2.0, 5, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=2.5, 6, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=3.0, 7, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=3.5, 8, file$Industrial_G)
+#Social
+file$Social_G <- ifelse(file$Social>=0.0, 1, file$Social_G)
+file$Social_G <- ifelse(file$Social>=0.5, 2, file$Social_G)
+file$Social_G <- ifelse(file$Social>=1.0, 3, file$Social_G)
+file$Social_G <- ifelse(file$Social>=1.5, 4, file$Social_G)
+file$Social_G <- ifelse(file$Social>=2.0, 5, file$Social_G)
+file$Social_G <- ifelse(file$Social>=2.5, 6, file$Social_G)
+file$Social_G <- ifelse(file$Social>=3.0, 7, file$Social_G)
+file$Social_G <- ifelse(file$Social>=3.5, 8, file$Social_G)
+#English
+file$English_G <- ifelse(file$English>=0.0, 1, file$English_G)
+file$English_G <- ifelse(file$English>=0.5, 2, file$English_G)
+file$English_G <- ifelse(file$English>=1.0, 3, file$English_G)
+file$English_G <- ifelse(file$English>=1.5, 4, file$English_G)
+file$English_G <- ifelse(file$English>=2.0, 5, file$English_G)
+file$English_G <- ifelse(file$English>=2.5, 6, file$English_G)
+file$English_G <- ifelse(file$English>=3.0, 7, file$English_G)
+file$English_G <- ifelse(file$English>=3.5, 8, file$English_G)
+file <- file[c('GPAX','Thai_G','PhysicalAct_G','Math_G','Art_G','Science_G','Industrial_G','Social_G','English_G','Program')]
+write.csv(file,file='56.csv',row.names=FALSE)
+- Rscript ( Q57 )
+file <- read.csv('Q57.csv')
+file <- file[c('entry2553_GPAX','Thai','PhysicalAct','Math','Art','Science','Industrial','Social','English','Program')]
+names(file)[1] <- paste("GPAX")
+file$Program <- ifelse(file$Program=='วิศวกรรมเครื่องกล','Mechanical Engineering',ifelse(file$Program=='วิศวกรรมโยธา','Civil Engineering',ifelse(file$Program=='วิศวกรรมสิ่งแวดล้อม','Environmental Engineering',ifelse(file$Program=='วิศวกรรมไฟฟ้า','Electrical Engineering',ifelse(file$Program=='วิศวกรรมอุตสาหการ','Industrial Engineering',ifelse(file$Program=='วิศวกรรมเคมีและชีวภาพ','Chemical & Biological Engineering','No'))))))
+#Thai
+file$Thai_G <- ifelse(file$Thai>=0.0, 1, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=0.5, 2, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=1.0, 3, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=1.5, 4, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=2.0, 5, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=2.5, 6, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=3.0, 7, file$Thai_G)
+file$Thai_G <- ifelse(file$Thai>=3.5, 8, file$Thai_G)
+#PhysicalAct
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=0.0, 1, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=0.5, 2, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=1.0, 3, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=1.5, 4, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=2.0, 5, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=2.5, 6, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=3.0, 7, file$PhysicalAct_G)
+file$PhysicalAct_G <- ifelse(file$PhysicalAct>=3.5, 8, file$PhysicalAct_G)
+#Math
+file$Math_G <- ifelse(file$Math>=0.0, 1, file$Math_G)
+file$Math_G <- ifelse(file$Math>=0.5, 2, file$Math_G)
+file$Math_G <- ifelse(file$Math>=1.0, 3, file$Math_G)
+file$Math_G <- ifelse(file$Math>=1.5, 4, file$Math_G)
+file$Math_G <- ifelse(file$Math>=2.0, 5, file$Math_G)
+file$Math_G <- ifelse(file$Math>=2.5, 6, file$Math_G)
+file$Math_G <- ifelse(file$Math>=3.0, 7, file$Math_G)
+file$Math_G <- ifelse(file$Math>=3.5, 8, file$Math_G)
+#Art
+file$Art_G <- ifelse(file$Art>=0.0, 1, file$Art_G)
+file$Art_G <- ifelse(file$Art>=0.5, 2, file$Art_G)
+file$Art_G <- ifelse(file$Art>=1.0, 3, file$Art_G)
+file$Art_G <- ifelse(file$Art>=1.5, 4, file$Art_G)
+file$Art_G <- ifelse(file$Art>=2.0, 5, file$Art_G)
+file$Art_G <- ifelse(file$Art>=2.5, 6, file$Art_G)
+file$Art_G <- ifelse(file$Art>=3.0, 7, file$Art_G)
+file$Art_G <- ifelse(file$Art>=3.5, 8, file$Art_G)
+#Science
+file$Science_G <- ifelse(file$Science>=0.0, 1, file$Science_G)
+file$Science_G <- ifelse(file$Science>=0.5, 2, file$Science_G)
+file$Science_G <- ifelse(file$Science>=1.0, 3, file$Science_G)
+file$Science_G <- ifelse(file$Science>=1.5, 4, file$Science_G)
+file$Science_G <- ifelse(file$Science>=2.0, 5, file$Science_G)
+file$Science_G <- ifelse(file$Science>=2.5, 6, file$Science_G)
+file$Science_G <- ifelse(file$Science>=3.0, 7, file$Science_G)
+file$Science_G <- ifelse(file$Science>=3.5, 8, file$Science_G)
+#Industrial
+file$Industrial_G <- ifelse(file$Industrial>=0.0, 1, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=0.5, 2, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=1.0, 3, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=1.5, 4, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=2.0, 5, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=2.5, 6, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=3.0, 7, file$Industrial_G)
+file$Industrial_G <- ifelse(file$Industrial>=3.5, 8, file$Industrial_G)
+#Social
+file$Social_G <- ifelse(file$Social>=0.0, 1, file$Social_G)
+file$Social_G <- ifelse(file$Social>=0.5, 2, file$Social_G)
+file$Social_G <- ifelse(file$Social>=1.0, 3, file$Social_G)
+file$Social_G <- ifelse(file$Social>=1.5, 4, file$Social_G)
+file$Social_G <- ifelse(file$Social>=2.0, 5, file$Social_G)
+file$Social_G <- ifelse(file$Social>=2.5, 6, file$Social_G)
+file$Social_G <- ifelse(file$Social>=3.0, 7, file$Social_G)
+file$Social_G <- ifelse(file$Social>=3.5, 8, file$Social_G)
+#English
+file$English_G <- ifelse(file$English>=0.0, 1, file$English_G)
+file$English_G <- ifelse(file$English>=0.5, 2, file$English_G)
+file$English_G <- ifelse(file$English>=1.0, 3, file$English_G)
+file$English_G <- ifelse(file$English>=1.5, 4, file$English_G)
+file$English_G <- ifelse(file$English>=2.0, 5, file$English_G)
+file$English_G <- ifelse(file$English>=2.5, 6, file$English_G)
+file$English_G <- ifelse(file$English>=3.0, 7, file$English_G)
+file$English_G <- ifelse(file$English>=3.5, 8, file$English_G)
+file <- file[c('GPAX','Thai_G','PhysicalAct_G','Math_G','Art_G','Science_G','Industrial_G','Social_G','English_G','Program')]
+write.csv(file,file='57.csv',row.names=FALSE)
+- Rscript merger ( Q53, Q54, Q55, Q56, Q57 )
+file53 <- read.csv('53.csv')
+file54 <- read.csv('54.csv')
+file55 <- read.csv('55.csv')
+file56 <- read.csv('56.csv')
+file57 <- read.csv('57.csv')
+res1 <- rbind(file53,file54)
+res2 <- rbind(file55,file56)
+res3 <- rbind(res1,res2)
+res4 <- rbind(res3,file57)
+#res4 <- unique(res4)
+res4 <- subset(res4, Program!='No')
+res4 <- subset(res4, Thai_G!=1)
+res4 <- subset(res4, PhysicalAct_G!=1)
+res4 <- subset(res4, Math_G!=1)
+res4 <- subset(res4, Art_G!=1)
+res4 <- subset(res4, Science_G!=1)
+res4 <- subset(res4, Industrial_G!=1)
+res4 <- subset(res4, Social_G!=1)
+res4 <- subset(res4, English_G!=1)
+write.csv(res4,file='source.csv',row.names=FALSE)
+2. Import data ( source.csv )
+- Open Microsoft Azure Machine Learning Studio
+- Import file --> Save as data set
+- Test by data virtualization
+* Browser should encode with UTF-8
+3. Edit Metastore
+* We categorize the grade into 8 subset
+4. Clean Missing Data
+- Remove all null value
+5. Select Algorithm
+- Multiclass Neural Network
+- Classification Algorithm
+- A family of models inspired by biological neural network  ( the central neural network of animals, in particular the brain ) which are used to estimate or approximate functions that can depend on a large number of inputs and are generally unknown. Artificial neural networks are typically specified using three things:
+- Architecture
+- specifies what variables are involved in the network and their topological relationships—for example the variables involved in a neural network might be the weights of the connections between the neurons, along with activities of the neurons
+- Activity Rule
+- Most neural network models have short time-scale dynamics: local rules define how the activities of the neurons change in response to each other. Typically the activity rule depends on the weights (the parameters) in the network.
+- Learning Rule
+ - The learning rule specifies the way in which the neural network's weights change with time. This learning is usually viewed as taking place on a longer time scale than the time scale of the dynamics under the activity rule. Usually the learning rule will depend on the activities of the neurons. It may also depend on the values of the target values supplied by a teacher and on the current value of the weights.
+5. Split Data
+- 80% --> Train data set
+- 20% --> Test data set
+6. Train Model
+- Algorithm --> Multiclass Logistic Regression
+- Data set --> Train data set
+7. Score Model
+- Data set from train model
+- Data set from test data set
+8. Evaluate Model
+- Evaluate score from score model
+- Overall Accuracy
+- Average Accuracy
+- Micro-averaged precision
+- Macro-averaged precision
+- Micro-averaged recall
+- Macro-averaged recall
+* Overall Accuracy --> 0.96
+Machine Learning ( Clustering )
+13:00 - 17:00
+- Clustering province into 4 groups
+--> by Thai GPA, PhysicalAct GPA, Math GPA, Art GPA, Science GPA, Industrial GPA, Social GPA, English GPA
+1. Clean Data ( Q53, Q54, Q55, Q56, Q57 )
+- Rscript ( Q53 )
+file <- read.csv('Q53.csv')
+file <- file[c('Thai','PhysicalAct','Math','Art','Science','Industrial','Social','English','Province')]
+write.csv(file,file='53.csv',row.names=FALSE)
+- Rscript ( Q54 )
+file <- read.csv('Q54.csv')
+file <- file[c('Thai','PhysicalAct','Math','Art','Science','Industrial','Social','English','Province')]
+write.csv(file,file='54.csv',row.names=FALSE)
+- Rscript ( Q55 )
+file <- read.csv('Q55.csv')
+file <- file[c('Thai','PhysicalAct','Math','Art','Science','Industrial','Social','English','Province')]
+write.csv(file,file='55.csv',row.names=FALSE)
+- Rscript ( Q56 )
+file <- read.csv('Q56.csv')
+file <-file[c('Thai','PhysicalAct','Math','Art','Science','Industrial','Social','English','Province')]
+write.csv(file,file='56.csv',row.names=FALSE)
+- Rscript ( Q57 )
+file <- read.csv('Q57.csv')
+file <- file[c('Thai','PhysicalAct','Math','Art','Science','Industrial','Social','English','Province')]
+write.csv(file,file='57.csv',row.names=FALSE)
+2. K-Means Clustering
+3. Training Clustering Model
+--> K-Means Clustering
+--> Data from source.csv
+* All columns exclude Province
+4. Assign Data to Clusters
+--> Training Clustering Model
+--> Data from source.csv

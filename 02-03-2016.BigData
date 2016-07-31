@@ -1,0 +1,335 @@
+Self-Learning by exercise and laboratory
+08:30 - 12:00
+[ Do it again because My Web App can not open PUBLIC_DNS from load balance ]
+- Getting Started with AWS Hosting a Web App
+- Step4 : Scale and Load-Balance Web App
+- Configure Auto Scaling and Load Balancing
+- Open Amazon EC2-console
+- Region = US West ( Oregon )
+- Load Balancer --> Create Load Balancer
+- Define Load Balancer
+--> Enter name
+--> Select VPC from Create Load Balancer inside list
+- Configure Health Check
+--> Ping port at ( Default Values )
+--> Ping Path to /.
+--> Set Healthy Threshold = 2
+- Select Subnets If you select a non default VPC
+- Assign Security Groups
+--> Select an existing security group
+- Add instance to Load Balancer
+- Launch Configuration
+--> Create Auto Scaling group
+- Create Launch Configuration
+- Choose AMI
+- Choose Instance Type : ( General Purpose )
+- Configuration details
+--> Create Launch Configuration <-- IAM role
+--> Advanced Details
+--> User data
+#!/bin/bash
+yum update -y
+service httpd start
+chkconfig httpd on
+--> Assign a public IP address to every instance
+- Review
+--> Edit security groups
+--> Select an existing security group
+--> Create Launch configuration
+->> Select an exiting key pair or create a new key pair
+->> Choose an existing key pair
+- Configuration Auto Scaling Group Details
+--> Enter name
+--> Group size
+--> Select VPC
+--> Expand Advanced Details
+->> Select receive traffic from Elastic Load Balancer
+- Configuration scaling policies
+--> Use scaling policies to adjust the capacity of this group
+--> under Increase Group Size <-- Add new Alarm
+--> Create alarm <-- Create topic
+--> Increase Group Size : ( Take the action )
+--> ( optional )  Decrease Group Size
+* My Web App : Decrease Group Size is not optional
+- Test Load Balancing
+- Select your load balancer
+- Description
+--> my-lb-PUBLIC_DNS.us-east-1.elb.amazonaws.com
+- Test on browser
+- Step5 : Associate a Domain Name with Website Using Amazon Route 53
+- Register a Domain Name
+- Allocate Name Servers to Route Traffic for Domain
+- Open Amazon Route 53
+--> Get Started Now
+--> DNS Management
+--> Created Hosted Zone
+- Create Domain name
+- Select hosted zone --> Delegation set
+- Create Record Sets for Domain and SubDomain
+- Open Hosted Zone
+--> Go to Record Sets
+--> Create Record Set
+->> Leave the default name ( root domain )
+->> Type = select A - IPv4 address
+->> Alias ( Yes )
+->> Alias target ---> Add prefix ( Dualstack )
+->> Select simple in Routing Policy list
+- Set Up a DNS provider
+dig example.com # Domain name
+- Step6 : Clean Up
+- Delete the Amazon Route 53 Hosted Zone
+- Delete the Auto Scaling Group
+- Delete the Load Balancer
+- Delete Your Custom AMI
+- Terminate the DB Instance
+- Link
+Exercise:http://kundjanasith.com/BigDataSchool/31-05-2016/AWS_Exercises.pdf
+Laboratory:https://qwiklabs.com
+Introduction to Big Data
+13:00 - 17:30
+Introduction
+- Navigation the next industrial revolution
+1. Steam, Water, Mechanical production equipment ( 1784 )
+2. Division of labour, Electricity, Mass production ( 1870 )
+3. Electronics, IT, Automated production ( 1969 )
+4. Cyber-physical systems ( ? )
+- Example: Lazada, Uber, TechInAsia
+- Ubiquitious Computing = a concept in software engineering where computing is made to appear anytime and everywhere
+- Eric Schmidt ( Google Chairman ) : "The Internet Will Disappear"
+- Internet speed trend
+- 3G --> 384 Kbps ->> ( 2001 )
+- 4G --> 100 Mbps ->> ( 2009 )
+- 5G --> 10 Gbpds ->> ( 2020 )
+- The buzzwords converge
+- Cloud Computing
+- Internet Of Things
+- Big Data
+- Big Data
+- Volume ( Data at Rest ) : Terabytes to exabytes of existing data to process
+- Velocity ( Data in Motion ) : Streaming data in milliseconds to seconds to respond
+- Variety ( Data in Many Forms ) : Structured, Unstructured, Text, Multimedia
+- Veracity ( Data in Diubt ) : Uncertainly due to ( data inconsistency, incompleteness, ambiguties, latency, description, model approximations )
+* Data created every minute
+- Value of Big Data in the Enterprise
+- Branch management : Big data interprets which braches or products are performing the best
+- Payments : Big data can detect and prevent a wire transfer incidents of fraud
+- Executive leaders : Big data enables more effective business decisions using accurate data across all time horizons
+- Risk and finance : Big data streamlines compliance and understand risk exposure across businesses and regions
+- Marketing : Big data predicts the right offer for the right customer at the right time
+- Relationship management : Big data considers the risk and profitability of the entire customer relationship when pricing new deals
+- Use case
+- Banking/Insurance : better and deeper understanding of risk to avoid
+- Credit crisis
+- Compliance & regulation
+- Risk management
+- Fraud analysis
+- Catastrophe modeling
+- Telecommunications : more reliable network where we can predict & prevent
+- Failure
+- Customers churn prevention
+- ( Call Detail Records ) CDRs analysis
+- Media : more content that is lined up with your personal preferences
+- Customer relationship management
+- Energy : smart meters
+- Distribution load forecasting & scheduling
+- Life Science : better targeted medicines with fewer complications & side effects
+- Medical data
+- Data satellite analysis
+- Weather forecasting
+- Global warming
+- Retail : a personal experience with products & offers that are just what you need
+- Supply chain management and analytics
+- Dynamic prices optimization
+- Government : government services that are based on hard data, not just got
+- Manufacturing : preventive maintenance and repair
+- Sensors data to look at failure
+- Supply chain management
+- Products life management
+* Big Data is changing the world
+Technology
+- ( Data sources, Technology, Analytics )
+- Example: Flight data, Taxi data, Crime data
+- Challenge
+- How can we store data in the new paradigm ?
+- How can we process big data much faster ?
+- How can we easier analyse/visualise big data ?
+- The need for new technology
+- Size of data is too big
+- RDBMS are the square peg for all round holes
+- Not all data requires ACID
+- Many data are unstructure
+* Big Data ( Storage, Analytics, Visualization/Business Intelligence )
+- Technology for Big Data
+- Storage Technology
+- Hot Data ( RDBMS ) --> Most access frequency
+- Warm-Cold Data ( Hadoop, Object Storage ) --> Least access frequency
+- Data Processing/Analytic
+- SQL, Spark, Hive, MapReduce
+- Data visualisation/Business Intelligence Tool
+* Gartner : By 2015, 20% of Global 1000 organizations will have estiblished a strategic focus on information infrastructure
+- Google History
+- GFS: Distributed file system
+- Chubby: Distributed coordination system
+- MapReduce: Parallel execution system
+- Big Table: Column oriented database
+- ACID ( Traditional RDBMS )
+- Atomicity: Everything in a transaction succeeds lest it is rolled back
+- Consistency: A transaction can not leave the database in an inconsistnent state
+- Isolation: One transaction can not interfere with another
+- Durability: A completed transaction persists, even after apllication restart
+- Why NoSQL ( Not Only SQL ) ?
+- Schemaless data representation
+- Development time
+- Speed
+- Plan ahead for scalability
+- Traditional RDBMS Design
+- Identify actors
+- Define models
+- Define entites
+- Define relationship
+- Program database & application
+- Itration
+- RDBMS Technical Challenge ( NoSQL Approach )
+- Schema flexibility: Column-oriented database store data as columns as opposed to rows in RDBMS
+- Complex queries: NoSQL databases do not have support for relationships or foreign keys
+- Data update: NoSQL solutions offer great synchronization options
+- Scalability: NoSQL solutions provider greater scalability
+- Types of NoSQL
+- Column oriented: A columne of a distributed data store in a NoSQL object of the lowest level in a keyspace
+- Unique name
+- Value
+- Timestamp
+- Document oriented:
+- Designed for storing, retrieving, managing
+--> Document oriented information = Semi-structured data
+- Most of the databses avaliable under this category use
+--> ( XML, JSON, BSON, YAML )
+- Key Value Store:
+- The storage of a value against a key
+- A key-value store requires the key to be specified and the key must be known to retrieve the value
+- Graph:
+- A database that uses graph structures for semantic queries with
+--> ( Nodes, Edges ) ->> Properties to represent >>> store data
+- Multi model
+- NoSQL Example Usage
+- MongoDB
+--> Need dynamic queries, indexes, good performance on a big database
+--> EX: For most things that you would do with MySQL or PostgreSQL, but having predefined columns really holds you back
+- Cassandra
+--> Need to store data so huge that it doesn't fit on server, but still want a friendly familiar interface to it
+--> EX: Web analytics, Transaction logging.Data collection from huge sensor arrays
+- HBase
+--> Best if you use the Hadoop/HDFS stack already
+--> EX: Search engines. Analysing log data, huge, two- dimensional join-less tables
+- Neo4j
+--> For graph-style, rich or complex, interconnected data
+--> EX: For searching routes in social relations, public transport links, road maps, or network topologies
+- Redis
+--> For rapidly changing data with a foreseeable database size
+--> EX: Real-time stock prices. Real-time analytics. Leaderboards. Real-time communication
+- OrientDB
+--> For graph-style, rich or complex, interconnected data
+--> EX: For graph-style, rich or complex, interconnected data
+Hadoop
+* A scalable fault-tolerant distributed system for data storage and processing Completely written in java Open source & distributed under Apache license
+- Hadoop Environment
+- Distributed Computation --> MapReduce
+- Distributed Storage --> HDFS ( Hadoop File System )
+- Server Cloud --> Hardware
+>> Hadoop 2.0 support more than MapReduce
+- Evolution of The Hadoop Platform
+- Basic ( 2006 - 2007 )
+--> Very basic Hadoop
+--> Batch processes only
+--> Not [ Stable, Fast, Featureful ]
+- Production ( 2008 - 2011 )
+--> Expanding feature set
+--> Basic security, HA, Stability
+--> Commercial distributions
+- Enterprise ( 2012 - 2015 )
+--> Security
+--> Performance
+--> Fast full featured SQL
+- Hadoop Cluster
+- Master nodes
+- Worker nodes
+- Yarn
+- Components ( Resource Manager, Node Manager, Application Master )
+- Workload
+- Batch: MapReduce that is the compatible with Hadoop 1.x
+- Script: Pig
+- Interactive SQL: Hive or Tez
+- NoSQL: HBase and Accumulo
+- Streaming: Storm
+- In-memory: Spark
+- Search: SOLR
+- Data Processing Technology using Hadoop
+--> ( MapReduce, Hive, Pig, Impala, Drill, Spark )
+- Spark Framework
+--> Data --> Compute Interface --> Management --> Data
+- Framework for distributed processing
+- In-memory, fault tolerant data structures
+- Flexible APIs
+- Spark Platform
+- Spark Core
+--> Spark SQL
+--> Spark Streaming
+--> PySpark
+--> SparkR
+--> MLlib
+--> GraphX
+- HBase : An open source, non-relational, distributed database modeled after Google's BigTable and is written in Java
+- Features
+- Hadoop database modelled after Google's Bigtable
+- Column oriented data store, known as Hadoop Database
+- Support random realtime CRUD operations (unlike HDFS)
+- No SQL Database
+- Opensource, written in Java
+- Run on a cluster of commodity hardware
+- Components
+- Region : Row of table are stores
+- Region Server : Hosts the tables
+- Master : Coordinating the Region Server
+- ZOOSKEEPER
+- HDFS
+- API
+- Big Data as a Service
+- Analytic Software as a Service
+- Data as a a Service
+- Storage as a Service
+- Compute as a Service
+Analytic
+- Value & Difficulty
+- Descriptive Analytic [ What happened ? ]
+- Diagnostic Analytic [ Why did it happen ? ]
+- Predictive Analytic [ What will happen ? ]
+- Prescriptive Analytic [ How can we make it happen ? ]
+* We can forecasting future based on the past
+- Getting Data
+- Large & huge scale data extraction & manipulation
+- Scraping, crawling
+- Crowd-sourcing
+- APIs
+- Analyzing Data
+-Text mining
+- Classification
+- Clustering
+- Network analysis
+- Machine Learning
+- Peopleware
+- Big Data Architecture
+- Big Data Engineer/Administrator
+- Big Data Developer
+- Big Data Analyst
+- Data Scientist
+- Big Data is complicated and hard to implement
+- Multilayer of technology to integrate
+- Many vendors: each selling only piece of a solution
+- It can take months to build one analytics application
+- Link
+Open data:http://commoncrawl.org/
+Google trend:https://www.google.com/trends/
+Introduction:http://kundjanasith.com/BigDataSchool/02-06-2016/BigData-Introduction-May2016.pdf
+Technology:http://kundjanasith.com/BigDataSchool/02-06-2016/BigData-Technology-May2016.pdf
+Analytic:http://kundjanasith.com/BigDataSchool/02-06-2016/BIg%20Data%
+20KPI.pdf

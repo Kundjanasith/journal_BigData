@@ -1,0 +1,275 @@
+Indeed & Introduction to Data Scientist
+08:30 - 12:00
+- Indeed
+- Introduce yourself and tell about what you have learned in this big data school class
+- How to write your resume or curriculum vitae
+- Include your key word of your performance
+- For example --> Big Data
+- Hadoop
+- Cloudera
+- MapR
+- Hortonworks
+- Internet of things
+- The Growth of Data
+--> Driven by unstructure data
+- 88% Unstructure Data
+- 12% Structure Data
+- What is Big Data?
+ - Volume
+- Terabytes
+- Records
+- Transactions
+- Tables
+- Files
+- Velocity
+- Batch
+- Near time
+- Real time
+- Streams
+- Variety
+- Structured
+- Unstructured
+- Semi-structured
+- The Big Data Tools
+- Variety ( Highly Structured --> Poly Structured )
+- Standard SQL --> Scalable No SQL
+- In Memory --> Streaming
+- Velocity ( Batch --> Real-time )
+- Standard SQL --> In Memory
+- Scalable No SQL --> Streaming
+- Apache Hadoop Ecosystem
+- Ambari
+- Provisioning, Managing, Monitoring Hadoop Clusters
+- Sqoop
+- Data Exchange
+- Flume
+- Log Collector
+- Zookeeper
+- Coordination
+- Oozie
+- Workflow
+- Pig
+- Scripting
+- Mahout
+- Machine Learning
+- R connectors
+- Statistics
+- Hive
+- SQL Query
+- HBase
+- Columnar Store
+- YARN Map Reduce v2
+- Distributed Processing Framework
+- HDFS
+- Hadoop Distributed File System
+- Open Source Ecosystem
+- Applications
+- Environments
+- Data Sources
+- Traditional Data Management Architecture
+- Analytics
+- Data Marts
+- Business Analytics
+- Virtualization & Dashboards
+- Data Systems
+- MPP
+- In Memory
+- Enterprise Data Warehouse
+- Hot
+- HDP --> Hortonworks Data Platform
+- Hadoop
+- Cold --> Deeper Archive & New Sources
+- Sources
+- Systems of Record
+- RDBMS
+- CRM
+- ERP
+- Clickstream
+- Web & Social
+- Geolocation
+- Sensor & Machine
+- Server Logs
+- Unstructured
+- New Data Management Architecture
+- Application
+- Data System
+- Sources
+* New Architecture
+- Div & Data Tools
+- Operational Tools
+- Infrastructure
+- Data Lake
+- Forget data warehouse, it is data lakes now
+- Data Lakes becoming corporate priority because they fill a critical gap
+- Federation Business Data Lake simplifies complex task of building a data lake --> EMC
+- How the Data Lake works?
+- Data Sources
+- Data Acquisition
+- Data Storage
+- Data Analysis
+- Reporting & Virtualization
+- What you consume from Data Lake ?
+- It is not
+- Volume
+- Variety
+- Velocity
+- It is
+- Value = Big Data + Analytics
+- Big Data Analytics
+- Next-Generation Data Architecture
+- Big Data Refinery ( Apache Hadoop )
+- Business Transaction & Interaction
+- Business Intelligence & Analytic
+- Big Data Analytics
+- Y-Axis ==> Data, X-Axis ==> Value
+- Operational Excellence
+- Customer Intimacy
+- Risk Management
+- New Business
+- Data Lake
+- An architectural shift in the data center that uses Hadoop to deliver deep insight across a large, board, diverse set of data at efficient scale
+- Y-Axis ==> Value. X-Axis ==> Difficulty
+( Information --> Optimization )
+- Descriptive Analytic
+- What happened?
+- Diagnostic Analytic
+- Why did it happen?
+- Predictive Analytic
+- What will happen?
+- Prescriptive Analytic
+- How can we make it happen?
+- How to do Big Data Analytics
+- Data
+- Big Data
+- Cloud Computing
+- Internet of Things
+- Data Science
+- Data Product
+- What is Data Science
+- Hacking Skills
+- Math & Statistics Knowledge
+- Substantive Expertise
+--> Machine Learning
+- Hacking Skills +  Math & Statistics Knowledge
+--> Traditional Research
+- Math & Statistics Knowledge + Substantive Expertise
+--> Danger Zone
+ - Substantive Expertise  + Hacking Skills
+- What is Unicorn
+- Computer Science
+- Math & Statistics Knowledge
+- Substantive Expertise
+--> Machine Learning
+- Computer Science +  Math & Statistics Knowledge
+--> Traditional Research
+- Math & Statistics Knowledge + Substantive Expertise
+--> Traditional Software
+ - Substantive Expertise  + Computer Science
+Data Science
+13:00 - 17:30
+- Data Science Team
+- Data Virtualization
+- Machine Learning
+- Mathematics
+- Statistics
+- Computer Science
+- Communication
+- Domain Expertise
+- Data Scientist
+- Role
+- Clean
+- Message & Organize data
+- Mindset
+- Curious data wizard
+- Language
+- R
+- SAS
+- Python
+- Matlabs
+- SQL
+- Hive
+- Pig
+- Spark
+- Skils & Talents
+- Distributed computing
+- Predictive modeling
+- Story-telling and virtualizing
+- Math. Stats, Machine Learning
+- Data Engineering
+- Role
+- Develop
+- Construct
+- Test & Maintain architecture
+- Mindset
+- All purpose everyman
+- Languages
+- SQL
+- Hive
+- Pig
+- R
+- Matlabs
+- SAS
+- SPSS
+- Python
+- Java
+- Ruby
+- C++
+- Perl
+- Skills & Talents
+- Database system
+- Data mining
+- Data APIs
+- Data warehouse
+- Statistician
+- Role
+- Collect
+- Analyse and interprets qualitive as well as quantitive data with statical theoric and methods
+- Mindset
+- Logical and enthustatistic stats genius
+- Language
+- R
+- SAS
+- Matlabs
+- Scala
+- Python
+- Pig
+- Hive
+- Perl
+- Spark
+- SQL
+- Skills & Talents
+- Statistical theories --> methology
+- Data mining --> machine learning
+- Distributed computing --> Hadoop
+- Database System
+- Cloud tool
+- Data Architect
+- Role
+- Create blueprint for data management system to intregate
+- Protect and  maintain data source
+- Mindset
+- Inquring ninja with a love for data architecture design patterns
+- Language
+- SQL
+- XML
+- Hive
+- Pig
+- Spark
+- Skills & Talents
+- Data warehousing solutions
+- Depth knowledge of database system
+- Extract Transformation Load
+- Data modeling
+- Business Analyst
+- Role
+- Improve business process as intermediay between business and IT
+- Mindset
+- Resilent project juggler
+- Language
+- SQL
+- Skills & Talents
+- Basic Tools
+- Data Virtualization tools
+- Conscious listening & story telling
+- Business Intelligence
+- Data modeling

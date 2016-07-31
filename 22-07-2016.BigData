@@ -1,0 +1,309 @@
+Introduction to D3.js data visualization
+08:30 - 12:00
+- D3 --> Data Driven Documents
+--> is a JavaScript library for producing dynamic, interactive data virtualizations in web browser
+--> makes use of the widely implemented SVG, HTML5 and CSS standards
+--> is the successor to the earlier Protovis framework
+--> allows great control oer the final visual result
+--> development was noted in 2011
+- The first web browsers appeared in the early 1990s. They were initially capable of displaying static web pages only
+- The only way for a user to interact with the web was through clicking links and scrolling pages.
+- There were many efforts to overcome such limitations.
+- One of the most significant was the integration of JavaScript as the scripting language for web browsers.
+- JavaScript gradually became the de facto standard language for creating web pages with rich user interactivity.
+- This played a crucial role in the decision to use JavaScript as the language of D3.js.
+- At the same time, researchers, engineers, and practitioners from various branches of engineering and science looked for tools that would enable web browsers to visually present data within web pages.
+- There were multiple projects with that goal, each of which had its successes and failures, and inspired the subsequent ones. The most notable examples were the Prefuse, Flare, and Protovis toolkits, which can all be considered as direct predecessors of D3.js.
+- Prefuse was a visualization toolkit created in 2005 that required usage of Java and visualizations were rendered within browsers with a Java plug-in.
+- Flare was a similar toolkit from 2007 that used ActionScript and required a Flash plug-in for rendering.
+- Technical Principles
+- Embedded within an HTML webpage, the JavaScript D3.js library uses pre-built JavaScript functions to select elements, create SVG objects, style them, or add transitions, dynamic effects or tooltips to them. These objects can also be widely styled using CSS.
+- Large datasets can be easily bound to SVG objects using simple D3.js functions to generate rich text/graphic charts and diagrams.
+- The data can be in various formats, most commonly JSON, CSV or geoJSON, but, if required, JavaScript functions can be written to read other data formats.
+- Selections
+- The central principle of D3.js design is to enable the programmer to first use a CSS-style selector to select a given set of Document Object Model  nodes, then use operators to manipulate them in a similar manner to jQuery
+- The selection can be based on tag (as in the above example), class, identifier, attribute, or place in the hierarchy.
+- Once elements are selected, one can apply operations to them. This includes getting and setting attributes, display texts, and styles
+- Elements may also be added and removed.
+- This process of modifying, creating and removing HTML elements can be made dependent on data, which is the basic concept of D3.js.
+- Transitions
+- By declaring a transition, values for attributes and styles can be smoothly interpolated over a certain time.
+- Data binding
+- For more advanced uses, loaded data drives the creation of elements. D3.js loads a given dataset, then, for each element of it, create an SVG object with associated properties (shape, colors, values) and behaviors (transitions, events).
+- Appending nodes using data
+- Once a dataset is bound to a document, use of D3.js typically follows a pattern wherein an explicit .enter() function, an implicit "update," and an explicit .exit() function is invoked for each item in the bound dataset.
+-  Any methods chained after the .enter() command will be called for each item in the dataset not already represented by a DOM node in the selection (the previous selectAll()).
+- Likewise, the implicit update function is called on all existing selected nodes for which there is a corresponding item in the dataset, and .exit() is called on all existing selected nodes that do not have an item in the dataset to bind to them.
+- The D3.js documentation provides several examples of how this works.
+- API structure
+--> D3.js API contains several hundred functions, and they can be grouped into following logical units
+- Selections
+- Transitions
+- Arrays
+- Math
+- Color
+- Scales
+- SVG
+- Time
+- Layouts
+- Geography
+- Geometry
+- Behaviors
+- Maths
+- Generation of pseudorandom numbers with normal, log-normal, Bates, and Irwin-Hall distributions.
+- Transformations in 2D: translation, rotation, skew, and scaling.
+- Arrays
+--> D3.js array operations are built to complement existing array support in JavaScript (mutator methods: sort, reverse, splice, shift and unshift; accessor methods: concat, join, slice, indexOf and lastIndexOf; iteration methods: filter, every, forEach, map, some, reduce and reduceRight). D3.js extends this functionality with
+- Functions for finding minimum, maximum, extent, sum, mean, median, and quantile of an array.
+- Functions for ordering, shuffling, permuting, merging, and bisecting arrays.
+- Functions for nesting arrays.
+- Functions for manipulating associative arrays.
+- Support for map and set collections.
+- Geometry
+- Computing convex hull of a set of points.
+- Computing Voronoi tesselation of a set of points.
+- Support for point quadtree data structure.
+- Support for basic operations on polygons.
+- Color
+- Support for RGB, HSL, HCL, and L*a*b* color representation.
+- Brightening, darkening, and interpolation of colors.
+- Fundamental
+- HTML
+- Hypertext Markup Language is used to structure content for web browsers. The simplest HTML page looks like this:
+<html>
+    <head>
+        <title>Page Title</title>
+    </head>
+    <body>
+        <h1>Page Title</h1>
+        <p>This is a really interesting paragraph.</p>
+    </body>
+</html>
+- DOM
+- The Document Object Model refers to the hierarchical structure of HTML. Each bracketed tag is an element, and we refer to elements’ relative relationships to each other in human terms: parent, child, sibling, ancestor, and descendant. In the HTML above, body is the parent element to both of its children, h1 and p (which are siblings to each other). All elements on the page are descendants of html.
+- Web browsers parse the DOM in order to make sense of a page’s content.
+- CSS
+- Cascading Style Sheets are used to style the visual presentation of HTML pages. A simple CSS stylesheet looks like this:
+body {
+    background-color: white;
+    color: black;
+}
+- CSS styles consist of selectors and rules. Selectors identify specific elements to which styles will be applied:
+- Rules are properties that, cumulatively, form the styles:
+color: pink;
+background-color: yellow;
+margin: 10px;
+padding: 25px;
+- We connect selectors and rules using curly brackets:
+p {
+    font-size: 12px;
+    line-height: 14px;
+    color: black;
+}
+- D3 uses CSS-style selectors to identify elements on which to operate, so it’s important to understand how to use them.
+- CSS rules can be included directly within the head of a document, like so
+<head>
+    <style type="text/css">
+        p {
+            font-family: sans-serif;
+            color: lime;
+        }
+    </style>
+</head>
+- or saved in an external file with a .css suffix, and then referenced in the document’s head:
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+- JavaScript
+- JavaScript is a dynamic scripting language that can instruct the browser to make changes to a page after it has already loaded.
+- Scripts can be included directly in HTML, between two script tags
+<body>
+    <script type="text/javascript">
+        alert("Hello, world!");
+    </script>
+</body>
+- or stored in a separate file, and then referenced somewhere the HTML (commonly in the head)
+<head>
+    <title>Page Title</title>
+    <script type="text/javascript" src="myscript.js"></script>
+</head>
+- SVG
+- D3 is at its best when rendering visuals as Scalable Vector Graphics. SVG is a text-based image format. Meaning, you can specify what an SVG image should look like by writing simple markup code, sort of like HTML tags. In fact, SVG code can be included directly within any HTML document. Web browsers have supported the SVG format for years but it never quite caught on, until now.
+<svg width="50" height="50">
+    <circle cx="25" cy="25" r="22"
+     fill="blue" stroke="gray" stroke-width="2"/>
+</svg>
+Laboratory with D3.js
+13:00 - 17:30
+- Adding elements
+--> One of your first steps will be to use D3 to create a new DOM element. Typically, this will be an SVG object for rendering a data visualization, but we’ll start simple, and just create a p paragraph element.
+- Begin with this simple HTML template:
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>D3 Test</title>
+        <script type="text/javascript" src="d3/d3.v3.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            // Your beautiful D3 code will go here
+        </script>
+    </body>
+</html>
+- Chaining methods
+--> D3 smartly employs a technique called chain syntax, which you may recognize from jQuery. By “chaining” methods together with periods, you can perform several actions in a single line of code. It can be fast and easy, but it’s important to understand how it works, to save yourself hours of debugging headaches later.
+--> By the way, functions and methods are just two different words for the same concept: a chunk of code that accepts an argument as input, performs some action, and returns some data as output.
+- The Hand-off
+- Many, but not all, D3 methods return a selection (or, really, reference to a selection), which enables this handy technique of method chaining.
+- Typically, a method returns a reference to the element that it just acted upon, but not always.
+- When chaining methods, order matters.
+- The output type of one method has to match the input type expected by the next method in the chain.
+- If adjacent inputs and outputs are mismatched, the hand-off will function more like a dropped baton in a middle-school relay race.
+- Binding data
+--> Data visualization is a process of mapping data to visuals.
+--> Data in, visual properties out.
+--> Maybe bigger numbers make taller bars, or special categories trigger brighter colors.
+--> The mapping rules are up to you.
+--> With D3, we bind our data input values to elements in the DOM.
+--> Binding is like “attaching” or associating data to specific elements, so that later you can reference those values to apply mapping rules.
+--> Without the binding step, we have a bunch of data-less, un-mappable DOM elements.
+- In a Bind
+- We use D3’s method to bind data to DOM elements. But there are two things we need in place first, before we can bind data:
+The data
+A selection of DOM elements
+- Data
+- D3 is smart about handling different kinds of data, so it will accept practically any array of numbers, strings, or objects (themselves containing other arrays or key/value pairs).
+- It can handle JSON (and GeoJSON) gracefully, and even has a built-in method to help you load in CSV files.
+- But to keep things simple, for now we will start with a boring array of numbers.
+- Using Data
+- Once you’ve loaded in your data and bound it to newly created elements in the DOM, how can you use it? Here’s our code from last time
+var dataset = [ 5, 10, 15, 20, 25 ];
+d3.select("body").selectAll("p")
+    .data(dataset)
+    .enter()
+    .append("p")
+    .text("New paragraph!");
+- We used our data to populate the contents of each paragraph, all thanks to the magic of the data() method.
+- You see, when chaining methods together, anytime after you call data(), you can create an anonymous function that accepts d as input.
+- The magical data() method ensures that dis set to the corresponding value in your original data set, given the current element at hand.
+--> High Functioning
+- In case you’re new to writing your own functions (a.k.a. methods), the basic structure of a function definition is
+function(input_value) {
+    //Calculate something here
+    return output_value;
+}
+- The function we used above is dead simple, nothing fancy
+function(d) {
+    return d;
+}
+.text(function(d) {
+    return d;
+});
+- But we can (and will) get much fancier, because you can customize these functions however you want.
+- Yes, it’s the pleasure and pain of writing your own JavaScript.
+- We can define our own custom functions however we want.
+--> Data want to be Held
+- You may be wondering why you have to write out function(d)... instead of just d on its own. For example, this won’t work:
+.text("I can count up to " + d);
+- In this context, without wrapping d in an anonymous function, d has no value. Think of d as a lonely little placeholder value that just needs a warm, containing hug from a kind, caring function’s parantheses. (Extending this metaphor further, yes, it is creepy that the hug is being given by an anonymousfunction — stranger danger! — but that only confuses matters.)
+.text(function(d) {  // <-- Note tender embrace at left
+    return "I can count up to " + d;
+});
+- The reason for this syntax is that .text(), attr(), and many other D3 methods take a function as an argument.
+- For example, text() can take either simply a static string of text as an argument:
+.text("someString")
+- or the result of a function:
+.text(someFunction())
+- or an anonymous function itself can be the argument, such as when you write:
+.text(function(d) {
+    return d;
+})
+- Above, you are defining an anonymous function.
+- If D3 sees a function there, it will call that function, while handing off the current datum d as the function’s argument.
+- Without the function in place, D3 can’t know to whom it should hand off the argument d.
+- At first, this may seem silly and like a lot of extra work to just get at d, but the value of this approach will become clear as we work on more complex pieces.
+--> Beyond Text
+- Things get a lot more interesting when we explore D3’s other methods, like attr() and style(), which allow us to set HTML attributes and CSS properties on selections, respectively.
+- For example, adding one more line to our code.
+.style("color", "red");
+- All the text is now red; big deal.
+- But we could use a custom function to make the text red only if the current datum exceeds a certain threshold.
+- So we revise that last line to use a function:
+.style("color", function(d) {
+    if (d > 15) {   //Threshold of 15
+        return "red";
+    } else {
+        return "black";
+    }
+});
+--> Drawing divs
+var dataset = [ 5, 10, 15, 20, 25 ];
+- We’ll use this to generate a super-simple bar chart.
+- Bar charts are essentially just rectangles, and an HTML <div> is the easiest way to draw a rectangle.
+- Then again, to a web browser, everything is a rectangle, so you could easily adapt this example to use spans or whatever element you prefer.
+- This div could work well as a data bar:
+<div style="display: inline-block;
+            width: 20px;
+            height: 75px;
+            background-color: teal;"></div>
+- Among web standards folks, this is a semantic no-no.
+- Normally, one shouldn’t use an empty div for purely visual effect, but coding tutorials are notable exceptions.
+- Because this is a div, its width and height are set with CSS styles.
+- Each bar in our chart will share the same display properties except for height, so I’ll put those shared styles into a class called bar:
+div.bar {
+    display: inline-block;
+    width: 20px;
+    height: 75px;   /* We'll override this later */
+    background-color: teal;
+}
+- Now each div needs to be assigned the bar class, so our new CSS rule will apply. If you were writing the HTML code by hand, you would write:
+<div class="bar"></div>
+- Using D3, to add a class to an element, we use the selection.attr()method. It’s important to understand the difference between attr() and its close cousin, style().
+- Setting Attributes
+- attr() is used to set an HTML attribute and its value on an element.
+- An HTML attribute is any property/value pair that you could include between an element’s <> brackets. For example, these HTML elements
+<p class="caption">
+<select id="country">
+<img src="logo.png" width="100px" alt="Logo" />
+- contain a total of five attributes (and corresponding values), all of which could be set with attr():
+class   |   caption
+id      |   country
+src     |   logo.png
+width   |   100px
+alt     |   Logo
+- To give our divs a class of bar, we can use:
+.attr("class", "bar")
+- A Note on Classes
+Note that an element’s class is stored as an HTML attribute.
+- The class, in turn, is used to reference a CSS style rule.
+- This may cause some confusion because there is a difference between setting a class (from which styles are inferred) and applying a style directly to an element.
+- You can do both with D3. Although you should use whatever approach makes the most sense to you, I recommend using classes for properties that are shared by multiple elements, and applying style rules directly only when deviating from the norm.
+- I also want to briefly mention another D3 method, classed(), which can be used to quickly apply or remove classes from elements. The line of code above could be rewritten as:
+.classed("bar", true)
+- Back to the Bars
+Putting it all together with our data set, here is the complete D3 code so far:
+var dataset = [ 5, 10, 15, 20, 25 ];
+d3.select("body").selectAll("div")
+    .data(dataset)
+    .enter()
+    .append("div")
+    .attr("class", "bar");
+- Make sure to view the source, and open your web inspector to see what’s going on. You should see five vertical bars, one generated for each point in our data set, although with no space between them, they look like one big rectangle.
+- Setting Styles
+- The style() method is used to apply a CSS property and value directly to an HTML element.
+- This is the equivalent of including CSS rules within a style attribute right in your HTML, as in:
+<div style="height: 75px;"></div>
+- In a bar chart, the height of each bar must be a function of the corresponding data value. So let’s add this to the end of our D3 code:
+.style("height", function(d) {
+    return d + "px";
+});
+- You should see a very small bar chart!
+- When D3 loops through each data point, the value of d will be set to that of the corresponding data point. So we are setting a height value of d (the current data value) plus px (to specify the units are pixels). The resulting heights will be 5px, 10px, 15px, 20px, and 25px.
+- This looks a little bit silly, so let’s make those bars taller
+.style("height", function(d) {
+    var barHeight = d * 5;  //Scale up by factor of 5
+    return barHeight + "px";
+});
+- Add some space to the right of each bar, to space things out:
+margin-right: 2px;

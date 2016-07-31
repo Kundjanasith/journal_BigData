@@ -1,0 +1,1069 @@
+Virualization
+08:30 - 12:00
+- Overview [ Scatter Graph 2 Graph ]
+- Q53 --> Blue
+--> GPA & entry_GPAX
+--> GPAX & entry_GPAX
+- Q54 --> Red
+--> GPA & entry_GPAX
+--> GPAX & entry_GPAX
+- Q55 --> Yellow
+--> GPA & entry_GPAX
+--> GPAX & entry_GPAX
+- Q56 --> Green
+--> GPA & entry_GPAX
+--> GPAX & entry_GPAX
+- Q57 --> Violet
+--> GPA & entry_GPAX
+--> GPAX & entry_GPAX
+- Detail [ Scatter Graph depend on data ]
+- Q53 --> Blue
+--> GPA & entry_GPAX
+- EnrolledYear == 2553 & Semester == 1
+- EnrolledYear == 2553 & Semester == 2
+- EnrolledYear == 2554 & Semester == 1
+- EnrolledYear == 2554 & Semester == 2
+- EnrolledYear == 2555 & Semester == 1
+- EnrolledYear == 2555 & Semester == 2
+- EnrolledYear == 2556 & Semester == 1
+- EnrolledYear == 2556 & Semester == 2
+--> GPAX & entry_GPAX
+- Q54 --> Red
+--> GPA & entry_GPAX
+- EnrolledYear == 2554 & Semester == 1
+- EnrolledYear == 2554 & Semester == 2
+- EnrolledYear == 2555 & Semester == 1
+- EnrolledYear == 2555 & Semester == 2
+- EnrolledYear == 2556 & Semester == 1
+- EnrolledYear == 2556 & Semester == 2
+- EnrolledYear == 2557 & Semester == 1
+- EnrolledYear == 2557 & Semester == 2
+--> GPAX & entry_GPAX
+- Q55 --> Yellow
+--> GPA & entry_GPAX
+- EnrolledYear == 2555 & Semester == 1
+- EnrolledYear == 2555 & Semester == 2
+- EnrolledYear == 2556 & Semester == 1
+- EnrolledYear == 2556 & Semester == 2
+- EnrolledYear == 2557 & Semester == 1
+- EnrolledYear == 2557 & Semester == 2
+--> GPAX & entry_GPAX
+- Q56 --> Green
+--> GPA & entry_GPAX
+- EnrolledYear == 2556 & Semester == 1
+- EnrolledYear == 2556 & Semester == 2
+- EnrolledYear == 2557 & Semester == 1
+- EnrolledYear == 2557 & Semester == 2
+--> GPAX & entry_GPAX
+- Q57 --> Violet
+--> GPA & entry_GPAX
+- EnrolledYear == 2557 & Semester == 1
+- EnrolledYear == 2557 & Semester == 2
+--> GPAX & entry_GPAX
+- As the result
+--> In next EnrolledYear and Semester with the same entrance year then data will be grouped more than ever due to every know who is good or bad as the result they will meeting each other
+- Analysis by separate each subject --> R
+- Q53
+library(data.table)
+file <- read.csv('Q53.csv')
+#Group Thai
+temp <- unique(file[c('ID','Thai')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Thai), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Thai <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Thai)
+res <- unique(res[c('Group','number_Thai')])
+res1 <- res[order(res$Group),]
+#Group PhysicalAct
+temp <- unique(file[c('ID','PhysicalAct')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(PhysicalAct), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_PhysicalAct <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_PhysicalAct)
+res <- unique(res[c('Group','number_PhysicalAct')])
+res2 <- res[order(res$Group),]
+#Group Math
+temp <- unique(file[c('ID','Math')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Math), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Math <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Math)
+res <- unique(res[c('Group','number_Math')])
+res3 <- res[order(res$Group),]
+#Group Art
+temp <- unique(file[c('ID','Art')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Art), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Art <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Art)
+res <- unique(res[c('Group','number_Art')])
+res4 <- res[order(res$Group),]
+#Group Science
+temp <- unique(file[c('ID','Science')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Science), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Science <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Science)
+res <- unique(res[c('Group','number_Science')])
+res5 <- res[order(res$Group),]
+#Group Industrial
+temp <- unique(file[c('ID','Industrial')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Industrial), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Industrial <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Industrial)
+res <- unique(res[c('Group','number_Industrial')])
+res6 <- res[order(res$Group),]
+#Group Social
+temp <- unique(file[c('ID','Social')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Social), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Social <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Social)
+res <- unique(res[c('Group','number_Social')])
+res7 <- res[order(res$Group),]
+#Group English
+temp <- unique(file[c('ID','English')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(English), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_English <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_English)
+res$number_English <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_English)
+res$number_English <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_English)
+res$number_English <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_English)
+res$number_English <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_English)
+res$number_English <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_English)
+res$number_English <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_English)
+res$number_English <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_English)
+res <- unique(res[c('Group','number_English')])
+res8 <- res[order(res$Group),]
+#Merge
+merge1 <- merge(res1,res2,by.res1="Group")
+merge2 <- merge(merge1,res3,by.merge1="Group")
+merge3 <- merge(merge2,res4,by.merge2="Group")
+merge4 <- merge(merge3,res5,by.merge3="Group")
+merge5 <- merge(merge4,res6,by.merge4="Group")
+merge6 <- merge(merge5,res7,by.merge5="Group")
+merge7 <- merge(merge6,res8,by.merge6="Group")
+write.table(merge7,file='Q53_Subject.csv',sep=",",row.names=FALSE)
+- Q54
+library(data.table)
+file <- read.csv('Q54.csv')
+#Group Thai
+temp <- unique(file[c('ID','Thai')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Thai), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Thai <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Thai)
+res <- unique(res[c('Group','number_Thai')])
+res1 <- res[order(res$Group),]
+#Group PhysicalAct
+temp <- unique(file[c('ID','PhysicalAct')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(PhysicalAct), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_PhysicalAct <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_PhysicalAct)
+res <- unique(res[c('Group','number_PhysicalAct')])
+res2 <- res[order(res$Group),]
+#Group Math
+temp <- unique(file[c('ID','Math')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Math), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Math <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Math)
+res <- unique(res[c('Group','number_Math')])
+res3 <- res[order(res$Group),]
+#Group Art
+temp <- unique(file[c('ID','Art')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Art), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Art <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Art)
+res <- unique(res[c('Group','number_Art')])
+res4 <- res[order(res$Group),]
+#Group Science
+temp <- unique(file[c('ID','Science')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Science), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Science <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Science)
+res <- unique(res[c('Group','number_Science')])
+res5 <- res[order(res$Group),]
+#Group Industrial
+temp <- unique(file[c('ID','Industrial')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Industrial), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Industrial <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Industrial)
+res <- unique(res[c('Group','number_Industrial')])
+res6 <- res[order(res$Group),]
+#Group Social
+temp <- unique(file[c('ID','Social')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Social), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Social <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Social)
+res <- unique(res[c('Group','number_Social')])
+res7 <- res[order(res$Group),]
+#Group English
+temp <- unique(file[c('ID','English')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(English), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_English <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_English)
+res$number_English <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_English)
+res$number_English <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_English)
+res$number_English <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_English)
+res$number_English <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_English)
+res$number_English <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_English)
+res$number_English <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_English)
+res$number_English <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_English)
+res <- unique(res[c('Group','number_English')])
+res8 <- res[order(res$Group),]
+#Merge
+merge1 <- merge(res1,res2,by.res1="Group")
+merge2 <- merge(merge1,res3,by.merge1="Group")
+merge3 <- merge(merge2,res4,by.merge2="Group")
+merge4 <- merge(merge3,res5,by.merge3="Group")
+merge5 <- merge(merge4,res6,by.merge4="Group")
+merge6 <- merge(merge5,res7,by.merge5="Group")
+merge7 <- merge(merge6,res8,by.merge6="Group")
+write.table(merge7,file='Q54_Subject.csv',sep=",",row.names=FALSE)
+- Q55
+library(data.table)
+file <- read.csv('Q55.csv')
+#Group Thai
+temp <- unique(file[c('ID','Thai')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Thai), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Thai <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Thai)
+res <- unique(res[c('Group','number_Thai')])
+res1 <- res[order(res$Group),]
+#Group PhysicalAct
+temp <- unique(file[c('ID','PhysicalAct')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(PhysicalAct), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_PhysicalAct <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_PhysicalAct)
+res <- unique(res[c('Group','number_PhysicalAct')])
+res2 <- res[order(res$Group),]
+#Group Math
+temp <- unique(file[c('ID','Math')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Math), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Math <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Math)
+res <- unique(res[c('Group','number_Math')])
+res3 <- res[order(res$Group),]
+#Group Art
+temp <- unique(file[c('ID','Art')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Art), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Art <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Art)
+res <- unique(res[c('Group','number_Art')])
+res4 <- res[order(res$Group),]
+#Group Science
+temp <- unique(file[c('ID','Science')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Science), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Science <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Science)
+res <- unique(res[c('Group','number_Science')])
+res5 <- res[order(res$Group),]
+#Group Industrial
+temp <- unique(file[c('ID','Industrial')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Industrial), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Industrial <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Industrial)
+res <- unique(res[c('Group','number_Industrial')])
+res6 <- res[order(res$Group),]
+#Group Social
+temp <- unique(file[c('ID','Social')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Social), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Social <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Social)
+res <- unique(res[c('Group','number_Social')])
+res7 <- res[order(res$Group),]
+#Group English
+temp <- unique(file[c('ID','English')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(English), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_English <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_English)
+res$number_English <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_English)
+res$number_English <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_English)
+res$number_English <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_English)
+res$number_English <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_English)
+res$number_English <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_English)
+res$number_English <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_English)
+res$number_English <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_English)
+res <- unique(res[c('Group','number_English')])
+res8 <- res[order(res$Group),]
+#Merge
+merge1 <- merge(res1,res2,by.res1="Group")
+merge2 <- merge(merge1,res3,by.merge1="Group")
+merge3 <- merge(merge2,res4,by.merge2="Group")
+merge4 <- merge(merge3,res5,by.merge3="Group")
+merge5 <- merge(merge4,res6,by.merge4="Group")
+merge6 <- merge(merge5,res7,by.merge5="Group")
+merge7 <- merge(merge6,res8,by.merge6="Group")
+write.table(merge7,file='Q55_Subject.csv',sep=",",row.names=FALSE)
+- Q56
+library(data.table)
+file <- read.csv('Q56.csv')
+#Group Thai
+temp <- unique(file[c('ID','Thai')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Thai), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Thai <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Thai)
+res <- unique(res[c('Group','number_Thai')])
+res1 <- res[order(res$Group),]
+#Group PhysicalAct
+temp <- unique(file[c('ID','PhysicalAct')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(PhysicalAct), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_PhysicalAct <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_PhysicalAct)
+res <- unique(res[c('Group','number_PhysicalAct')])
+res2 <- res[order(res$Group),]
+#Group Math
+temp <- unique(file[c('ID','Math')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Math), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Math <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Math)
+res <- unique(res[c('Group','number_Math')])
+res3 <- res[order(res$Group),]
+#Group Art
+temp <- unique(file[c('ID','Art')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Art), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Art <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Art)
+res <- unique(res[c('Group','number_Art')])
+res4 <- res[order(res$Group),]
+#Group Science
+temp <- unique(file[c('ID','Science')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Science), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Science <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Science)
+res <- unique(res[c('Group','number_Science')])
+res5 <- res[order(res$Group),]
+#Group Industrial
+temp <- unique(file[c('ID','Industrial')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Industrial), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Industrial <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Industrial)
+res <- unique(res[c('Group','number_Industrial')])
+res6 <- res[order(res$Group),]
+#Group Social
+temp <- unique(file[c('ID','Social')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Social), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Social <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Social)
+res <- unique(res[c('Group','number_Social')])
+res7 <- res[order(res$Group),]
+#Group English
+temp <- unique(file[c('ID','English')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(English), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_English <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_English)
+res$number_English <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_English)
+res$number_English <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_English)
+res$number_English <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_English)
+res$number_English <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_English)
+res$number_English <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_English)
+res$number_English <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_English)
+res$number_English <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_English)
+res <- unique(res[c('Group','number_English')])
+res8 <- res[order(res$Group),]
+#Merge
+merge1 <- merge(res1,res2,by.res1="Group")
+merge2 <- merge(merge1,res3,by.merge1="Group")
+merge3 <- merge(merge2,res4,by.merge2="Group")
+merge4 <- merge(merge3,res5,by.merge3="Group")
+merge5 <- merge(merge4,res6,by.merge4="Group")
+merge6 <- merge(merge5,res7,by.merge5="Group")
+merge7 <- merge(merge6,res8,by.merge6="Group")
+write.table(merge7,file='Q56_Subject.csv',sep=",",row.names=FALSE)
+- Q57
+library(data.table)
+file <- read.csv('Q57.csv')
+#Group Thai
+temp <- unique(file[c('ID','Thai')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Thai), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Thai <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Thai)
+res$number_Thai <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Thai)
+res <- unique(res[c('Group','number_Thai')])
+res1 <- res[order(res$Group),]
+#Group PhysicalAct
+temp <- unique(file[c('ID','PhysicalAct')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(PhysicalAct), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_PhysicalAct <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_PhysicalAct)
+res$number_PhysicalAct <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_PhysicalAct)
+res <- unique(res[c('Group','number_PhysicalAct')])
+res2 <- res[order(res$Group),]
+#Group Math
+temp <- unique(file[c('ID','Math')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Math), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Math <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Math)
+res$number_Math <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Math)
+res <- unique(res[c('Group','number_Math')])
+res3 <- res[order(res$Group),]
+#Group Art
+temp <- unique(file[c('ID','Art')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Art), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Art <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Art)
+res$number_Art <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Art)
+res <- unique(res[c('Group','number_Art')])
+res4 <- res[order(res$Group),]
+#Group Science
+temp <- unique(file[c('ID','Science')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Science), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Science <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Science)
+res$number_Science <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Science)
+res <- unique(res[c('Group','number_Science')])
+res5 <- res[order(res$Group),]
+#Group Industrial
+temp <- unique(file[c('ID','Industrial')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Industrial), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Industrial <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Industrial)
+res$number_Industrial <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Industrial)
+res <- unique(res[c('Group','number_Industrial')])
+res6 <- res[order(res$Group),]
+#Group Social
+temp <- unique(file[c('ID','Social')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(Social), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_Social <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_Social)
+res$number_Social <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_Social)
+res <- unique(res[c('Group','number_Social')])
+res7 <- res[order(res$Group),]
+#Group English
+temp <- unique(file[c('ID','English')])
+dataTable <- data.table(temp)
+res <- dataTable[, mean(English), by=ID]
+res <- as.data.frame.matrix(res)
+res$Group <- ifelse( res$V1>=0.0, 1, res$Group)
+res$Group <- ifelse( res$V1>=0.5, 2, res$Group)
+res$Group <- ifelse( res$V1>=1.0, 3, res$Group)
+res$Group <- ifelse( res$V1>=1.5, 4, res$Group)
+res$Group <- ifelse( res$V1>=2.0, 5, res$Group)
+res$Group <- ifelse( res$V1>=2.5, 6, res$Group)
+res$Group <- ifelse( res$V1>=3.0, 7, res$Group)
+res$Group <- ifelse( res$V1>=3.5, 8, res$Group)
+res$number_English <- ifelse( res$Group>=1, nrow(subset(res,Group==1)), res$number_English)
+res$number_English <- ifelse( res$Group>=2, nrow(subset(res,Group==2)), res$number_English)
+res$number_English <- ifelse( res$Group>=3, nrow(subset(res,Group==3)), res$number_English)
+res$number_English <- ifelse( res$Group>=4, nrow(subset(res,Group==4)), res$number_English)
+res$number_English <- ifelse( res$Group>=5, nrow(subset(res,Group==5)), res$number_English)
+res$number_English <- ifelse( res$Group>=6, nrow(subset(res,Group==6)), res$number_English)
+res$number_English <- ifelse( res$Group>=7, nrow(subset(res,Group==7)), res$number_English)
+res$number_English <- ifelse( res$Group>=8, nrow(subset(res,Group==8)), res$number_English)
+res <- unique(res[c('Group','number_English')])
+res8 <- res[order(res$Group),]
+#Merge
+merge1 <- merge(res1,res2,by.res1="Group")
+merge2 <- merge(merge1,res3,by.merge1="Group")
+merge3 <- merge(merge2,res4,by.merge2="Group")
+merge4 <- merge(merge3,res5,by.merge3="Group")
+merge5 <- merge(merge4,res6,by.merge4="Group")
+merge6 <- merge(merge5,res7,by.merge5="Group")
+merge7 <- merge(merge6,res8,by.merge6="Group")
+write.table(merge7,file='Q57_Subject.csv',sep=",",row.names=FALSE)
+Service
+13:00 - 17:30
+- SolR --> localhost:8983
+- We will not use it because this service is very specify with interpreter execution
+* For high performance it will used with d3.js together
+- Zeppelin --> localhost:9995
+- We will use it because this service is support many interpreter execution
+* It can show data virtualization in many pattern
+- Pie Chart
+- Represent data in circular show area or radian with frequency
+- Bar Chart
+- Represent data in horizontal stack show width with frequency
+- Column Chart
+- Represent data in vertical stack show height with frequency
+- Area Chart
+- Represent data in volume or area below the upper bound graph
+- Line Chart
+- Represent data in continuous variable on connected line in graph
+- Microsoft Azure Machine Learning Studio --> Deploy Web Service
+- Algorithm
+- Classification Algorithm
+- Clustering Algorithm
+- Recommendation Algorithm
+* We will use linear regression for predict GPAX when you graduate bachelor degree by GPAX when graduate high school

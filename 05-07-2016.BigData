@@ -1,0 +1,272 @@
+Web server that connecting to HDFS
+08:30 - 12:00
+- Create web using python language
+- Python package --> web.py
+- Starting
+- Required pacakge
+- web.py
+- flup
+- psycopg2
+- Postgres or equivalent database and Pythong driver
+- URL Handling
+- URLs are even part of the user interface --> web.py
+import web
+- We need to tell web.py or URL structure
+urls = (
+'/', 'index'
+     )
+- The first part is  a regular expressions
+- The parentheses say to capture that piece of the matched data for use later on
+- The second part is the name of a class to send the request to
+- We want to the URL / to be handled by the class named index
+- GET & POST
+- We need to write the index class
+- Most people don't notice it just browsing around, your browser uses a langauge known as HTTP for communicating with the World Wide Web
+- GET
+- is the one we're all familiar with, the one used to request the text of a web page.
+- POST
+- is often used when submitting certain kinds of forms, like a request to purchase something
+- Key
+--> GET URLs can be passed around and indexed by search engines, which you definitely want for most of your pages but definitely don't want for things like processing orders (imagine if Google tried to buy everything on your site!)
+- We make the distinction between the two clear
+class index:
+    def GET(self):
+        return "Hello, world!"
+- We eed to create an application specifying the urls and a way to tell web.py to start serving web pages
+if __name__ == "__main__":
+    app = web.application(urls, globals())
+    app.run()
+- Easier access
+import web
+urls = (
+    '/', 'index'
+)
+class index:
+    def GET(self):
+        return "Hello, world!"
+if __name__ == "__main__":
+    app = web.application(urls, globals())
+    app.run()
+- Start the server
+$ python code.py
+http://0.0.0.0:8080/
+- You can specify the port number to use on the command line like this if you can't or don't want to use the default
+$ python code.py 1234
+- Templating
+- Let's make a new directory for our templates. Inside, make a new file whose name ends with HTML. Now, inside, you can just write normal HTML
+<em>Hello</em>, world!
+- You can use web.py's templating language to add code to your HTML
+$def with (name)
+$if name:
+    I just wanted to say <em>hello</em> to $name.
+$else:
+    <em>Hello</em>, world!
+- Go back to code.py --> Add under first line
+render = web.template.render('templates/')
+- This tells web.py to look for templates in your templates directory. Then changeindex.GET to
+name = 'Bob'
+return render.index(name)
+-  Let's say we want to let people enter their own name in. Replace the two lines we added above with
+i = web.input(name=None)
+return render.index(i.name)
+- Of course, having that ? in the URL is kind of ugly. Instead, change your URL line at the top to
+'/(.*)', 'index'
+- change the definition of index.GET to
+def GET(self, name):
+    return render.index(name)
+- delete the line setting name
+- Forms
+- The form module of web.py allows the ability to generate html forms, get user input, and validate it before processing it or adding it to a database. If you want to learn more about using the module forms web.py
+- Databasing
+- You need to create a database object.
+db = web.database(dbn='postgres', user='username', pw='password', db='dbname')
+- That's all you need to do
+- web.py will automatically handle connecting and disconnecting from the database.
+- Using your database engines admin interface, create a simple table in your database
+CREATE TABLE todo (
+  id serial primary key,
+  title text,
+  created timestamp default now(),
+  done boolean default 'f'    );
+- And an initial row:
+INSERT INTO todo (title) VALUES ('Learn web.py');
+- Return to editing code.py and change index.GET to the following, replacing the entire function:
+def GET(self):
+    todos = db.select('todo')
+    return render.index(todos)
+- Change back the URL handler to take just / as in:
+'/', 'index',
+- Edit and replace the entire contents of index.html so that it reads:
+$def with (todos)
+<ul>
+$for todo in todos:
+    <li id="t$todo.id">$todo.title</li>
+</ul>
+- Visit your site again and you should see your one todo item: "Learn web.py". Congratulations! You've made a full application that reads from the database. Now let's let it write to the database as well
+- Add at the end of index.html
+<form method="post" action="add">
+<p><input type="text" name="title" /> <input type="submit" value="Add" /></p>
+</form>
+- Change your URLs list to read
+'/', 'index',
+'/add', 'add'
+- Add another class
+class add:
+    def POST(self):
+        i = web.input()
+        n = db.insert('todo', title=i.title)
+        raise web.seeother('/')
+- In order to access data from multiple identically-named items
+post_data = web.input(name=[ ])
+- db.insert inserts values into the database table todo and gives you back the ID of the new row. seeother redirects users to that URL.
+- Some quick additional notes: db.update works just like db.insert except instead of returning the ID it takes it (or a string WHERE clause) after the table name.
+- web.input, db.query, and other functions in web.py return "Storage objects", which are just like dictionaries except you can do d.foo in addition to d['foo']. This really cleans up some code.
+- Developing
+- web.py also has a few tools to help us with debugging. When running with the built-in webserver, it starts the application in debug mode.
+- In debug mode any changes to code and templates are automatically reloaded and error messages will have more helpful information.
+- The debug is not enabled when the application is run in a real webserver. If you want to disable the debug mode, you can do so by adding the following line before creating your application/templates
+web.config.debug = False
+- Web Applications
+- You know how to write useful Python scripts, and now you want to show them off to the world… but how? Most non-programmers won’t have any use for your .py script files.
+- We’re seeing a trend away from “desktop”-based applications and toward web applications that can be accessed and run through Internet browsers
+- Today, most websites are actually web applications, which offer “dynamic” webpages that can change their content in any number of ways.
+- The idea behind creating a Python-driven web application is that you can use Python code to determine what content to show a user and what actions to take.
+- The code is actually run by the web server that hosts your website, so your user doesn’t need to install anything to use your application
+- Google App Engine
+- There are a number of other alternatives (both free and paid) that are more customizable, and you can use webapp2 on its own later without relying on Google App Engine, but getting started with Google App Engine will be the quickest and easiest way to begin learning about web application development in Python
+- This particular SDK includes two main resources: a “web server” application, which will allow you to run your web applications on your own computer without actually putting them online, and the Google App Engine Launcher, which will help with getting your web applications online
+- Request - Response
+- There are a lot of different pieces involved, and they all have to communicate with each other to function correctly
+First, your user makes a “request” for a particular webpage on your website (i.e., by typing a URL into a browser).
+This request gets received by the web server that hosts your website.
+The web server uses App Engine to look at the configuration file for your application. App Engine matches the user’s request to a particular portion of your Python script.
+This Python code is called up by App Engine. When your code runs, it writes out a “response” webpage.
+App Engine delivers this response back to your user through the web server.
+The user can then view the web server’s response (i.e., by displaying the resulting webpage in a browser).
+- Static Web App
+- The application we’re going to create will rely on a couple different files, so the first thing we need to do is make a project folder to hold all of these files.
+- YAML config
+--> his is the file that the web server will use to get information about what Python code we want it to run. Open up any text editor and copy the following text into a new file
+The YAML configuration file gives App Engine all the necessary information it needs to run the web application:
+First, application: hello provides a unique identifying name for the application so that we will be able to launch it later; we are giving the name hello to our web app.
+Next, the line version: 1 lets App Engine know that this is version 1 of our application. (If we update this later to version: 2, App Engine will keep a copy of version 1 in memory so that we can go back to running this previous version if necessary.)
+The lines runtime: python27 and api_version: 1 let App Engine know that we want to use Python 2.7 to run our application.
+The line threadsafe: false means that our web application isn’t designed to be able to receive multiple requests at once; if App Engine has multiple requests then it will send them to our application one at a time instead of all at once.
+Finally we define our handlers to handle different webpage requests from our users (i.e., if a user requested the main page at “/” or another page at a different address on our site). These requested paths can each be assigned to a different piece of Python code. In this case, we only have one script,hello.py
+- Escaping Form Input
+- There’s one important change we need to make to our code. The fact that we take input from a user and display that input back without first investigating what we are about to display is a huge security hole.
+- Maybe you don’t expect to have malicious users who are actively trying to break your application, but never underestimate the potential for users to do unexpected things that cause your application to break in unexpected ways.
+- Web application
+- A powerful scripting language adapted to both fast prototyping and bigger projects, Python is widely used in web application development
+- Frameworks
+- A web framework consists of a set of libraries and a main handler within which you can build custom code to implement a web application.
+- URL Routing
+- Matches an incoming HTTP request to a particular piece of Python code to be invoked
+- Request and Response Objects
+- Encapsulate the information received from or sent to a user’s browser
+- Template Engine
+- Allows for separating Python code implementing an application’s logic from the HTML (or other) output that it produces
+- Development Web Server
+- Runs an HTTP server on development machines to enable rapid development; often automatically reloads server-side code when files are updated
+- Python Programming Language
+- The Python programming language is an open source, widely-used tool for creating software applications.
+- What is Python used for ?
+--> Python is often used to build and deploy web applications and web APIs. Python can also analyze and visualize data and test software, even if the software being tested was not written in Python.
+- Model - View Controller
+- The term MVC is often encountered in statements such as “framework foo supports MVC”.
+- MVC is more about the overall organization of code, rather than any particular API.
+- Many web frameworks use this model to help the developer bring structure to their program.
+- Bigger web applications can have lots of code, so it is a good idea to have an effective structure right from the beginning.
+- That way, even users of other frameworks can easily understand the code, given that they are already familiar with the MVC structure
+- MVC stands for three components:
+- The model. This is the data that will be displayed and modified. In Python frameworks, this component is often represented by the classes used by an object-relational mapper.
+- The view. This component’s job is to display the data of the model to the user. Typically this component is implemented via templates.
+- The controller. This is the layer between the user and the model. The controller reacts to user actions (like opening some specific URL), tells the model to modify the data if necessary, and tells the view code what to display,
+- Ingredients for websites
+- Websites are complex constructs, so tools have been created to help web developers make their code easier to write and more maintainable.
+- Tools like these exist for all web frameworks in all languages.
+- Developers are not forced to use these tools, and often there is no “best” tool.
+- It is worth learning about the available tools because they can greatly simplify the process of developing a web site.
+- Templates
+- Mixing of HTML and Python code is made possible by a few libraries.
+- While convenient at first, it leads to horribly unmaintainable code.
+- That’s why templates exist. Templates are, in the simplest case, just HTML files with placeholders.
+- The HTML is sent to the user’s browser after filling in the placeholders.
+- Data persistence
+- Sounding very complicated, is just about storing data.
+- This data might be the text of blog entries, the postings on a bulletin board or the text of a wiki page. There are, of course, a number of different ways to store information on a web server.
+Architecture Design
+13:00 - 17:30
+- Problem statement
+- Requirement ( Revenue Department )
+- Storage Transaction all banks
+- Realtime analysis
+-- Machine Learning
+--> Fraud Detection
+- Answer
+- Using Sqoop or Kafka feed data form RDBMS of each banks and then store it in HBase because each bank will have different column family
+ --> HBase Design
+- column family 1 --> Date
+- column family 2 --> column of each bank in RDBMS
+--> Hive
+- Data frame may be change column name to common attribute
+- Using Hortonworks because it is open source
+--> Reduce the investment for create physical web server
+- Spark for execute or do service form data
+- Use HBase or Hive context for execute and then spark can do machine learning such as Fraud Detection for detection the taxation which is invalid
+- MLlib is the package of spark that can do machine learning for make it better solution to predictive analysis for Revenue Department
+- Kafka with spark streaming
+- Producer & Consumer
+--> Real time data feed form producer to consumer
+- Then we can approach to make it service during feed data from producer to consumer in another way
+- Real time machine learning
+- Streaming K-means
+--> When data arrive in a stream, we may want to estimate clusters dynamically, updating them as new data arrive. spark.mllib provides support for streaming k-means clustering, with parameters to control the decay (or “forgetfulness”) of the estimates. The algorithm uses a generalization of the mini-batch k-means update rule.
+import org.apache.spark.mllib.linalg.Vectors
+import org.apache.spark.mllib.regression.LabeledPoint
+import org.apache.spark.mllib.clustering.StreamingKMeans
+val trainingData = ssc.textFileStream("/training/data/dir").map(Vectors.parse)
+val testData = ssc.textFileStream("/testing/data/dir").map(LabeledPoint.parse)
+val numDimensions = 3
+val numClusters = 2
+val model = new StreamingKMeans()
+  .setK(numClusters)
+  .setDecayFactor(1.0)
+  .setRandomCenters(numDimensions, 0.0)
+- Start streaming k-means
+model.trainOn(trainingData)
+model.predictOnValues(testData.map(lp => (lp.label, lp.features))).print()
+ssc.start()
+ssc.awaitTermination()
+- Streaming linear regression
+--> When data arrive in a streaming fashion, it is useful to fit regression models online, updating the parameters of the model as new data arrives. spark.mllib currently supports streaming linear regression using ordinary least squares. The fitting is similar to that performed offline, except fitting occurs on each batch of data, so that the model continually updates to reflect the data from the stream.
+import org.apache.spark.mllib.linalg.Vectors
+import org.apache.spark.mllib.regression.LabeledPoint
+import org.apache.spark.mllib.regression.StreamingLinearRegressionWithSGD
+val trainingData = ssc.textFileStream("/training/data/dir").map(LabeledPoint.parse).cache()
+val testData = ssc.textFileStream("/testing/data/dir").map(LabeledPoint.parse)
+val numFeatures = 3
+val model = new StreamingLinearRegressionWithSGD()
+    .setInitialWeights(Vectors.zeros(numFeatures))
+- Start streaming linear regression
+model.trainOn(trainingData)
+model.predictOnValues(testData.map(lp => (lp.label, lp.features))).print()
+ssc.start()
+ssc.awaitTermination()s(testData.map(lp => (lp.label, lp.features))).print()
+ssc.start()
+ssc.awaitTermination()
+- Streaming linear regression
+--> When data arrive in a streaming fashion, it is useful to fit regression models online, updating the parameters of the model as new data arrives. spark.mllib currently supports streaming linear regression using ordinary least squares. The fitting is similar to that performed offline, except fitting occurs on each batch of data, so that the model continually updates to reflect the data from the stream.
+import org.apache.spark.mllib.linalg.Vectors
+import org.apache.spark.mllib.regression.LabeledPoint
+import org.apache.spark.mllib.regression.StreamingLinearRegressionWithSGD
+val trainingData = ssc.textFileStream("/training/data/dir").map(LabeledPoint.parse).cache()
+val testData = ssc.textFileStream("/testing/data/dir").map(LabeledPoint.parse)
+val numFeatures = 3
+val model = new StreamingLinearRegressionWithSGD()
+    .setInitialWeights(Vectors.zeros(numFeatures))
+- Start streaming linear regression
+model.trainOn(trainingData)
+model.predictOnValues(testData.map(lp => (lp.label, lp.features))).print()
+ssc.start()
+ssc.awaitTermination()

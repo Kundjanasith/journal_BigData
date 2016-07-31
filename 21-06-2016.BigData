@@ -1,0 +1,293 @@
+R Get Started
+08:30 - 12:00
+- About
+--> is a programming language and software environment for statistical analysis, graphics representation and reporting. R was created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand, and is currently developed by the R Development Core Team.
+--> is freely available under the GNU General Public License, and pre-compiled binary versions are provided for various operating systems like Linux, Windows and Mac.
+- Evolution
+--> R was initially written by Ross Ihaka and Robert Gentleman at the Department of Statistics of the University of Auckland in Auckland, New Zealand. R made its first appearance in 1993.
+- A large group of individuals has contributed to R by sending code and bug reports.
+- Since mid-1997 there has been a core group (the "R Core Team") who can modify the R source code archive.
+- Features
+--> As stated earlier, R is a programming language and software environment for statistical analysis, graphics representation and reporting. The following are the important features of R
+- R is a well-developed, simple and effective programming language which includes conditionals, loops, user defined recursive functions and input and output facilities.
+- R has an effective data handling and storage facility,
+- R provides a suite of operators for calculations on arrays, lists, vectors and matrices.
+- R provides a large, coherent and integrated collection of tools for data analysis.
+- R provides graphical facilities for data analysis and display either directly at the computer or printing at the papers.
+- R syntax
+- Execution
+- Command prompt
+- R
+- Script file
+- Rscript test.R
+- Comment
+- Single line
+- # comment
+- Multiple line
+- if (FALSE) {
+comment
+}
+- Data Types
+- Vectors
+- Logical
+- Numberic
+- Integer
+- Complex
+- Character
+- Raw
+- Lists
+- list( )
+- Matrices
+- matrix( nrow, ncol )
+- Arrays
+- array( dimension )
+- Factors
+- factor( ) --> count distinct value
+- Data Frames
+- data.frame( ) --> defined attribute
+- Variables
+--> A variable provides us with named storage that our programs can manipulate. A variable in R can store an atomic vector, group of atomic vectors or a combination of many Robjects. A valid variable name consists of letters, numbers and the dot or underline characters. The variable name starts with a letter or the dot not followed by a number.
+- Variable Assignment
+--> The variables can be assigned values using leftward, rightward and equal to operator. The values of the variables can be printed using print() or cat()function. The cat() function combines multiple items into a continuous print output.
+- Data Type of a Variable
+--> In R, a variable itself is not declared of any data type, rather it gets the data type of the R - object assigned to it. So R is called a dynamically typed language, which means that we can change a variable’s data type of the same variable again and again when using it in a program.
+- Finding Variables
+--> To know all the variables currently available in the workspace we use the ls() function. Also the ls() function can use patterns to match the variable names.
+- Deleting  Variables
+--> Variables can be deleted by using the rm() function. Below we delete the variable var.3. On printing the value of the variable error is thrown.
+- Operators
+--> An operator is a symbol that tells the compiler to perform specific mathematical or logical manipulations. R language is rich in built-in operators and provides following types of operators.
+- Arithmetic Operators
+- Adds two vectors
+- Subtract second vector from the first
+- Multiplies both vectors
+- Divide the first vector with the second
+- Give the remainder of the first vector with the second
+- The result of division of first vector with second (quotient)
+- The first vector raised to the exponent of second vector
+- Relational Operators
+- Checks if each element of the first vector is greater than the corresponding element of the second vector.
+- Checks if each element of the first vector is less than the corresponding element of the second vector.
+- Checks if each element of the first vector is equal to the corresponding element of the second vector.
+- Checks if each element of the first vector is less than or equal to the corresponding element of the second vector.
+- Checks if each element of the first vector is greater than or equal to the corresponding element of the second vector.
+- Checks if each element of the first vector is unequal to the corresponding element of the second vector.
+- Logical Operators
+- It is called Element-wise Logical AND operator. It combines each element of the first vector with the corresponding element of the second vector and gives a output TRUE if both the elements are TRUE.
+- It is called Element-wise Logical OR operator. It combines each element of the first vector with the corresponding element of the second vector and gives a output TRUE if one the elements is TRUE.
+- It is called Logical NOT operator. Takes each element of the vector and gives the opposite logical value.
+- Called Logical AND operator. Takes first element of both the vectors and gives the TRUE only if both are TRUE.
+- Called Logical OR operator. Takes first element of both the vectors and gives the TRUE if one of them is TRUE.
+- Assignment Operators
+- Left Assignment
+- Right Assignment
+- Miscellaneous Operators
+- Colon operator. It creates the series of numbers in sequence for a vector.
+- This operator is used to identify if an element belongs to a vector.
+- This operator is used to multiply a matrix with its transpose.
+- Decision making
+- if statement
+- An if statement consists of a Boolean expression followed by one or more statements.
+- if...else statement
+- An if statement can be followed by an optional else statement, which executes when the Boolean expression is false.
+- switch statement
+- A switch statement allows a variable to be tested for equality against a list of values.
+- Loops
+- repeat loop
+- Executes a sequence of statements multiple times and abbreviates the code that manages the loop variable.
+- while loop
+- Repeats a statement or group of statements while a given condition is true. It tests the condition before executing the loop body.
+- for loop
+- Like a while statement, except that it tests the condition at the end of the loop body.
+--> Loop Control Statements
+- break statement
+- Terminates the loop statement and transfers execution to the statement immediately following the loop.
+- next statement
+- The next statement simulates the behavior of R switch.
+- Function
+- Components
+- Function Name
+- This is the actual name of the function. It is stored in R environment as an object with this name.
+- Arguments
+- An argument is a placeholder. When a function is invoked, you pass a value to the argument. Arguments are optional; that is, a function may contain no arguments. Also arguments can have default values.
+- Function Body
+- The function body contains a collection of statements that defines what the function does.
+- Return Value
+- The return value of a function is the last expression in the function body to be evaluated.
+- Strings
+--> Any value written within a pair of single quote or double quotes in R is treated as a string. Internally R stores every string within double quotes, even when you create them with single quote.
+- Rules
+- The quotes at the beginning and end of a string should be both double quotes or both single quote. They can not be mixed.
+- Double quotes can be inserted into a string starting and ending with single quote.
+- Single quote can be inserted into a string starting and ending with double quotes.
+- Double quotes can not be inserted into a string starting and ending with double quotes.
+- Single quote can not be inserted into a string starting and ending with single quote.
+- Vector
+--> Vectors are the most basic R data object and there are six types of atomic vectors. They are logical, integer, double, complex, character and raw
+- Vector element recycling
+- Vector element sorting
+- List
+--> Lists are the R objects which contain elements of different types like numbers strings, vectors and another list inside it. A list can also contain a matrix or a function as its elements. List is created using list() function.
+- Creating a List
+- Naming List Elements
+- Accessing List Elements
+- Manipulating List Elements
+- Merging Lists
+- Converting List to Vector
+- Matrices
+--> Matrices are the R objects in which the elements are arranged in a two-dimensional rectangular layout. They contain elements of the same atomic types. Though we can create a matrix containing only characters or only logical values, they are not of much use. We use matrices containing numeric elements to be used in mathematical calculations.
+- Syntax
+- data
+- the input vector which becomes the data elements of the matrix
+- nrow
+- the number  of rows to be created
+- ncol
+- the number of columns to be created
+- byrow
+- A logical clue. If true then the input vector elements are arranged by row
+- dimname
+- the names assigned to the rows and columns
+- Accessing Elements of a Matrix
+- Matrix Computations
+- Matrix Addition & Subtraction
+- Matrix Multiplication & Division
+- Link
+Get started : http://www.statmethods.net
+R analytic : http://www.analyticsvidhya.com/blog/
+Introduction to Machine Learning
+13:00 - 17:30
+- Machine Learning
+- About
+--> is a scientific discipline that explores the construction and study of algorithms that can learn from data.
+--> is a subfield of computer science stemming from research into artificial intelligence.
+- Categories
+- Supervised Learning
+- Unsupervised Learning
+- Semi-Supervised Learning
+- Reinforcement Learning
+- Supervised Learning
+--> the correct classes of the training data are known
+- Learn from the Data
+- Data is already labelled
+- Expert, Crowd-sourced or case-based labelling of data.
+- Applications
+- Handwriting Recognition
+- Spam Detection
+- Information Retrieval
+- Personalisation based on ranks
+- Speech Recognition
+- Algorithm
+- Decision Trees
+- k-Nearest Neighbours
+- Random Forest
+- Naive Bayes
+- Logistic Regression
+- Perceptron and Multi-level Perceptrons
+- Neural Networks
+- SVM and Kernel estimation
+- Unsupervised Learning
+-->the correct classes of the training data are not known
+- Finding hidden structure in data
+- Unlabelled Data
+- SMEs needed post-processing to verify, validate and use the output
+- Used in exploratory analysis rather than predictive analytics
+- Applications
+- Pattern Recognition
+- Groupings based on a distance measure
+- Algorithm
+- Clustering
+- k-Means, MinHash, Hierarchical Clustering
+- Hidden Markov Models
+- Feature Extraction methods
+- Neural Networks
+- Types of algorithms
+- Classification
+- assigning records to predefined groups
+- Clustering
+- splitting records into groups based on similarity
+- Recommendation
+- takes users' behavior and from that tries to find items users might like.
+- Clustering
+- Distance Measures
+- Euclidean Distance Measure
+- Manhattan Distance Measure
+- Cosine Distance Measure
+- Tanimoto Distance Measure
+- Squared Euclidean Distance Measure
+- Choosing number of clusters --> Distortion
+- Best number of clusters at the elbow
+- Feature Extraction
+- Transforming data into vectors
+- Step 1.1: Term Frequency
+- Step 1.2: Normalized Term Frequency
+- Step 2.0: Inversed Document Frequency
+- Step 3.0: Term Frequency *  Inversed Document Frequency
+- Step 4.0: Cosine similarity
+- Classification
+- Workflow
+- Step 1: Training the model
+- Define target variable
+- Collect historical data
+- Define predictor variables
+- Select a learning algorithm
+- Use the learning algorithm to train the model
+- Step 2: Evaluating the model
+- Run test data
+- Adjust the input
+- Use different predictor variables
+- Different algorithm
+- Step 3: Using the model in production
+- A learning algorithm
+- Decision Trees
+- k-Nearest Neighbours
+- Forrest Trees
+- Naive Bayes
+- Logistic Regression
+- Stochastic gradient descent
+- Regression
+- Regression analysis is a statistical process for estimating the relationships among variables.
+- Regression means to predict the output value using training data.
+- Popular one is Logistic regression (binary regression)
+- Decision Trees
+- A method for approximating discrete valued target variables
+- Instances describable by attribute-value pairs
+- Disjunctiive hypothesis may be required
+- Possibly noisy training data
+- Main loop
+- Step 1: A <= the best decision attribute for next node
+- Step 2: Assign A as decision attribute for node
+- Step 3: For each value of A, create new descendant of node
+- Step 4: Sort training examples to leaf nodes
+- Step 5: If training examples perfectly classied then stop else iterate over new leaf nodes
+- Entropy [ Information Theory ]
+--> Highly unpredictable = Large entropy
+--> Less unpredictable = Small entropy
+- Classifier Performance Measures
+- Confusion [ Matrix / Table ]
+- Target Values --( Compared with )--> Predicted Values
+- Bayes Classifiers
+- Bayesian classifiers use Bayes theorem
+- Differences
+- Clustering algorithm
+- Decide on their own which distinctions appear to be important
+- Classification algorithm
+- Learn to mimic examples of correct decision
+- Make a single decision with a very limited set of possible outcomes
+- Recommendation algorithm
+- Select and rank the best of many possible alternatives
+- Collaborative Filtering Framework
+- Popularized by Amazon and others
+- Uses historical data [ rating, clicks, and purchases ] to provide recommendations
+- User-based : Recommend item by finding similar users. This is often harder to scale because of the dynamice nature of users
+- Item-based : Calculate similarity between items and make recommendations. Items usually don't change much so this often can be computed offline
+- Slope-one : A very fast and simple item-based recommendation approach applicable when users have given rating and not just boolean preferences
+- Measuring Similarity
+- Pearson correlation
+- Euclidean distance
+- Recommendation : Architecture
+- Physical Storage
+- Data Model
+- Recommender
+- External Application
+- Link
+ML Algorithm : http://kundjanasith.com/BigDataSchool/21-06-2016/Intro-Machine-Learning-v2.pdf

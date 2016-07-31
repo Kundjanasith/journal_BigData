@@ -1,0 +1,277 @@
+- Docker HUB : https://hub.docker.com/r/kundjanasith/earthquake_ml/
+Introduction to Docker Image
+08:30 - 12:00
+- Overview
+--> Docker is an open platform for developing, shipping, and running applications. Docker is designed to deliver your applications faster.
+--> With Docker you can separate your applications from your infrastructure and treat your infrastructure like a managed application.
+--> Docker helps you ship code faster, test faster, deploy faster, and shorten the cycle between writing code and running code.
+--> Docker does this by combining kernel containerization features with workflows and tooling that help you manage and deploy your applications.
+- What is the Docker platform
+--> At its core, Docker provides a way to run almost any application securely isolated in a container.
+--> The isolation and security allow you to run many containers simultaneously on your host.
+--> The lightweight nature of containers, which run without the extra load of a hypervisor, means you can get more out of your hardware.
+--> Surrounding the container is tooling and a platform which can help you in several ways:
+- Get your applications (and supporting components) into Docker containers
+- Distribute and ship those containers to your teams for further development and testing
+- Deploy those applications to your production environment, whether it is in a local data center or the Cloud
+- What is Docker Engine
+--> Docker Engine is a client-server application with these major components:
+- A server which is a type of long-running program called a daemon process.
+- A REST API which specifies interfaces that programs can use to talk to the daemon and instruct it what to do.
+- A command line interface (CLI) client.
+- What can I use Docker for
+--> Faster delivery of your applications
+- Docker is perfect for helping you with the development lifecycle.
+- Docker allows your developers to develop on local containers that contain your applications and services.
+- It can then integrate into a continuous integration and deployment workflow.
+- For example, your developers write code locally and share their development stack via Docker with their colleagues. When they are ready, they push their code and the stack they are developing onto a test environment and execute any required tests. From the testing environment, you can then push the Docker images into production and deploy your code.
+--> Deploying and scaling more easily
+- Docker’s container-based platform allows for highly portable workloads.
+- Docker containers can run on a developer’s local host, on physical or virtual machines in a data center, or in the Cloud.
+- Docker’s portability and lightweight nature also make dynamically managing workloads easy.
+- You can use Docker to quickly scale up or tear down applications and services.
+- Docker’s speed means that scaling can be near real time.
+--> Achieving higher density and running more workloads
+- Docker is lightweight and fast. It provides a viable, cost-effective alternative to hypervisor-based virtual machines.
+- This is especially useful in high density environments
+- For example, building your own Cloud or Platform-as-a-Service. But it is also useful for small and medium deployments where you want to get more out of the resources you have.
+- What is Docker’s architecture
+- Docker uses a client-server architecture.
+- The Docker client talks to the Docker daemon, which does the heavy lifting of building, running, and distributing your Docker containers.
+--> Both the Docker client and the daemon can run on the same system, or you can connect a Docker client to a remote Docker daemon.
+--> The Docker client and daemon communicate via sockets or through a RESTful API.
+- The Docker daemon
+- As shown in the diagram above, the Docker daemon runs on a host machine. - The user does not directly interact with the daemon, but instead through the Docker client.
+- The Docker client
+- The Docker client, in the form of the docker binary, is the primary user interface to Docker.
+- It accepts commands from the user and communicates back and forth with a Docker daemon.
+- Inside Docker
+- To understand Docker’s internals, you need to know about three resources:
+- Docker images
+- Docker registries
+- Docker containers
+- Docker images
+- A Docker image is a read-only template.
+- For example, an image could contain an Ubuntu operating system with Apache and your web application installed.
+- Images are used to create Docker containers.
+- Docker provides a simple way to build new images or update existing images, or you can download Docker images that other people have already created.
+- Docker images are the buildcomponent of Docker.
+- Docker registries
+- Docker registries hold images.
+- These are public or private stores from which you upload or download images.
+- The public Docker registry is provided with the Docker HUB.
+- It serves a huge collection of existing images for your use.
+- These can be images you create yourself or you can use images that others have previously created.
+- Docker registries are the distribution component of Docker.
+--> For more information, go to Docker Registry and Docker Trusted Registry.
+- Docker containers
+- Docker containers are similar to a directory.
+- A Docker container holds everything that is needed for an application to run. --> Each container is created from a Docker image. Docker containers can be run, started, stopped, moved, and deleted.
+--> Each container is an isolated and secure application platform. Docker containers are the run component of Docker.
+- How does a Docker image work
+- We’ve already seen that Docker images are read-only templates from which Docker containers are launched.
+- Each image consists of a series of layers.
+- Docker makes use of unioin file systems to combine these layers into a single image.
+- Union file systems allow files and directories of separate file systems, known as branches, to be transparently overlaid, forming a single coherent file system.
+- One of the reasons Docker is so lightweight is because of these layers. When you change a Docker imag
+- For example, update an application to a new version a new layer gets built. Thus, rather than replacing the whole image or entirely rebuilding, as you may do with a virtual machine, only that layer is added or updated. Now you don’t need to distribute a whole new image, just the update, making distributing Docker images faster and simpler.
+--> Every image starts from a base image, for example ubuntu, a base Ubuntu image, or fedora, a base Fedora image.
+--> You can also use images of your own as the basis for a new image, for example if you have a base Apache image you could use this as the base of all your web application images.
+--> Docker images are then built from these base images using a simple, descriptive set of steps we call instructions. Each instruction creates a new layer in our image. Instructions include actions like:
+- Run a command
+- Add a file or directory
+- Create an environment variable
+- What process to run when launching a container from this image
+- These instructions are stored in a file called a Dockerfile.
+- A Dockerfile is a text based script that contains instructions and commands for building the image from the base image.
+- Docker reads this Dockerfile when you request a build of an image, executes the instructions, and returns a final image.
+- How does a container work
+--> A container consists of an operating system, user-added files, and meta-data. As we’ve seen, each container is built from an image.
+--> That image tells Docker what the container holds, what process to run when the container is launched, and a variety of other configuration data.
+- The Docker image is read-only.
+- When Docker runs a container from an image, it adds a read-write layer on top of the image (using a union file system as we saw earlier) in which your application can then run.
+- What happens when you run a container
+--> Either by using the docker binary or via the API, the Docker client tells the ---> Docker daemon to run a container.
+docker run -i -t ubuntu /bin/bash
+--> The Docker Engine client is launched using the docker binary with the run option running a new container.
+--> The bare minimum the Docker client needs to tell the Docker daemon to run the container is:
+- What Docker image to build the container from, for example, ubuntu
+- The command you want to run inside the container when it is launched, for example,/bin/bash
+--> So what happens under the hood when we run this command?
+--> In order, Docker Engine does the following:
+- Pulls the ubuntu image: Docker Engine checks for the presence of the ubuntu image. If the image already exists, then Docker Engine uses it for the new container. If it doesn’t exist locally on the host, then Docker Engine pulls it from Docker Hub.
+- Creates a new container: Once Docker Engine has the image, it uses it to create a container.
+- Allocates a filesystem and mounts a read-write layer: The container is created in the file system and a read-write layer is added to the image.
+- Allocates a network / bridge interface: Creates a network interface that allows the Docker container to talk to the local host.
+- Sets up an IP address: Finds and attaches an available IP address from a pool.
+- Executes a process that you specify: Runs your application, and;
+- Captures and provides application output: Connects and logs standard input, outputs and errors for you to see how your application is running.
+- You now have a running container! Now you can manage your container, interact with your application and then, when finished, stop and remove your container.
+- Namespaces
+--> Docker takes advantage of a technology called namespaces to provide the isolated workspace we call the container. When you run a container, Docker creates a set of namespaces for that container.
+--> This provides a layer of isolation: each aspect of a container runs in its own namespace and does not have access outside of it.
+- Some of the namespaces that Docker Engine uses on Linux are:
+- The pid namespace: Process isolation (PID: Process ID).
+- The net namespace: Managing network interfaces (NET: Networking).
+- The ipc namespace: Managing access to IPC resources (IPC: InterProcess Communication).
+- The mnt namespace: Managing mount-points (MNT: Mount).
+- The uts namespace: Isolating kernel and version identifiers. (UTS: Unix Timesharing System).
+- Control groups
+--> Docker Engine on Linux also makes use of another technology called cgroups or control groups.
+--> A key to running applications in isolation is to have them only use the resources you want.
+--> This ensures containers are good multi-tenant citizens on a host. Control groups allow Docker Engine to share available hardware resources to containers and, if required, set up limits and constraints.
+- For example, limiting the memory available to a specific container.
+- Union file systems
+--> Union file systems, or UnionFS, are file systems that operate by creating layers, making them very lightweight and fast.
+--> Docker Engine uses union file systems to provide the building blocks for containers.
+--> Docker Engine can make use of several union file system variants including: AUFS, btrfs, vfs, and DeviceMapper.
+- Container format
+--> Docker Engine combines these components into a wrapper we call a container format.
+--> The default container format is called libcontainer. In the future, Docker may support other container formats.
+- For example, by integrating with BSD Jails or Solaris Zones.
+- Image management
+- The Docker Engine provides a client which you can use to create images on the command line or through a build process.
+- You can run these images in a container or publish them for others to use.
+- Storing the images you create, searching for images you might want, or publishing images others might use are all elements of image management.
+--> This section provides an overview of the major features and products Docker provides for image management.
+- Docker Hub
+--> The Docker Hub is responsible for centralizing information about user accounts, images, and public name spaces. It has different components:
+- Web UI
+- Meta-data store (comments, stars, list public repositories)
+- Authentication service
+- Tokenization
+--> There is only one instance of the Docker Hub, run and managed by Docker Inc.
+--> This public Hub is useful for most individuals and smaller companies.
+- Content Trust
+--> When transferring data among networked systems, trust is a central concern. In particular, when communicating over an untrusted medium such as the internet, it is critical to ensure the integrity and publisher of all of the data a system operates on.
+--> You use Docker to push and pull images (data) to a registry.
+--> Content trust gives you the ability to both verify the integrity and the publisher of all the data received from a registry over any channel.
+- Images and layers
+- Each Docker image references a list of read-only layers that represent filesystem differences.
+- Layers are stacked on top of each other to form a base for a container’s root filesystem.
+- The diagram below shows the Ubuntu 15.04 image comprising 4 stacked image layers.
+--> The Docker storage driver is responsible for stacking these layers and providing a single unified view.
+--> When you create a new container, you add a new, thin, writable layer on top of the underlying stack.
+- This layer is often called the “container layer”.
+--> All changes made to the running container  such as writing new files, modifying existing files, and deleting files - are written to this thin writable container layer.
+--> The diagram below shows a container based on the Ubuntu 15.04 image.
+- Content addressable storage
+- Docker 1.10 introduced a new content addressable storage model.
+- This is a completely new way to address image and layer data on disk.
+- Previously, image and layer data was referenced and stored using a randomly generated UUID. In the new model this is replaced by a secure content hash.
+--> The new model improves security, provides a built-in way to avoid ID collisions, and guarantees data integrity after pull, push, load, and save operations.
+--> It also enables better sharing of layers by allowing many images to freely share their layers even if they didn’t come from the same build.
+Docker [ Earthquake_ML ]
+13:00 - 17:30
+- Work with Docker
+- Docker can build images automatically by reading the instructions from aDockerfile, a text file that contains all the commands, in order, needed to build a given image.
+- Dockerfiles adhere to a specific format and use a specific set of instructions. - You can learn the basics on the Dockerfile Reference page. If you’re new to writing Dockerfiles, you should start there.
+- The Dockerfile Instruction
+- FROM
+--> Whenever possible, use current Official Repositories as the basis for your image.
+--> We recommend the Debian Image since it’s very tightly controlled and kept minimal (currently under 150 mb), while still being a full distribution.
+- RUN
+--> As always, to make your Dockerfile more readable, understandable, and maintainable, split long or complex RUN statements on multiple lines separated with backslashes.
+- apt-get
+--> Probably the most common use-case for RUN is an application of apt-get. ---> The RUN apt-get command, because it installs packages, has several gotchas to look out for.
+--> You should avoid RUN apt-get upgrade or dist-upgrade, as many of the “essential” packages from the base images won’t upgrade inside an unprivileged container.
+--> If a package contained in the base image is out-of-date, you should contact its maintainers. If you know there’s a particular package, foo, that needs to be updated, use apt-get install -y foo to update automatically.
+- Always combine  RUN apt-get update with apt-get install in the same RUNstatement,
+- Using apt-get update alone in a RUN statement causes caching issues and subsequent apt-get install instructions fail.
+- After building the image, all layers are in the Docker cache. Suppose you later modify apt-get install by adding extra package:
+- Docker sees the initial and modified instructions as identical and reuses the cache from previous steps.
+- As a result the apt-get update is NOT executed because the build uses the cached version.
+- Because the apt-get update is not run, your build can potentially get an outdated version of the curl and nginx packages.
+--> Using  RUN apt-get update && apt-get install -y ensures your Dockerfile installs the latest package versions with no further coding or manual intervention.
+--> This technique is known as “cache busting”.
+--> You can also achieve cache-busting by specifying a package version. This is known as version pinning,
+- Version pinning forces the build to retrieve a particular version regardless of what’s in the cache.
+- This technique can also reduce failures due to unanticipated changes in required packages.
+--> Below is a well-formed RUN instruction that demonstrates all the apt-get recommendations.
+--> The s3cmd instructions specifies a version 1.1.0*.
+- If the image previously used an older version, specifying the new one causes a cache bust of apt-get update and ensure the installation of the new version.
+- Listing packages on each line can also prevent mistakes in package duplication.
+--> In addition, cleaning up the apt cache and removing /var/lib/apt/lists helps keep the image size down. Since the RUN statement starts with apt-get update, the package cache will always be refreshed prior to apt-get install.
+- Note: The official Debian and Ubuntu images automatically run apt-get clean, so explicit invocation is not required.
+- CMD
+- The CMD instruction should be used to run the software contained by your image, along with any arguments.
+- CMD should almost always be used in the form of CMD [“executable”, “param1”, “param2”…]. Thus, if the image is for a service (Apache, Rails, etc.), you would run something like CMD ["apache2","-DFOREGROUND"]. Indeed, this form of the instruction is recommended for any service-based image.
+--> In most other cases, CMD should be given an interactive shell (bash, python, perl, etc), for example, CMD ["perl", "-de0"], CMD ["python"], or CMD [“php”, “-a”].
+--> Using this form means that when you execute something like docker run -it python, you’ll get dropped into a usable shell, ready to go.
+--> CMD should rarely be used in the manner of CMD [“param”, “param”] in conjunction with ENTRYPOINT, unless you and your expected users are already quite familiar with how ENTRYPOINTworks.
+- EXPOSE
+- The EXPOSE instruction indicates the ports on which a container will listen for connections.
+- Consequently, you should use the common, traditional port for your application.
+- For example, an image containing the Apache web server would use EXPOSE 80, while an image containing MongoDB would use EXPOSE 27017 and so on.
+--> For external access, your users can execute docker run with a flag indicating how to map the specified port to the port of their choice.
+--> For container linking, Docker provides environment variables for the path from the recipient container back to the source (ie, MYSQL_PORT_3306_TCP).
+- ENV
+--> In order to make new software easier to run, you can use ENV to update the PATH environment variable for the software your container installs.
+- For example, ENV PATH /usr/local/nginx/bin:$PATH will ensure that CMD [“nginx”] just works.
+--> The ENV instruction is also useful for providing required environment variables specific to services you wish to containerize, such as Postgres’s PGDATA.
+--> Lastly, ENV can also be used to set commonly used version numbers so that version bumps are easier to maintain
+--> Similar to having constant variables in a program (as opposed to hard-coding values), this approach lets you change a single ENV instruction to auto-magically bump the version of the software in your container.
+- ADD or COPY
+--> Although ADD and COPY are functionally similar, generally speaking, COPY is preferred.
+--> That’s because it’s more transparent than ADD.
+- COPY only supports the basic copying of local files into the container, while ADD has some features (like local-only tar extraction and remote URL support) that are not immediately obvious.
+- Consequently, the best use for ADD is local tar file auto-extraction into the image, as in ADD rootfs.tar.xz /.
+--> If you have multiple Dockerfile steps that use different files from your context, COPY them individually, rather than all at once.
+--> This will ensure that each step’s build cache is only invalidated (forcing the step to be re-run) if the specifically required files change.
+- Results in fewer cache invalidations for the RUN step, than if you put the COPY . /tmp/ before it.
+- Because image size matters, using ADD to fetch packages from remote URLs is strongly discouraged; you should use curl or wget instead.
+- That way you can delete the files you no longer need after they’ve been extracted and you won’t have to add another layer in your image. For example, you should avoid doing things like
+- For other items (files, directories) that do not require ADD’s tar auto-extraction capability, you should always use COPY.
+- ENTRYPOINT
+--> The best use for ENTRYPOINT is to set the image’s main command, allowing that image to be run as though it was that command (and then use CMD as the default flags).
+- This is useful because the image name can double as a reference to the binary as shown in the command above.
+- The ENTRYPOINT instruction can also be used in combination with a helper script, allowing it to function in a similar way to the command above, even when starting the tool may require more than one step.
+--> For example, the Postgres Official Image uses the following script as its
+--> Note: This script uses the exec Bash command so that the final running application becomes the container’s PID 1. This allows the application to receive any Unix signals sent to the container. See the ENTRYPOINT help for more details.
+- The helper script is copied into the container and run via ENTRYPOINT on container start
+- VOLUME
+- The VOLUME instruction should be used to expose any database storage area, configuration storage, or files/folders created by your docker container.
+- You are strongly encouraged to use VOLUME for any mutable and/or user-serviceable parts of your image.
+- USER
+--> If a service can run without privileges, use USER to change to a non-root user. Start by creating the user and group in the Dockerfile with something like RUN groupadd -r postgres && useradd -r -g postgres postgres.
+- Note: Users and groups in an image get a non-deterministic UID/GID in that the “next” UID/GID gets assigned regardless of image rebuilds. So, if it’s critical, you should assign an explicit UID/GID.
+--> You should avoid installing or using sudo since it has unpredictable TTY and signal-forwarding behavior that can cause more problems than it solves.
+--> If you absolutely need functionality similar to sudo (e.g., initializing the daemon as root but running it as non-root), you may be able to use .
+- Lastly, to reduce layers and complexity, avoid switching USER back and forth frequently.
+- WORKDIR
+--> For clarity and reliability, you should always use absolute paths for your WORKDIR.
+- Also, you should use WORKDIR instead of proliferating instructions like RUN cd … && do-something, which are hard to read, troubleshoot, and maintain.
+- ONBUILD
+--> An ONBUILD command executes after the current Dockerfile build completes.
+--> ONBUILD executes in any child image derived FROM the current image.
+- Think of the ONBUILD command as an instruction the parent Dockerfile gives to the child Dockerfile.
+- A Docker build executes ONBUILD commands before any command in a childDockerfile.
+- ONBUILD is useful for images that are going to be built FROM a given image.
+- For example, you would use ONBUILD for a language stack image that builds arbitrary user software written in that language within the Dockerfile.
+- Images built from ONBUILD should get a separate tag.
+- Be careful when putting ADD or COPY in ONBUILD. The “onbuild” image will fail catastrophically if the new build’s context is missing the resource being added.
+--> Adding a separate tag, as recommended above, will help mitigate this by allowing the Dockerfile author to make a choice.
+- Install Docker
+- curl -fsSL https://get.docker.com/ | sh
+- Run kundjanasith/earthquake_ml image
+- docker run -p 1919:1919 -d kundjanasith/earthquake_ml:nodez
+- Open web service
+- http://localhost:1919/home
+- Create My project Docker image
+- git clone https://github.com/Kundjanasith/earthquake_ML
+- cd earthquake_ML
+- nano Dockerfile
+FROM    centos:latest
+RUN  yum install -y epel-release
+RUN yum install -y nodejs npm
+RUN yum install -y git
+RUN npm install -g forever
+COPY package.json /src/package.json
+RUN cd /src; npm install --production
+COPY . /src
+EXPOSE  1919
+CMD ["node", "/src/server.js"]
+- docker build -t kundjanasith/earthquake_ml:nodez
+- docker push kundjanasith/earthquake_ml
+- Use My project Docker image
+- docker run -p 1919:1919 -d kundjanasith/earthquake_ml:nodez

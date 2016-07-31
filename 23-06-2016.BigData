@@ -1,0 +1,547 @@
+Spark SQL & Spark Streaming
+08:30 - 12:00
+- Spark
+--> An open source big data processing framework built around speed, ease of use, and sophisticated analytics. Spark enables applications in Hadoop clusters to run up to 100 times faster in memory and 10 times faster even when running on disk.
+- Framework for distributed processing.
+- In-memory, fault tolerant data structures
+- Flexible APIs in Scala, Java, Python, SQL, R
+- Open source
+- Handle Petabytes of data
+- Significant faster than MapReduce
+- Simple and intutive APIs
+- General framework
+- Runs anywhere
+- Handles (most) any I/O
+- Interoperable libraries for specific use-cases
+- Open Source Ecosystem
+--> ( Environments, Applications, Data sources )
+- History
+- Founded by AMPlab, UC Berkeley
+- Created by Matei Zaharia (PhD Thesis)
+- Maintained by Apache Software Foundation
+- Commercial support by Databricks
+- Platform
+--> ( Spark SQL, Spark Streaming, PySpark, SparkR, MLlib, GraphX )
+- Spark SQL
+- Structured Data
+- Querying with SQL/HQL
+- DataFrames
+- Spark Streaming
+- Processing of live streams
+- Micro-batching
+- MLlib
+- Machine Learning
+- Multiple types of Machine Learning Algorithms
+- GraphX
+- Graph processing
+- Graph parallel computations
+--> Spark Core
+- Task Scheduling
+- Memory Management
+- Fault Recovery
+- Interacting with storage systems
+--> ( Standalone Scheduler, YARN, Mesos )
+- ( Hadoop --> Spark )
+- MapReduce --> Spark
+- YARN --> Mesos
+- HDFS --> Tachyon
+- Hive --> Spark SQL
+- mahout --> Spark MLlib
+- STORM --> Spark Streaming
+- Large-Scale Usage
+- Largest cluster
+- 8000 Nodes ( Tencent )
+- Largest single job
+- 1 PB ( Alibaba, Databricks )
+- Top streaming intake
+- 1 TB/hour ( HHMI Janelia Farm ) ( HHMI, Janelia Farm )
+- 2014 On-disk sort record
+- Fastest open source engine for sorting a PB
+- Spark APIs
+- RDD
+- Distribute collection of JVM objects
+- Functional operators ( map, filter, etc. )
+- Data Frame
+- Distribute collection of Row objects
+- Expression-based operations and UDFs
+- Logical plans and optimizer
+- Fast/efficient internal representations
+- Data Set
+- Internally rows, externally JVM objects
+- "Best of both worlds" type safe + fast
+- RDD
+--> Resilent
+- If the data in memory or on a node is lost, it can be recreated
+--> Distributed
+- Data is chucked into partitions and stored in memory access the cluster
+--> Dataset
+- Initial data can come from a table or be created programmatically
+- Fault tollerant
+- Immutable
+- Three methods for creating RDD
+- Parallelizing an existing correction
+- Referencing a dataset
+- Transformation from an existing RDD
+- Types of files supported
+- Text Files
+- Sequence Files
+- Hadoop Input Format
+- Operations
+- Transformations
+- transformations are lazy (not computed immediately)
+- Actions
+- the transformed RDD gets recomputed when an action is run on it (default)
+- Transformations
+- map( func )
+- return a new distributed dataset formed by parsing each element of the source though a function func
+- filter( func )
+- return a new dataset formed by selecting those elements of the source on which func return true
+- flatMap( func )
+- similar to map but each input item can be mapped() or more output items so func should returns a sequence rather than a single item
+- sample( withreplacement, fraction, seed )
+- sample a fraction of the data with or without replacement using a given random number generator seed
+- union( otherDataset )
+- return a new dataset that contains the union of the elements in the source dataset and the argument
+- distinct( [numTasks] )
+- return a new dataset that contains the distinct elements of the source dataset
+- groupByKey( [numTasks] )
+- when called on a dataset of ( x, v ) pairs returns a dataset of
+( k, seq( v ) ) pairs
+- reduceByKey( func, [numTasks] )
+- when called on a dataset of ( x, v ) pairs returns a dataset of ( k, v ) pairs where the values for each key are aggregated using the given reduce function
+- sortByKey( [ascending], [numTasks] )
+- when called on a dataset of ( x, v ) pairs where x implements oredered returns a dataset of ( x, v ) pairs sorted by keys in ascending or descending order as specified in the boolean ascending argument
+- join( otherDataset, [numTasks] )
+- when called on a dataset of type ( x, v ) and  ( k, w ) returns a dataset of ( x, (  v, w ) ) pairs with all pairs of elements for each key
+- cogroup( otherDataset, [numTasks] )
+- when called on a dataset of type ( x, v ) and ( k, w ) returns a dataset of ( x, seq[ v ], seq[ w ] ) tuples also called group with
+- cartesian( otherDataset )
+- when called on a dataset of types T and U returns a dataset of ( T, U ) pairs ( all pairs of elements )
+- Actions
+- saveAsTextFile( path )
+- write the elements of the dataset as a text file or set of text files in a given directory in the local filesystem, HDFS or any order Hadoop-supported file system. Spark will call toString on each element to convert it to a line of text in the file
+- saveAsSeqeuenceFile( path )
+- write the elemets of the dataset as a Hadoop sequencefile in a given path in the local filesystem, HDFS or any order Hadoop-suppoerted file system. Only avaliable on RDDs of key-value pairs that either implement Hadoop's writable interface or are implicity convertible to writable ( spark includes conversion for basic types like int, double, string, etc . .)
+- countByKey( )
+- only avaliable on RDD of type ( k, v ) returns a map of ( k, int | pairs with the count of each key )
+- foreach( func )
+- run a function func on each element of the dataset usually done for side effects such as updating an accmulator variable or intersting with external storage systems
+- Persistance
+- MEMORY_ONLY
+- Store RDD as deserialized java objects in the JVM. If the RDD does not fit in memory some partitions will not be cached and will be recomputed on the fly each time they are needed. This is the defaukt level
+- MEMORY_AND_DISK
+- Store RDD as deserialized java objects in the JVN. If the RDD does not fit in memory store the partitions that don't fit on disk and read them from there when they are needed
+- MEMORY_ONLY_SER
+- Store RDD as serialized java objects one byte array per partition. This is generally more space-efficient than deserialized objects especially when using a fast serializer but more CPU-intensive to read
+- MEMORY_AND_DISK_SER
+- Similar to MEMORY_ONLY_SER but spell partitions that don't fit in memory to disk instead of recomputing then on the fly each time they are needed
+- DISK_ONLY
+- Store the RDD partitions only on disk
+- MEMORY_ONLY_2. MEMORY_AND_DISK_2
+- Same as the levels above but replicate each partition on two cluster nodes
+- Accumulator
+- Similar to a MapReduce “Counter”
+- A global variable to track metrics about your Spark program for debugging.
+- Reasoning: Excutors do not communicate with each other.
+- Sent back to driver
+- Boardcast Variables
+- Similar to a MapReduce “Distributed Cache”
+- Sends read-only values to worker nodes.
+- Great for lookup tables, dictionaries, etc.
+- Hands-On : Spark Programming
+- Functional tools in Python
+- map
+- filter
+- reduce
+- lambda
+- IterTools
+- spark-shell
+scala> sc
+scala> val file = sc.textFile("hdfs:///user/tem/input/pg2600.txt")
+scala> val wc = file.flatMap( l => l.split(" ") ).map( word => ( word, 1 ) ).reduceByKey(_+_)
+scala> wc.saveAsTextFile("hdfs:///user/tem/output/wordScala")
+- pyspark
+>>> from operator import add
+>>> file = sc.textFile("hdfs:///user/tem/input/pg2600.txt")
+>>> wc = file.flatMap(lambda x : x.split(' ' ) ).map(lambda x : ( x, 1 ) ).reduceByKey(add)
+>>> wc.saveAsTextFile("hdfs:///user/tem/output/wordPython")
+- Transformation
+>>> nums = sc.parallelize( [ 1, 2, 3 ] )
+>>> squared = nums.map( lambda x : x*x )
+>>> even = squared.filter( lambda x : x%2 == 0 )
+>>> evens = nums.flatMap( lambda x : range(x) )
+- Actions
+>>> nums = sc.parallelize([1,2,3])
+>>> nums.collect()
+>>> nums.take(2)
+>>> nums.count()
+>>> nums.reduce(lambda:x, y:x+y)
+>>> nums.saveAsTextFile("hdfs:///user/tem/output/test”)
+- Key-Value Operations
+>>> pet = sc.parallelize([("cat",1),("dog",1),("cat",2)])
+>>> pet2 = pet.reduceByKey(lambda x, y:x+y)
+>>> pet3 = pet.groupByKey()
+>>> pet4 = pet.sortByKey()
+- Toy-data
+$ wget https://s3.amazonaws.com/imcbucket/data/toy_data.txt
+$ hadoop fs -put toy_data.txt /user/tem/input
+$ pyspark
+>>> file_rdd = sc.textFile("hdfs:///user/cloudera/input/toy_data.txt")
+>>> import json
+>>> json_rdd = file_rdd.map(lambda x: json.loads(x))
+>>> big_spenders = json_rdd.map(lambda x: tuple((x.keys()[0],int(x.values()[0]))))
+>>> big_spenders.reduceByKey(lambda x,y: x + y).filter(lambda x: x[1] > 5).collect()
+- Flight-data
+$ wget https://s3.amazonaws.com/imcbucket/data/flights/2008.csv
+$ hadoop fs -put 2008.csv /user/tem/input
+$ pyspark
+>>> airline = sc.textFile("hdfs:///user/tem/input/2008.csv")
+>>> airline.take(2)
+>>> header_line = airline.first()
+>>> header_list = header_line.split(',')
+>>> airline_no_header = airline.filter(lambda row: row != header_line)
+>>> airline_no_header.first()
+>>> def make_row(row):
+... row_list = row.split(',')
+... d = dict(zip(header_list,row_list))
+... return d
+...
+>>> airline_rows = airline_no_header.map(make_row)
+>>> airline_rows.take(5)
+>>> def convert_float(value):
+... try:
+... x = float(value)
+... return x
+... except ValueError:
+... return 0
+...
+>>> carrier_rdd = airline_rows.map(lambda row:(row['UniqueCarrier'],convert_float(row['ArrDelay'])))
+>>> carrier_rdd.take(2)
+>>> mean_delays_dest = carrier_rdd.groupByKey().mapValues(lambda delays: sum(delays.data)/len(delays.data))
+>>> mean_delays_dest.sortBy(lambda t:t[1], ascending=True).take(10)
+>>> mean_delays_dest.sortBy(lambda t:t[1], ascending=False).take(10)
+- Spark SQL
+- Creating and running Spark program faster
+- Write less code
+- Read less data
+- Let the optimizer do the hard work
+- Data Frame
+- A distributed collection of rows organied into named columns.
+- An abstraction for selecting, filtering, aggregating, and plotting structured data.
+- Previously => SchemaRDD
+- SparkSQL van leverage the Hive metastore
+- Hive Metastore can also be leveraged by a wide array of applications
+- Spark
+- Hive
+- Impala
+- Available from HiveContext
+- Hands-On : Spark SQL
+- Exercise 1 : JSON data
+$ wget https://s3.amazonaws.com/imcbucket/data/hue.json
+$ hadoop fs -put hue.json /user/cloudera
+$ pyspark
+>>> from pyspark.sql import HiveContext
+>>> hiveCtx = HiveContext(sc)
+>>> input = hiveCtx.read.json("hdfs:///user/tem/hue.json")
+>>> input.registerTempTable("testTable")
+>>> input.printSchema():
+>>> hiveCtx.sql("SELECT * FROM testTable").collect()
+- Exercise 2 : SQL Spark Movie Lens
+$ pyspark --packages com.databricks:spark-csv_2.10:1.2.0
+>>> df = sqlContext.read.format('com.databricks.spark.csv').
+options(header='true').load('hdfs:///user/tem/u.user')
+>>> df.registerTempTable('user')
+>>> sqlContext.sql("SELECT * FROM user").collect()
+- Exercise 3 : Spark SQL Meals Data
+$ wget https://s3.amazonaws.com/imcbucket/data/events.txt
+$ wget https://s3.amazonaws.com/imcbucket/data/meals.txt
+$ hadoop fs -put events.txt /user/tem/input
+$ hadoop fs -put meals.txt /user/tem/input
+$ pyspark
+>>> meals_rdd = sc.textFile("hdfs:///user/tem/input/meals.txt")
+>>> events_rdd = sc.textFile("hdfs:///user/tem/input/events.txt")
+>>> header_meals = meals_rdd.first()
+>>> header_events = events_rdd.first()
+>>> meals_no_header = meals_rdd.filter(lambda row:row != header_meals)
+>>> events_no_header =events_rdd.filter(lambda row:row != header_events)
+>>> meals_json = meals_no_header.map(lambda row:row.split(';')).map(lambda row_list: dict(zip(header_meals.split(';'), row_list)))
+>>> events_json = events_no_header.map(lambda row:row.split(';')).map(lambda row_list: dict(zip(header_events.split(';'), row_list)))
+>>> import json
+>>> def type_conversion(d, columns) :
+... for c in columns:
+... d[c] = int(d[c])
+... return d
+...
+>>> meal_typed = meals_json.map(lambda
+j:json.dumps(type_conversion(j, ['meal_id','price'])))
+>>> event_typed = events_json.map(lambda
+j:json.dumps(type_conversion(j, ['meal_id','userid']))
+>>> meals_dataframe = sqlContext.jsonRDD(meal_typed)
+>>> events_dataframe = sqlContext.jsonRDD(event_typed)
+>>> meals_dataframe.head()
+>>> meals_dataframe.printSchema()
+>>> meals_dataframe.registerTempTable('meals')
+>>> events_dataframe.registerTempTable('events')
+>>> sqlContext.sql("SELECT * FROM meals LIMIT 5").collect()
+>>> meals_dataframe.take(5)
+>>> sqlContext.sql("""
+... SELECT type, COUNT(type) AS cnt FROM
+... meals
+... INNER JOIN
+... events on meals.meal_id = events.meal_id
+... WHERE
+... event = 'bought'
+... GROUP BY
+... type
+... ORDER BY cnt DESC
+... """).collect()
+- Spark Streaming
+$ spark-shell --driver-memory 1g
+$ scala> :paste
+import org.apache.spark.SparkConf
+import org.apache.spark.streaming.{Seconds, StreamingContext}
+import org.apache.spark.storage.StorageLevel
+import StorageLevel._
+import org.apache.spark._
+import org.apache.spark.streaming._
+import org.apache.spark.streaming.StreamingContext._
+val ssc = new StreamingContext(sc, Seconds(2))
+val lines = ssc.socketTextStream("localhost",8585,MEMORY_ONLY)
+val wordsFlatMap = lines.flatMap(_.split(" "))
+val wordsMap = wordsFlatMap.map( w => (w,1))
+val wordCount = wordsMap.reduceByKey( (a,b) => (a+b))
+wordCount.print
+ssc.start
+- Hands-On : Streaming Twitter data
+- Twitter Apllication
+- Consumer Key
+- Consumer Secret
+- Access Token
+- Access Token Secret
+- Start command
+$ wget http://central.maven.org/maven2/org/apache/spark/sparkstreaming
+twitter_2.10/1.2.0/spark-streaming-twitter_2.10-1.2.0.jar
+$ wget
+http://central.maven.org/maven2/org/twitter4j/twitter4jstream/4.0.2/twitter4j-stream-4.0.2.jar
+$ wget
+http://central.maven.org/maven2/org/twitter4j/twitter4jcore/4.0.2/twitter4j-core-4.0.2.jar
+$ spark-shell --jars spark-streaming-twitter_2.10-1.2.0.jar, twitter4j-stream-4.0.2.jar,twitter4j-core-4.0.2.jar
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+import org.apache.spark.streaming.twitter._
+import twitter4j.auth._
+import twitter4j.conf._
+import org.apache.spark.streaming.{Seconds, StreamingContext}
+import org.apache.spark._
+import org.apache.spark.streaming._
+import org.apache.spark.streaming.StreamingContext._
+val ssc = new StreamingContext(sc, Seconds(10))
+val cb = new ConfigurationBuilder
+OoSBrnfLX").setOAuthConsumerSecret("QYmuBO1smD5Yc3zE0ZF9ByCgeE
+QxnxUmhRVCisAvPFudYVjC4a").setOAuthAccessToken("921172807-
+EfMXJj6as2dFECDH1vDe5goyTHcxPrF1RIJozqgx").setOAuthAccessToken
+Secret("HbpZEVip3D5j80GP21a37HxA4y10dH9BHcgEFXUNcA9xy")
+val auth = new OAuthAuthorization(cb.build)
+val tweets = TwitterUtils.createStream(ssc,Some(auth))
+val status = tweets.map(status => status.getText)
+status.print
+ssc.checkpoint("hdfs:///user/tem/data/tweets")
+ssc.start
+ssc.awaitTermination
+// ctrl+D
+- Link
+Spark : http://kundjanasith.com/BigDataSchool/23-06-2016/Spark-Train-the-trainer.pdf
+Spark MLlib & Kafka
+13:00 - 17:30
+- MLlib is a Spark subproject providing machine learning primitives:
+- initial contribution from AMPLab, UC Berkeley
+- shipped with Spark since version 0.8
+- 33 contributors
+- MLlib Algorithms
+- Classification: logistic regression, linear support vectormachine(SVM), naive Bayes
+- Regression: generalized linear regression (GLM)
+- Collaborative filtering: alternating least squares (ALS)
+- Clustering: k-means
+- Decomposition: singular value decomposition (SVD), principal component analysis (PCA)
+- MLlib Benefits
+- Part of Spark
+- Scalable
+- Support: Python, Scala, Java
+- Broad coverage of applications & algorithms
+- Rapid developments in speed & robustness
+- Hands-On : Movie Recommendation
+- ALS Allgorithm
+- numBlocks is the number of blocks used to parallelize computation (set to -1 to autoconfigure)
+- rank is the number of latent factors in the model
+- iterations is the number of iterations to run
+- lambda specifies the regularization parameter in ALS
+- implicitPrefs specifies whether to use the explicit feedback ALS variant or one adapted for an implicit feedback data
+- alpha is a parameter applicable to the implicit feedback variant of ALS that governs the baseline confidence in preference observations
+- Start command
+$ spark-shell --driver-memory 4g
+scala> val rawData = sc.textFile("hdfs:///user/tem/movielens/u.data")
+scala> rawData.first()
+scala> val rawRatings = rawData.map(_.split("\t").take(3))
+scala> rawRatings.first()
+scala> import org.apache.spark.mllib.recommendation.Rating
+scala> val ratings = rawRatings.map { case Array(user, movie, rating) =>Rating(user.toInt, movie.toInt, rating.toDouble) }
+scala> ratings.first()
+scala> import org.apache.spark.mllib.recommendation.ALS
+scala> val model = ALS.train(ratings, 50, 10, 0.01)
+scala> val movies = sc.textFile("hdfs:///user/tem/movielens/u.item")
+scala> val titles = movies.map(line => line.split("\\|").take(2)).map(array
+=>(array(0).toInt,array(1))).collectAsMap()
+scala> val moviesForUser = ratings.keyBy(_.user).lookup(789)
+scala> moviesForUser.sortBy(-_.rating).take(10).map(rating =>
+(titles(rating.product), rating.rating)).foreach(println)
+scala> val topKRecs = model.recommendProducts(789,10)
+scala> topKRecs.map(rating => (titles(rating.product),
+rating.rating)).foreach(println)
+scala> val actualRating = moviesForUser.take(1)(0)
+scala> val predictedRating = model.predict(789,
+actualRating.product)
+scala> val squaredError = math.pow(predictedRating -
+actualRating.rating, 2.0)
+scala> val usersProducts = ratings.map{ case Rating(user,
+product, rating) => (user, product)}
+scala> val predictions = model.predict(usersProducts).map{
+case Rating(user, product, rating) => ((user, product), rating)}
+scala> val ratingsAndPredictions = ratings.map{
+case Rating(user, product, rating) => ((user, product), rating)
+}.join(predictions)
+scala> val MSE = ratingsAndPredictions.map{
+case ((user, product), (actual, predicted)) => math.pow((actual - predicted), 2) }.reduce(_ + _) / ratingsAndPredictions.count
+- Hands-On : Clustering on MovieLens Dataset
+scala> val rawData = sc.textFile("hdfs:///user/tem/movielens/u.item")
+scala> println(movies.first)
+scala> val genres = sc.textFile("hdfs:///user/tem/movielens/u.genre")
+scala> genres.take(5).foreach(println)
+scala> val genreMap = genres.filter(!_.isEmpty).map(line => line.split("\\|")).map(array=> (array(1), array(0))).collectAsMap
+scala> val titlesAndGenres = movies.map(_.split("\\|")).map
+{ array => val genres = array.toSeq.slice(5, array.size)
+val genresAssigned = genres.zipWithIndex.filter { case (g,
+idx) => g == "1" }.map { case (g, idx) => genreMap(idx.toString) } (array(0).toInt, (array(1), genresAssigned)) }
+scala> :paste
+import org.apache.spark.mllib.recommendation.ALS
+import org.apache.spark.mllib.recommendation.Rating
+val rawData =
+sc.textFile("hdfs:///user/cloudera/movielens/u.data")
+val rawRatings = rawData.map(_.split("\t").take(3))
+val ratings = rawRatings.map{ case Array(user, movie,
+rating) => Rating(user.toInt, movie.toInt,
+rating.toDouble) }
+ratings.cache
+val alsModel = ALS.train(ratings, 50, 10, 0.1)
+import org.apache.spark.mllib.linalg.Vectors
+val movieFactors = alsModel.productFeatures.map { case (id,
+factor) => (id, Vectors.dense(factor)) }
+val movieVectors = movieFactors.map(_._2)
+val userFactors = alsModel.userFeatures.map { case (id,
+factor) => (id, Vectors.dense(factor)) }
+val userVectors = userFactors.map(_._2)
+scala> :paste
+import org.apache.spark.mllib.linalg.distributed.RowMatrix
+val movieMatrix = new RowMatrix(movieVectors)
+val movieMatrixSummary =
+movieMatrix.computeColumnSummaryStatistics()
+val userMatrix = new RowMatrix(userVectors)
+val userMatrixSummary =
+userMatrix.computeColumnSummaryStatistics()
+println("Movie factors mean: " + movieMatrixSummary.mean)
+println("Movie factors variance: " + movieMatrixSummary.variance)
+println("User factors mean: " + userMatrixSummary.mean)
+println("User factors variance: " + userMatrixSummary.variance)
+scala> import org.apache.spark.mllib.clustering.KMeans
+scala> val numClusters = 5
+scala> val numIterations = 10
+scala> val numRuns = 3
+scala> val movieClusterModel = KMeans.train(movieVectors,
+numClusters, numIterations, numRuns)
+scala> val movie1 = movieVectors.first
+scala> val movieCluster = movieClusterModel.predict(movie1)
+scala> val predictions =
+movieClusterModel.predict(movieVectors)
+scala> val numClusters = 5
+scala> val numIterations = 10
+scala> val numRuns = 3
+scala> val movieClusterModel = KMeans.train(movieVectors,
+numClusters, numIterations, numRuns)
+scala> :paste
+import breeze.linalg._
+import breeze.numerics.pow
+def computeDistance(v1: DenseVector[Double], v2:
+DenseVector[Double]) = pow(v1 - v2, 2).sum
+val titlesWithFactors = titlesAndGenres.join(movieFactors)
+val moviesAssigned = titlesWithFactors.map { case (id,
+((title, genres), vector)) =>
+val pred = movieClusterModel.predict(vector)
+val clusterCentre = movieClusterModel.clusterCenters(pred)
+val dist =
+computeDistance(DenseVector(clusterCentre.toArray),
+DenseVector(vector.toArray))
+(id, title, genres.mkString(" "), pred, dist)}
+val clusterAssignments = moviesAssigned.groupBy { case (id,
+title, genres, cluster, dist) => cluster }.collectAsMap
+for ( (k, v) <- clusterAssignments.toSeq.sortBy(_._1)) {
+println(s"Cluster $k:")
+val m = v.toSeq.sortBy(_._5)
+println(m.take(20).map { case (_, title, genres, _, d) =>
+(title, genres, d) }.mkString("\n"))
+println("=====\n") }
+- Apache Kafka
+--> An open-source message broker project developed by the Apache Software Foundation written in Scala. The project aims to provide a unified, high-throughput, low-latency platform for handling real-time data feeds. It is, in its essence, a "massively scalable pub/sub message queue architected as a distributed transaction log", making it highly valuable for enterprise infrastructures.
+- An apache project initially developed at LinkedIn
+- Distributed publish-subscribe messaging system
+- Designed for processing of real time activity stream data e.g. logs, metrics collections
+- Written in Scala
+- Does not follow JMS Standards, neither uses JMS APIs
+- Features
+ - Persistent messaging
+- High-throughput
+- Supports both queue and topic semantics
+- Uses Zookeeper for forming a cluster of nodes (producer/consumer/broker)
+- Built with speed and scalability in mind.
+- Enabled near real-time access to any data source
+- Empowered hadoop jobs
+- Allowed us to build real-time analytics
+- Vastly improved our site monitoring and alerting capability
+- Enabled us to visualize and track our call graphs
+- Terminology
+- Kafka maintains feeds of messages in categories called topics.
+- Processes that publish messages to a Kafka topic are called producers.
+- Processes that subscribe to topics and process the feed of published messages are called consumers.
+- Kafka is run as a cluster comprised of one or more servers each of which is called a broker.
+- Topic
+- Topic: feed name to which messages are published
+- A topic consists of partitions.
+- Partition: ordered + immutable sequence of messages that is continually appended
+- Hands-On : Apache Kafka
+$ wget http://www-us.apache.org/dist/kafka/0.9.0.1/kafka_2.10-0.9.0.1.tgz
+$ tar xzf kafka_2.10-0.9.0.1.tgz
+$ cd kafka_2.10-0.9.0.1
+$ bin/kafka-server-start.sh config/server.properties&
+- Producer
+$ bin/kafka-console-producer.sh --topic test --broker-list localhost:9092
+- Consumer
+$ bin/kafka-console-consumer.sh --topic test --zookeeper localhost:2181 --from-beginning
+- Hands-On : Spark Streaming with Kafka
+$ spark-shell --driver-memory 1g
+scala> :paste
+import org.apache.spark.SparkConf
+import org.apache.spark.streaming.{Seconds, StreamingContext}
+import org.apache.spark.storage.StorageLevel
+import StorageLevel._
+import org.apache.spark._
+import org.apache.spark.streaming._
+import org.apache.spark.streaming.StreamingContext._
+import org.apache.spark.streaming.kafka.KafkaUtils
+val ssc = new StreamingContext(sc, Seconds(2))
+val kafkaStream = KafkaUtils.createStream(ssc,
+"localhost:2181","spark-streaming-consumer-group", Map("sparktopic"
+-> 5))
+kafkaStream.print()
+ssc.start
+- Consumer
+$ bin/kafka-consoleproducer.sh --broker-list localhost:9092 --topic spark-topic
+- Link
+Apache Kafka : http://kundjanasith.com/BigDataSchool/23-06-2016/Kafka.pdf

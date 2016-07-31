@@ -1,0 +1,313 @@
+Sqoop
+08:30 - 12:00
+- Sqoop [ SQL-to-Hadoop ]
+--> is a straightforward command-line tool with the following capabilities
+- Imports individual tables or entire databases to files in HDFS
+- Generates Java classes to allow you to interact with your imported data
+- Provides the ability to import from SQL databases straight into your Hive data warehouse
+- Sqoop Benefit
+- Leverages RDBMS metadata to get the column data types
+- It is simple to script and uses SQL
+- It can be used to handle change data capture by importing daily transactional data to Hadoop
+- It uses MapReduce for export and import that enables parallel and efficient data movement
+- Sqoop Mode
+- Sqoop import: Data moves from RDBMS to Hadoop
+- Sqoop export: Data moves from Hadoop to RDBMS
+- Use Case
+- ETL for Data Warehouse
+- ELT
+- Data Analysis
+- Data Archival
+- Data Consolidation
+- Move reports to Hadoop
+- Hands-On : Loading Data from DBMS to Hadoop HDFS
+- MySQL RDS Server on AWS
+--> A RDS Server is running on AWS with the following configuration
+> database: imc_db
+> username: admin
+> password: imcinstitute
+> addr: imcdb.cmw65obdqfnx.us-west-2.rds.amazonaws.com
+- Table in MySQL RDS
+- country_tbl : Columns: id, country
+- movie_rating : Columns: userid, movieid, rating, timestamp
+- Installing DB driver for Sqoop
+- cd /var/lib/sqoop
+- sudo wget https://www.dropbox.com/s/6zrp5nerrwfixcj/
+mysql-connector-java-5.1.23-bin.jar
+- Restart Sqoop2 service
+- Importing data from MySQL to HDFS
+- sudo -u hdfs sqoop import --connect jdbc:mysql://imcdb.cmw65obdqfnx.us-west-
+2.rds.amazonaws.com:3306/imc_db --username admin --password
+imcinstitute --table movie_rating --target-dir /user/guest1/movietable -m 1
+- Importing data from MySQL to Hive Table
+- sudo -u hdfs sqoop import --connect
+jdbc:mysql://imcdb.cmw65obdqfnx.us-west-
+2.rds.amazonaws.com:3306/imc_db --username admin --password
+imcinstitute --table country_tbl --hive-import --hive-table
+thanachart.country -m 1
+- Reviewing data from Hive Table
+- Importing data from MySQL to HBase
+- sudo -u hdfs sqoop import --connect
+jdbc:mysql://imcdb.cmw65obdqfnx.us-west-
+2.rds.amazonaws.com:3306/imc_db --username admin --password
+imcinstitute --table country_tbl --hbase-table
+thanachart.hbase_country --column-family hbase_country_cf --hbase-rowkey id --hbase-create-table -m 1
+- Start HBase
+- hbase shell
+- Viewing Hbase data
+- In Microsoft Azure --> [ Hortonwork ]
+- We will add --driver to sqoop command
+--> Because Microsoft Azure have many driver ( jdbc:mysql-connector ) then we will choose one driver for each sqoop command directly
+- Link
+Sqoop Hands-On : http://kundjanasith.com/BigDataSchool/13-06-2016/Hadoop-Handon-June2016.pdf
+HBase configuration
+13:00 - 17:30
+- HBase
+--> is an open source, non-relational, distributed database modeled after Google's BigTable and is written in Java
+--> is developed as part of Apache Software Foundation's Apache Hadoop project and runs on top of HDFS
+- Features
+- Hadoop database modelled after Google's Bigtable
+- Column oriented data store, known as Hadoop Database
+- Support random realtime CRUD operations (unlike HDFS)
+- No SQL Database
+- Opensource, written in Java
+- Run on a cluster of commodity hardware
+- When to use HBase
+- When you need high volume data to be stored
+- Un-structured data
+- Sparse data
+- Column-oriented data
+- Versioned data
+--> (same data template, captured at various time, time-elapse data)
+- When you need high scalability
+- Which one to use
+- HDFS
+ - Only append dataset (no random write)
+ - Read the whole dataset (no random read)
+- HBase
+ - Need random write and/or read
+ - Has thousands of operation per second on TB+ of data
+- RDBMS
+- Data fits on one big node
+- Need full transaction support
+- Need real-time query capabilities
+- HBase vs. RDBMS
+- Hardware Architecture
+- HBase : Similar to Hadoop Cluster commodify hardware very affordable
+- RDBMS : Typically large scalable multiprocessor systems very expensive
+- Fault Tolerance
+- HBase : Built into the architecture, lots of nodes means each is relatively insignificant. No need to worry about individual node downtime
+- RDBMS : Require configuration of the HW and the RDBMS with the appropriate high avaliability options
+- Typical Database Size
+- HBase : Terabytes to Pentabytes
+- Hundred of millions to billions of rows
+- RDBMS : Gigabytes to Terabytes
+- Hundred of thousands to millions of rows
+- Data Layout
+- HBase : A sparse, distributed, persistant, multidimensional stored map
+- RDBMS : Rows or columns oriented
+- Data Types
+- HBase : Bytes only
+- RDBMS : Rich data type support
+- Transaction
+- HBase : ACID support on a single row only
+- RDBMS : Full ACID complicance acros rows and tables
+- Query Language
+- HBase : API primitive commands only unless combined with Hive or other technology
+- RDBMS : Standard Query Language
+- Indexes
+- HBase : Row key only unless combined with other technologies such as Hive or IBM's BigSQL
+- RDBMS : Yes
+- Throughput
+- HBase : Millions of queues per second
+- RDBMS : Thousands of queues per second
+- Components
+- Region
+--> Row of table are stores
+- Region Server
+--> Hosts the tables
+- Master
+--> Coordinating the region servers
+- ZooKeeper, Hadoop File System, Application Program Interface
+- HBase Shell Commands
+- list #see the list of the tables
+- create 'table_name', 'cf' #create a table
+- put 'table_name', 'rowA', 'cf:columnName', 'val1' #insert data into a table
+- get 'table_name', 'rowA' #retrieve data from a table
+- scan 'table_name' #iterate through a table
+- disable 'table_name #delete a table
+- drop 'table_name #delete a table
+- Running HBase
+--> Configure Hue to show Hbase browser
+--> From Cloudera Manager : Add Thrift server
+- This thrift server role is not added by default when you install HBase
+- To add the thrift server rol
+1. Go to the HBase service
+2. Click the instance tab
+3. Click the add role instance button
+4. Select the hosts where you want to add the thrift server role ( you only need one for Hue ) and click continue. The thrift server role should appear in the instances list for the HBase server
+5. Select the thrift server role instance
+6. Select actions for selected --> Start
+- Select Instance
+- Add role instance to HBase
+- Configure Hue Services for HBase browser
+1. Select the Hue service, then under the configuration tab select view and edit
+2. Go to the service wide category
+3. For the HBase Service property. make sure it is set to the Hbase service for which you enableed the thrift server role ( If you have more than one HBase service instance )
+4. In the HBase Thrift Server property, click in the edit field and select the thrift server role that Hue should use
+5. Save changes to have these configurations take effect
+- From Hue Services : select configuration tab
+- Select the HBase thrift server
+- Configuration Hue Services
+--> Edit as seen : then click save change and restart
+- Restart Hue service
+- Running Hbase Browser
+- Create a table in HBase
+- Insert a new row in a table
+- add field into a new row
+- Default Configuration
+- hbase-site.xml & hbase-default.xml
+- Just as in Hadoop where you add site-specific HDFS configuration to the hdfs-site.xml file, for HBase, site specific customizations go into the file conf/hbase-site.xml. For the list of configurable properties
+- Not all configuration options make it out to hbase-default.xml. Configuration that it is thought rare anyone would change can exist only in code; the only way to turn up such configurations is via a reading of the source code itself.
+- Currently, changes here will require a cluster restart for HBase to notice the change.
+- Hbase Default Configuration
+--> The documentation below is generated using the default hbase configuration file, hbase-default.xml, as source.
+- hbase.tmp.dir
+--> Description : Temporary directory on the local filesystem. Change this setting to point to a location more permanent than '/tmp', the usual resolve for java.io.tmpdir, as the '/tmp' directory is cleared on machine restart.
+--> Default : ${java.io.tmpdir}/hbase-${user.name}
+- hbase.rootdir
+--> Description : The directory shared by region servers and into which HBase persists. The URL should be 'fully-qualified' to include the filesystem scheme. For example, to specify the HDFS directory '/hbase' where the HDFS instance’s namenode is running at namenode.example.org on port 9000, set this value to: hdfs://namenode.example.org:9000/hbase. By default, we write to whatever ${hbase.tmp.dir} is set too — usually /tmp — so change this configuration or else all data will be lost on machine restart.
+--> Default : ${hbase.tmp.dir}/hbase
+- hbase.fs.tmp.dir
+--> Description : A staging directory in default file system (HDFS) for keeping temporary data.
+--> Default : /user/${user.name}/hbase-staging
+- hbase.bulkload.staging.dir
+--> Description : A staging directory in default file system (HDFS) for bulk loading.
+--> Default : ${hbase.fs.tmp.dir}
+- hbase.cluster.distributed
+--> Description : The mode the cluster will be in. Possible values are false for standalone mode and true for distributed mode. If false, startup will run all HBase and ZooKeeper daemons together in the one JVM.
+--> false
+- hbase.zookeeper.quorum
+--> Description : Comma separated list of servers in the ZooKeeper ensemble (This config. should have been named hbase.zookeeper.ensemble). For example, "host1.mydomain.com,host2.mydomain.com,host3.mydomain.com". By default this is set to localhost for local and pseudo-distributed modes of operation. For a fully-distributed setup, this should be set to a full list of ZooKeeper ensemble servers. If HBASE_MANAGES_ZK is set in hbase-env.sh this is the list of servers which hbase will start/stop ZooKeeper on as part of cluster start/stop. Client-side, we will take this list of ensemble members and put it together with the hbase.zookeeper.clientPort config. and pass it into zookeeper constructor as the connectString parameter.
+--> Default : localhost
+- hbase.local.dir
+--> Description :  Directory on the local filesystem to be used as a local storage.
+--> Default : ${hbase.tmp.dir}/local/
+- hbase.master.port
+--> Description : The port the HBase Master should bind to.
+--> Default :  16000
+- hbase.master.info.port
+--> Description : The port for the HBase Master web UI. Set to -1 if you do not want a UI instance run.
+--> Default : 16010
+- hbase.master.info.bindAddress
+--> Description : The bind address for the HBase Master web UI
+--> Default : 0.0.0.0
+- hbase.master.logcleaner.plugins
+--> Description : A comma-separated list of BaseLogCleanerDelegate invoked by the LogsCleaner service. These WAL cleaners are called in order, so put the cleaner that prunes the most files in front. To implement your own BaseLogCleanerDelegate, just put it in HBase’s classpath and add the fully qualified class name here. Always add the above default log cleaners in the list.
+--> Default : org.apache.hadoop.hbase.master.cleaner.
+TimeToLiveLogCleaner
+- hbase.master.logcleaner.ttl
+--> Description : Maximum time a WAL can stay in the .oldlogdir directory, after which it will be cleaned by a Master thread.
+--> Default : 600000
+- hbase.master.hfilecleaner.plugins
+--> Description : A comma-separated list of BaseHFileCleanerDelegate invoked by the HFileCleaner service. These HFiles cleaners are called in order, so put the cleaner that prunes the most files in front. To implement your own BaseHFileCleanerDelegate, just put it in HBase’s classpath and add the fully qualified class name here. Always add the above default log cleaners in the list as they will be overwritten in hbase-site.xml.
+--> Default : org.apache.hadoop.hbase.master.cleaner.
+TimeToLiveHFileCleaner
+- hbase.master.infoserver.redirect
+--> Description : Whether or not the Master listens to the Master web UI port (hbase.master.info.port) and redirects requests to the web UI server shared by the Master and RegionServer.
+--> Default : true
+- hbase.regionserver.port
+--> Description : The port the HBase RegionServer binds to.
+--> Default : 16020
+- hbase.regionserver.info.port
+--> Description : The port for the HBase RegionServer web UI Set to -1 if you do not want the RegionServer UI to run.
+--> Default : 16030
+- hbase.regionserver.info.bindAddress
+--> Description : The address for the HBase RegionServer web UI
+--> Default : 0.0.0.0
+- hbase.regionserver.info.port.auto
+--> Description : Whether or not the Master or RegionServer UI should search for a port to bind to. Enables automatic port search if hbase.regionserver.info.port is already in use. Useful for testing, turned off by default.
+--> Default : false
+- hbase.regionserver.handler.count
+--> Description : Count of RPC Listener instances spun up on RegionServers. Same property is used by the Master for count of master handlers.
+--> Default : 30
+- hbase.ipc.server.callqueue.handler.factor
+--> Description : Factor to determine the number of call queues. A value of 0 means a single queue shared between all the handlers. A value of 1 means that each handler has its own queue.
+--> Default : 0.1
+- hbase.regionserver.msginterval
+--> Description : Interval between messages from the RegionServer to Master in milliseconds.
+--> Default : 3000
+- hbase.regionserver.logroll.period
+--> Description : Period at which we will roll the commit log regardless of how many edits it has.
+--> Default : 3600000
+- hbase.regionserver.logroll.errors.tolerated
+--> Description : The number of consecutive WAL close errors we will allow before triggering a server abort. A setting of 0 will cause the region server to abort if closing the current WAL writer fails during log rolling. Even a small value (2 or 3) will allow a region server to ride over transient HDFS errors.
+--> Default : 2
+- hbase.regionserver.hlog.reader.impl
+--> Description : The WAL file reader implementation.
+--> Default : org.apache.hadoop.hbase.regionserver.wal.
+ProtobufLogReader
+- hbase.regionserver.hlog.writer.impl
+--> Description : The WAL file writer implementation.
+--> Default : org.apache.hadoop.hbase.regionserver.wal.
+ProtobufLogWriter
+- hbase.regionserver.optionalcacheflushinterval
+--> Description : Maximum amount of time an edit lives in memory before being automatically flushed. Default 1 hour. Set it to 0 to disable automatic flushing.
+--> Default : 3600000
+- hbase.regionserver.dns.interface
+--> Description : The name of the Network Interface from which a region server should report its IP address.
+--> Default : default
+- hbase.regionserver.dns.nameserver
+--> Description : The host name or IP address of the name server (DNS) which a region server should use to determine the host name used by the master for communication and display purposes.
+--> Default : default
+- hbase.regionserver.region.split.policy
+--> Description : A split policy determines when a region should be split. The various other split policies that are available currently are ConstantSizeRegionSplitPolicy, DisabledRegionSplitPolicy, DelimitedKeyPrefixRegionSplitPolicy, and KeyPrefixRegionSplitPolicy. DisabledRegionSplitPolicy blocks manual region splitting.
+--> Default : org.apache.hadoop.hbase.regionserver.
+IncreasingToUpperBoundRegionSplitPolicy
+- hbase.regionserver.regionSplitLimit
+--> Description : Limit for the number of regions after which no more region splitting should take place. This is not hard limit for the number of regions but acts as a guideline for the regionserver to stop splitting after a certain limit. Default is set to 1000.
+--> Default : 1000
+- zookeeper.znode.parent
+--> Description : Root ZNode for HBase in ZooKeeper. All of HBase’s ZooKeeper files that are configured with a relative path will go under this node. By default, all of HBase’s ZooKeeper file paths are configured with a relative path, so they will all go under this directory unless changed.
+--> Default : /hbase
+- zookeeper.znode.acl.parent
+--> Description : Root ZNode for access control lists.
+--> Default : acl
+- hbase.zookeeper.dns.interface
+--> Description : The name of the Network Interface from which a ZooKeeper server should report its IP address.
+--> Default : default
+- hbase.zookeeper.dns.nameserver
+--> Description : The host name or IP address of the name server (DNS) which a ZooKeeper server should use to determine the host name used by the master for communication and display purposes.
+--> Default : default
+- hbase.zookeeper.property.initLimit
+--> Description : Property from ZooKeeper’s config zoo.cfg. The number of ticks that the initial synchronization phase can take.
+--> Default : 10
+- hbase.zookeeper.property.syncLimit
+--> Description : Property from ZooKeeper’s config zoo.cfg. The number of ticks that can pass between sending a request and getting an acknowledgment.
+--> Default : 5
+- hbase.zookeeper.property.dataDir
+--> Description : Property from ZooKeeper’s config zoo.cfg. The directory where the snapshot is stored.
+--> Default : ${hbase.tmp.dir}/zookeeper
+- hbase.zookeeper.property.clientPort
+--> Description : Property from ZooKeeper’s config zoo.cfg. The port at which the clients will connect.
+--> Default : 2181
+- hbase.zookeeper.property.maxClientCnxns
+--> Description : Property from ZooKeeper’s config zoo.cfg. Limit on number of concurrent connections (at the socket level) that a single client, identified by IP address, may make to a single member of the ZooKeeper ensemble. Set high to avoid zk connection issues running standalone and pseudo-distributed.
+--> Default : 300
+- hbase.client.write.buffer
+--> Description : Default size of the HTable client write buffer in bytes. A bigger buffer takes more memory — on both the client and server side since server instantiates the passed write buffer to process it — but a larger buffer size reduces the number of RPCs made. For an estimate of server-side memory-used, evaluate hbase.client.write.buffer * hbase.regionserver.handler.count
+--> Default : 2097152
+- hbase.client.pause
+--> Description : General client pause value. Used mostly as value to wait before running a retry of a failed get, region lookup, etc. See hbase.client.retries.number for description of how we backoff from this initial pause amount and how this pause works w/ retries.
+--> Default : 100
+- hbase.client.retries.number
+--> Description : Maximum retries. Used as maximum for all retryable operations such as the getting of a cell’s value, starting a row update, etc. Retry interval is a rough function based on hbase.client.pause. At first we retry at this interval but then with backoff, we pretty quickly reach retrying every ten seconds. See HConstants#RETRY_BACKOFF for how the backup ramps up. Change this setting and hbase.client.pause to suit your workload.
+--> Default : 35
+- hbase.client.max.total.tasks
+--> Description : The maximum number of concurrent tasks a single HTable instance will send to the cluster.
+--> Default : 100
+- hbase.client.max.perserver.tasks
+--> Description : The maximum number of concurrent tasks a single HTable instance will send to a single region server.
+--> Default : 5
+- Link
+HBase Guide : https://hbase.apache.org/book.html

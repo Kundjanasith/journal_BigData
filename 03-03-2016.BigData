@@ -1,0 +1,479 @@
+Hadoop using Cloudera on Amazon EC2
+08:30 - 12:00
+- Cloudera Virtual Machine
+- Install Cloudera by a EC2 virtual server on Amazon Web Services
+- Hands-On: Launch a virtual server on EC2 Amazon Web Services
+- Virtual Server : a EC2 virtual server --( install )--> Cloudera Cluster
+>> Ubuntu Server 14.04 LTS
+>> m3xLarge 4vCPU
+>> 15 GB memory
+>> 80 GB SSD
+>> Security group: default
+>> Keypair: imchadoop ( Assumption )
+- Select a EC2 service and click on Launch Instance
+- Select an Amazon Machine Image ( AMI ) and Ubuntu Server 14.04 LTS ( PV )
+- Choose m3.xlarge Type virtual server ( Support for a big data )
+- Set the number of instance to 4 ( Configure Instance )
+- Add Storage : 80 GB --> Volume Type ( Should be General Purpose )
+- Name the instance --> Key = "Name", Value = "Kundjanasith" ( Tag Instance )
+- Select Create a new security group ( Add rules )
+[ Source : Anywhere ( 0.0.0.0/0 ) ]
+--> Type : SSH, Protocol : TCP, Port Range : 22
+--> Type : ALL TCP, Protocol : TCP, Port Range : 0 - 65535
+--> Type : ALL ICMP, Protocol : ICMP, Port Range : 0 - 65535
+- Click Launch & Choose "imchadoop" as a key pair
+--> [ MAC OSX : key.pem ]
+- Review an instance and rename one instance as a master
+So --> 1 Master Node
+--> 3 Worker Node
+- Connect to an instance
+[ MAC OSX : ssh -i key.pem ubuntu@PUBLIC_DNS ]
+- Instance have Public IP & Private IP ( some detail of  instance )
+- Hands-On: Installing Cloudera on EC2
+- Download Cloudera Manager ( CLI --> Command Line Interface )
+--> wget #get or download http
+http://archive.cloudera.com/cm5/installer/latest/cloudera-manager-installer.bin
+--> chmod u+x cloudera-manager-installer.bin #change mode
+--> sudo ./cloudera-manager-installer.bin #root permission
+- Login to Cloudera Manager
+--> http://PUBLIC-DNS:7180 ( port 7180 )
+- Accept the User License Terms
+- Select Cloudera Express Edition
+--> Which edition do you want to deploy ?
+Answer : Upgrading to Cloudera Enterprise Data Hub Edition provides important features that help you manage and monitor your Hadoop clusters in mission-critical environments
+- Provide your instance 4 instances < private IP > address in Cluster
+- Specify hosts for your CDH( Cloudera Distribution Including Apache Hadoop ) cluster installation
+- Cluster Installation
+- Choose method : Use Parcels
+- The version of CDH : CDH-5.6.0-1.cdh.5.6.0.p0.45
+- Select install Oracle Java & Java Unlimited
+- JDK Installation Options
+--> Install Oracle Java SE Development Kit ( JDK )
+--> Install Java Unlimited Strength Encryption Policy Files
+- Enable Single User Mode
+- [ MAC OSX : ssh -i key.pem ubuntu@PUBLIC_DNS ]
+- Installing Selected Parcels
+--> The selected parcels are being downloaded & installed on all the hosts in the cluster
+- Inspect hosts for correctness --> ( Validation )
+- Cluster Setup
+[ Choose the CDH 5 services that you want to install on your cluster ]
+( Choose a combination of services to install ) --> API Services
+- Customize Role Assignments
+--> HBase / HDFS
+- Database Setup
+--> Use Embedded Database
+> Configure and test database connections. If using custom databases, create the databases first according to the "Installing & Configuring an external Database" --- Section of the Installation Guide
+! When using the embedded database, passwords are automatically generated.
+- Hive is similar as SQL for queries databases
+- Review Change ( Confirm your Cluster properties ) --> Create Cluster
+- Cloudera Manager
+- Running Hue ( Hadoop User Experience )
+- Click Hue Web UI at Hue Service
+- Sign in to Hue
+- Starting Hue on Cloudera
+- Click File Browser #show all
+- Manage users --> Add a new user as ( Active, Superuser status )
+- Cloudera Manager
+- Dashboard [ Home ]
+- Status
+--> Show all services
+--> Show Cluster CPU
+--> Show Cluster Disk I/O
+--> Show Cluster Network I/O
+--> Show HDFS I/O
+- Hosts Manager
+- Status [ Status = Good Health ]
+- Action
+--> ( Status, Name, IP, Roles, Last Heartbeat, Load Average, Disk Usage, Physical Memory )
+- Each host
+--> Details
+--> Heath Tests >> Health History
+--> Host CPU Usage
+--> Load Average
+- Service manager
+- Add Service [ State : Start, Stop, Restart ]
+- Hands-On: Importing/Exporting Data to HDFS
+- Login Hue
+#username : admin
+#password : admin1
+- Review file in Hadoop HDFS using File Browse
+- Create a new directory name [ Input & Outpur ]
+- Upload a local file to HDFS [ Click Upload ]
+- Hands-On : Connect to a master node via SSH
+- [ MAC OSX : ssh -i key.pem ubuntu@PUBLIC_DNS ]
+- Hadoop syntax for HDFS
+- hadoop fs -ls /user --> Listing of files in a directory
+- hadoop fs -mkdir /user/guest1/newdirectory --> create a new directory
+- hadoop fs -put "local directory" "hadoop directory" --> Copy a file from a loca machine to Hadoop
+- hadoop fs -get "hadoop directory" "local directory" --> Copy a file from hadoop to a local machine
+- hadoop fs -tail "hadoop directory" --> tail last few lines of alarge file in Hadoop
+- hadoop fs -cat "hadoop directory" --> view the complete contents of a file in Hadoop
+- hadoop fs -rm -r "hadoop directory" --> remove a complete directory from Hadoop
+- hadoop fs -du / --> check the hadoop filesystem spqc utilization
+- Download an example text file
+- mkdir guest1
+- cd guest1
+- wget "text file" #from http ( wget )
+- Upload Data to Hadoop
+- hadoop fs -ls /user/guest1/input #listing all file in this directory
+- sudo -u hdfs hadoop fs -rm /user/guest1/input/* #remove file / directory
+- sudo -u hdfs hadoop fs -put "text file" #put text file to hadoop use hdfs
+- hadoop fs -ls /user/guest1/input #listing all file in this directory
+- Hands-On : Writing you own Map Reduce Program
+- Reviewing MapReduce Job in Hue
+--> Job Browser
+> ( Attemps, Tasks, Metadata )
+- Reviewing MapReduce Output Result
+--> File Browser
+> INFO [ your directory ]
+- Lecture Understanding [ Oozie ]
+- Introduction [ Workflow scheduler for Hadoop ]
+- OOZIE
+--> is a workflow scheduler system to manage Apache Hadoop jobs
+--> is integreated with the rest of the Hadoop stack supporting serveral types of Hadoop jobs out of the box as weel as system specific jobs
+- Ozzie Architecture
+Oozie Client -- Oozie Server -- Database -- hPDL
+                |-- Hadoop HDFS
+- Oozie Server
+Oozie Client-(WS API)-Oozie Server-(Check Data Avaliability)-HDFS/HCAT
+> Oozie Server --> Bundle --> Oozie Coordinator --> Oozie Workflow
+> Layer of Abstraction in Oozie
+>> Bundle
+>>> Bundle
+>> Coordinator
+>>> Coordinate Job
+>>> Coordinate Action
+>> Workflow ( Example --> Data Analytic )
+>>> Workflow Job
+>>> ( MApReduce, PIG ) Job
+- Oozie Use Cases
+- Time Triggers
+--> Execute your workflow every 15 minutes
+- TIme & Data Triggers
+--> Materialize your workflow every hour but oly run them when the input data is ready that is loadeed to the grid every hour
+- Rolling Window
+--> Access 15 minute datasets and roll them up into hourly datasets
+- Hands-On : Running Map Reduce using Oozie Workflow
+- Using Hue : Select WorkFlows >> Editors >> WorkFlows
+- Create a new workflow
+--> Click create button >> Name the workflow as WordCountWorkflow
+- Select a Java job for the workflow
+--> From the Oozie editor, drag Java Program and drop between start & end
+- Edit the Java Job [ Example : wordcount ]
+--> Jar name : "/user/guest/wordcount.jar"
+--> Main Class : "org.myorg.WordCount
+--> Add Arguments :
+> input/*
+> ouput/wordcount
+- Submit the workflow
+--> Click Done --> Save --->  Submit
+- Lecture Understanding [ Hive ]
+- Introduction [ A petabyte Scale Data Warehouse Using Hadoop ]
+- Hive
+--> is developed by Facebook
+--> is designed to enable easy data sumarization, ad-hoc querying & analysis of large volumes of data
+--> provides a simple query language called Hive QL is based on SQL
+--> is not designed for online transaction processing & does not offer real time queries and row level updates
+--> is best used fro batch jobs over large sets of immutable data = web logs
+- Hive Architecture
+Hive --> Map Reduce --> HDFS
+- Hive Metastore --> is a repository to keep all Hive metadata
+--> By default, Hive will store its metadat in Derby Database
+- Hive Tables
+- Managed >> CREATE TABLE
+- LOAD --> File moved into Hive's data warehouse directory
+- DROP --> Both data & metadata are deleted
+- External >> CREATE EXTERNAL TABLE
+- LOAD --> No file moved
+- DROP --> Only metadata deleted
+- Use when sharing data between Hive & Hadoop applcation or you want to  use to use multiple schema on the same data
+- Comparsion [ MySQL --> HiveQL ] > ( almost the same )
+- describe table --> describe (formatted|extended) table
+- drop database db_name --> drop database db_name (cascade)
+- Hands-On : Loading Data using Hive
+- Bay Area Bike Share ( BABS )
+- Preparing a bike data
+- wget "http of BABS data" #download.zip
+- unzip BABS.zip #unzip downloaded file
+- cd BABS #change dicrectory to unzip file folder
+- sudo -u hdfs hadoop fs -put BABS.csv #put file to hadoop
+- hadoop fs -ls /user/guest1 #listing all file in this directory
+- Importing CSV Data with the Matastore App
+--> The BABS data set contain 4 CSVs that contain data for stations, trips, rebalancing ( availability ) and weather. [ Using Metastore Tables ]
+- Select database for create a new database
+- Create a new table from file in database
+--> Name a table and select a file
+--> Choose Delimiter [ In this case use Comma ]
+--> Define Column Types
+- Stating Hive Editor / Hive Console
+- Lecture Understanding [ Impala ]
+- Introduction [ Open source massively parallel processing SQL query engine ]
+- Cloudera Impala
+ --> is a query engine that runs on Apache Hadoop
+--> brings scalable parallel database technology to Hadoop
+--> Enabling users to issue low-latency SQL queries to data stored in HDFS and Apache HBase without requiring data movement or transformation
+- Impala Architecture
+Impalad --> HDFS DataNode --> HBase RegionServer
+- Start Impala Query Editor
+- Update list of tables/metadata by execute the command invalidate metadata
+- Restart Impala Query Editor and Refresh the table list
+- Lecture Understanding [ Pig ]
+- Introduction [ A high-level platform for creating MapReduce programs Using Hadoop ]
+- Pig
+--> is developed by Pig
+--> is a platform for analyzing large data sets that consists of a high-level language for expressing data analysis programs
+--> is coupled with infrastructure for evaluating these programs
+--> is amenable to substantial parallelization which in turns enables them to handle very large data sets
+- Pig Components
+- Two Components
+--> Language ( Pig Latin )
+--> Compiler
+- Two Execution Environments
+--> Local ( pig -x local )
+--> Distributed ( pig -x mapreduce )
+- Running Pig
+- Script --> pig myscript
+- Command line ( Grunt ) --> pig
+- Embedded --> writing a java program
+- Pig Execution Stages
+- Client machine
+Pig Script --> Pig Execution Engine --> MapReduce
+- Hadoop Cluster
+Hadoop Job
+- Hands-On : Running a Pig Script
+--> Pig Script
+- To run Pig from Hue
+--> Install Oozie ShareLib from Cloudera Manager
+- Starting Pig from Hue
+- Lecture Understanding [ HBase ]
+- Introduction [ An open source, non-relational, distributed database ]
+- HBase ( ~ RDBMS )
+--> is an open source, non-relational, distributed databased modeled after Google's BigTable and is written in Java
+--> is developed as part of Apache Software Foundation's Apache Hadoop project and runs on top of HDFS
+--> provides a fault-tolerant way of storing large quantities of sparse data
+- HBase Components
+- Region ( Row of table are stores )
+- Region Server ( Hosts the tables )
+- Master ( Coordinating the Region Servers )
+- ZooKeeper
+- HDFS
+- API ( The Java Client API )
+- HBase Shell Commands
+- list #see the list of the tables
+- create 'Tlb' #create a table
+- put 'Tlb', 'rowA', 'colA', 'val1' #insert at rowA & colA with value is 'val1'
+- get 'Tlb', 'rowA' #retrive data from table at row1
+- scan 'Tlb' #Iterate through a table
+- disable 'Tlb // drop 'Tlb' #Delete a table
+- Hands-On : Running HBase
+- Configure Hue to sho HBase browser --> From cloudera manager : add thift server
+- The thrift server role is not added by default when you install HBase
+[ To add the thift server role ]
+1. Go to the HBase service
+2. Click the instance tab
+3. Click the add role instance button
+4. Slect the host(s) where you want to add the thrift server role
+5. Select the thrift server role instance
+6. Select Actions for Selected > Start
+- Select Instance
+- Add role instances to HBase
+- Configure Hue Services for HBase browser
+[ To configure Hue for the HBase Browser ]
+1. Select the Hue service, then under the configuration tab select view and edit
+2. Go to the service-wide category
+3. For the HBase Service property, make sure it is set to the HBase service for which yiu enabled the thrift server role
+4. In the HBase thrift server property, click in the edit field and select the thrift server role that Hue should use
+5. Save changes to have these configuration take effect
+- From Hue Services : select configuration tab
+- Select the HBase Thrift Server
+- Configure Hue Services --> Edit as seen : then click save change & restart
+- Restart Hue service
+- Running HBase Browser
+- Create a table in HBase
+- Insert a new row in a table
+- Add field into a new row
+- Lecture Understanding [ Sqoop ]
+- Introduction [ Sqooop = SQL to Hadoop
+- Sqoop
+--> is a straightforward command-line tool with the following capabilities
+> Import individual tables or entire databases to files in HDFS
+> Generates Java classes to allow you to interact with your imported data
+> Provides the ability to import from SQL databases straight into your Hive data warehouse
+- Sqoop Architecture
+command --> Sqoop --> Hadoop
+- Sqoop Mode
+- Import : RDBMS --> Hadoop
+- Export : Hadoop --> RDBMS
+- Use case
+- 1 : ETL for Data Warehouse
+--> Transform operational data for data warehouse reports in Hadoop as the batch transformation "engine"
+- 2 ; ETL
+--> Extract oprational data from RDBMS, process ins Hadoop return result to RDBMS
+- 3 : Data Analysis
+--> Copy real-time data from RDBMS, combine with raw data on Hadoop using complex data analysis logic ( not just SQL )
+- 4 : Data Archival
+--> Move data from RDBMS after it expires to Hadoop, keeping the RDBMS "clean and lean:
+- 5 : Data Consolidation
+--> Integrate data from various organizational "data stores" to Hadoop for various data processing requirements
+- 6 : Move reports to Hadoop
+--> Easily allow traditional data analysis and business intelligence using Hadoop's power
+- Hands-On : Loading Data from DBMS to Hadoop HDFS
+- MySQL RDS Server on AWS --> A RDS Server is running on AWS with the following configuration ( database_name, username, password )
+- Installing Database driver for sqoop ( wget to install .jar )
+- Restart Sqoop2 Service
+- Importing data from MySQL to HDFS
+- Importing data from MYSQL to Hive Table
+- Review data from Hive Table
+- Running from Hue : Beewax
+- Importing data from ySQL to HBase
+- Start HBase
+- View HBase Data
+- Lecture Understanding [ Flume ]
+- Introduction [ Apache Flume is a continuous data ingestion system ]
+- Flume
+--> A distributed data transport and aggregation system for event or log structured data
+--> Principally designed for continuous data ingestion into Hadoop but more flexible than that
+- Flume Achitecture
+- Data origins = Flume agent --> Flume collector node --> HDFS
+- Flume Agent
+--> A source writes events to one or more channels
+--> A channel is  the holding area as events are passed from a source to a sink
+--> A sink receives events from one channel only
+--> An agent can have many channels
+- Flume Process
+sink runner --> sink group --> sink processor --> sink ( 1, 2, 3 )
+- Flow [ A simple flow ]
+Application --> Flume Agent --> HDFS/HBase
+- Flume Terminology
+- A source writes events to one or more channels
+- A channel is the holding area as events are passed from a source to a sink
+- A sink receives events from one channel only
+- An agent can have many channels
+- Stream Processing Architecture
+Data source --> Data Ingest --> Spark Streaming ---> Application
+- Hands-On : Loading Twitter Data to Hadoop HDFS
+Twitter <--> Flume --> HDFS <-- Hive
+- Installing Pre-built version of flume ( wget )
+- Create a new Twitter App
+- Add classpath in Cloudera Manager
+- Change the Flume Agent Name
+- Configuring the Flume Agent --> Agent Configuration
+- Restart Flume
+- View an agent log file
+- View a result using Hue
+- Stop agent
+- Analyse data using Hive
+- Project : Flight --> Flight Details Data
+- Shut down Cluster :
+ - Stop --> All services > cluster > EC2 instances
+- Link
+Download Cloudera: http://www.cloudera.com/content/www/enus/
+downloads.html
+Flight: http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236
+BABS: http://www.bayareabikeshare.com/open-data
+Hadoop: http://kundjanasith.com/BigDataSchool/03-06-2016/Hadoop-Handon-BigDataCert3.pdf
+
+Introduction of Microsoft Azure
+13:00 - 17:30
+Microsoft Azure for Enterprise
+- The main idea : Nearly every enterprise today can benefit from using public cloud platforms
+- The three most important events [ In enterprise IT in the last dozen years ]
+- Salesforce.com IPO, 2004 --> Showed that Saas works
+- Launch of AWS, 2006 --> Introduced public cloud platforms
+- Release of Apple iPhone, 2007 --> The birth of mobile platforms
+- Enterprise IT [ The traditional world ]
+- PCs/Laptops --> Datacenter Infrastructure
+- Datacenter Infrastructure
+--> Packaged Applications
+--> Custom Applications
+- Enterprise IT [ The new default ]
+- ( PCs/Laptops, Tablets, Phones )
+--> ( Saas Applications, Custom Application, Public Cloud Platform )
+- Cloud Platform Basics
+- Microsoft Azure ( A public cloud platform )
+--> Provides computing resources in data centers around the world
+- Barriers to Public Cloud Adoption
+- Security
+Question : Can a public cloud platform keep my data and applications safe ?
+Answer : You must learn to trust your public cloud provider
+- Compliance
+Question : Can I still meet my regulatory requirements in the public cloud ?
+Answer : You must understand the rules that apply to you
+- Availability
+Question : Will public cloud datacenters be up when they are needed ?
+Answer : They will be at least as good as your own datacenter, and there are SLAs
+- The unspoken worry
+Question : Will public cloud platforms make me lose my job ?
+Answer : Probably not, but you will need to learn some new skills
+- Microsoft Azure Technologies
+- Compute
+- IaaS
+--> Virtual Machines
+- PaaS
+--> Cloud Services
+--> Web Sites
+- Data Management
+- Binary Storage --> Blod Storage
+- IaaSrelational Storage --> DBMS in a virtual machine
+- PaaSrelational Storage --> SQL Database
+- Networking
+- ( Virtual Network, ExpressRoute ) between Enterprise and Microsoft Azure
+- Payment
+- Inbound : Free
+- Outbound : Cost/Price
+- What Public Cloud Platforms Can Provide : Infrastructure
+- Data Storage
+- Using Azure Blobs
+- Extending on-premises storage with StorSimple
+- Cloud Identity
+- Single sign-on with Azure Active Directory Premium
+- Single sign-on to diverse SaaS applications
+- Multi-factor authentication
+- Simple Identity administration
+- Virtual Machines on Demand
+- A dev/test environment
+- Fast and Simple way to get inexpensive Virtual Machines
+- Useful in many situations
+- Can shut down Virtual Machines when they are not needed
+- Disaster Recovery
+- Database fail over to Azure
+- Using Azure Site Recovery
+- Can cover a range of scenarios
+- Lower cost
+- Provides diverse recovery options
+- Deploying Packaged Applications
+- SharePoint on Microsoft Azure
+- Faster deployment
+- IT resources become an operating expense
+- Lower cost
+- Moving Applications to the Public Cloud
+- Moving a custom application to Microsoft Azure
+- What Public Cloud Platforms Can Provide : Applications
+- New employee-facing applications
+--> Iaas application
+> Ease and speed of deployment
+> Capabilities you can not easily get otherwise
+> Lower cost
+--> Pass application
+> Ease and speeed of deployment
+> Lower management cost
+> Lower risk
+- New customer-facing applications
+- New parallel applications
+--> An HPC application on Microsoft Azure
+--> A big data application using HDInsight
+Question : Why do organizations build new applications ?
+Answer :
+- To improve the execution of an existing business model
+> Such as automating a current business process
+- To support a new business model
+> Such as offering customers self-service access to services
+- The business model canvas [ A tool for thinking about new strategic applications ]
+- Conclusion
+- Public cloud platforms can provide
+--> Lower cost and higher reliability for infrastructure
+--> Better support for applications
+- At least one scenario probably has value for every enterprise right now
+--> Infrastructure, Application, or Both
+- Link
+Microsoft Azure: http://kundjanasith.com/BigDataSchool/03-06-2016/slides.pdf

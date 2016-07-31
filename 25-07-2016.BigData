@@ -1,0 +1,262 @@
+Machine Learning by R
+08:30 - 12:00
+- MLlib
+- MLlib’s goal is to make practical machine learning (ML) scalable and easy.
+- Besides new algorithms and performance improvements
+- We have seen in each release, a great deal of time and effort has been spent on making MLlib easy.
+- Similar to Spark Core, MLlib provides APIs in three languages:
+- Python
+- Java
+- Scala, along
+- to ease the learning curve for users coming from different backgrounds.
+- In Apache Spark 1.2, Databricks, jointly with AMPLab, UC Berkeley, continues this effort by introducing a pipeline API to MLlib for easy creation and tuning of practical ML pipelines.
+- A practical ML pipeline often involves a sequence of data pre-processing, feature extraction, model fitting, and validation stages.
+- For example, classifying text documents might involve text segmentation and cleaning, extracting features, and training a classification model with cross-validation.
+- Though there are many libraries we can use for each stage, connecting the dots is not as easy as it may look, especially with large-scale datasets.
+- Most ML libraries are not designed for distributed computation or they do not provide native support for pipeline creation and tuning.
+- Unfortunately, this problem is often ignored in academia, and it has received largely ad-hoc treatment in industry, where development tends to occur in manual one-off pipeline implementations.
+- In this post, we briefly describe the work done to address ML pipelines in MLlib, a joint effort between Databricks and AMPLab, UC Berkeley, and inspired by the scikit-learn project and some earlier work on MLI
+- Dataset Abstaction
+- In the new pipeline design, a dataset is represented by Spark SQL’s SchemaRDD and an ML pipeline
+- A sequence of dataset transformations.
+--> Update: SchemaRDD was renamed to DataFrame in Spark 1.3.
+--> Each transformation takes an input dataset and outputs the transformed dataset, which becomes the input to the next stage.
+--> We leverage on Spark SQL for several reasons: data import/export, flexible column types and operations, and execution plan optimization.
+- Data import/export is the start/end point of an ML pipeline.
+- MLlib currently provides import/export utilities for several application-specific types:
+- LabeledPoint for classification and regression
+- Rating for collaborative filtering
+- However, realistic datasets may contain many types, such as user/item IDs, timestamps, or raw records.
+- The current utilities cannot easily handle datasets with combinations of these types, and they use inefficient text storage formats adopted from other ML libraries.
+- Feature transformations usually form the majority of a practical ML pipeline. - A feature transformation can be viewed as appending new columns created from existing columns.
+--> For example, text tokenization breaks a document up into a bag of words, and tf-idf converts a bag of words into a feature vector, while during the transformations the labels need to be preserved for model fitting.
+--> More complex feature transformations are quite common in practice.
+--> Hence, the dataset needs to support columns of different types, including dense and sparse vectors, and operations that create new columns from existing ones.
+- They are unnecessary for model fitting, but useful in prediction and model inspection. It doesn’t provide much information if the prediction dataset only contains the predicted labels.
+- If we want to inspect the prediction results checking false positives, it is quite useful to look at the predicted labels along with the raw input text and tokenized words.
+- The columns needed at each stage are quite different. It would be ideal that the underlying execution engine can optimize for us and only load the required columns.
+- Fortunately, Spark SQL already provides most of the desired functions and we don’t need to reinvent the wheel.
+- Spark SQL supports import/export SchemaRDDs from/to Parquet, an efficient columnar storage format, and easy conversions between RDDs and SchemaRDDs.
+- It also supports pluggable external data sources like Hive and Avro.
+- Creating (or declaring to be more precise) new columns from existing columns is easy with user-defined functions.
+- The materialization of SchemaRDD is lazy.
+- Spark SQL knows how to optimize the execution plan based on the columns requested, which fits our needs well.
+- SchemaRDD supports standard data types.
+- To make it a better fit for ML, we worked together with the Spark SQL team and added Vector type as a user-defined type that supports both dense and sparse feature vectors.
+- More complete dataset examples in Scala and Python can be found under the `examples/` folder of the Spark repository. We refer users to Spark SQL to learn more about SchemaRDD and the operations it supports.
+val sqlContext = SQLContext(sc)
+import sqlContext._
+val labeledPointRDD: RDD[LabeledPoint] =
+MLUtils.loadLibSVMFile("/path/to/libsvm")
+labeledPointRDD.saveAsParquetFile("/path/to/parquet")
+val dataset = parquetFile("/path/to/parquet")
+dataset.select('features).collect().foreach(println)
+- Pipeline
+- The new pipeline API lives under a new package named “spark.ml”.
+- A pipeline consists of a sequence of stages.
+- There are two basic types of pipeline stages:
+- Transformer and Estimator.
+--> A Transformer takes a dataset as input and produces an augmented dataset as output.
+- A tokenizer is a Transformer that transforms a dataset with text into an dataset with tokenized words.
+--> An Estimator must be first fit on the input dataset to produce a model, which is a Transformer that transforms the input dataset.
+- Logistic regression is an Estimator that trains on a dataset with labels and features and produces a logistic regression model.
+- Creating a pipeline is easy: simply declare its stages, configure their parameters, and chain them in a pipeline object.
+- For example the following code creates a simple text classification pipeline consisting of a tokenizer, a hashing term frequency feature extractor, and logistic regression.
+val tokenizer = new Tokenizer()
+.setInputCol("text")
+.setOutputCol("words")
+val hashingTF = new HashingTF()
+.setNumFeatures(1000)
+.setInputCol(tokenizer.getOutputCol)
+.setOutputCol("features")
+val lr = new LogisticRegression()
+.setMaxIter(10)
+.setRegParam(0.01)
+val pipeline = new Pipeline()
+.setStages(Array(tokenizer, hashingTF, lr))
+- The pipeline itself is an Estimator, and hence we can call fit on the entire pipeline easily.
+val model = pipeline.fit(trainingDataset)
+- The fitted model consists of the tokenizer, the hashing TF feature extractor, and the fitted logistic regression model. The following diagram draws the workflow, where the dash lines only happen during pipeline fitting.
+- The fitted pipeline model is a transformer that can be used for prediction, model validation, and model inspection.
+model.transform(testDataset)
+  .select('text, 'label, 'prediction)
+  .collect()
+  .foreach(println)
+- One unfortunate characteristic of ML algorithms is that they have many hyperparameters that must be tuned.
+- These hyperparameters – e.g. degree of regularization are distinct from the model parameters being optimized by MLlib.
+- It is hard to guess the best combination of hyperparameters without expert knowledge on both the data and the algorithm.
+- Even with expert knowledge, it may become unreliable as the size of the pipeline and the number of hyperparameters grows.
+- Hyperparameter tuning (choosing parameters based on performance on held-out data) is usually necessary to obtain meaningful results in practice. For example, we have two hyperparameters to tune in the following pipeline and we put three candidate values for each.
+- Therefore, there are nine combinations in total (four shown in the diagram below) and we want to find the one that leads to the model with the best evaluation result.
+- We support cross-validation for hyperparameter tuning.
+- We view cross-validation as a meta-algorithm, which tries to fit the underlying estimator with user-specified combinations of parameters, cross-evaluate the fitted models, and output the best one. Note that there is no specific requirement on the underlying estimator, which could be a pipeline, as long as it could be paired with an Evaluator that outputs a scalar metric from predictions
+val paramGrid = new ParamGridBuilder()
+  .addGrid(hashingTF.numFeatures, Array(10, 20, 40))
+  .addGrid(lr.regParam, Array(0.01, 0.1, 1.0))
+  .build()
+val cv = new CrossValidator()
+  .setNumFolds(3)
+  .setEstimator(pipeline)
+  .setEstimatorParamMaps(paramGrid)
+  .setEvaluator(new BinaryClassificationEvaluator)
+val cvModel = cv.fit(trainingDataset
+- It is important to note that users can embed their own transformers or estimators into an ML pipeline, as long as they implement the pipeline interfaces.
+- The API makes it easy to use and share code maintained outside MLlib. More complete code examples in Java and Scala can be found under the ‘examples/’ folder of the Spark repository. We refer users to the spark.ml user guide for more information about the pipeline API.
+Machine Learning by Python
+13:00 - 17:30
+- This post aims to take a newcomer from minimal knowledge of machine learning in Python all the way to knowledgeable practitioner in 7 steps, all while using freely available materials and resources along the way.
+- The prime objective of this outline is to help you wade through the numerous free options that are available; there are many, to be sure, but which are the best
+- Which complement one another
+- What is the best order in which to use selected resources
+--> Moving forward, I make the assumption that you are not an expert in:
+▪  Machine learning
+▪  Python
+▪  Any of Python's machine learning, scientific computing, or data analysis libraries
+- It would probably be helpful to have some basic understanding of one or both of the first 2 topics, but even that won't be necessary; some extra time spent on the earlier steps should help compensate.
+- Basic Python Skills
+- If we intend to leverage Python in order to perform machine learning, having some base understanding of Python is crucial.
+- Fortunately, due to its widespread popularity as a general purpose programming language, as well as its adoption in both scientific computing and machine learning, coming across beginner's tutorials is not very difficult. - - Your level of experience in both Python and programming in general are crucial to choosing a starting point.
+- First, you need Python installed. Since we will be using scientific computing and machine learning packages at some point, I suggest that you install Anaconda.
+- It is an industrial-strength Python implementation for Linux, OSX, and Windows, complete with the required packages for machine learning, including numpy, scikit-learn, and matplotlib.
+- It also includes iPython Notebook, an interactive environment for many of our tutorials.
+- I would suggest Python 2.7, for no other reason than it is still the dominant installed version.
+- If you have no knowledge of programming, my suggestion is to start with the following free online book, then move on to the subsequent materials:
+- Python The Hard Way by Zed A. Shaw
+- If you have experience in programming but not with Python in particular, or if your Python is elementary, I would suggest one or both of the following:
+- Google Developers Python Course (highly recommended for isual learners)
+- An Introduction to Python for Scientific Computing by M. Scott Shell
+- Of course, if you are an experienced Python programmer you will be able to skip this step.
+- Foundational Machine Learning Skills
+- KDnuggets' own Zachary Lipton has pointed out that there is a lot of variation in what people consider a data scientist
+- This actually is a reflection of the field of machine learning, since much of what data scientists do involves using machine learning algorithms to varying degrees.
+- Is it necessary to intimately understand kernel methods in order to efficiently create and gain insight from a support vector machine model
+- Of course not. Like almost anything in life, required depth of theoretical understanding is relative to practical application.
+- Gaining an intimate understanding of machine learning algorithms is beyond the scope of this article, and generally requires substantial amounts of time investment in a more academic setting, or via intense self-study at the very least.
+- The good news is that you don't need to possess a PhD-level understanding of the theoretical aspects of machine learning in order to practice, in the same manner that not all programmers require a theoretical computer science education in order to be effective coders.
+- Andrew Ng's Coursera course often gets rave reviews for its content;
+- my suggestion, however, is to browse the course notes compiled by a former student of the online course's previous incarnation.
+- Skip over the Octave-specific notes
+--> a Matlab-like language unrelated to our Python pursuits.
+- Be warned that these are not "official" notes, but do seem to capture the relevant content from Andrew's course material.
+- Of course, if you have the time and interest, now would be the time to take Andrew Ng's Machine Learning course on Coursera
+--> There all sorts of video lectures out there if you prefer, alongside Ng's course mentioned above. I'm a fan of Tom Mitchell, so here's a link to his recent lecture videos (along with Maria-Florina Balcan), which I find particularly approachable:
+--> You don't need all of the notes and videos at this point. A valid strategy involves moving forward to particular exercises below, and referencing applicable sections of the above notes and videos when appropriate. For example, when you come across an exercise implementing a regression model below, read the appropriate regression section of Ng's notes and/or view Mitchell's regression videos at that time.
+- Scientific Python Packages Overview
+- Alright. We have a handle on Python programming and understand a bit about machine learning.
+- Beyond Python there are a number of open source libraries generally used to facilitate practical machine learning.
+- In general, these are the main so-called scientific Python libraries we put to use when performing elementary machine learning tasks (there is clearly subjectivity in this):
+▪  numpy - mainly useful for its N-dimensional array objects
+▪  pandas - Python data analysis library, including structures such as dataframes
+▪  matplotlib - 2D plotting library producing publication quality figures
+▪  scikit-learn - the machine learning algorithms used for data analysis and data mining tasks
+- A good approach to learning these is to cover this material:
+- You will see some other packages in the tutorials below, including, for example, Seaborn, which is a data visualization library based on matplotlib. The aforementioned packages are (again, subjectively) the core of a wide array of machine learning tasks in Python; however, understanding them should let you adapt to additional and related packages without confusion when they are referenced in the following tutorials.
+- Getting Started with Machine Learning in Python
+--> The time has come. Let's start implementing machine learning algorithms with Python's de facto standard machine learning library, scikit-learn.
+--> Many of the following tutorials and exercises will be driven by the iPython (Jupyter) Notebook, which is an interactive environment for executing Python. These iPython notebooks can optionally be viewed online or downloaded and interacted with locally on your own computer.
+--> Also note that the tutorials below are from a number of online sources. All Notebooks have been attributed to the authors; if, for some reason, you find that someone has not been properly credited for their work
+--> Our first tutorials for getting our feet wet with scikit-learn follow. I suggest doing all of these in order before moving to the following steps.
+ - A general introduction to scikit-learn, Python's most-used general purpose machine learning library, covering the k-nearest neighbors algorithm
+- A more in-depth and expanded introduction, including a starter project with a well-known dataset from start to finish
+- A focus on strategies for evaluating different models in scikit-learn, covering train/test dataset splits
+- Machine Learning Topics with Python
+--> With a foundation having been laid in scikit-learn, we can move on to some more in-depth explorations of the various common, and useful, algorithms. We start with k-means clustering, one of the most well-known machine learning algorithms.
+--> It is a simple and often effective method for solving unsupervised learning problems
+- Advanced Machine Learning Topics with Python
+--> We've gotten our feet wet with scikit-learn, and now we turn our attention to some more advanced topics. First up are support vector machines, a not-necessarily-linear classifier relying on complex transformations of data into higher dimensional space.
+--> Next, random forests, an ensemble classifier, are examined via a Kaggle Tatanic competition walk-through
+--> Dimensionality reduction is a method for reducing the number of variables being considered in a problem. Principal Component Analysis is a particular form of unsupervised dimensionality reduction
+--> Before moving on to the final step, we can take a moment to consider that we have come a long way in a relatively short period of time.
+--> Using Python and its machine learning libraries, we have covered some of the most common and well-known machine learning algorithms (k-nearest neighbors, k-means clustering, support vector machines), investigated a powerful ensemble technique (random forests), and examined some additional machine learning support tasks (dimensionality reduction, model validation techniques).
+--> Along with some foundational machine learning skills, we have started filling a useful toolkit for ourselves.
+- We will add one more in-demand tool to that kit before wrapping up.
+- This quickstart tutorial helps you quickly start extending Azure Machine Learning by using the R programming language.
+--> Follow this R programming tutorial to create, test and execute R code within Azure Machine Learning.
+--> As you work through tutorial, you will create a complete forecasting solution by using the R language in Azure Machine Learning.
+- Microsoft Azure Machine Learning contains many powerful machine learning and data manipulation modules.
+- The powerful R language has been described as the lingua franca of analytics. Happily, analytics and data manipulation in Azure Machine Learning can be extended by using R.
+- This combination provides the scalability and ease of deployment of Azure Machine Learning with the flexibility and deep analytics of R.
+- Forecasting and the dataset
+--> Forecasting is a widely employed and quite useful analytical method. Common uses range from predicting sales of seasonal items, determining optimal inventory levels, to predicting macroeconomic variables.
+--> Forecasting is typically done with time series models.
+- Time series data is data in which the values have a time index. The time index can be regular every month or every minute, or irregular.
+- A time series model is based on time series data.
+- The R programming language contains a flexible framework and extensive analytics for time series data.
+- In this quickstart guide we will be working with California dairy production and pricing data.
+- This data includes monthly information on the production of several dairy products and the price of milk fat, a benchmark commodity.
+- Organization
+--> We will progress through several steps as you learn how to create, test and execute analytics and data manipulation R code in the Azure Machine Learning environment.
+- First we will explore the basics of using the R language in the Azure Machine Learning Studio environment.
+- Then we progress to discussing various aspects of I/O for data, R code and graphics in the Azure Machine Learning environment.
+- We will then construct the first part of our forecasting solution by creating code for data cleaning and transformation.
+- With our data prepared we will perform an analysis of the correlations between several of the variables in our dataset.
+- Finally, we will create a seasonal time series forecasting model for milk production.
+- Overview
+Save the R script into a .R file. I call my script file "simpleplot.R". Here's the contents.
+Create a zip file and copy your script into this zip file. On Windows, you can right-click on the file and select Send to, and then Compressed folder. This will create a new zip file containing the "simpleplot.R" file.
+Add your file to the datasets in Machine Learning Studio, specifying the type as zip. You should now see the zip file in your datasets.
+Drag and drop the zip file from datasets onto the ML Studio canvas.
+Connect the output of the zip data icon to the Script Bundle input of the Execute R Script module.
+Type the source() function with your zip file name into the code window for the Execute R Script module. In my case I typed source("src/simpleplot.R").
+Make sure you click Save.
+- Data filtering and transformation
+- In this section we will perform some basic data filtering and transformation operations on the California dairy data. By the end of this section we will have data in a format suitable for building an analytic model.
+- More specifically, in this section we will perform several common data cleaning and transformation tasks:
+- type transformation, filtering on dataframes, adding new computed columns, and value transformations.
+- This background should help you deal with the many variations encountered in real-world problems.
+- The complete R code for this section is available in the zip file you downloaded earlier.
+- There is quite a bit happening in the ts.detrend() function. Most of this code is checking for potential problems with the arguments or dealing with exceptions, which can still arise during the computations. Only a few lines of this code actually do the computations.
+`- We have already discussed an example of defensive programming in Value transformation.
+- Both computation blocks are wrapped in tryCatch(). For some errors it makes sense to return the original input vector, and in other cases, I return a vector of zeros.
+- Note that the linear regression used for de-trending is a time series regression. The predictor variable is a time series object.
+- Once ts.detrend() is defined we apply it to the variables of interest in our dataframe.
+- We must coerce the resulting list created by lapply() to data dataframe by usingas.data.frame().
+- Because of defensive aspects of ts.detrend(), failure to process one of the variables will not prevent correct processing of the others.
+- The final line of code creates a pairwise scatterplot. After running the R code, the results of the scatterplot
+- Output a dataframe
+- We have computed the pairwise correlations as a list of R ccf objects. This presents a bit of a problem as the Result Dataset output port really requires a dataframe.
+- Further, the ccf object is itself a list and we want only the values in the first element of this list, the correlations at the various lags.
+- The first line of code is a bit tricky, and some explanation may help you understand it. Working from the inside out  we have the following:
+The '[[' operator with the argument '1' selects the vector of correlations at the lags from the first element of the ccf object list.
+The do.call() function applies the rbind() function over the elements of the list returns by lapply().
+The data.frame() function coerces the result produced by do.call() to a dataframe.
+- Time series example: seasonal forecasting
+- Our data is now in a form suitable for analysis, and we have determined there are no significant correlations between the variables.
+- Let's move on and create a time series forecasting model. Using this model we will forecast California milk production for the 12 months of 2013.
+- Our forecasting model will have two components, a trend component and a seasonal component.
+- The complete forecast is the product of these two components. This type of model is known as a multiplicative model.
+- The alternative is an additive model. We have already applied a log transformation to the variables of interest, which makes this analysis tractable.
+- Create a training dataset
+- With the dataframe constructed we need to create a training dataset.
+- This data will include all of the observations except the last 12, of the year 2013, which is our test dataset.
+- The following code subsets the dataframe and creates plots of the dairy production and price variables.
+- I then create plots of the four production and price variables. An anonymous function is used to define some augments for plot, and then iterate over the list of the other two arguments withMap().
+- If you are thinking that a for loop would have worked fine here, you are correct. But, since R is a functional language I am showing you a functional approach.
+- A trend model
+- Having created a time series object and having had a look at the data, let's start to construct a trend model for the California milk production data. We can do this with a time series regression.
+- However, it is clear from the plot that we will need more than a slope and intercept to accurately model the observed trend in the training data.
+- Given the small scale of the data, I will build the model for trend in RStudio and then cut and paste the resulting model into Azure Machine Learning.
+- RStudio provides an interactive environment for this type of interactive analysis.
+As a first attempt, I will try a polynomial regression with powers up to 3.
+- There is a real danger of over-fitting these kinds of models.
+- Therefore, it is best to avoid high order terms.
+- The I()function inhibits interpretation of the contents (interprets the contents 'as is') and allows you to write a literally interpreted function in a regression equation.
+- Seasonal model
+- With a trend model in hand, we need to push on and include the seasonal effects.
+- We will use the month of the year as a dummy variable in the linear model to capture the month-by-month effect.
+- Note that when you introduce factor variables into a model, the intercept must not be computed.
+- If you do not do this, the formula is over-specified and R will drop one of the desired factors but keep the intercept term.
+- These residuals look reasonable. There is no particular structure, except the effect of the 2008-2009 recession, which our model does not account for particularly well.
+- Forecasting and model evaluation
+- There is just one more thing to do to complete our example. We need to compute forecasts and measure the error against the actual data.
+- Our forecast will be for the 12 months of 2013. We can compute an error measure for this forecast to the actual data that is not part of our training dataset.
+- Additionally, we can compare performance on the 18 years of training data to the 12 months of test data.
+- A number of metrics are used to measure the performance of time series models.
+- In our case we will use the root mean square (RMS) error.
+- The following function computes the RMS error between two series.
+- As with the log.transform() function we discussed in the "Value transformations" section, there is quite a lot of error checking and exception recovery code in this function.
+- The principles employed are the same. The work is done in two places wrapped in tryCatch().
+- First, the time series are exponentiated, since we have been working with the logs of the values. Second, the actual RMS error is computed.
+- Equipped with a function to measure the RMS error, let's build and output a dataframe containing the RMS errors.
+- We will include terms for the trend model alone and the complete model with seasonal factors.
+- The following code does the job by using the two linear models we have constructed.

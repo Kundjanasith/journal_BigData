@@ -1,0 +1,355 @@
+Komes1
+
+##Customer Analytics in Banking
+- Natthawan Apiratanapimolchai --> Natthawan.rat@tmbbank.com P'nok
+  AIS.AIA --> TMB
+  Data Analytic, Data Mining more than 10 years
+* Customer Data & Customer Analytic
+* ความสำคัญของ ข้อมูลในองค์กร
+  เราจะทำอย่างไรให้องค์กรมองลูกค้าเป็นสำคัญ ( Customer Insight --> Drive Everything by customer )
+- แต่ก่อนมอง Product Base
+- ตอนนี้มอง Customer Base
+CUSTOMER ANALYTICS & SEGMENTATION FOR CUSTOMER CENTRIC ORGANIZATION & MARKETING OPTIMIZATION
+Customer Centric --> Customer Insight
+  - Quality
+  - Efficiency
+  - Service
+  - Realiability
+Organization Drive by customer
+Post organization --> Product date
+Customer Centric Organization ==> Customer Focus
+  - Move beyond the service
+  - Re-oriented and align entire operating models to focus the customer
+  - Increase customer satisfaction
+  - Understand customer value and value to their the customer
+  - Carefully define and quantify customer segmentation
+  - Tailor business streams (product development, marketing, sale, supply chain, operation, customer care, etc.)
+  to deliver the greatest value to the best customer at the least cost
+ความเป็น customer centric
+Product-Focused VS Customer-Centric
+1. Customer orientation
+- แต่ก่อน สนใจแต่ของที่เค้่าอยากจะขาย --> Transactional Data
+- ตอนนี้ สนใจของที่ลูกค้าอยากได้ --> Customer Data
+--> Recommendation
+  - * Customer life cycle
+first company --> amazon
+  Product Focused
+    - Discrete transaction at a point in time
+    - Event oriented marketing
+    - Narrow focus
+  Customer Centric
+    - Customer life cycle orientation
+    - Work with customer to solve both immediate and long term issues
+    - Build customer understanding at each interaction
+2. Solution mindset
+--> company --> GE Aviation
+* ไม่ได้ขายแค่ material or product แต่เค้าขาย service
+--> Know problem of customer --> ให้บริการ solution
+* Shift from selling product to solve the problem
+  Product Focused
+    - Narrow definition of customer value position
+    - Off the shelf products
+    - Top down design
+  Customer Centric
+    - Board definition of the customer value proposition
+    - Bundles that combine products service and knowledge
+    - Bottom up designed on the front line
+3. Advice Orientation
+* company --> citi bank
+  ไม่รู้ความต้องการของตัวเอง
+  The citipro financial check up --> App
+  Product Focused
+    - Perceived as outsider selling in
+    - Push product
+    - Transactional relationship
+    - Individual to individual
+  Customer Centric
+    - Working as an insider
+    - Solution focus
+    - Advisory relationship
+    - Team-based selling
+4. Can - Do Customer Interface --> Can do Attitude
+--> company --> The Ritz-Carlton --> hotel
+  Product Focused
+    - Centrally driven
+    - Limited decision making power in the field
+    - Incentives based on product economics and individual performance
+  Customer Centric
+    - Innovation and authority at the front line with the customer
+    - Incentive based on customer economics and team performance
+5. Business Processes
+  Product Focused
+    - "ONE SIZE FIT ALL" processes
+    - Customization adds complexity --> One off work arounds
+  Customer Centric
+    - Tailored business streams
+    - Balance between customization and complexity
+    - Complexity isolated within the system
+6. Organizational Linkages and Metrics
+  Product Focused
+    - Rigid organizational boundaries
+    - Organizational silos control resources
+    - Limited trust across organizational boundaries
+  Customer Centric
+    - Cross organizational teaming
+    - Join credit
+    - High degree of organizational
+Customer insight is very important
+** A customer centric organization has customer insight and orientation embedded throughout
+- A deep TRUTH about the customer based on their behavior, experiences, beliefs, needs or desires that is relevant
+to the task or issue and "rings bells with target people"
+ทางที่จะทราบ customer insight
+  - สมมุตืตัวเอง
+  - Social listening
+  - บัตรสมาชิก Member card
+How to know customer insight --> 360 of customer information
+  - Internal Customer Data --> ทำให้ข้อมูล up to date
+    - Demographic
+      - Age, Gender, Income, Family, Sex, Education, Occupation
+    - Psychographic
+      - Lifestyle, Social class, Personality, Reference
+    - Geographic
+      - City, Region, Urbanite, Neighborhood
+  - Behavior usage data --> Investment product
+    - Legacy system
+    - Touch point system
+    - Billing
+    - Complaint system
+    - Data warehouse
+  - Research --> Know why customer do like that
+    - Focus group
+    - Quantitative survey
+    - Segmentation study
+    - Interview
+    - Social research
+    - Mystery shopping
+    - Staff feedback
+  - Social --> Digital platform
+    --> pantip, facebook, instragram, twitter
+    - Community web board
+    - Social network
+    = Company website
+Customer insight is very important
+    - Product & Service
+      - Differentiate
+      - Initiate the new one to serve market segment
+      - Find hidden needs and make improvements
+    - Sale
+      - Create effectively fit your consumers
+      - Find understand and focus on your best
+      customers can make you a market leader
+      - Target the right customer
+    - Branding
+      - Improve the competitive positioning to be more accurate
+      and better differentiate from the competition
+      - Reduce competition by narrowly defined market and establishing
+      a niche Market
+    - Portfolio
+      - Identify the most & least profitable customers
+      - Avoid unprofitable markets
+      - Increase brand loyalty and decrease brand switching
+Customer Insight to improve sale
+* Cluster customer to driven
+  - Same product
+  - Different promotion
+  - Background
+    - Customers in each segments have the different needed on insurance
+  - Deliverable
+    - Different offer
+    - Different sale-talk
+    - Different POSM
+POSM is differently developed based on customer insight who are looking for
+  BANK ASSURANCE but different objective
+  1. Savvy Insurers
+    หาประกันเพิ่ม
+  2. Casual Followers
+    หาประกันเพื่อตัวเอง
+  3. Family Protectors
+    หาประกันเพื่อครอบครัว
+  4. Next Generation
+    หาประกันแรก
+Important Tools
+  - Database Analysis
+  - Segmentation
+    - segmentation or die
+    = Define & Subdivide a large homogenous
+      market into clearly identifiable segment
+    = Market Segment
+      - Clear Identification
+      - Measurability
+      - Accessibility
+      - Align with Strategy
+    - Life Stages
+      - Student
+      - Entering the workforce
+      - Raising a family
+      - Experience professional
+      - Pre or Post retirement
+    - Occupation
+      - Payroll
+      - Military
+      - Student
+      - Government
+      - Owner Operator
+    - Social
+      - Affluent
+      - Mass Affluent
+      - Middle
+      - Lower Middle
+      - Mass
+    - Behavior
+      - Demographic
+      - Usage-Transaction
+      - Psychographic
+      - Geographic
+  - Data Mining & Predictive Model
+      - Data Mining
+        - Decision, Knowledge, Information, Data
+      - Method
+        - Prediction Methods
+          --> Use some variables to predict unknown of future
+          values of other variables
+            - Classification
+            - Regression
+            - Deviation Detection
+        - Description Methods
+          --> Find human interpretable patterns that describe the data
+            - Clustering
+            - Association Rule Discovery
+            - Sequential Pattern Discovery
+      - Ex
+        - Market basket Analysis
+        - X-Selling Personal loan
+        - Churn model
+        - Behavior segment by clustering --> Transaction al behavior
+  ** Ability to transform their understanding of their customer base.
+  This knowledge help us to extract maximum benefit from customer insight
+Mutual Fund Who Are Likely to Buy More
+  - Concept --> Up selling
+    - Recent
+    - Frequent
+    - Monetary
+Deliver Segmentation Thru Direct Marketing Campaign
+What is direct marketing?
+  - To individually offer customers with the product or service that matched
+  to their needs by delivering the right offer by the right message or channel
+  to the right person at the right time
+  - Acquisition
+    - Direct to prospect target who are in selective segment
+  - X-selling
+    - X-selling more product to increase share of wallet
+  - Retention
+    - Maintain quality customer to stay with us longer and
+    win back if they left
+  - Up selling & Deep selling
+    - Increase their wallet size on target customer
+How to deliver direct marketing campaign
+  5 key elements to deliver direct marketing campaign
+  - Customer
+  - Product
+  - Channel
+  - Communication
+  - Time
+Direct Marketing Campaign
+  - Segmentation
+  - Targeting
+  - Positioning
+    - Offer
+    - Promotion
+    - Channel
+    - Time
+Measure success rate
+Case study
+  - UBank --> In Australia
+  - PeopleLikeU application
+
+##Risk and Portfolio Management
+- Fast ?
+Yesterday's Business Strategies
+  - Intellectual Property
+  - Industrial Sectors --> big
+  - Research --> small
+  A --> Actionable Intelligence
+  B --> Business Intelligence
+  C --> Competitive Intelligence
+** Patent Infringement
+Today's Business Strategies
+  Data
+    - Science
+      - Patents
+      - Non-Patent Content
+    - Analytic
+      - Human Driven
+      - Computational Driven
+  Actionable Intelligence
+    - Create the actionable information relevant
+    to the identified question or issue
+  Opportunity to
+    - Practice
+    - Exclude
+Tomorrow's Business Strategy
+  = f(x,xx,y,yy,IP strategy, Risk/Return)
+  - Protection of intellectual property assets
+  - Reducing the risks associated with costly patent
+  - Infringement litigation
+  - Competitor Environment --> Call for action
+  - Risks associated with not having a IP strategy
+What do you know about PATENT
+- Patent
+  - What is a Patent?
+  - What is in the Patent?
+  - Where/how do you find them?
+- Once you get them
+  - How do you read them?
+  - What do you get from Patent?
+Why did I search Patent Database First?
+  - Source of technological information
+  - Overview of the prior invention
+  - Background history of the problem
+  - Claims and boundary of the invention
+  - Possible solution for given problem
+  * Gather business intelligence: Inventor, Competitors,
+  potential partners strategies
+  * Avoid redeveloping existing invention & duplication of
+  R&D work
+A Patent consist of
+  - Drawing
+  - Technical field
+  - Background of the invention
+  - Summary of invention
+  - Claims
+Patent Databases
+  - Most up-to-date source of information on applied technology
+  - Up to 80% of current technical knowledge can only be discovered
+  in patent documents
+  - This information is rapidly available as most patent applications
+  are published 18 months after the first filling
+  - All documents are classified by technological areas on the basis
+  of the international Patent Classification which is the world wide
+  standard
+  - Patent Databases
+    - WIPO, USPTO, ESPACENET, JPO, IPICThailand
+Smart Question to ask?
+How did I do Patent Mapping Project?
+  1. Define scopes of work --> Objectives
+  2. Conduct data collection
+    - Patent search
+    - Data Cleansing
+  3. Buildup a local Patent database
+  4. Analyze Patents
+    - Data Mining ( Macro Patent Maps )
+    - Text Mining ( Micro Patent Maps )
+  5. Valuable results/reports
+Patent Maps
+  - Guideline
+    - Patent Count Analysis
+      - Technology life cycle
+      - Patent Quantity comparison
+      - Country Analysis
+      - Assignee Analysis
+        - R&D capability
+        - Citation Analysis ( FW/BW )
+        - Citation Rate Analysis
+    - Classification Analysis
+      - IPC Patent activity analysis
+      - No of IPC by competitors

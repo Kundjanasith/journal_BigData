@@ -1,0 +1,281 @@
+Analysis
+08:30 - 12:00
+- Level
+- Entire 5 Level
+- Q53 --> Student Data form student who admission in 2553
+- Q54 --> Student Data form student who admission in 2554
+- Q55 --> Student Data form student who admission in 2555
+- Q56 --> Student Data form student who admission in 2556
+- Q57 --> Student Data form student who admission in 2557
+- EnrolledYear 15 Level
+- Q53-2553 --> Student Data form student in Q53 who enroll in 2553 then they are the first year student
+- Q53-2554 --> Student Data form student in Q53 who enroll in 2554 then they are the second year student
+- Q53-2555 --> Student Data form student in Q53 who enroll in 2555 then they are the third year student
+- Q53-2556 --> Student Data form student in Q53 who enroll in 2556 then they are the fourth year student
+- Q53-2557 --> Student Data form student in Q53 who enroll in 2557 then they are the fifth year student
+- Q54-2554 --> Student Data form student in Q54 who enroll in 2554 then they are the first year student
+- Q54-2555 --> Student Data form student in Q54 who enroll in 2555 then they are the second year student
+- Q54-2556 --> Student Data form student in Q54 who enroll in 2556 then they are the third year student
+- Q54-2557 --> Student Data form student in Q54 who enroll in 2557 then they are the fourth year student
+- Q55-2555 --> Student Data form student in Q55 who enroll in 2555 then they are the first year student
+- Q55-2556 --> Student Data form student in Q55 who enroll in 2556 then they are the second year student
+- Q55-2557 --> Student Data form student in Q55 who enroll in 2557 then they are the third year student
+- Q56-2556 --> Student Data form student in Q56 who enroll in 2556 then they are the first year student
+- Q56-2557 --> Student Data form student in Q56 who enroll in 2557 then they are the second year student
+- Q57-2557 --> Student Data form student in Q57 who enroll in 2557 then they are the first year student
+- Semester 45 Level
+- Q53-2553-1 --> Student Data form student in Q53 who enroll in 2553 then they are the first year student in first semester
+- Q53-2553-2 --> Student Data form student in Q53 who enroll in 2553 then they are the first year student in second semester
+- Q53-2553-3 --> Student Data form student in Q53 who enroll in 2553 then they are the first year student in third semester
+- Q53-2554-1 --> Student Data form student in Q53 who enroll in 2554 then they are the second year student in first semester
+- Q53-2554-2 --> Student Data form student in Q53 who enroll in 2554 then they are the second year student in second semester
+- Q53-2554-3 --> Student Data form student in Q53 who enroll in 2554 then they are the second year student in third semester
+- Q53-2555-1 --> Student Data form student in Q53 who enroll in 2555 then they are the third year student in first semester
+- Q53-2555-2 --> Student Data form student in Q53 who enroll in 2555 then they are the third year student in second semester
+- Q53-2555-3 --> Student Data form student in Q53 who enroll in 2555 then they are the third year student in third semester
+- Q53-2556-1 --> Student Data form student in Q53 who enroll in 2556 then they are the fourth year student in first semester
+- Q53-2556-2 --> Student Data form student in Q53 who enroll in 2556 then they are the fourth year student in second semester
+- Q53-2556-3 --> Student Data form student in Q53 who enroll in 2556 then they are the fourth year student in third semester
+- Q53-2557-1 --> Student Data form student in Q53 who enroll in 2557 then they are the fifth year student in first semester
+- Q53-2557-2 --> Student Data form student in Q53 who enroll in 2557 then they are the fifth year student in second semester
+- Q53-2557-3 --> Student Data form student in Q53 who enroll in 2557 then they are the fifth year student in third semester
+- Q54-2554-1 --> Student Data form student in Q54 who enroll in 2554 then they are the first year student in first semester
+- Q54-2554-2 --> Student Data form student in Q54 who enroll in 2554 then they are the first year student in second semester
+- Q54-2554-3 --> Student Data form student in Q54 who enroll in 2554 then they are the first year student in third semester
+- Q54-2555-1 --> Student Data form student in Q54 who enroll in 2555 then they are the second year student in first semester
+- Q54-2555-2 --> Student Data form student in Q54 who enroll in 2555 then they are the second year student in second semester
+- Q54-2555-3 --> Student Data form student in Q54 who enroll in 2555 then they are the second year student in third semester
+- Q54-2556-1 --> Student Data form student in Q54 who enroll in 2556 then they are the third year student in first semester
+- Q54-2556-2 --> Student Data form student in Q54 who enroll in 2556 then they are the third year student in second semester
+- Q54-2556-3 --> Student Data form student in Q54 who enroll in 2556 then they are the third year student in third semester
+- Q54-2557-1 --> Student Data form student in Q54 who enroll in 2557 then they are the fourth year student in first semester
+- Q54-2557-2 --> Student Data form student in Q54 who enroll in 2557 then they are the fourth year student in second semester
+- Q54-2557-3 --> Student Data form student in Q54 who enroll in 2557 then they are the fourth year student in third semester
+- Q55-2555-1 --> Student Data form student in Q55 who enroll in 2555 then they are the first year student in first semester
+- Q55-2555-2 --> Student Data form student in Q55 who enroll in 2555 then they are the first year student in second semester
+- Q55-2555-3 --> Student Data form student in Q55 who enroll in 2555 then they are the first year student in third semester
+- Q55-2556-1 --> Student Data form student in Q55 who enroll in 2556 then they are the second year student in first semester
+- Q55-2556-2 --> Student Data form student in Q55 who enroll in 2556 then they are the second year student in second semester
+- Q55-2556-3 --> Student Data form student in Q55 who enroll in 2556 then they are the second year student in third semester
+- Q55-2557-1 --> Student Data form student in Q55 who enroll in 2557 then they are the third year student in first semester
+- Q55-2557-2 --> Student Data form student in Q55 who enroll in 2557 then they are the third year student in second semester
+- Q55-2557-3 --> Student Data form student in Q55 who enroll in 2557 then they are the third year student in third semester
+- Q56-2556-1 --> Student Data form student in Q56 who enroll in 2556 then
+they are the first year student in first semester
+- Q56-2556-2 --> Student Data form student in Q56 who enroll in 2556 then they are the first year student in second semester
+- Q56-2556-3 --> Student Data form student in Q56 who enroll in 2556 then they are the first year student in third semester
+- Q56-2557-1 --> Student Data form student in Q56 who enroll in 2557 then
+they are the second year student in first semester
+- Q56-2557-2 --> Student Data form student in Q56 who enroll in 2557 then
+they are the second year student in second semester
+- Q56-2557-3 --> Student Data form student in Q56 who enroll in 2557 then
+they are the second year student in third semester
+- Q57-2557-1 --> Student Data form student in Q57 who enroll in 2557 then
+they are the first year student in first semester
+- Q57-2557-2 --> Student Data form student in Q57 who enroll in 2557 then
+they are the first year student in second semester
+- Q57-2557-3 --> Student Data form student in Q57 who enroll in 2557 then
+they are the first year student in third semester
+- Group the student for tracking grade in which Enrolled Year and Semester
+- Group 1 : 0.0 ≤ Grade < 0.5
+- Group 2 : 0.5 ≤ Grade < 1.0
+- Group 3 : 1.0 ≤ Grade < 1.5
+- Group 4 : 1.5 ≤ Grade < 2.0
+- Group 5 : 2.0 ≤ Grade < 2.5
+- Group 6 : 2.5 ≤ Grade < 3.0
+- Group 7 : 3.0 ≤ Grade < 3.5
+- Group 8 : 3.5 ≤ Grade ≤ 4.0
+- Separate interval of time
+* We don't care about third semester ( summer semester ) because grade in third semester almost very high
+- Entrance
+- Entry GPAX
+--> Q53, Q54, Q55, Q56, Q57
+- The first year
+- The first semester
+--> Q53, Q54, Q55, Q56, Q57
+- The second semester
+--> Q53, Q54, Q55, Q56, Q57
+- The second year
+- The first semester
+--> Q53, Q54, Q55, Q56
+- The second semester
+--> Q53, Q54, Q55, Q56
+- The third year
+- The first semester
+--> Q53, Q54, Q55
+- The second semester
+--> Q53, Q54, Q55
+- The fourth year
+- The first semester
+--> Q53, Q54
+- The second semester
+--> Q53, Q54
+- Graduate
+- GPAX
+--> Q53
+Virtualization
+13:00 - 17:30
+- JavsScript Chart
+ - Analysis Graph
+- Line Graph
+- Interval of GPA with Interval of time [ EnrolledYear & Semester ]
+- Pie Graph
+- Number of student in which inerval of GPA
+- Line Graph ( x = EnrolledYear & Semester , y = Interval of GPA )
+- Q53
+- X - Axis
+-->  Entrance, 2553 - 1, 2553 - 2, 2554 - 1, 2554 - 2, 2555 - 1, 2555 - 2, 2556 -1, 2556 - 2, Graduate
+- Y - Axis
+--> [ 1.5 - 2.0, 2.0 - 2.5, 2.5 - 3.0, 3.5 - 4.0 ]
+- Rscript
+file <- read.csv('Q53.csv')
+x1 <- mean(unique(file['ID'])$entry2553_GPAX)
+x2 <- mean(unique(subset(file, EnrolledYear==2553 & Semester==1)['ID']))
+x3 <- mean(unique(subset(file, EnrolledYear==2553 & Semester==2)['ID']))
+x4 <- mean(unique(subset(file, EnrolledYear==2554 & Semester==1)['ID']))
+x5 <- mean(unique(subset(file, EnrolledYear==2554 & Semester==2)['ID']))
+x6 <- mean(unique(subset(file, EnrolledYear==2555 & Semester==1)['ID']))
+x7 <- mean(unique(subset(file, EnrolledYear==2555 & Semester==2)['ID']))
+x8 <- mean(unique(subset(file, EnrolledYear==2556 & Semester==1)['ID']))
+x9 <- mean(unique(subset(file, EnrolledYear==2556 & Semester==2)['ID']))
+x10 <- mean(unique(file['ID'])$GPAX)
+- Q54
+- X - Axis
+-->   Entrance, 2554 - 1, 2554 - 2, 2555 - 1, 2555 - 2, 2556 -1, 2556 - 2, 2557 - 1, 2557 - 2
+- Y - Axis
+--> [ 1.5 - 2.0, 2.0 - 2.5, 2.5 - 3.0, 3.5 - 4.0 ]
+- Rscript
+file <- read.csv('Q54.csv')
+x1 <- mean(unique(file['ID'])$entry2553_GPAX)
+x2 <- mean(unique(subset(file, EnrolledYear==2554 & Semester==1)['ID']))
+x3 <- mean(unique(subset(file, EnrolledYear==2554 & Semester==2)['ID']))
+x4 <- mean(unique(subset(file, EnrolledYear==2555 & Semester==1)['ID']))
+x5 <- mean(unique(subset(file, EnrolledYear==2555 & Semester==2)['ID']))
+x6 <- mean(unique(subset(file, EnrolledYear==2556 & Semester==1)['ID']))
+x7 <- mean(unique(subset(file, EnrolledYear==2556 & Semester==2)['ID']))
+x8 <- mean(unique(subset(file, EnrolledYear==2557 & Semester==1)['ID']))
+x9 <- mean(unique(subset(file, EnrolledYear==2557 & Semester==2)['ID']))
+- Q55
+- X - Axis
+-->   Entrance,  2555 - 1, 2555 - 2, 2556 -1, 2556 - 2, 2557 - 1, 2557 - 2
+- Y - Axis
+--> [ 1.5 - 2.0, 2.0 - 2.5, 2.5 - 3.0, 3.5 - 4.0 ]
+- Rscript
+file <- read.csv('Q55.csv')
+x1 <- mean(unique(file['ID'])$entry2553_GPAX)
+x2 <- mean(unique(subset(file, EnrolledYear==2555 & Semester==1)['ID']))
+x3 <- mean(unique(subset(file, EnrolledYear==2555 & Semester==2)['ID']))
+x4 <- mean(unique(subset(file, EnrolledYear==2556 & Semester==1)['ID']))
+x5 <- mean(unique(subset(file, EnrolledYear==2556 & Semester==2)['ID']))
+x6 <- mean(unique(subset(file, EnrolledYear==2557 & Semester==1)['ID']))
+x7 <- mean(unique(subset(file, EnrolledYear==2557 & Semester==2)['ID']))
+ - Q56
+- X - Axis
+-->   Entrance, 2556 -1, 2556 - 2, 2557 - 1, 2557 - 2
+- Y - Axis
+--> [ 1.5 - 2.0, 2.0 - 2.5, 2.5 - 3.0, 3.5 - 4.0 ]
+- Rscript
+file <- read.csv('Q56.csv')
+x1 <- mean(unique(file['ID'])$entry2553_GPAX)
+x2 <- mean(unique(subset(file, EnrolledYear==2556 & Semester==1)['ID']))
+x3 <- mean(unique(subset(file, EnrolledYear==2556 & Semester==2)['ID']))
+x4 <- mean(unique(subset(file, EnrolledYear==2557 & Semester==1)['ID']))
+x5 <- mean(unique(subset(file, EnrolledYear==2557 & Semester==2)['ID']))
+ - Q57
+- X - Axis
+-->   Entrance, 2557 - 1, 2557 - 2
+- Y - Axis
+--> [ 1.5 - 2.0, 2.0 - 2.5, 2.5 - 3.0, 3.5 - 4.0 ]
+- Rscript
+file <- read.csv('Q56.csv')
+x1 <- mean(unique(file['ID'])$entry2553_GPAX)
+x2 <- mean(unique(subset(file, EnrolledYear==2557 & Semester==1)['ID']))
+x3 <- mean(unique(subset(file, EnrolledYear==2557 & Semester==2)['ID']))
+- Pie Chart
+- y1  --> number of student who have entry GPAX in [ 2.0 - 2.5 ]
+- y2  --> number of student who have entry GPAX in [ 2.5 - 3.0 ]
+- y3  --> number of student who have entry GPAX in [ 3.0 - 3.5 ]
+- y4  --> number of student who have entry GPAX in [ 3.5 - 4.0 ]
+- Q53
+- Rscript
+file <- read.csv('Q53.csv')
+y1 <- nrow(subset( file , group==5 ) )
+y2 <- nrow(subset( file , group==6 ) )
+y3 <- nrow(subset( file , group==7 ) )
+y4 <- nrow(subset( file , group==8 ) )
+- Q54
+- Rscript
+file <- read.csv('Q54.csv')
+y1 <- nrow(subset( file , group==5 ) )
+y2 <- nrow(subset( file , group==6 ) )
+y3 <- nrow(subset( file , group==7 ) )
+y4 <- nrow(subset( file , group==8 ) )
+- Q55
+- Rscript
+file <- read.csv('Q55.csv')
+y1 <- nrow(subset( file , group==5 ) )
+y2 <- nrow(subset( file , group==6 ) )
+y3 <- nrow(subset( file , group==7 ) )
+y4 <- nrow(subset( file , group==8 ) )
+- Q56
+- Rscript
+file <- read.csv('Q56.csv')
+y1 <- nrow(subset( file , group==5 ) )
+y2 <- nrow(subset( file , group==6 ) )
+y3 <- nrow(subset( file , group==7 ) )
+y4 <- nrow(subset( file , group==8 ) )
+- Q57
+- Rscript
+file <- read.csv('Q57.csv')
+y1 <- nrow(subset( file , group==5 ) )
+y2 <- nrow(subset( file , group==6 ) )
+y3 <- nrow(subset( file , group==7 ) )
+y4 <- nrow(subset( file , group==8 ) )
+- Solution
+- No Program
+Q53 --> 18
+Q54 --> 9
+Q55 --> 29
+Q56 --> 17
+Q57 --> 7
+Q58 --> 581
+- Engineering
+Q53 --> 9
+- Mechanical Engineering
+Q53 --> 49
+Q54 --> 41
+Q55 --> 84
+Q56 --> 71
+Q57 --> 46
+- Civil Engineering
+Q53 --> 54
+Q54 --> 46
+Q55 --> 52
+Q56 --> 51
+Q57 --> 31
+- Environmental Engineering
+Q53 --> 10
+Q54 --> 8
+Q55 --> 15
+Q56 --> 6
+Q57 --> 8
+- Electrical Engineering
+Q53 --> 55
+Q54 --> 45
+Q55 --> 41
+Q56 --> 58
+Q57 --> 48
+- Industrial Engineering
+Q53 --> 52
+Q54 --> 42
+Q55 --> 73
+Q56 --> 79
+Q57 --> 41
+- Chemical Engineering
+Q53 --> 21
+Q54 --> 11
+Q55 --> 22
+Q56 --> 24
+Q57 --> 15
+- Link
+Project : http://kundjanasith.com/BigDataStudent/pages/index.html

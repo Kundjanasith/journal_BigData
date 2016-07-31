@@ -1,0 +1,348 @@
+Machine Learning [ Spark - scala ]
+08:30 - 12:00
+- MLlib is spark's machine learning library
+- Its goal is to make practical machine learning scalable and easy.
+- It consists of common learning algorithms and utilities, including classification, regression, clustering, collaborative filtering, dimensionality reduction, as well as lower-level optimization primitives and higher-level pipeline APIs.
+- Packages
+- spark .mllib
+--> contains the original API built on top of RDDs
+- spark.ml
+--> provides higher-level API built on top of DataFrames  for constructing ML pipelines.
+- spark.mllib : Data types, Algorithm, Utilities
+- Data types
+- Local vector
+- Labeled point
+- Local matrix
+- Distributed matrix
+- Row Matrix
+- Indexed Row Matrix
+- Coordinate Matrix
+- Block Matrix
+- Basic statistic
+- Summary statistics
+- Correlations
+- Stratified sampling
+- Hypothesis testing
+- Streaming significance testing
+- Random data generation
+- Kernel Density Estination
+- Classification and regression
+- Binary Classification
+--> linear SVMs, logistic regression, decision trees, random forests, gradient-boosted trees, naive Bayes
+- Multiclass Classification
+--> logistic regression, decision trees, random forests, naive Bayes
+- Regression
+--> linear least squares, Lasso, ridge regression, decision trees, random forests, gradient-boosted trees, isotonic regression
+- Linear models
+- Support Vector Machine
+import org.apache.spark.mllib.classification.{SVMModel, SVMWithSGD}
+import org.apache.spark.mllib.evaluation.BinaryClassificationMetrics
+import org.apache.spark.mllib.util.MLUtils
+val data = MLUtils.loadLibSVMFile(sc, "data/mllib/sample_libsvm_data.txt")
+val splits = data.randomSplit(Array(0.6, 0.4), seed = 11L)
+val training = splits(0).cache()
+val test = splits(1)
+val numIterations = 100
+val model = SVMWithSGD.train(training, numIterations)
+model.clearThreshold()
+val scoreAndLabels = test.map { point =>
+  val score = model.predict(point.features)
+  (score, point.label) }
+val metrics = new BinaryClassificationMetrics(scoreAndLabels)
+val auROC = metrics.areaUnderROC()
+model.save(sc, "myModelPath")
+val sameModel = SVMModel.load(sc, "myModelPath")
+- Logistic regression
+import org.apache.spark.SparkContext
+import org.apache.spark.mllib.classification.{LogisticRegressionWithLBFGS, LogisticRegressionModel}
+import org.apache.spark.mllib.evaluation.MulticlassMetrics
+import org.apache.spark.mllib.regression.LabeledPoint
+import org.apache.spark.mllib.linalg.Vectors
+import org.apache.spark.mllib.util.MLUtils
+val data = MLUtils.loadLibSVMFile(sc, "data/mllib/sample_libsvm_data.txt")
+val splits = data.randomSplit(Array(0.6, 0.4), seed = 11L)
+val training = splits(0).cache()
+val test = splits(1)
+val model = new LogisticRegressionWithLBFGS()
+  .setNumClasses(10)
+  .run(training)
+val predictionAndLabels = test.map { case LabeledPoint(label, features) =>
+  val prediction = model.predict(features)
+  (prediction, label) }
+val metrics = new MulticlassMetrics(predictionAndLabels)
+val precision = metrics.precision
+model.save(sc, "myModelPath")
+val sameModel = LogisticRegressionModel.load(sc, "myModelPath")
+- Linear regression
+import org.apache.spark.mllib.regression.LabeledPoint
+import org.apache.spark.mllib.regression.LinearRegressionModel
+import org.apache.spark.mllib.regression.LinearRegressionWithSGD
+import org.apache.spark.mllib.linalg.Vectors
+val data = sc.textFile("data/mllib/ridge-data/lpsa.data")
+val parsedData = data.map { line =>
+  val parts = line.split(',')
+  LabeledPoint(parts(0).toDouble, Vectors.dense(parts(1).split(' ').map(_.toDouble))) }.cache()
+val numIterations = 100
+val stepSize = 0.00000001
+val model = LinearRegressionWithSGD.train(parsedData, numIterations, stepSize)
+val valuesAndPreds = parsedData.map { point =>
+  val prediction = model.predict(point.features)
+  (point.label, prediction) }
+val MSE = valuesAndPreds.map{case(v, p) => math.pow((v - p), 2)}.mean()
+model.save(sc, "myModelPath")
+val sameModel = LinearRegressionModel.load(sc, "myModelPath")
+- Naive Bayes
+import org.apache.spark.mllib.classification.{NaiveBayes, NaiveBayesModel}
+import org.apache.spark.mllib.linalg.Vectors
+import org.apache.spark.mllib.regression.LabeledPoint
+val data = sc.textFile("data/mllib/sample_naive_bayes_data.txt")
+val parsedData = data.map { line =>
+  val parts = line.split(',')
+  LabeledPoint(parts(0).toDouble, Vectors.dense(parts(1).split(' ').map(_.toDouble)))
+}
+val splits = parsedData.randomSplit(Array(0.6, 0.4), seed = 11L)
+val training = splits(0)
+val test = splits(1)
+val model = NaiveBayes.train(training, lambda = 1.0, modelType = "multinomial")
+val predictionAndLabel = test.map(p => (model.predict(p.features), p.label))
+val accuracy = 1.0 * predictionAndLabel.filter(x => x._1 == x._2).count() / test.count()
+model.save(sc, "target/tmp/myNaiveBayesModel")
+val sameModel = NaiveBayesModel.load(sc, "target/tmp/myNaiveBayesModel")
+- Decision tress
+- Classification
+import org.apache.spark.mllib.tree.DecisionTree
+import org.apache.spark.mllib.tree.model.DecisionTreeModel
+import org.apache.spark.mllib.util.MLUtils
+val data = MLUtils.loadLibSVMFile(sc, "data/mllib/sample_libsvm_data.txt")
+val splits = data.randomSplit(Array(0.7, 0.3))
+val (trainingData, testData) = (splits(0), splits(1))
+val numClasses = 2
+val categoricalFeaturesInfo = Map[Int, Int]()
+val impurity = "gini"
+val maxDepth = 5
+val maxBins = 32
+val model = DecisionTree.trainClassifier(trainingData, numClasses, categoricalFeaturesInfo,
+  impurity, maxDepth, maxBins)
+val labelAndPreds = testData.map { point =>
+  val prediction = model.predict(point.features)
+  (point.label, prediction) }
+val testErr = labelAndPreds.filter(r => r._1 != r._2).count().toDouble / testData.count()
+println("Test Error = " + testErr)
+println("Learned classification tree model:\n" + model.toDebugString)
+model.save(sc, "target/tmp/myDecisionTreeClassificationModel")
+val sameModel = DecisionTreeModel.load(sc, "target/tmp/myDecisionTreeClassificationModel")
+- Regression
+import org.apache.spark.mllib.tree.DecisionTree
+import org.apache.spark.mllib.tree.model.DecisionTreeModel
+import org.apache.spark.mllib.util.MLUtils
+val data = MLUtils.loadLibSVMFile(sc, "data/mllib/sample_libsvm_data.txt")
+val splits = data.randomSplit(Array(0.7, 0.3))
+val (trainingData, testData) = (splits(0), splits(1))
+val categoricalFeaturesInfo = Map[Int, Int]()
+val impurity = "variance"
+val maxDepth = 5
+val maxBins = 32
+val model = DecisionTree.trainRegressor(trainingData, categoricalFeaturesInfo, impurity, maxDepth, maxBins)
+val labelsAndPredictions = testData.map { point =>
+  val prediction = model.predict(point.features)
+  (point.label, prediction) }
+val testMSE = labelsAndPredictions.map{ case (v, p) => math.pow(v - p, 2) }.mean()
+println("Test Mean Squared Error = " + testMSE)
+println("Learned regression tree model:\n" + model.toDebugString)
+model.save(sc, "target/tmp/myDecisionTreeRegressionModel")
+val sameModel = DecisionTreeModel.load(sc, "target/tmp/myDecisionTreeRegressionModel")
+- Ensembles of tress
+- Random forests
+- Classification
+import org.apache.spark.mllib.tree.RandomForest
+import org.apache.spark.mllib.tree.model.RandomForestModel
+import org.apache.spark.mllib.util.MLUtils
+val data = MLUtils.loadLibSVMFile(sc, "data/mllib/sample_libsvm_data.txt")
+val splits = data.randomSplit(Array(0.7, 0.3))
+val (trainingData, testData) = (splits(0), splits(1))
+val numClasses = 2
+val categoricalFeaturesInfo = Map[Int, Int]()
+val numTrees = 3 // Use more in practice.
+val featureSubsetStrategy = "auto" // Let the algorithm choose.
+val impurity = "gini"
+val maxDepth = 4
+val maxBins = 32
+val model = RandomForest.trainClassifier(trainingData, numClasses, categoricalFeaturesInfo,
+  numTrees, featureSubsetStrategy, impurity, maxDepth, maxBins)
+val labelAndPreds = testData.map { point =>
+  val prediction = model.predict(point.features)
+  (point.label, prediction)
+}
+val testErr = labelAndPreds.filter(r => r._1 != r._2).count.toDouble / testData.count()
+println("Test Error = " + testErr)
+println("Learned classification forest model:\n" + model.toDebugString)
+model.save(sc, "target/tmp/myRandomForestClassificationModel")
+val sameModel = RandomForestModel.load(sc, "target/tmp/myRandomForestClassificationModel")
+- Regression
+import org.apache.spark.mllib.tree.RandomForest
+import org.apache.spark.mllib.tree.model.RandomForestModel
+import org.apache.spark.mllib.util.MLUtils
+val data = MLUtils.loadLibSVMFile(sc, "data/mllib/sample_libsvm_data.txt")
+val splits = data.randomSplit(Array(0.7, 0.3))
+val (trainingData, testData) = (splits(0), splits(1))
+val numClasses = 2
+val categoricalFeaturesInfo = Map[Int, Int]()
+val numTrees = 3 // Use more in practice.
+val featureSubsetStrategy = "auto" // Let the algorithm choose.
+val impurity = "variance"
+val maxDepth = 4
+val maxBins = 32
+val model = RandomForest.trainRegressor(trainingData, categoricalFeaturesInfo,
+  numTrees, featureSubsetStrategy, impurity, maxDepth, maxBins)
+val labelsAndPredictions = testData.map { point =>
+  val prediction = model.predict(point.features)
+  (point.label, prediction)
+}
+val testMSE = labelsAndPredictions.map{ case(v, p) => math.pow((v - p), 2)}.mean()
+println("Test Mean Squared Error = " + testMSE)
+println("Learned regression forest model:\n" + model.toDebugString)
+model.save(sc, "target/tmp/myRandomForestRegressionModel")
+val sameModel = RandomForestModel.load(sc, "target/tmp/myRandomForestRegressionModel")
+- Gradient-Boosted trees
+- Classification
+import org.apache.spark.mllib.tree.GradientBoostedTrees
+import org.apache.spark.mllib.tree.configuration.BoostingStrategy
+import org.apache.spark.mllib.tree.model.GradientBoostedTreesModel
+import org.apache.spark.mllib.util.MLUtils
+val data = MLUtils.loadLibSVMFile(sc, "data/mllib/sample_libsvm_data.txt")
+val splits = data.randomSplit(Array(0.7, 0.3))
+val (trainingData, testData) = (splits(0), splits(1))
+val boostingStrategy = BoostingStrategy.defaultParams("Classification")
+boostingStrategy.numIterations = 3
+boostingStrategy.treeStrategy.numClasses = 2
+boostingStrategy.treeStrategy.maxDepth = 5
+boostingStrategy.treeStrategy.categoricalFeaturesInfo = Map[Int, Int]()
+val model = GradientBoostedTrees.train(trainingData, boostingStrategy)
+val labelAndPreds = testData.map { point =>
+  val prediction = model.predict(point.features)
+  (point.label, prediction)
+}
+val testErr = labelAndPreds.filter(r => r._1 != r._2).count.toDouble / testData.count()
+println("Test Error = " + testErr)
+println("Learned classification GBT model:\n" + model.toDebugString)
+model.save(sc, "target/tmp/myGradientBoostingClassificationModel")
+val sameModel = GradientBoostedTreesModel.load(sc,
+  "target/tmp/myGradientBoostingClassificationModel")
+- Regression
+import org.apache.spark.mllib.tree.GradientBoostedTrees
+import org.apache.spark.mllib.tree.configuration.BoostingStrategy
+import org.apache.spark.mllib.tree.model.GradientBoostedTreesModel
+import org.apache.spark.mllib.util.MLUtils
+val data = MLUtils.loadLibSVMFile(sc, "data/mllib/sample_libsvm_data.txt")
+val splits = data.randomSplit(Array(0.7, 0.3))
+val (trainingData, testData) = (splits(0), splits(1))
+val boostingStrategy = BoostingStrategy.defaultParams("Regression")
+boostingStrategy.numIterations = 3
+boostingStrategy.treeStrategy.maxDepth = 5
+boostingStrategy.treeStrategy.categoricalFeaturesInfo = Map[Int, Int]()
+val model = GradientBoostedTrees.train(trainingData, boostingStrategy)
+val labelsAndPredictions = testData.map { point =>
+  val prediction = model.predict(point.features)
+  (point.label, prediction)
+}
+val testMSE = labelsAndPredictions.map{ case(v, p) => math.pow((v - p), 2)}.mean()
+println("Test Mean Squared Error = " + testMSE)
+println("Learned regression GBT model:\n" + model.toDebugString)
+model.save(sc, "target/tmp/myGradientBoostingRegressionModel")
+val sameModel = GradientBoostedTreesModel.load(sc,
+  "target/tmp/myGradientBoostingRegressionModel")
+- Isotonic regression
+import org.apache.spark.mllib.regression.{IsotonicRegression, IsotonicRegressionModel}
+val data = sc.textFile("data/mllib/sample_isotonic_regression_data.txt")
+val parsedData = data.map { line =>
+  val parts = line.split(',').map(_.toDouble)
+  (parts(0), parts(1), 1.0) }
+val splits = parsedData.randomSplit(Array(0.6, 0.4), seed = 11L)
+val training = splits(0)
+val test = splits(1)
+val model = new IsotonicRegression().setIsotonic(true).run(training)
+val predictionAndLabel = test.map { point =>
+  val predictedLabel = model.predict(point._2)
+  (predictedLabel, point._1) }
+val meanSquaredError = predictionAndLabel.map { case (p, l) => math.pow((p - l), 2) }.mean()
+println("Mean Squared Error = " + meanSquaredError)
+model.save(sc, "target/tmp/myIsotonicRegressionModel")
+val sameModel = IsotonicRegressionModel.load(sc, "target/tmp/myIsotonicRegressionModel")
+- Collaborative filtering
+- Alternating Least Squares
+import org.apache.spark.mllib.recommendation.ALS
+import org.apache.spark.mllib.recommendation.MatrixFactorizationModel
+import org.apache.spark.mllib.recommendation.Rating
+val data = sc.textFile("data/mllib/als/test.data")
+val ratings = data.map(_.split(',') match { case Array(user, item, rate) =>
+  Rating(user.toInt, item.toInt, rate.toDouble) })
+val rank = 10
+val numIterations = 10
+val model = ALS.train(ratings, rank, numIterations, 0.01)
+val usersProducts = ratings.map { case Rating(user, product, rate) =>
+  (user, product) }
+val predictions =
+  model.predict(usersProducts).map { case Rating(user, product, rate) =>
+    ((user, product), rate) }
+val ratesAndPreds = ratings.map { case Rating(user, product, rate) =>
+  ((user, product), rate }.join(predictions)
+val MSE = ratesAndPreds.map { case ((user, product), (r1, r2)) =>
+  val err = (r1 - r2)
+  err * err }.mean()
+println("Mean Squared Error = " + MSE)
+model.save(sc, "target/tmp/myCollaborativeFilter")
+val sameModel = MatrixFactorizationModel.load(sc, "target/tmp/myCollaborativeFilter")
+Word count THAI [ Python & Scala ]
+13:00 - 17:30
+- Python package
+- PyICU
+- Code
+
+import PyICU
+
+def isThai(chr):
+    cVal = ord(chr)
+    if(cVal >= 3584 and cVal <= 3711):
+        return True
+
+    return False
+
+def wrap(txt):
+  txt = PyICU.UnicodeString(txt)
+  bd = PyICU.BreakIterator.createWordInstance(PyICU.Locale("th"))
+  bd.setText(txt)
+  lastPos = bd.first()
+  retTxt = PyICU.UnicodeString("")
+  txt_list = []
+  try:
+    while(1):
+      currentPos = bd.next()
+      retTxt += txt[lastPos:currentPos]
+      #
+      txt_list.append(txt[lastPos:currentPos])
+      #Only thai language evaluated
+      if(isThai(txt[currentPos-1])):
+        if(currentPos < len(txt)):
+          if(isThai(txt[currentPos])):
+            #This is dummy word seperator
+            #retTxt += PyICU.UnicodeString("|||")
+            #
+            pass
+      lastPos = currentPos
+  except StopIteration:
+    pass
+    #retTxt = retTxt[:-1]
+  #return retTxt
+  return [unicode(i) for i in txt_list]
+
+
+def fullwrap(txt):
+    txt_list = txt.split(' ')
+    new_list = []
+    for i in txt_list:
+        #new_list.extend(wrap(i).split('|||'))
+        new_list.extend(wrap(i))
+
+    return new_list
+
+- Python code run on pyspark in Hortonworks sandbox

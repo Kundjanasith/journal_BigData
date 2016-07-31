@@ -1,0 +1,276 @@
+Using REST  APIs
+08:30 - 12:00
+- REST APIs
+- Building RESTful web services
+- like other programming skills is part art, part science
+- As the Internet industry progresses, creating a REST API becomes more concrete with emerging best practices.
+- As RESTful web services don't follow a prescribed standard except for HTTP.
+- It's important to build your RESTful API in accordance with industry best practices to ease development and increase client adoption.
+- There aren't a lot of REST API guides to help the lonely developer.
+- It is dedicated to tracking REST API best practices and making resources available to enable quick reference and self education for the development crafts-person.
+- We'll discuss both the art and science of creating REST Web services.
+- Web Services are REST architecture based web services. In REST Architecture everything is a resource.
+- RESTful web services are light weight, highly scalable and maintainable and are very commonly used to create APIs for web based applications.
+- What is REST?
+- REST stands for REpresentational State Transfer.
+- REST is web standards based architecture and uses HTTP Protocol for data communication.
+- It revolves around resource where every component is a resource and a resource is accessed by a common interface using HTTP standard methods.
+- REST Server simply provides access to resources and REST client accesses and presents the resources.
+- Here each resource is identified by URIs/ global IDs. REST uses various representations to represent a resource like text, JSON and XML.
+- Now a days JSON is the most popular format being used in web services.
+- HTTP Methods
+- GET
+- Provides a read only access to a resource.
+- PUT
+- Used to create a new resource.
+- DELETE
+- Used to remove a resource.
+- POST
+- Used to update a existing resource or create a new resource.
+- OPTIONS
+- Used to get the supported operations on a resource.
+- RESTFul Web Services
+- A web service is a collection of open protocols and standards used for exchanging data between applications or systems.
+- Software applications written in various programming languages and running on various platforms can use web services to exchange data over computer networks like the Internet in a manner similar to inter-process communication on a single computer.
+- Web services based on REST Architecture are known as RESTful web services.
+- These web services use HTTP methods to implement the concept of REST architecture.
+- A RESTful web service usually defines a URI, Uniform Resource Identifier a service, provides resource representation such as JSON and set of HTTP Methods.
+- Step
+- Setup Java Development Kit
+- Setup Eclipse IDE
+- Setup Jersey Framework Libraries
+- Setup Apache Tomcat
+- Appication
+- Create Java Project
+- Add Required Libraries
+- Create Source Files
+- Create Web.xml configuration File
+- Deploying the Program
+- Running the Program
+- Resource
+- REST architecture treats every content as a resource.
+- These resources can be text files, html pages, images, videos or dynamic business data.
+- REST Server simply provides access to resources and REST client accesses and modifies the resources.
+- Here each resource is identified by URIs/ global IDs.
+- REST uses various representations to represent a resource where text, JSON, XML.
+- XML and JSON are the most popular representations of resources.
+- Representation of Resource
+- A resource in REST is similar Object in Object Oriented Programming or similar to Entity in a Database.
+- Once a resource is identified then its representation is to be decided using a standard format so that server can send the resource in above said format and client can understand the same format.
+- Property of Resource
+- Understandability:
+- Both Server and Client should be able to understand and utilize the representation format of the resource.
+- Completeness:
+- Format should be able to represent a resource completely. For example, a resource can contain another resource. Format should be able to represent simple as well as complex structures of resources.
+- Linkablity:
+- A resource can have a linkage to another resource, a format should be able to handles such situations.
+- Message
+- HTTP Request
+- Verb
+- Indicate HTTP methods such as GET, POST, DELETE, PUT etc.
+- URI
+- Uniform Resource Identifier (URI) to identify the resource on server
+- HTTP Version
+- Indicate HTTP version, for example HTTP v1.1 .
+- Request Header
+- Contains metadata for the HTTP Request message as key-value pairs. For example, client ( or browser) type, format supported by client, format of message body, cache settings etc.
+- Request Body
+- Message content or Resource representation.
+- HTTP Response
+- Status/Response Code
+- Indicate Server status for the requested resource.
+- HTTP Version
+- Indicate HTTP version, for example HTTP v1.1 .
+- Response Header
+- Contains metadata for the HTTP Response message as key-value pairs.
+- Response Body
+- Response message content or Resource representation.
+- Addressing
+- Addressing refers to locating a resource or multiple resources lying on the server.
+- It is analogous to locate a postal address of a person.
+- Each resource in REST architecture is identified by its URI, Uniform Resource Identifier.
+- Purpose of an URI is to locate a resource(s) on the server hosting the web service.
+- Another important attribute of a request is VERB which identifies the operation to be performed on the resource.
+- Constructing a standard URI
+- Use Plural Noun
+- Use plural noun to define resources. For example, we've used users to identify users as a resource.
+- Avoid using spaces
+- Use underscore(_) or hyphen(-) when using a long resource name, for example, use authorized_users instead of authorized%20users.
+- Use lowercase letters
+- Although URI is case-insensitive, it is good practice to keep url in lower case letters only.
+- Maintain Backward Compatibility
+- As Web Service is a public service, a URI once made public should always be available. In case, URI gets updated, redirect the older URI to new URI using HTTP Status code, 300.
+- Use HTTP Verb
+- Always use HTTP Verb like GET, PUT, and DELETE to do the operations on the resource. It is not good to use operations names in URI.
+- Statelssness
+- Advantages
+- Web services can treat each method request independently.
+- Web services need not to maintain client's previous interactions. It simplifies application design.
+- As HTTP is itself a statelessness protocol, RESTful Web services work seamlessly with HTTP protocol.
+- Disadvantage
+- Web services need to get extra information in each request and then interpret to get the client's state in case client interactions are to be taken care of.
+- Caching
+- Caching refers to storing server response in client itself so that a client needs not to make server request for same resource again and again.
+- A server response should have information about how a caching is to be done so that a client caches response for a period of time or never caches the server response.
+- Configuration
+- Date
+- Date and Time of the resource when it was created
+- Last Modified
+- Date and Time of the resource when it was last modified
+- Cache-Control
+- Primary header to control caching
+- Expires
+- Expiration date and time of caching
+- Age
+- Duration in seconds from when resource was fetched from the server.
+- Header
+- Public
+- Indicates that resource is cachable by any component
+- Private
+- Indicates that resource is cachable by only client and server, no intermediary can cache the resource
+- no-cache/no-store
+- Indicates that resource is not cachable
+- max-age
+- Indicates the caching is valid up to max-age in seconds. After this, client has to make another request.
+- must-revalidate
+- Indication to server to revalidate resource if max-age has passed.
+- Security
+- As RESTful web services work with HTTP URLs Paths so it is very important to safeguard a RESTful web service in the same manner as a website is be secured.
+- Such as
+- Validation
+- Validate all inputs on the server. Protect your server against SQL or NoSQL injection attacks.
+- Session based authentication
+- Use session based authentication to authenticate a user whenever a request is made to a Web Service method.
+- No sensitive data in URL
+- Never use username, password or session token in URL , these values should be passed to Web Service via POST method.
+- Restriction on Method execution
+- Allow restricted use of methods like GET, POST, DELETE. GET method should not be able to delete data.
+- Validate Malformed XML/JSON
+- Check for well formed input passed to a web service method.
+- Throw generic Error Messages
+- A web service method should use HTTP error messages like 403 to show access forbidden etc.
+- HTTP Code
+- 200
+- OK, shows success
+- 201
+- CREATED, when a resource is successful created using POST or PUT request. Return link to newly created resource using location header
+- 204
+- NO CONTENT, when response body is empty for example, a DELETE request.
+- 304
+- NOT MODIFIED, used to reduce network bandwidth usage in case of conditional GET requests. Response body should be empty. Headers should have date, location etc.
+- 400
+- BAD REQUEST, states that invalid input is provided e.g. validation error, missing data.
+- 401
+- UNAUTHORIZED, states that user is using invalid or wrong authentication token.
+- 403
+- FORBIDDEN, states that user is not having access to method being used for example, delete access without admin rights.
+- 404
+- NOT FOUND, states that method is not available.
+- 409
+- CONFLICT, states conflict situation while executing the method for example, adding duplicate entry.
+- 500
+- INTERNAL SERVER ERROR, states that server has thrown some exception while executing the method.
+Create a socket
+13:00 - 17:00
+- The following are some of the salient features that could be of interest to many users.
+- Hadoop, including HDFS, is well suited for distributed storage and distributed processing using commodity hardware. It is fault tolerant, scalable, and extremely simple to expand. MapReduce, well known for its simplicity and applicability for large set of distributed applications, is an integral part of Hadoop.
+- HDFS is highly configurable with a default configuration well suited for many installations. Most of the time, configuration needs to be tuned only for very large clusters.
+- Hadoop is written in Java and is supported on all major platforms.
+- Hadoop supports shell-like commands to interact with HDFS directly.
+- The NameNode and Datanodes have built in web servers that makes it easy to check current status of the cluster.
+- New features and improvements are regularly implemented in HDFS. The following is a subset of useful features in HDFS:
+- File permissions and authentication.
+- Rack awareness: to take a node’s physical location into account while scheduling tasks and allocating storage.
+- Safemode: an administrative mode for maintenance.
+- fsck: a utility to diagnose health of the file system, to find missing files or blocks.
+- fetchdt: a utility to fetch DelegationToken and store it in a file on the local system.
+- Balancer: tool to balance the cluster when the data is unevenly distributed among DataNodes.
+- Upgrade and rollback: after a software upgrade, it is possible to rollback to HDFS’ state before the upgrade in case of unexpected problems.
+- Secondary NameNode: performs periodic checkpoints of the namespace and helps keep the size of file containing log of HDFS modifications within certain limits at the NameNode.
+- Checkpoint node: performs periodic checkpoints of the namespace and helps minimize the size of the log stored at the NameNode containing changes to the HDFS. Replaces the role previously filled by the Secondary NameNode, though is not yet battle hardened. The NameNode allows multiple Checkpoint nodes simultaneously, as long as there are no Backup nodes registered with the system.
+- Backup node: An extension to the Checkpoint node. In addition to checkpointing it also receives a stream of edits from the NameNode and maintains its own in-memory copy of the namespace, which is always in sync with the active NameNode namespace state. Only one Backup node may be registered with the NameNode at once.
+- The bin/hdfs dfsadmin command supports a few HDFS administration related operations. The bin/hdfs dfsadmin -help command lists all the commands currently supported.
+- -report: reports basic statistics of HDFS. Some of this information is also available on the NameNode front page.
+- -safemode: though usually not required, an administrator can manually enter or leave Safemode.
+- -finalizeUpgrade: removes previous backup of the cluster made during last upgrade.
+- -refreshNodes: Updates the namenode with the set of datanodes allowed to connect to the namenode. Namenodes re-read datanode hostnames in the file defined by dfs.hosts, dfs.hosts.excludeHosts defined in dfs.hosts are the datanodes that are part of the cluster. If there are entries in dfs.hosts, only the hosts in it are allowed to register with the namenode. Entries indfs.hosts.exclude are datanodes that need to be decommissioned. Datanodes complete decommissioning when all the replicas from them are replicated to other datanodes. Decommissioned nodes are not automatically shutdown and are not chosen for writing for new replicas.
+- -printTopology : Print the topology of the cluster. Display a tree of racks and datanodes attached to the tracks as viewed by the NameNode.
+- The steps involved in establishing a socket on the client side are as follows:
+- Create a socket with the socket() system call
+- Connect the socket to the address of the server using the connect() system call
+- Send and receive data. There are a number of ways to do this, but the simplest is to use the read()and write() system calls.
+- The steps involved in establishing a socket on the server side are as follows:
+- Create a socket with the socket() system call
+- Bind the socket to an address using the bind() system call. For a server socket on the Internet, an address consists of a port number on the host machine.
+- Listen for connections with the listen() system call
+- Accept a connection with the accept() system call. This call typically blocks until a client connects with the server.
+- Send and receive data
+- Socket Types
+- When a socket is created, the program has to specify the address domain and the socket type. Two processes can communicate with each other only if their sockets are of the same type and in the same domain.
+- There are two widely used address domains, the unix domain, in which two processes which share a common file system communicate, and the Internet domain, in which two processes running on any two hosts on the Internet communicate.
+- The address of a socket in the Unix domain is a character string which is basically an entry in the file system.
+- The address of a socket in the Internet domain consists of the Internet address of the host machine (every computer on the Internet has a unique 32 bit address, often referred to as its IP address).
+- The lower numbers are reserved in Unix for standard services.
+- There are two widely used socket types, stream sockets, and datagram sockets. Stream sockets treat communications as a continuous stream of characters, while datagram sockets have to read entire messages at once.
+- Each uses its own communciations protocol. Stream sockets use TCP (Transmission Control Protocol), which is a reliable, stream oriented protocol, and datagram sockets use UDP (Unix Datagram Protocol), which is unreliable and message oriented.
+- Server Code
+-#include <stdio.h>
+- This header file contains declarations used in most input and output and is typically included in all C programs.
+- #include <sys/types.h>
+- This header file contains definitions of a number of data types used in system calls. These types are used in the next two include files.
+- #include <sys/socket.h>
+- The header file socker.h includes a number of definitions of structures needed for sockets.
+- #include <netinet/in.h>
+- The header file netinet/in.h contains constants and structures needed for internet domain addresses.
+- Enhancements to the server code
+- The sample server code above has the limitation that it only handles one connection, and then dies.
+-  A "real world" server should run indefinitely and should have the capability of handling a number of simultaneous connections, each in its own process.
+- This is typically done by forking off a new process to handle each new connection.
+- To allow the server to handle multiple simultaneous connections, we make the following changes to the code
+- Put the accept statement and the following code in an infinite loop.
+- After a connection is established, call fork() to create a new process.
+- The child process will close sockfd and call dostuff, passing the new socket file descriptor as an argument. When the two processes have completed their conversation, as indicated by dostuff()returning, this process simply exits.
+- The parent process closes newsockfd. Because all of this code is in an infinite loop, it will return to the accept statement to wait for the next connection.
+- Alternative types of sockets
+ - There are several differences between a datagram socket and a stream socket.
+- Datagrams are unreliable, which means that if a packet of information gets lost somewhere in the Internet, the sender is not told (and of course the receiver does not know about the existence of the message). In contrast, with a stream socket, the underlying TCP protocol will detect that a message was lost because it was not acknowledged, and it will be retransmitted without the process at either end knowing about this.
+- Message boundaries are preserved in datagram sockets. If the sender sends a datagram of 100 bytes, the receiver must read all 100 bytes at once. This can be contrasted with a stream socket, where if the sender wrote a 100 byte message, the receiver could read it in two chunks of 50 bytes or 100 chunks of one byte.
+- The communication is done using special system calls sendto() and receivefrom() rather than the more generic read() and write().
+- There is a lot less overhead associated with a datagram socket because connections do not need to be established and broken down, and packets do not need to be acknowledged. This is why datagram sockets are often used when the service to be provided is short, such as a time-of-day service.
+- Socket Programming vs. Http Programming
+- HTTP is something which are called an application level protocol.
+- It basically means that HTTP itself can't be used to transport information to/from a remote end point.
+- Instead it relies on an underlying protocol which in HTTPs case most often is TCP.
+- Sockets on the other hand are an API that most operating systems provide to be able to talk with the network.
+- The socket API supports different protocols from the transport layer and down.
+- HDFS --> [ Hadoop Distributed File System ]
+-  is designed to store very large data sets reliably, and to stream those data sets at high bandwidth to user applications. In a large cluster, thousands of servers both host directly attached storage and execute user application tasks.
+- distributing storage and computation across many servers, the resource can grow with demand while remaining economical at every size.
+- Introduction
+- is patterned after the Unix filesystem, faithfulness to standards was sacrificed in favor of improved performance for the applications at hand.
+- is the partitioning of data and computation across many (thousands) of hosts, and the execution of application computations in parallel close to their data.
+- Hadoop Cluster
+- scales computation capacity, storage capacity and I/O bandwidth by simply adding commodity servers.
+- Architecture
+- NameNode
+- is a hierarchy of files and directories. Files and directories are represented on the NameNode by inodes.
+- Inodes record attributes like permissions, modification and access times, namespace and disk space quotas.
+- maintains the namespace tree and the mapping of blocks to DataNodes.
+- The current design
+- A single NameNode for each cluster.
+- The cluster can have thousands of DataNodes and tens of thousands of HDFS clients per cluster, as each DataNode may execute multiple application tasks concurrently.
+- Image & Journal
+- The persistent record of the image stored in the NameNode's local native filesystem is called a checkpoint.
+- The NameNode records changes to HDFS in a write-ahead log called the journal in its local native filesystem.
+- The location of block replicas are not part of the persistent checkpoint.
+- Each client-initiated transaction is recorded in the journal, and the journal file is flushed and synced before the acknowledgment is sent to the client.
+- The checkpoint file is never changed by the NameNode; a new file is written when a checkpoint is created during restart, when requested by the administrator, or by the CheckpointNode described in the next section.
+- A new checkpoint and an empty journal are written back to the storage directories before the NameNode starts serving clients.
+- NameNode
+- is a multithreaded system and processes requests simultaneously from multiple clients.
+- batches multiple transactions. When one of the NameNode's threads initiates a flush-and-sync operation, all the transactions batched at that time are committed together.
+- DataNode
+- is represented by two files in the local native filesystem.
+- The first file contains the data itself
+- The second file records the block's metadata including checksums for the data and the generation stamp.
+- The size of the data file equals the actual length of the block and does not require extra space to round it up to the nominal block size as in traditional filesystems. Thus, if a block is half full it needs only half of the space of the full block on the local drive.

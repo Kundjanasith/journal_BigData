@@ -1,0 +1,284 @@
+Sentiment Analysis
+08:30 - 12:00
+- Sentiment analysis [ Opinion mining ]
+- Refers to the use of natural language processing, text analysis and computational linguistics to identify and extract subjective information in source materials
+- widely applied to reviews and social media for a variety of applications, ranging from marketing to customer service
+- aims to determine the attitude of a speaker or a writer with respect to some topic or the overall contextual polarity of a document
+- The attitude may be his or her judgement or evaluation [ Appraisai theory ]
+affective state [ The emotional state of the author when writting or the intended emotional communication that is to say the emotional effect the author wishes to have on the reader
+--> Type of sentiment analysis : A basic task in sentiment analysis is classifying the polarity of a given text at the document, sentence, feature, aspect whether the expressed opinion in a document, a sentence or an entity feature/aspect is positive, negative, or neutral. Advanced, "beyond polarity" sentiment classification looks, for instance, at emotional states such as "angry," "sad," and "happy." There are in principle two ways for operating with a neutral class. Either, the algorithm proceeds by first identifying the neutral language, filtering it out and then assessing the rest in terms of positive and negative sentiments, or it builds a three way classification in one step.[7] This second approach often involves estimating a probability distribution over all categories . A different method for determining sentiment is the use of a scaling system whereby words commonly associated with having a negative, neutral or positive sentiment with them are given an associated number on a -10 to +10 scale (most negative up to most positive). This makes it possible to adjust the sentiment of a given term relative to its environment (usually on the level of the sentence).
+- Subjectivity/Objectivity Identification
+- This task is commonly defined as classifying a given text (usually a sentence) into one of two classes: objective or subjective.
+- This problem can sometimes be more difficult than polarity classification.
+- The subjectivity of words and phrases may depend on their context and an objective document may contain subjective sentences
+- Feature/Aspect-based sentiment analysis
+- A feature or aspect is an attribute or component of an entity, e.g., the screen of a cell phone, the service for a restaurant, or the picture quality of a camera.
+- The advantage of feature-based sentiment analysis is the possibility to capture nuances about objects of interest. Different features can generate different sentiment responses, for example a hotel can have a convenient location, but mediocre food.
+- The automatic identification of features can be performed with syntactic methods or with topic modeling
+- Methods & Features
+- Knowledge-based techniques classify text by affect categories based on the presence of unambiguous affect words such as happy, sad, afraid, and bored.
+- To mine the opinion in context and get the feature which has been opinionated, the grammatical relationships of words are used.
+- The analysis of concepts that do not explicitly convey relevant information, but which are implicitly linked to other concepts that do so
+- Open source software tools deploy machine learning, statistics, and natural language processing techniques to automate sentiment analysis on large collections of texts, including web pages, online news, internet discussion groups, online reviews, web blogs, and social media.
+- A human analysis component is required in sentiment analysis, as automated systems are not able to analyze historical tendencies of the individual commenter, or the platform and are often classified incorrectly in their expressed sentiment.
+- Sometimes, the structure of sentiments and topics is fairly complex. Also, the problem of sentiment analysis is non-monotonic in respect to sentence extension and stop-word substitution
+- Evaluation
+- The accuracy of a sentiment analysis system is, in principle, how well it agrees with human judgments.
+- Sentiment analysis tasks returning a scale rather than a binary judgement, correlation is a better measure than precision because it takes into account how close the predicted value is to the target value.
+- Sentiment Analysis
+- The problem is that most sentiment analysis algorithms use simple terms to express sentiment about a product or service. However, cultural factors, linguistic nuances and differing contexts make it extremely difficult to turn a string of written text into a simple pro or con sentiment.
+- The fact that humans often disagree on the sentiment of text illustrates how big a task it is for computers to get this right.
+- The shorter the string of text, the harder it becomes.
+- Abstract
+- Sentiment Analysis (SA) is an ongoing field of research in text mining field. SA is the computational treatment of opinions, sentiments and subjectivity of text. This survey paper tackles a comprehensive overview of the last update in this field.
+- Many recently proposed algorithms' enhancements and various SA applications are investigated and presented briefly in this survey.
+- These articles are categorized according to their contributions in the various SA techniques.
+- The related fields to SA (transfer learning, emotion detection, and building resources) that attracted researchers recently are discussed.
+- The main target of this survey is to give nearly full image of SA techniques and the related fields with brief details.
+-  The main contributions of this paper include the sophisticated categorizations of a large number of recent articles and the illustration of the recent trend of research in the sentiment analysis and its related areas.
+- Introduction
+- Sentiment Analysis (SA) or Opinion Mining (OM) is the computational study of people’s opinions, attitudes and emotions toward an entity. The entity can represent individuals, events or topics.
+- These topics are most likely to be covered by reviews. The two expressions SA or OM are interchangeable.
+- They express a mutual meaning. However, some researchers stated that OM and SA have slightly different notions
+- Opinion Mining extracts and analyzes people’s opinion about an entity while Sentiment Analysis identifies the sentiment expressed in a text then analyzes it.
+- Therefore, the target of SA is to find opinions, identify the sentiments they express, and then classify their polarity
+- Document-level SA aims to classify an opinion document as expressing a positive or negative opinion or sentiment. It considers the whole document a basic information unit (talking about one topic).
+- The data sets used in SA are an important issue in this field. The main sources of data are from the product reviews.
+- The reviews sources are mainly review sites. SA is not only applied on product reviews
+- The election results can also be predicted from political posts.
+- The social network sites and micro-blogging sites are considered a very good source of information because people share and discuss their opinions about a certain topic freely.
+- Methodology
+- The survey methodology is as follows: brief explanation to the famous FS and SC algorithms representing some related fields to SA are discussed. Then the contribution of these articles to these algorithms is presented illustrating how they use these algorithms to solve special problems in SA. The main target of this survey is to present a unique categorization for these SA related articles.
+- Feature selection in sentiment classification
+- Sentiment Analysis task is considered a sentiment classification problem. The first step in the SC problem is to extract and select text features.
+- Terms presence and frequency: These features are individual words or word n-grams and their frequency counts. It either gives the words binary weighting (zero if the word appears, or one if otherwise) or uses term frequency weights to indicate the relative importance of features
+- Parts of speech (POS): finding adjectives, as they are important indicators of opinions.
+- Opinion words and phrases: these are words commonly used to express opinions including good or bad, like or hate. On the other hand, some phrases express opinions without using opinion words. For example: cost me an arm and a leg.
+- Negations:  the appearance of negative words may change the opinion orientation likenot good is equivalent to bad.
+ - Feature selection methods
+~ Feature Selection methods can be divided into lexicon-based methods that need human annotation, and statistical methods which are automatic methods that are more frequently used.
+~ Lexicon-based approaches usually begin with a small set of ‘seed’ words
+~  Then they bootstrap this set through synonym detection or on-line resources to obtain a larger lexicon
+~ The feature selection techniques treat the documents either as group of words (Bag of Words (BOWs)), or as a string which retains the sequence of words in the document. BOW is used more often because of its simplicity for the classification process.
+~ The most common feature selection step is the removal of stop-words and stemming
+- Point-wise mutual Information
+- The mutual information measure provides a formal way to model the mutual information between the features and the classes.
+- This measure was derived from the information theory
+- The word w is positively correlated to the class i, when Mi(w) is greater than 0. The wordw is negatively correlated to the class i when Mi(w) is less than 0.
+- Their results showed that their method can discover more useful emotion words, and their corresponding intensity improves their classification performance.
+- Their method outperformed the (PMI)-based expansion methods as they consider both co-occurrence strength and contextual distribution, thus acquiring more useful emotion words and fewer noisy words.
+- Chi-square
+- They discovered bloggers’ immediate personal interests in order to improve online contextual advertising.
+- They worked on real ads and actual blog pages from ebay.com, wikipedia.com and epinions.com. They used SVM (illustrated with details in the next section) for classification and χ2 for FS.
+- Their results showed that their method could effectively identify those ads that are positively-correlated with a blogger’s personal interests.
+- Latent semantic indexing
+- Feature selection methods attempt to reduce the dimensionality of the data by picking from the original set of attributes.
+- Feature transformation methods create a smaller set of features as a function of the original set of features. LSI is one of the famous feature transformation methods
+- It determines the axis-system which retains the greatest level of information about the variations in the underlying attribute values.
+- Challenging tasks in FS
+- A very challenging task in extracting features is irony detection. The objective of this task is to identify irony reviews.
+- They aimed to define a feature model in order to represent part of the subjective knowledge which underlies such reviews and attempts to describe salient characteristics of irony.
+- They built a freely available data set with ironic reviews from news articles, satiric articles and customer reviews, collected from amazon.com.
+- They were posted on the basis of an online viral effect, i.e. contents that trigger a chain reaction in people.
+- They used NB, SVM, and DT for classification purpose (illustrated with details in the next section).
+- Their results with the three classifiers are satisfactory, both in terms of accuracy, as well as precision, recall, and F-measure.
+- Sentiment classification techniques
+- Sentiment Classification techniques can be roughly divided into machine learning approach, lexicon based approach and hybrid approach
+- he Machine Learning Approach (ML) applies the famous ML algorithms and uses linguistic features.
+- TheLexicon-based Approach relies on a sentiment lexicon, a collection of known and precompiled sentiment terms.
+- It is divided into dictionary-based approach and corpus-based approach which use statistical or semantic methods to find sentiment polarity.
+- The hybrid Approach combines both approaches and is very common with sentiment lexicons playing a key role in the majority of methods.
+- The text classification methods using ML approach can be roughly divided into supervised and unsupervised learning methods.
+- The supervised methods make use of a large number of labeled training documents.
+- The unsupervised methods are used when it is difficult to find these labeled training documents.
+- Machine Learning Approach
+- Machine learning approach relies on the famous ML algorithms to solve the SA as a regular text classification problem that makes use of syntactic and/or linguistic features.
+- Supervised Learning
+- The supervised learning methods depend on the existence of labeled training documents. There are many kinds of supervised classifiers in literature. In the next subsections, we present in brief details some of the most frequently used classifiers in SA.
+- Probabilistic Classifiers
+- Probabilistic classifiers use mixture models for classification. The mixture model assumes that each class is a component of the mixture. Each mixture component is a generative model that provides the probability of sampling a particular term for that component. These kinds of classifiers are also called generative classifiers. Three of the most famous probabilistic classifiers are discussed in the next subsections.
+- Naive Bayes Classifier
+- The Naïve Bayes classifier is the simplest and most commonly used classifier. Naïve Bayes classification model computes the posterior probability of a class, based on the distribution of the words in the document. The model works with the BOWs feature extraction which ignores the position of the word in the document.
+- Bayesian Network
+- The main assumption of the NB classifier is the independence of the features. The other extreme assumption is to assume that all the features are fully dependent.
+- This leads to the Bayesian Network model which is a directed acyclic graph whose nodes represent random variables, and edges represent conditional dependencies.
+- They proposed the use of multi-dimensional Bayesian network classifiers. It joined the different target variables in the same classification task in order to exploit the potential relationships between them.
+- They extended the multi-dimensional classification framework to the semi-supervised domain in order to take advantage of the huge amount of unlabeled information available in this context.
+- They showed that their semi-supervised multi-dimensional approach outperforms the most common SA approaches, and that their classifier is the best solution in a semi-supervised framework because it matches the actual underlying domain structure.
+- Maximum Entropy Classifier
+- The Maxent Classifier (known as a conditional exponential classifier) converts labeled feature sets to vectors using encoding.
+-  The other tools that were developed to automatically extract parallel data from non-parallel corpora use language specific techniques or require large amounts of training data.
+- Their results showed that ME classifiers can produce useful results for almost any language pair.
+- This can allow the creation of parallel corpora for many new languages.
+- Linear Classifiers
+- There are many kinds of linear classifiers; among them is Support Vector Machines (SVM)
+- It is a form of classifiers that attempt to determine good linear separators between different classes. Two of the most famous linear classifiers are discussed in the following subsections.
+- Support Vector Machine Classifiers
+- The main principle of SVMs is to determine linear separators in the search space which can best separate the different classes.
+- Hyperplane A provides the best separation between the classes, because the normal distance of any of the data points is the largest, so it represents the maximum margin of separation.
+- Neural Network
+- Neural Network consists of many neurons where the neuron is its basic unit. The inputs to the neurons are denoted by the vector overlineXi which is the word frequencies in the i  th document.
+- There are a set of weights A which are associated with each neuron used in order to compute a function of its inputs
+- Decision Tree Classifiers
+- Decision tree classifier provides a hierarchical decomposition of the training data space in which a condition on the attribute value is used to divide the data.
+- The condition or predicate is the presence or absence of one or more words.
+- The division of the data space is done recursively until the leaf nodes contain certain minimum numbers of records which are used for the purpose of classification.
+- There are other kinds of predicates which depend on the similarity of documents to correlate sets of terms which may be used to further partitioning of documents.
+- The different kinds of splits are Single Attribute split which use the presence or absence of particular words or phrases at a particular node in the tree in order to perform the split
+- Link
+Sentiment : http://hortonworks.com/hadoop-tutorial/how-to-refine-and-visualize-sentiment-data/
+
+Data Virtualization
+13:00 - 17:30
+- Data Virtualization Tools
+- For Developers
+- D3.js
+- FusionCharts
+- Chart.js
+- Google Charts
+- Highcharts
+- Leaflet
+- Dygraphs
+- Non Developers
+- Datawrapper
+- Tableau
+- Raw
+- Timelone JS
+- Infogram
+- Plotly
+- ChartBlocks
+- D3 JS
+- is the first name that comes to mind when we think of a Data Visualization Software. It uses HTML, CSS, and SVG to render some amazing charts and diagrams. If you can imagine any visualization, you can do it with D3. It is feature packed, interactivity rich and extremely beautiful. Most of all it’s free and open-source.
+- doesn’t ship with pre-built charts out of the box, but has a nice gallery which showcases what’s possible with D3.
+- There are two major concerns with D3.js: it has a steep learning curve and it is compatible only
+- So pick it up only when you have enough time in hand and are not concerned about displaying your charts on older browsers.
+- Fusion Charts
+- has probably the most exhaustive collection of charts and maps.
+-  With over 90+ chart types and 965 maps, you’ll find everything that you need right out of the box. It not only supports modern browsers, but also older browsers starting from IE 6.
+- FusionCharts supports both JSON and XML data formats, and you can export charts in PNG, JPEG, SVG or PDF. They have a nice collection of business dashboards and live demos for inspirations
+- Their charts and maps work across all devices and platforms, are highly customizable and have beautiful interactions.
+- One thing to keep in mind about FusionCharts is that it’s slightly expensive. But you can always get started with their unrestricted free trial and then buy if you like it.
+- Google Charts
+- Renders charts in HTML5/SVG to provide cross-browser compatibility and cross-platform portability to iPhones and Android. It also includes VML for supporting older IE versions.
+- It offers a decent number of charts which covers the most commonly used chart types like bar, area, pie and gauges.
+-  You can view gallery to get an idea of various charts and the type of interactions to expect.
+- High Charts
+- is another big player in the charting space. Like FusionCharts, it also offers a diverse range of charts and maps right out of the box.
+- Other than normal charts, it also offers a different package for stock charts called Highstock which is also feature rich.
+- It allows exporting charts in PNG, JPG, SVG and PDF. You can view the various chart types it offers in the demosection
+-  free for non-commercial and personal use, but you will have to buy a licence for deploying it in commercial applications.
+- Leaflet
+- is an open-source library developed by Vladimir Agafonkin for mobile-friendly interactive maps. It is extremely light (at just 33kb) and has lots of features for making any kind of maps. It uses HTML5 and CSS3 for rendering maps, and works across all major desktop and mobile platforms.
+- There is a wide range of plugins available for adding features like animated markers, heatmaps etc. that extend the core functionality.
+- If you are thinking of developing an application that involves maps, you should give Leaflet a try.
+- Dygraphs
+- is an open-source JavaScript charting library for handling huge data sets. It’s fast, flexible and highly customizable. It works in all major browsers (including IE8) and has an active community.
+- has defined a niche use-case for itself and won’t be the perfect solution for all your needs. But it will work for you more often than not whenever you are handling large datasets. To explore what is possible, check out this nicely designed demo gallery
+- Datawrapper
+- is an online tool for making interactive charts. Once you upload the data from CSV file or paste it directly into the field.
+- will generate a bar, line or any other related visualization.
+- Many reporters and news organizations use Datawrapper to embed live charts into their articles.
+- It is very easy to use and produces effective graphics.
+- If you are looking to get started, here is a nice tutorial to make your task easier.
+- Taleau
+- is perhaps the most popular visualization tool which supports a wide variety of charts, graphs, maps and other graphics.
+- is a completely free tool and the charts you make with it can be easily embedded in any web page.
+- They have a nice gallery which displays visualizations created via Tableau
+- Although it offers charts and graphics that are much better than other similar tools, I don’t ‘love’ to use its free version because of the big footer it comes with.
+- If it’s not as big a turn-off for you as it is for me, then you should definitely give it a try.
+- if you can afford it, you can go for a paid version.
+- Raw
+- defines itself as ‘the missing link between spreadsheets and vector graphics’. It is built on top of D3.js and is extremely well designed.
+- It has such an intuitive interface that you’ll feel like you’ve used it before. It is open-source and doesn’t require any registration.
+- It has a library of 16 chart types to choose from and all the processing is done in browser. So your data is safe.
+- RAW is highly customizable and extensible, and can even accept new custom layouts.
+- Timeline JS
+- helps you create beautiful timelines without writing any code. It is a free, open-source tool which is used by some of the most popular websites like Time and Radiolab.
+- It’s a very easy to follow four-step process to create your timeline
+- Info gram
+- enables you to create both charts and infographics online. It has a restricted free version and two paid options which include features like 200+ maps, private sharing and icons library etc.
+- It comes with an easy to use interface and its basic charts are well designed.
+- One feature that I didn’t like is the huge logo that you get when you try to embed interactive charts into your webpage (in free version).
+- It will be better if they can make it like the little text that Datawrapper uses.
+- Ploty
+-  is a web based data analysis and graphing tool.
+- It supports a good collection of chart types with built in social sharing features
+- The charts and graph types avaliable have a professional look and feel
+- Creating a chart is just a matter of loading in your information and customizing the layout, axes, notes and legens
+- If you are looking to get stated, you can find some inspiration
+- Chart Blocks
+- is another online chart builder that is well designed and allows you to build basic charts very quickly.
+- has a limited number of chart types, but that will not be a problem as most common chart types are covered.
+- allows you to pull in data from multiple external sources like spreadsheets and databases. After you have made the chart, you can either export it via SVG or PNG, embed it in your website or share it on social media.
+- Data virtualization
+--> is any approach to data management that allows an application to retrieve and manipulate data without requiring technical details about the data, such as how it is formatted or where it is physically located.
+--> the data remains in place, and real-time access is given to the source system for the data, thus reducing the risk of data errors and reducing the workload of moving data around that may never be used.
+--> The technology also supports the writing of transaction data updates back to the source systems.
+--> To resolve differences in source and consumer formats and semantics, various abstraction and transformation techniques are used.
+- Functionality
+--> Data Virtualization software is an enabling technology which provides some or all of the following capabilities:
+- Abstraction
+- Abstract the technical aspects of stored data, such as location, storage structure, API, access language, and storage technology.
+- Virtualized Data Access
+- Connect to different data sources and make them accessible from a common logical data access point.
+- Transformation
+- Transform, improve quality, reformat, etc. source data for consumer use.
+- Data Federation
+- Combine result sets from across multiple source systems.
+- Data Delivery
+- Publish result sets as views and/or data services executed by client application or users when requested.
+--> Data virtualization software may include functions for development, operation, and/or management.
+- Benefits
+- Reduce risk of data errors
+- Reduce systems workload through not moving data around
+- Increase speed of access to data on a real-time basis
+- Significantly reduce development and support time
+- Increase governance and reduce risk through the use of policies[
+- Reduce data storage required
+- Drawbacks
+- May impact Operational systems response time, particularly if under-scaled to cope with unanticipated user queries or not tuned early on
+- Does not impose a heterogeneous data model, meaning the user has to interpret the data, unless combined with Data Federation and business understanding of the data
+- Requires a defined Governance approach to avoid budgeting issues with the shared services
+- Not suitable for recording the historic snapshots of data - data warehouse is better for this
+- Change management "is a huge overhead, as any changes need to be accepted by all applications and users sharing the same virtualization kit
+- Tools
+- Chart.js
+- Tableau
+- Raw
+- Dygraphs
+- ZingChart
+- InstantAtlas
+- Timeline
+- Exhibit
+- Modest Maps
+- Leaflet
+- Wolframe Alpha
+- Visual.ly
+- Virtualize Free
+- Better World Flux
+- Fusion Charts
+- jq Plot
+- Dipity
+- D3.js
+- JavaScript InfoVis Toolkit
+- jpGraph
+- Highcharts
+- Google Charts
+- Excel
+- CSV / JSON
+- Crossfilter
+- Tangle
+- Polymaps
+- OpenLayers
+- Kartograph
+- CartoDB
+- Processing
+- NodeBox
+- R
+- Weka
+- Gephi
+- iCharts
+- Flot
+- jQuery Visualize
+- Link
+Data Virtualization : http://www.cisco.com/c/dam/en_us/services/enterprise-it-services/data-virtualization/documents/dv_overview.pdf

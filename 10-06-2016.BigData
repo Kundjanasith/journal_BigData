@@ -1,0 +1,251 @@
+Hortonworks Workshop
+08:30 - 17:30
+- ( SequenceIQ --> Cloudbreak )
+- docker pull sequenceiq/cloudbreak #pull a Docker image containing Cloudbreak binary and Database schema scripts
+- docker build --rm -t sequenceiq/cloudbreak #building the image
+- building custom version
+- running the image --> It is intended to run only with Cloudbreak Deployer
+- Dockerfile
+FROM java:openjdk-8
+MAINTAINER SequenceIQ
+# Install starter script for the Cloudbreak application
+ADD bootstrap/start_cloudbreak_app.sh /
+ADD bootstrap/wait_for_cloudbreak_api.sh /
+# Install zip
+RUN apt-get update
+RUN apt-get install zip
+ENV VERSION 1.4.0-dev.49
+# install the cloudbreak app
+ADD https://s3-eu-west-1.amazonaws.com/maven.sequenceiq.com/releases/com/sequenceiq/cloudbreak/$VERSION/cloudbreak-$VERSION.jar /cloudbreak.jar
+# extract schema files
+RUN unzip cloudbreak.jar schema/* -d /
+WORKDIR /
+ENTRYPOINT ["/start_cloudbreak_app.sh"]
+- SequenceIQ
+--> is now a part of Hortonworks
+--> SequenceIQ & Hortonworks are aligned on providing customers an automated method for launching on-demand Hadoop clusters with policy-based autoscaling across public or private clouds within minutes
+--> Enabling flexible and rapid deployment of Apache Hadoop to leading cloud infrastructures such as Microsoft Azure solves an important big data business requirement for the enterprise
+--> has signed a definitive agreement to acquire SequenceIQ, an open source provider of rapid deployment tools for Hadoop, to deliver a consistent and automated solution for launching on-demand Hadoop clusters in the cloud or to any environment that supports Docker containers
+- Self Service Hadoop Platform ( Anywhere )
+- Enterprises and application developers use SequenceIQ's API to provision full stack Hadoop clusters in minutes. Provisioning Hadoop has never been simpler
+- SLA policy based Auto Scaling
+- SequenceIQ's API brings QoS for a multi-tenant Hadoop YARN cluster and saves money and resources. Scale your services on-demand based on metrics, time or manually
+- Open Source and Open Platform
+- We believe that open source platforms encourages research and progress and is a cost effective way to deploy big data solutions in the cloud or on-premise - at your choice
+- Cloudbreak
+-->  is our open source, cost effective way to start and run multiple instances and versions of Hadoop clusters in the cloud, Docker containers or bare metal. It is a cloud and infrastructure agnostic and cost effictive Hadoop As-a-Service platform API. Provides automatic scaling, secure multi tenancy and full cloud lifecycle management
+- Flexible
+- Allows the option to choose the favorite cloud provider and pricing model. The API translated the calls towards different cloud vendors - one common API, provision everywhere
+- Elastic and Scalable
+- Cloudbreak API can provision an arbitrary number of Hadoop nodes - the API does the hard work and span up the cluster, configure the networks and the selected Hadoop services. As the workload changes, the API allows you to add or remove nodes on the fly
+- Blueprints
+- Blueprints are your Hadoop cluster stack definition and component layout. We support multiple blueprints of different Hadoop distributions
+--> is cloud and Hadoop provider agnostic
+--> Cloudbreak is HDP Certified and YARN Ready
+- Amazon Web Services ( EC2 <-- Cloudbreak [ SequenceIQ ] )
+- Amazon Web Service Images
+--> Security Group
+- SSH --> Port 22
+- Custom : Cloudbreak API --> Port 8080
+- Custom : Indentity servert --> Port 8089
+- Custom : Cloudbreak GUI --> Port 3000
+- Custom : User authentication --> Port 3001
+* Port 3000 & Port 3001 are provided by SequenceIQ
+- Cloudbreak Deployer AWS Image Details
+- Region : eu-west-1 --> Image Name : ami-c151c6b2
+- Region : sa-east-1 --> Image Name : ami-83058def
+- Region : us-east-1 --> Image Name : ami-2410fa49
+- Region : us-west-1 --> Image Name : ami-a780f8c7
+- Region : us-west-2 --> Image Name : ami-2735ca47
+- Region : eu-central-1 --> Image Name : ami-1e30dc71
+- Region : ap-northeast-1 --> Image Name : ami-3fc9295e
+- Region : ap-southeast-1 --> Image Name : ami-936fb9f0
+- Region : ap-southeast-2 --> Image Name : ami-aae2cdc9
+*The minimum instance ( RAM: 8GB, DISK: 10GB, 2 cores ) --> m3.large
+- Amazon Web Service Setup
+--> SSH username of EC2 instance is cloudbreak
+--> Path of Cloudbreak Deployer is /var/lib/cloudbreak-deployment
+--> cbd root folder = cloudbreak user > cbd
+- Setup Cloudbreak Deployer
+- cd  /var/lib/cloudbreak-deployment
+- ssh -i key.pem cloudbreak@PUBLIC_DNS
+- Initialize profile
+- cbd init #creating a profile
+- AWS specific configuration
+[ There are 2 ways to creates AWS credentials in Cloudbreak ]
+- Key-Based:  It requires your AWS access and secret key and Cloudbreak will use this key to launch the resources. This key needs to be provided when you create your credential in Cloudbreak either with Cloudbreak UI or Cloudbreak CLI
+- Role-Based: It requires a valid IAM User role and Cloudbreak will assume this role to get a temporary access and secret key. For this action you need to set your AWS key in the profile file
+*The keys of a valid IAM User
+- export AWS_ACCESS_KEY_ID
+- export AWS_SECRET_ACCESS_KEY
+- Start Cloudbreak Deployer
+- cbd start
+- cbd generate
+- creates the docker-compose.yml file that describes the configuration of all the Docker containers needed for the Cloudbreak deployment
+- creates the uaa.yml file that holds the configuration of the identity server which is used to authenticate users to Cloudbreak
+- Validate the started Cloudbreak Deployer
+- cbd doctor #pre-installed Cloudbreak Deployer version & health
+- cbd update #update Cloudbreak
+- cbd logs cloudbreak #started cloudbreak application logs
+- Provisioning Prerequisites
+- Identify & Access Managaement role setup
+- Key based authentication
+- Cloudbreak deployment uses two different AWS accounts for two different purposes
+- The account belonging to the Cloudbreak webapp
+- Cloudbreak webapp acts as a third party, that creates resources on the account of the end user
+- This account is configured at server-deployment time
+- The account belonging to the end user
+- End user who uses the UI or the Shell to create clusters
+- This account is configured when setting up credentials
+- EC2 instance --> Identify & Access Management
+- Role --> Select your role of your instance
+- Edit Permission [ JSON file ]
+{
+"Version": "2012-10-17",
+"Statement": [
+{
+   "Sid": "Stmt1400068149000",
+   "Effect": "Allow",
+   "Action": [
+   "sts:AssumeRole"
+    ],
+   "Resource": [
+      "*"
+   ]
+}
+]
+}
+* cbd commands
+- cbd aws generate-role #Generates an AWS IAM role for Cloudbreak provisioning on AWS
+- cbd aws show-role #Show assumers and policies for an AWS role
+- cbd aws delete-role #Delete an AWS IAM role, remove all inline policies
+--> export AWS_ROLE_NAME
+- Generate a new SSH key
+- ssh-keygen -t rsa -b 4096 -c "email@example.com"
+# Creates a new ssh key, using the provided email as a label
+# Generating public/private rsa key pair.
+* .pem --> private key
+* .pub --> public key
+- Provisioning via Browser
+--> PUBLIC_IP:3000 > The Cloudbreak application
+--> Create Cloudbreak cluster from the UI
+- connect your AWS account with Cloubreak
+- default account
+- Username : admin@example.com
+- password : cloudbreak
+- create some template resources on the UI that describe the infrastructure of your clusters
+- create a blueprint that describes the HDP services in your clusters and add some recipes for customization
+- launch the cluster itself based on these resources
+- Setting up Amazon Web Service credentials
+- Select the credential type --> Role Based
+- Fill out the new credential --> credential_name
+- IAM Role ARN --> AWS IAM role's Amazon Resource Name (ARN)
+- SSH public key --> SSH-RSA . . .
+- Infrastructure templates
+- Resource templates --> ( Describe cluster's infrastructure )
+- Templates
+- Spot price ( USD )
+- EBS encryption
+- Public in account
+- Networks
+- VPC ( Virtual Private Cloud )
+- Subnet
+- Internet Gateway Identifier
+- Security groups
+- Only-ssh-and-ssl : all ports are locked down except for SSH and gateway HTTPS
+- SSH --> Port 22
+- HTTPS --> Port 443
+- All-services-port : all Hadoop services and SSH, gateway and HTTPS are accessible by default
+- SSH --> Port 22
+- HTTPS --> Port 443
+- Ambari --> Port 8080
+- Consul --> Port 8500
+- NN --> Port 50070
+- RM Web --> Port 8088
+- Scheduler --> Port 8030RM
+- IPC --> Port 8050RM
+- Job history server --> Port 19888
+- HBase master --> Port 60000
+- HBase master web --> Port 60010
+- HBase RS --> Port 16020
+- HBase RS info --> Port 60030
+- Falcon --> Port 15000
+- Storm --> Port 8744
+- Hive metastore --> Port 9083
+- Hive server --> Port 10000
+- Hive server HTTP --> Port 10001
+- Accumulo master --> Port 9999
+- Accumulo Tserver --> Port 9997
+- Atlas --> Port 21000
+- KNOX --> Port 8443
+- Oozie --> Port 11000
+- Spark HS --> Port 18080
+- NM Web --> Port 8042
+- Zeppelin WebSocket --> Port 9996
+- Zeppelin UI --> Port 9995
+- Kibana --> Port 3080
+- Elasticsearch --> Port 9200
+- Defining cluster services
+- Blueprints --> [ JSON text ]
+- Blueprints are your declarative definition of a Hadoop cluster. These are the same blueprints that are used by Ambari
+- Blueprint can be exported from a running Ambari cluster that can be reused in Cloudbreak with slight modifications
+- Cluster customization
+- Cluster deployment
+- Start by selecting a previously created AWS credential in the header
+- Open create cluster
+- Configure Cluster tab
+- Fill out the new cluster name
+- Select a region of your cluster allocate
+- Set up network and security
+- Setup Network and Security tab
+- Select one of the networks
+- Select one of the security groups
+- Choose blue print
+- Choose Blueprint tab
+- Select one of the blueprint
+--> the templates
+--> the number of nodes for all of the host groups in the blueprint
+--> the recipes for nodes
+- Review and Launch
+- Create and Start Cluster
+- Advanced options
+- Availability Zone : You can restrict the instances to a specific availability zone. It may be useful if you're using reserved instances.
+- Use dedicated instances : You can use dedicated instances on EC2
+- Minimum cluster size : The provisioning strategy in case of the cloud provider cannot allocate all the requested nodes.
+- Validate blueprint : This is selected by default. Cloudbreak validates the Ambari blueprint in this case.
+ - Shipyard enabled cluster : This is selected by default. Cloudbreak will start a Shipyard container which helps you to manage your containers.
+- Config recommendation strategy : Strategy for configuration recommendations how will be applied. Recommended configurations gathered by the response of the stack advisor.
+- NEVER_APPLY : Configuration recommendations are ignored with this option.
+- ONLY_STACK_DEFAULTS_APPLY : Applies only on the default configurations for all included services.
+- ALWAYS_APPLY : Applies on all configuration properties.
+* Start LDAP and configure SSSD Enables the System Security Services Daemon configuration
+- Cluster termination
+--> Force Termination
+- Interactive mode / Cloudbreak shell
+--> The goal with the Cloudbreak Shell (Cloudbreak CLI) was to provide an interactive command line tool
+- Start Cloudbreak shell
+- cd cloudbreak-deployment #Open your cloudbreak-deployment directory if it is needed
+- cbd start #Start the cbd from here if it is needed
+- cbd util cloudbreak-shell #Execute cloudbreak shell
+- Autocomplete and hints
+- Provisioning via CLI
+- Setting up Amazon Web Service credentials
+- SSH Key
+--> -sshKeyUrl : you can upload your public key from an url
+--> -sshKeyPath : you can add the path of your public key
+- credential list #Check whether the credential was created success
+- credential select #Switch between your existing credentials
+- Infrastructure templates
+- Resoucre templates
+--> Security groups
+--> Networks
+--> Templates
+- Defining cluster serices
+- Blueprints
+--> Blueprints are your declarative definition of a Hadoop cluster. These are the same blueprints that are used by Ambari
+- Metadata show
+- Cluster deployment
+- Cluster termination
+- Silent mode
+- Link
+How to install cluster: http://sequenceiq.com/cloudbreak-docs/latest/aws/

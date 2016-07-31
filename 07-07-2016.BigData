@@ -1,0 +1,276 @@
+Charset
+08:30 - 12:00
+- UTF-8
+- is a character encoding capable of encoding  all possible characters, or code points, defined by unicode and originally designed by Ken Thompson and Rob Pike
+- The encoding is variable-length and use 8 bit code units
+- It was designed for backward compatibility with ASCII and to avoid the complications of endianness and byte order matks in the alternative UTF-16 and UTF-32 encodings
+- is the dominant character encoding for the World Wide Web
+- The Internet Mail Consortium recommends that all e-mail programs be able to display and create mail using UTF-8
+- Description
+- Bits of code point
+- First code point
+- Last code point
+- Bytes in sequence
+- Byte1 --> 0
+- Byte2 --> 110, 10
+- Byte3 --> 1110, 10, 10
+- Byte4 --> 11110, 10, 10, 10
+- Byte5 --> 111110, 10, 10, 10, 10
+- Byte6 --> 11111110, 10, 10, 10, 10, 10
+- The Unicode Character Sets
+--> Unicode can be implemented by different character sets.
+--> The most commonly used encodings are UTF-8 and UTF-16
+- UTF-8
+- A character in UTF8 csn be from 1 to 4 bytes long. UTF-8 can represent any character in the Unicode standard. UTF-8 is backwards compatible with ASCII. UTF-8 is the preferred encoding for e-mail and web pages.
+- UTF-16
+- 16-bit Unicode Transformation Format is a variable-length character encoding for Unicode, capable of encoding the entire Unicode repertoire. UTF-16 is used in major operating systems and environments, like Microsoft Windows, Java and .NET.
+- ASCII
+- abbreviated from American Standard Code for Information Interchange
+- is a character encoding standard
+- is the Internet Assigned Numbers Authority
+- represent text in computers, telecommunications equipment and other devices
+- most modern character encoding schemes are based on ASCII
+- Design Considerations
+- Bit width
+- Internal organization
+- Character order
+- Character groups
+- Control characters
+- Printable characters
+- Code chart
+- Alphabetic
+- Control character
+- Numeric digit
+- Punctuation
+- Extended punctuation
+- Graphic character
+- International
+- Undefined
+- Use
+- ASCII was the most common character encoding on the World Wide Web until December 2007 when UTF-8 encoding surpassed it
+- Variants & Derivation
+- 7-bit codes
+- 8-bit codes
+- Unicode
+- Node Convert
+- adds a menu tab "Convert" on the node view page
+- The ability to convert the node from its current node type to another node type.
+- The module provides the means to transfer all the field values of the current node type into fields on the destination node type, or discard them.
+- The module integrates with Actions, Rules, Views Bulk Operations and Admin Views nicely.
+- It has support for exporting templates into Features using CTools Exportables.
+- It also provides a hook that enables developers to execute additional code on conversion.
+- Currently the module provides additional behavior for properly converting nodes for the following modules
+- XMLSitemap
+- The module has been tested on converting node types with the following field types
+- Text
+- Number
+- Image
+- File
+- Node reference
+- User reference
+- Term reference
+- Entity reference
+- Link
+- Date
+- Datestamp
+- Email
+- The Node Convert module lets you change one or more nodes into a different node type. During this conversion, it supports transferring data for many popular kinds of field, including: text, link, image, file, entity reference, node / term / user reference.
+- Encoding
+- npm install encoding
+- var encoding = require('encoding');
+- var buffer = encoding.convert( text, toCharSet, fromCharSet );
+- Buffers
+- Why Buffers?
+- Pure javascript, while great with unicode-encoded strings, does not handle straight binary data very well.
+- This is fine on the browser, where most data is in the form of strings.
+- Node.js servers have to also deal with TCP streams and reading and writing to the filesystem, both which make it necessary to deal with purely binary streams of data.
+- One way to handle this problem is to just use strings anyway, which is exactly what Node.js did at first.
+- This approach is extremely problematic to work with; It's slow, makes you work with an API designed for strings and not binary data, and has a tendency to break in strange and mysterious ways.
+- What are Buffers?
+- Buffers are instances of the Buffer class in node, which is designed to handle raw binary data. Each buffer corresponds to some raw memory allocated outside V8.
+- Buffers act somewhat like arrays of integers, but aren't resizable and have a whole bunch of methods specifically for binary data.
+- Where you see Buffers
+- Buffers are usually seen in the context of binary data coming from streams.
+- Iconv-lite
+- npm install iconv-lite
+- Convert character encodings in pure javascript
+- Pure Javascript character encoding conversion
+- Doesn't need native code compilation. Works on Windows and in sandboxed environments like Cloud9.
+- Used in popular projects like Express.js, Grunt, Nodemailer, Yeoman and others.
+- Faster than node-iconv.
+- Intuitive encode/decode API
+- Streaming support for Node v0.10+
+- Can extend Node.js primitives (buffers, streams) to support all iconv-lite encodings.
+- License: MIT.
+- Usage
+- Basic API
+var iconv = require('iconv-lite');
+str = iconv.decode(new Buffer([0x68, 0x65, 0x6c, 0x6c, 0x6f]), 'win1251');
+buf = iconv.encode("Sample input string", 'win1251');
+iconv.encodingExists("us-ascii")
+- Streaming API
+http.createServer(function(req, res) {
+    var converterStream = iconv.decodeStream('win1251');
+    req.pipe(converterStream);
+    converterStream.on('data', function(str) {
+        console.log(str); // Do something with decoded strings, chunk-by-chunk.
+    });
+});
+fs.createReadStream('file-in-win1251.txt')
+    .pipe(iconv.decodeStream('win1251'))
+    .pipe(iconv.encodeStream('ucs2'))
+    .pipe(fs.createWriteStream('file-in-ucs2.txt'));
+http.createServer(function(req, res) {
+    req.pipe(iconv.decodeStream('win1251')).collect(function(err, body) {
+        assert(typeof body == 'string');
+        console.log(body); // full request body string
+    });
+});
+
+HTML Convert Service
+13:00 - 17:30
+- Property
+- We always make sure to complete your projects at lightning speed.
+- We are confident in what we do, therefore we offer an outstanding money-
+- We offer discounts for bulk orders, non- profit organizations as well as partnership discounts.
+- We're happy to assist our clients with any questions.
+- Node
+- Node's "event loop" is central to being able to handle high throughput
+scenarios.
+- is a magical place filled with unicorns and rainbows, and is the reason Node can essentially be "single threaded" while still allowing an arbitrary number of operations to be handled in the background.
+- Event Driven Programming
+- The first thing needed in order to understand the event loop is an  understanding of the event-driven programming paradigm.
+-  is largely used in UI applications.
+- A major usage of JavaScript is to interact with the DOM, so the use of event-based APIs was natural.
+-  is application flow control that is determined by events or changes in state.
+- The general implementation is to have a central mechanism that listens for events and calls a callback function once an event has been detected
+- Mechanical
+- Node itself depends on multiple libraries.
+-  One of those is libuv, the magical library that handles the queueing and processing of asynchronous events.
+- The remainder of this post please keep in mind that I won't distinguish if a point made relates directly to Node or libuv.
+- Node utilizes as much of what's already available from the operating system's kernel as possible.
+- Responsibilities like making write requests, holding connections and more are therefore delegated to and handled by the system.
+- Event Emitter and Event Loop
+- is a generic wrapper that more easily allows creating event-based APIs.
+- Some of the confusion that surrounds how these two interact we'll now address common points that tend to trip up developers.
+- Problems with your application can be hard enough, but losing the call stack can make it impossible.
+- The two most reasonable solutions to get around this problem are to emit synchronously or to make sure other important information propagates with the error.
+- May be possible that the error being emitted should be handled immediately, before the application proceeds executing.
+-  Is not a good idea to have a constructors that emit errors, since the object instance's construction may very well be incomplete.
+- The node way
+- The Fundamentals
+- Error-First Callbacks
+- Testing Essentials
+- Start Building
+- It is not the beauty of a building you should look at the construction of the foundation that will stand the test of time
+- Singletons
+- Custom Types
+- Factories
+- npm install hs
+var hs = require('./hs');
+var session = hs.createSession(opts);
+session.on('error', function(err) {
+  console.log('ERROR: %s', err.message);
+});
+session.on('connect', function() {
+  console.log('** connected');
+  session.send('TRANS');
+});
+session.on('response', function(res) {
+  console.log(res);
+  session.disconnect();
+});
+session.on('disconnect', function() {
+  console.log('** disconnected');
+  session.close();
+});
+session.on('close', function() {
+  console.log('** closed');
+});
+session.connect();
+- Node.js with HTML
+- Node.js is a very powerful JavaScript-based framework/platform built on Google Chrome's JavaScript V8 Engine.
+- Node.js is a server side platform built on Google Chrome's JavaScript Engine
+- Node.js is an open source, cross-platform runtime environment for developing server-side and networking applications.
+- Node.js applications are written in JavaScript, and can be run within the Node.js runtime on OS X, Microsoft Windows, and Linux.
+- Node.js also provides a rich library of various JavaScript modules which simplifies the development of web applications using Node.js to a great extent.
+- Features of Node
+- Asynchronous and Event Driven
+- All APIs of Node.js library are asynchronous that is, non-blocking. It essentially means a Node.js based server never waits for an API to return data. The server moves to the next API after calling it and a notification mechanism of Events of Node.js helps the server to get a response from the previous API call.
+- Very Fast
+- Being built on Google Chrome's V8 JavaScript Engine, Node.js library is very fast in code execution.
+- Single Threaded but Highly Scalable
+- Node.js uses a single threaded model with event looping. Event mechanism helps the server to respond in a non-blocking way and makes the server highly scalable as opposed to traditional servers which create limited threads to handle requests. Node.js uses a single threaded program and the same program can provide service to a much larger number of requests than traditional servers like Apache HTTP Server.
+- No Buffering
+- Node.js applications never buffer any data. These applications simply output the data in chunks.
+- Use
+- I/O bound Applications
+- Data Streaming Applications
+- Data Intensive Real time Applications (DIRT)
+- JSON APIs based Applications
+- Single Page Applications
+- Run time
+- The source code written in source file is simply javascript. The Node.js interpreter will be used to interpret and execute your javascript code.
+- Node.js distribution comes as a binary installable for SunOS , Linux, Mac OS X, and Windows operating systems with the 32-bit (386) and 64-bit (amd64) x86 processor architectures.
+- Components
+- Import required modules
+- We use require directive to load a Node.js module.
+- Create server
+- A server which will listen to client's request similar to Apache HTTP Server.
+- Read request and return response
+- server created in earlier step will read HTTP request made by client which can be a browser or console and return the response.
+- Perform
+- Read
+- Reads user's input, parse the input into JavaScript data-structure and stores in memory.
+- Eval
+- Takes and evaluates the data structure
+- Print
+- Prints the result
+- Loop
+- Loops the above command until user press ctrl-c twice.
+- Callback Method
+- is an asynchronous equivalent for a function.
+- is called at the completion of a given task. Node makes heavy use of callbacks.
+- APIs of Node are written is such a way that they supports callbacks.
+- File Systems
+- var fs = require('fs');
+- Synchronous
+var data = fs.readFileSync('input.txt');
+console.log("Synchronous read: " + data.toString());
+console.log("Program Ended");
+- Asynchronous
+fs.readFile('input.txt', function (err, data) {
+   if (err) {
+       return console.error(err);
+   }
+   console.log("Asynchronous read: " + data.toString());
+});
+- Parameters
+- Path
+- This is string having file name including path.
+- Callback
+- This is the callback function which gets two arguments (err, stats) where stats is an object of fs.
+- Web Server
+- is a software application which handles HTTP requests sent by the HTTP client, like web browsers, and returns web pages in response to the clients.
+- usually delivers html documents along with images, style sheets and scripts.
+- Architecture
+- Client
+- This layer consists of web browsers, mobile browsers or applications which can make HTTP request to the web server.
+- Server
+- This layer consists of Web server which can intercepts the request made by clients and pass them the response.
+- Business
+- This layer consists of application server which is utilized by web server to do required processing. This layer interacts with data layer via data base or some external programs.
+- Data
+- This layer consists of databases or any source of data.
+- Middleware --> Express
+- is a minimal and flexible Node.js web application framework that provides a robust set of features to develop web and mobile applications.
+- It facilitates a rapid development of Node based Web applications.
+- Features
+- Allows to set up middlewares to respond to HTTP Requests.
+- Defines a routing table which is used to perform different action based on HTTP Method and URL.
+- Allows to dynamically render HTML Pages based on passing arguments to templates.
+- Object
+- Request Object
+- The request object represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, and so on.
+- Response Object
+- The response object represents the HTTP response that an Express app sends when it gets an HTTP request.

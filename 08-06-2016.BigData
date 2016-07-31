@@ -1,0 +1,371 @@
+Hortonworks Workshop
+08:30 - 17:30
+- Download & Install
+- Hortonworks Sandbox
+- on Virtual Box / VM Ware
+- in the Cloud --> ( Microsoft Azure )
+- Hortonworks Data Flow
+- Manual
+- Hortonworks Data Platform
+- Automated ( with Ambari )
+- Manual ( RPMs )
+- Cloud ( with Cloudbreak )
+- Windows
+- Hortonworks Data Platform ( Add-Ons )
+- Connector for Teradata
+- ODBC Driver for Apache Hive
+- Search ( Apache Solr )
+- Hortonworks Product
+- Hortonworks Data Flow ( HDF )
+--> Hortonworks Data Flow collects, curates, analyzes and delivers real-time data from the Internet of Anything (IoAT) – devices, sensors clickstreams, log files and more
+--> support subscription provides expert technical assistance for implementing solutions designed to cover the entire lifecycle--from development and proof-of-concept to QA/test to production and deployment
+- Hortonworks Data Platform ( HDP )
+--> Hortonworks Data Platform enables the creation of a secure enterprise data lake and delivers the analytics you need to innovate fast and power real-time business insights.
+--> support subscriptions provide a range of support services and connect you to a uniquely qualified team of Apache NiFi, Kafka and Storm professionals for expert care and technical assistance.
+                                Modern Data Applications
+                                ^                                         ^
+                                 |                                          |
+                 ( Perishable Insights )            ( Historical Insights )
+                        |                                                                    |
+                 ( HDF ) ---- (Actionable Intelligence) ---- ( HDP )
+                     |                                                                |
+    |--------> ( * ) <-----------------------------------------> ( * ) <------|
+Internet Of Anything --> |     ( Data In Motion )                               ( Data At Rest )   ( * )
+    |--------> ( * ) -------------------------------------------> ( * ) --------|
+- Hortonworks Data Platform
+- Install
+--> Ambari Automated Install Guide
+--> Non-Ambari Cluster Installation Guide
+- Upgrade
+--> Ambari Upgrade Guide
+--> Non-Ambari Cluster Upgrade Guide
+- Data Access
+- HDP
+--> HDP Data Services Guide
+--> HDP Search (Solr)
+- HBase
+--> HBase Snapshots
+--> HBase Java API
+--> Importing Data Into HBase
+--> Hive Performance Tuning Guide
+--> Storm User Guide
+- Data Science
+--> Spark Guide
+- Data Management and Operations
+- HDFS
+--> HDFS Administration Guide
+--> HDFS NFS Gateway
+- HDP
+--> HDP System Administration Guide
+--> HDP Reference Guide
+--> Cluster Planning Guide
+--> High Availability for Hadoop
+--> YARN Resource Management Guide
+- Security
+- Ambari
+--> Installing Ranger Over Ambari
+--> Configuring Kafka for Kerberos Over Ambari
+--> Configuring Storm for Kerberos Over Ambari
+- Ranger
+--> Ranger User Guide
+--> Ranger KMS Administration Guide
+--> Hadoop Security Guide
+--> Knox Administrator Guide
+- Data Governance and Integration
+--> Data Governance Guide
+--> Apache Flume User Guide
+--> Kafka Guide
+--> Hortonworks Connector for Teradata
+- Hortonworks Data Flow
+- Getting Started
+--> Install and Setup Guide
+--> Getting Started with NiFi
+--> Upgrade Guide
+--> NiFi Overview
+- Administration
+- NiFi
+--> NiFi Administration Guide
+--> NiFi User Guide
+--> Storm User Guide
+--> Kafka Documentation
+- Development
+--> NiFi Expression Language Guide
+--> NiFi Developer’s Guide
+--> NiFi REST API Documentation
+- Hortonwork in Cloud ( Ambari ) <-- Microsoft Azure
+- Dashboard
+- Metrics --> HDFS Disk Usage, DataNodes Live, HDFS Links, Memory Usage, Network Usage, CPU Usage, Cluster Load, NameNode Heap, NameNode RPC, NameNode CPU WIO, NameNode Uptime, HBase Master Heap, HBase Links, HBase Ave Load, HBase Master Uptime, ResourceManager Heap, ResourceManager Uptime, NodeManager Live, YARN Memory, YARN Links, Supervisors Live, Flume Live
+- Heatmaps
+- Config History
+- Service --> HDFS, MapReduce2, YARN, Tez, Hive, HBase, Pig, Sqoop, Oozie, ZooKeeper, Falcon, Storm, Flume, Ambari Metrics, Atlas, Kafka, Knox, Ranger, Slider, Spark, Zeppellin Notebook
+- Hosts --> sandbox,hortonwork
+- Alerts --> Atlas Metadata Server Process, Metadata Server Web UI, Flume Agent Status, NFS Gateway Process, Secondary NameNode Process, NameNode High Availability Health, DataNode Web UI, NameNode Host CPU Utilization, NameNode RPC Latency, Namenode Blocks Health and etc . . .
+- View
+- YARN Queue Manager : manage YARN capacity scheduler queues
+- HDFS Files : user interface to allow management of files within the Hadoop Distributed File System ( HDFS )
+- Hive View : this view instance is auto created when the hive service is added to a cluster
+- Pig : user interface to write and execute Pig script
+- Slider Apps View : provide a management view of applications deployed using slider framework
+- Tez View : monitor and debug all Tez jobs, submitted by hiv queries and Pig script ( auto-created )
+- HDFS ( Hadoop Distributed File System )
+- is highly fault-tolerant and is designed to be deployed on low-cost hardware
+- provides high throughput access to application data and is suitable for applications that have large data sets
+- relaxes a few POSIX requirements to enable streaming access to file system data
+- Hadoop
+--> is an open-source framework to store and process Big Data in a distributed environment. It contains two modules, one is MapReduce and another is Hadoop Distributed File System (HDFS)
+- MapReduce: It is a parallel programming model for processing large amounts of structured, semi-structured, and unstructured data on large clusters of commodity hardware
+- HDFS: Hadoop Distributed File System is a part of Hadoop framework, used to store and process the datasets. It provides a fault-tolerant file system to run on commodity hardware
+= Sqoop: It is used to import and export data to and from between HDFS and RDBMS
+= Pig: It is a procedural language platform used to develop a script for MapReduce operations
+= Hive: It is a platform used to develop SQL type scripts to do MapReduce operations
+- Hive
+- The Apache Hive data warehouse software facilitates reading, writing, and managing large datasets residing in distributed storage using SQL. Structure can be projected onto data already in storage. A command line tool and JDBC driver are provided to connect users to Hive
+- is a data warehouse infrastructure tool to process structured data in Hadoop. It resides on top of Hadoop to summarize Big Data, and makes querying and analyzing easy
+- Feature
+- It stores schema in a database and processed data into HDFS
+- It is designed for OLAP
+- It provides SQL type language for querying called HiveQL or HQL
+- It is familiar, fast, scalable, and extensible
+- Working
+1. Execute Query : The Hive interface such as Command Line or Web UI sends query to Driver (any database driver such as JDBC, ODBC, etc.) to execute
+2. Get Plan : The driver takes the help of query compiler that parses the query to check the syntax and query plan or the requirement of query
+3. Get Metadata : The compiler sends metadata request to Metastore (any database)
+4. Send Metadata : Metastore sends metadata as a response to the compiler
+5. Send Plan : The compiler checks the requirement and resends the plan to the driver. Up to here, the parsing and compiling of a query is complete
+6. Execute Plan : The driver sends the execute plan to the execution engine
+7. Execute Job : Internally, the process of execution job is a MapReduce job. The execution engine sends the job to JobTracker, which is in Name node and it assigns this job to TaskTracker, which is in Data node. Here, the query executes MapReduce job
+8. Metadata Operations : Meanwhile in execution, the execution engine can execute metadata operations with Metastore
+9. Fetch Result : The execution engine receives the results from Data nodes
+10. Send Results to driver : The execution engine sends those resultant values to the driver
+11. Send Result to hive : The driver sends the results to Hive Interfaces
+- Set up
+- Step1: Setting up hadoop --> ~/.bashrc
+export HADOOP_HOME=/usr/local/hadoop
+export HADOOP_MAPRED_HOME=$HADOOP_HOME
+export HADOOP_COMMON_HOME=$HADOOP_HOME
+export HADOOP_HDFS=$HADOOP_HOME
+export YARN_HIME=$HADOOP_HOME
+export HADOOP_COMMON=_LIB_NATIVE_DIR$HADOOP_HOME/lib/native
+export PATH==$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
+$ source ~/.bashrc #execute ~/.bashrc file
+- Step2: Hadoop Configuraion
+- cd $HADOOP_HOME/etc/hadoop #change directory
+- export JAVA_HOME=/usr/local/java #hadoop-env.sh
+- core-site.xml / hdfs-site.xml / yarn-site.xml / mapred-site.xml
+- Verifying Hadoop Installation
+- Step1: Name node setup
+- cd ~
+- hdfs namenode -format
+- Step2: Verifying Hadoop dfs
+- start-dfs.sh
+- Step3: Verifying Yarn Script
+- start-yarn.sh
+- Step4: Accessing Hadoop on Browser
+- http://localhost:50070
+- Step5: Verify all application for cluster
+- http://localhost:8088
+- Downloading & Installing Hive
+- tar zxvf apache-hive-0.14.0-bin.tar.gz
+--> ~/.bashrc
+export HIVE_HOME=/usr/local/hive
+export PATH=$PATH:$HIVE_HOME/bin
+export CLASSPATH=$CLASSPATH:/usr/local/Hadoop/lib/*:.
+$ source ~/.bashrc #execute ~/.bashrc file
+- Configuring Hive --> hive-env.sh
+export HADOOP_HOME=/usr/local/hadoop
+- Downloading & Installing Apache Derby
+- wget http://archive.apache.org/dist/db/derby/db-derby-10.4.2.0/db-derby-10.4.2.0-bin.tar.gz
+- Data Types
+- Column Types
+- Integral --> ( TINYINT, SMALLINT, INT, BIGINT )
+- String --> ( VARCHAR, CHAR )
+- TImestamp
+- Dates
+- Decimals
+- Union
+- Literals
+- Floating Point
+- Decimal
+- Null Values
+- NULL
+- Complex Types
+- Arrays
+- Maps
+- Structs
+- Create Database
+- create database database_name
+- Drop Database
+- drop database database_name
+- Create Table
+- create table table_name ( field1 type1, field2 type2 )
+- Alter Table
+- alter table table_name rename to new_name
+- alter table table_name add columns ( col1, col2 )
+- alter table table_name drop [column] column_name
+- alter table table_name change column_name new_name new_type
+- alter table table_name replace columns ( col1, col2 )
+- Drop Table
+- drop table table_name
+- Partitioning
+- alter table table_name add partition partition_spec
+- alter table table_name partition part1 rename to partition part2
+- alter table table_name drop partition partition_spec
+- Built-in operations
+- Relational Operators
+--> ( A=B, A!=B, A<B, A<=B, A>B, A>=B, A IS NULL, A IS NOT NULL,
+A LIKE B, A RLIKE B, A REGEXP B )
+- Arithmethic Operators
+--> ( A+B, A-B, A*B, A/B, A%B, A&B, A|B, A^B, ~A )
+- Logical Operators
+--> ( A AND B, A && B, A OR B, A || B, NOT A, !A )
+- Complex Operators
+--> ( A[n], M[key], S.x )
+- Built-in functions
+- round( double a ) --> BIGINT
+= It returns the rounded BIGINT value of the double
+- floor( double a ) --> BIGINT
+= It returns the maximum BIGINT value that is equal or less than the double
+- ceil( double a ) --> BIGINT
+= It returns the minimum BIGINT value that is equal or greater than the double
+- rand( ), rand( int seed ) --> double
+= It returns a random number that changes from row to row
+- concat( string A, string B,... ) --> string
+= It returns the string resulting from concatenating B after A
+- substr( string A, int start ) --> string
+= It returns the substring of A starting from start position till the end of string A
+- substr( string A, int start, int length ) --> string
+= It returns the substring of A starting from start position with the given length
+- upper( string A ) --> string
+= It returns the string resulting from converting all characters of A to upper case
+- ucase( string A ) --> string
+= It returns the string resulting from converting all characters of A to upper case
+- lower( string A ) --> string
+= It returns the string resulting from converting all characters of B to lower case
+- lcase( string A ) --> string
+= It returns the string resulting from converting all characters of B to lower case
+- trim( string A ) --> string
+= It returns the string resulting from trimming spaces from both ends of A
+- ltrim( string A ) --> string
+= It returns the string resulting from trimming spaces from the beginning (left hand side) of A
+- rtrim( string A ) --> string
+= rtrim(string A) It returns the string resulting from trimming spaces from the end (right hand side) of A
+- regexp_replace( string A, string B, string C ) --> string
+= It returns the string resulting from replacing all substrings in B that match the Java regular expression syntax with C
+- size( Map<K.V> ) --> int
+= It returns the number of elements in the map type
+- size( Array<T> ) --> int
+= It returns the number of elements in the array type
+- cast( <expr> as <type> ) --> value of <type>
+= It converts the results of the expression expr to <type>
+- to_date( string timestamp ) --> string
+= It returns the date part of a timestamp string: to_date("1970-01-01 00:00:00") = "1970-01-01"
+- year( string date ) --> int
+= It returns the year part of a date or a timestamp
+- month( string date ) --> int
+= It returns the month part of a date or a timestamp
+- day( string date ) --> int
+= It returns the day part of a date or a timestamp
+- get_json_object( string json_string, string path ) --> string
+= It extracts json object from a json string based on json path specified, and returns json string of the extracted json object. It returns NULL if the input json string is invalid
+- Aggregate Functions
+- count( * ), count( expr ) --> BIGINT
+= Returns the total number of retrieved rows
+- sum( col ), sum( DISTINCT col ) --> DOUBLE
+= It returns the sum of the elements in the group or the sum of the distinct values of the column in the group
+- avg( col ), avg( DISTINCT col ) --> DOUBLE
+ = It returns the average of the elements in the group or the average of the distinct values of the column in the group
+- min( col ) --> DOUBLE
+= It returns the minimum value of the column in the group
+- max( col ) --> DOUBLE
+= It returns the maximum value of the column in the group
+- Sqoop
+- The Apache Sqoop is a tool designed for efficiently transferring bulk data between Apache Hadoop and structured datastores such as relational databases
+- Processing
+HDFS <—(import)— Sqoop <—(Metadata)-- RDBMS
+HDFS —(export)—> Sqoop —(Get Metadata)—> RDBMS
+= Hadoop File System --> HDFS, Hive, HBase
+= RDBMS --> MySQL, Oracle, Postgresql, DB2
+- is a tool designed to transfer data between Hadoop and relational database servers. It is used to import data from relational databases such as MySQL, Oracle to Hadoop HDFS, and export from Hadoop file system to relational databases
+* Sqoop: “SQL to Hadoop and Hadoop to SQL”
+- Sqoop tools
+- sqoop import : The import tool imports individual tables from RDBMS to HDFS. Each row in a table is treated as a record in HDFS. All records are stored as text data in text files or as binary data in Avro and Sequence files
+- sqoop export : The export tool exports a set of files from HDFS back to an RDBMS. The files given as input to Sqoop contain records, which are called as rows in table. Those are read and parsed into a set of records and delimited with user-specified delimiter
+- Installation
+- Step1: Verifying JAVA installation
+- java --version  #check java version --> 1.7
+- Step2: Verifying Hadoop installation
+- hadoop version #check hadoop version --> 2.4
+- Set up
+- Step1: Setting up hadoop --> ~/.bashrc
+export HADOOP_HOME=/usr/local/hadoop
+export HADOOP_MAPRED_HOME=$HADOOP_HOME
+export HADOOP_COMMON_HOME=$HADOOP_HOME
+export HADOOP_HDFS=$HADOOP_HOME
+export YARN_HIME=$HADOOP_HOME
+export HADOOP_COMMON=_LIB_NATIVE_DIR$HADOOP_HOME/lib/native
+export PATH==$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
+$ source ~/.bashrc #execute ~/.bashrc file
+- Step2: Hadoop Configuraion
+- cd $HADOOP_HOME/etc/hadoop #change directory
+- export JAVA_HOME=/usr/local/java #hadoop-env.sh
+- core-site.xml / hdfs-site.xml / yarn-site.xml / mapred-site.xml
+- Verifying Hadoop Installation
+- Step1: Name node setup
+- cd ~
+- hdfs namenode -format
+- Step2: Verifying Hadoop dfs
+- start-dfs.sh
+- Step3: Verifying Yarn Script
+- start-yarn.sh
+- Step4: Accessing Hadoop on Browser
+- http://localhost:50070
+- Step5: Verify all application for cluster
+- http://localhost:8088
+- Downloading & Installing sqoop
+- tar -xvf sqoop-1.4.4.bin__hadoop-2.0.4-alpha.tar.gz
+--> ~/.bashrc
+export SQOOP_HOME=/usr/lib/sqoop export PATH=$PATH:$SQOOP_HOME/bin
+$ source ~/.bashrc #execute ~/.bashrc file
+- Configuring Sqoop --> sqoop-env.sh
+export HADOOP_COMMON_HOME=/usr/local/hadoop
+export HADOOP_MAPRED_HOME=/usr/local/hadoop
+- Verifying Sqoop
+- sqoop-version #check sqoop version --> 1.4.5
+- Import
+- sqoop import (generic-args) (import-args)
+- sqoop-import (generic-args) (import-args)
+- sqoop import
+--connect jdbc:mysql://localhost/database_name
+--username user_name
+--table table_name
+- --target-dir <new or exist directory in HDFS>
+- --where <condition>
+- export
+- sqoop export (generic-args) (export-args)
+- sqoop-export (generic-args) (export-args)
+- sqoop export
+--connect jdbc:mysql://localhost/database_name
+--username user_name
+--table table_name
+--export-dir <exported directory>
+- Job
+- sqoop job (generic-args) (job-args) [-- [subtool-name] (subtool-args)]
+- sqoop-job (generic-args) (job-args) [-- [subtool-name] (subtool-args)]
+- --create #create a job
+- --list #list the saved jobs
+- --show #show the details of a job
+- --exec #execute a saved job
+- Codegen
+- sqoop codegen (generic-args) (codegen-args)
+- sqoop-codegen (generic-args) (codegen-args)
+- Evaluation ( Query )
+- Insert
+- Select
+- List Databases
+- sqoop list-databases (generic-args) (list-databases-args)
+- sqoop-list-databases (generic-args) (list-databases-args)
+- List Tables
+- sqoop list-tables (generic-args) (list-tables-args)
+- sqoop-list-tables (generic-args) (list-tables-args)
+- Link
+Hortonworks in Cloud ( Ambari ) : http://104.43.9.108:8080
